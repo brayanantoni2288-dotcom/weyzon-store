@@ -43,7 +43,8 @@ header{
 .hero{
   padding:55px 7%;
   background:linear-gradient(135deg,#111827,#2563eb);
-  color:white
+  color:white;
+  text-align:center
 }
 
 .hero h1{
@@ -53,7 +54,25 @@ header{
 
 .hero p{
   font-size:18px;
-  opacity:.9
+  opacity:.9;
+  margin-bottom:25px
+}
+
+/* BOTÓN DEL GRUPO */
+
+.group{
+  display:inline-block;
+  padding:13px 22px;
+  border-radius:10px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.2s
+}
+
+.group:hover{
+  background:#1ebe5d
 }
 
 main{
@@ -129,14 +148,28 @@ footer{
 <body>
 
 <header>
+
   <div class="logo">
     WEYZON <span>STORE</span>
   </div>
+
 </header>
 
 <section class="hero">
+
   <h1>Recargas rápidas y seguras</h1>
-  <p>Compra tus diamantes y pases de Free Fire de forma sencilla.</p>
+
+  <p>
+    Compra tus diamantes y pases de Free Fire de forma sencilla.
+  </p>
+
+  <a
+    href="https://chat.whatsapp.com/LD7iTrhVber3jX8LUKdwud"
+    target="_blank"
+    class="group">
+    💬 Unirme al grupo de WhatsApp
+  </a>
+
 </section>
 
 <main>
@@ -187,7 +220,12 @@ footer{
 
 <script>
 
-const whatsapp = "51997456709";
+/* NUEVO WHATSAPP DE VENTAS */
+
+const whatsapp = "51922421120";
+
+
+/* PRODUCTOS */
 
 const products = [
   ["100 💎","S/ 2.30"],
@@ -198,7 +236,9 @@ const products = [
   ["6,000 💎","S/ 94.00"]
 ];
 
+
 const container = document.getElementById("products");
+
 
 products.forEach((p) => {
 
@@ -228,6 +268,9 @@ products.forEach((p) => {
 
 });
 
+
+/* WHATSAPP PARA DIAMANTES */
+
 function consultar(producto, precio){
 
   const mensaje =
@@ -241,6 +284,9 @@ function consultar(producto, precio){
   window.open(url, "_blank");
 
 }
+
+
+/* WHATSAPP PARA PASE BOOYAH */
 
 function consultarPase(){
 
