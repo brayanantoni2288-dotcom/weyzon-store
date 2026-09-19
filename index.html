@@ -23,7 +23,7 @@ main{padding:40px 7%;background:radial-gradient(circle at 15% 20%,#1683ff14 0,tr
 footer{text-align:center;padding:30px;color:#8fb5d8;background:#06182e;border-top:1px solid #1d568d}
 .modal{display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;padding:20px;z-index:20;overflow:auto}
 .box{background:linear-gradient(145deg,#0d315a,#082542);color:#eef8ff;border:1px solid #3184c966;border-radius:18px;padding:25px;width:min(460px,100%);max-height:92vh;overflow:auto;box-shadow:0 20px 70px #00000088}
-.box h2{margin-bottom:15px}.close{float:right;border:0;background:none;font-size:22px;cursor:pointer}
+.box h2{margin-bottom:15px}.close{float:right;border:0;background:none;color:#fff;font-size:22px;cursor:pointer}
 input{width:100%;padding:12px;margin:7px 0;border:1px solid #3d76a8;background:#071d36;color:#fff;border-radius:9px;outline:none}input:focus{border-color:#4aa7ff;box-shadow:0 0 0 3px #3184c933}
 .notice{margin-top:12px;font-size:13px;color:#64748b}
 .summary{background:#071d36;border:1px solid #2a6ea855;border-radius:12px;padding:14px;margin:12px 0;line-height:1.6}
@@ -31,13 +31,13 @@ input{width:100%;padding:12px;margin:7px 0;border:1px solid #3d76a8;background:#
 .payment h3{margin-bottom:8px;color:#166534}
 .yape-number{font-size:22px;font-weight:800;margin:10px 0}
 .qr{width:190px;height:190px;object-fit:contain;display:block;margin:12px auto;border-radius:10px;background:white}
-.status{margin-top:12px;background:#fff7ed;border-radius:10px;padding:12px;color:#9a3412}
-.order-box{background:white;border-radius:12px;padding:15px;margin-top:12px;box-shadow:0 4px 14px #00000012}
+.status{margin-top:12px;background:#3a2410;border:1px solid #b45309;border-radius:10px;padding:12px;color:#fed7aa}
+.order-box{background:#071d36;color:#eef8ff;border:1px solid #2a6ea8;border-radius:12px;padding:15px;margin-top:12px;box-shadow:0 4px 14px #00000055}
 .order-actions button{padding:9px 12px;border:0;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:8px}
 .complete{background:#16a34a;color:white}.pending{background:#f59e0b;color:white}
 .admin{margin-top:18px}
 hr{border:0;border-top:1px solid #e5e7eb;margin:18px 0}
-.small{font-size:12px;color:#91b7d8}
+.small{font-size:12px;color:#b9d8f7}
 
 /* ===== FUNCIONES WEYZON STORE ===== */
 .feature-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:25px 0}
@@ -48,7 +48,7 @@ hr{border:0;border-top:1px solid #e5e7eb;margin:18px 0}
 .cart-item{background:#071d36;border:1px solid #2a6ea855;border-radius:10px;padding:12px;margin:8px 0;display:flex;justify-content:space-between;gap:10px;align-items:center}
 .cart-remove{background:#dc2626;color:#fff;border:0;border-radius:7px;padding:6px 9px;cursor:pointer}
 .booyah{border-color:#ef444488;background:linear-gradient(145deg,#142d50,#3b1724)}
-.status-good{background:#ecfdf5;color:#166534;border:1px solid #86efac;border-radius:10px;padding:12px;margin-top:10px}
+.status-good{background:#082b1d;color:#bbf7d0;border:1px solid #16a34a;border-radius:10px;padding:12px;margin-top:10px}
 .search-order{margin-top:10px}
 </style>
 </head>
@@ -56,7 +56,7 @@ hr{border:0;border-top:1px solid #e5e7eb;margin:18px 0}
 
 <header>
   <div class="logo">WEYZON <span>STORE</span></div>
-  <button class="cart" onclick="showOrders()">🛒 Pedidos (<span id="count">0</span>)</button>
+  <button class="cart" onclick="showOrders()">📋 Pedidos (<span id="count">0</span>)</button>
 </header>
 
 <section class="hero">
@@ -66,10 +66,10 @@ hr{border:0;border-top:1px solid #e5e7eb;margin:18px 0}
 
 <main>
   <div class="feature-bar">
-    <button class="feature-btn" onclick="showCart()">🛒 Mi carrito</button>
     <button class="feature-btn" onclick="showOrders()">📋 Mis pedidos</button>
     <button class="feature-btn" onclick="askOrderStatus()">🔍 Consultar estado</button>
     <button class="feature-btn" onclick="contactWhatsApp()">💬 Atención por WhatsApp</button>
+    <button class="feature-btn" onclick="openGroup()">👥 Grupo</button>
   </div>
   <h2 class="title">💎 Diamantes Free Fire</h2>
   <div class="grid" id="products">
@@ -77,43 +77,36 @@ hr{border:0;border-top:1px solid #e5e7eb;margin:18px 0}
       <div class="icon">💎</div><h3>100 💎</h3><p>Recarga Free Fire</p>
       <div class="price">S/ 2.60</div>
       <button class="buy" onclick="openOrder('100 💎','S/ 2.60')">Comprar</button>
-      <button class="secondary" onclick="addToCart('100 💎','S/ 2.60')">🛒 Agregar al carrito</button>
     </article>
 <article class="card">
       <div class="icon">💎</div><h3>300 💎</h3><p>Recarga Free Fire</p>
       <div class="price">S/ 8.00</div>
       <button class="buy" onclick="openOrder('300 💎','S/ 8.00')">Comprar</button>
-      <button class="secondary" onclick="addToCart('300 💎','S/ 8.00')">🛒 Agregar al carrito</button>
     </article>
 <article class="card">
       <div class="icon">💎</div><h3>500 💎</h3><p>Recarga Free Fire</p>
       <div class="price">S/ 12.50</div>
       <button class="buy" onclick="openOrder('500 💎','S/ 12.50')">Comprar</button>
-      <button class="secondary" onclick="addToCart('500 💎','S/ 12.50')">🛒 Agregar al carrito</button>
     </article>
 <article class="card">
       <div class="icon">💎</div><h3>1,000 💎</h3><p>Recarga Free Fire</p>
       <div class="price">S/ 24.00</div>
       <button class="buy" onclick="openOrder('1,000 💎','S/ 24.00')">Comprar</button>
-      <button class="secondary" onclick="addToCart('1,000 💎','S/ 24.00')">🛒 Agregar al carrito</button>
     </article>
 <article class="card">
       <div class="icon">💎</div><h3>2,000 💎</h3><p>Recarga Free Fire</p>
       <div class="price">S/ 44.50</div>
       <button class="buy" onclick="openOrder('2,000 💎','S/ 44.50')">Comprar</button>
-      <button class="secondary" onclick="addToCart('2,000 💎','S/ 44.50')">🛒 Agregar al carrito</button>
     </article>
 <article class="card">
       <div class="icon">💎</div><h3>6,000 💎</h3><p>Recarga Free Fire</p>
       <div class="price">S/ 101.00</div>
       <button class="buy" onclick="openOrder('6,000 💎','S/ 101.00')">Comprar</button>
-      <button class="secondary" onclick="addToCart('6,000 💎','S/ 101.00')">🛒 Agregar al carrito</button>
     </article>
     <article class="card booyah">
       <div class="icon">🎫</div><h3>Pase Booyah</h3><p>Pase Booyah Free Fire</p>
       <div class="price">S/ 5.00</div>
       <button class="buy" onclick="openOrder('🎫 Pase Booyah','S/ 5.00')">Comprar</button>
-      <button class="secondary" onclick="addToCart('🎫 Pase Booyah','S/ 5.00')">🛒 Agregar al carrito</button>
     </article>
   </div>
 </main>
@@ -180,19 +173,7 @@ hr{border:0;border-top:1px solid #e5e7eb;margin:18px 0}
   </div>
 </div>
 
-<!-- Modal carrito -->
-<div class="modal" id="cartModal">
-  <div class="box">
-    <button class="close" onclick="closeCart()">✕</button>
-    <h2>🛒 Mi carrito</h2>
-    <div id="cartList" class="cart-list"></div>
-    <div class="summary"><b>Total: <span id="cartTotal">S/ 0.00</span></b></div>
-    <button class="primary" onclick="checkoutCart()">Continuar con el pedido</button>
-    <button class="secondary" onclick="closeCart()">Cerrar</button>
-  </div>
-</div>
-
-<!-- Modal consultar estado -->
+  <!-- Modal consultar estado -->
 <div class="modal" id="statusModal">
   <div class="box">
     <button class="close" onclick="closeStatus()">✕</button>
@@ -331,64 +312,18 @@ function closeOrders() {
   document.getElementById("ordersModal").style.display = "none";
 }
 
-
-/* ===== NUEVAS FUNCIONES ===== */
-let cart = JSON.parse(localStorage.getItem("weyzon_cart_v1") || "[]");
-
-function copyYape(){
-  navigator.clipboard.writeText("916371602").then(()=>{
-    alert("✅ Número de Yape copiado: 916371602");
-  }).catch(()=>alert("Número de Yape: 916371602"));
-}
-
-function addToCart(product, price){
-  cart.push({product, price});
-  localStorage.setItem("weyzon_cart_v1", JSON.stringify(cart));
-  alert("🛒 " + product + " agregado al carrito.");
-  renderCart();
-}
-
-function showCart(){
-  renderCart();
-  document.getElementById("cartModal").style.display="flex";
-}
-
-function closeCart(){
-  document.getElementById("cartModal").style.display="none";
-}
-
-function renderCart(){
-  const list=document.getElementById("cartList");
-  const total=document.getElementById("cartTotal");
-  if(!cart.length){
-    list.innerHTML="<p>Tu carrito está vacío.</p>";
-    total.innerText="S/ 0.00";
-    return;
-  }
-  let sum=0;
-  list.innerHTML=cart.map((item,i)=>{
-    sum += moneyToNumber(item.price);
-    return `<div class="cart-item"><span>💎 ${item.product} — ${item.price}</span><button class="cart-remove" onclick="removeFromCart(${i})">✕</button></div>`;
-  }).join("");
-  total.innerText="S/ "+sum.toFixed(2);
-}
-
-function removeFromCart(i){
-  cart.splice(i,1);
-  localStorage.setItem("weyzon_cart_v1", JSON.stringify(cart));
-  renderCart();
-}
-
-function checkoutCart(){
-  if(!cart.length){ alert("Tu carrito está vacío."); return; }
-  const item=cart[0];
-  closeCart();
-  openOrder(item.product,item.price);
-}
-
 function contactWhatsApp(){
   const msg=encodeURIComponent("Hola WEYZON STORE 👋 Quiero atención para una recarga.");
   window.open("https://wa.me/51997456709?text="+msg,"_blank");
+}
+
+function openGroup(){
+  const groupWhatsAppLink = "https://chat.whatsapp.com/LD7iTrhVber3jX8LUKdwud";
+  if(groupWhatsAppLink.includes("PEGA_AQUI")){
+    alert("Falta colocar el enlace de tu grupo.");
+    return;
+  }
+  window.open(groupWhatsAppLink, "_blank");
 }
 
 function askOrderStatus(){
