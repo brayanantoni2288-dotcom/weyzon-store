@@ -1,102 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>WEYZON STORE</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#070b18;color:#fff}
-header{padding:18px;text-align:center;background:linear-gradient(135deg,#071a45,#101020)}
-h1{margin:0;color:#54a8ff}header p{margin:6px 0 12px;color:#b8c7df}
-button{border:0;border-radius:10px;padding:11px 14px;background:#1677ff;color:white;font-weight:bold;cursor:pointer}
-nav button{margin:4px}.wrap{max-width:900px;margin:auto;padding:18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.card{background:#10182b;border:1px solid #20365d;border-radius:15px;padding:16px;box-shadow:0 8px 25px #0005}
-.card h2{margin:0 0 8px}.price{font-size:23px;font-weight:bold;color:#61b1ff;margin:8px 0}
-.warn{font-size:12px;color:#ffd166;background:#2a210b;padding:9px;border-radius:8px;margin:10px 0}
-.modal{display:none;position:fixed;inset:0;background:#000b;padding:20px;overflow:auto;z-index:5}
-.box{max-width:520px;margin:30px auto;background:#0e1628;border:1px solid #284777;border-radius:16px;padding:20px}
-input{width:100%;padding:13px;margin:8px 0;border-radius:9px;border:1px solid #38537d;background:#080d19;color:white}
-.close{float:right;background:#27334b}.qr{width:230px;max-width:100%;display:block;margin:12px auto;border-radius:10px;background:white;padding:8px}
-.status{background:#101f36;padding:12px;border-radius:10px;margin:12px 0}
-.order{border:1px solid #29466f;border-radius:10px;padding:12px;margin:10px 0;background:#0b1220}
-small{color:#9eb0ca}
-</style>
-</head>
-<body>
-<header>
-<h1>💎 WEYZON STORE</h1>
-<p>Recarga tus mejores diamantes aquí</p>
-<nav>
-<button onclick="openOrders()">📋 Mis pedidos</button>
-<button onclick="window.open('https://chat.whatsapp.com/LD7iTrhVber3jX8LUKdwud','_blank')">💬 Grupo</button>
-</nav>
-</header>
-
-<main class="wrap"><div class="grid" id="products"></div></main>
-
-<div class="modal" id="orderModal"><div class="box">
-<button class="close" onclick="closeModal('orderModal')">✕</button>
-<h2>🧾 Confirmar pedido</h2><div id="summary"></div>
-<input id="ffid" placeholder="Ingresa tu ID de Free Fire">
-<p>El comprobante se enviará por WhatsApp al <b>997456709</b>.</p>
-<button onclick="createOrder()">Continuar al pago</button>
-</div></div>
-
-<div class="modal" id="payModal"><div class="box">
-<button class="close" onclick="closeModal('payModal')">✕</button>
-<h2>💜 Pago por Prexpe</h2><div id="payment"></div>
-<img class="qr" src="prexpe_qr_compact.jpg" alt="QR Prexpe">
-<p style="text-align:center">Número Prexpe: <b>963348614</b></p>
-<button onclick="copyNum()">📋 Copiar número</button>
-<div class="status">⏳ Pedido pendiente de verificación.</div>
-<button onclick="sendProof()">📲 Enviar comprobante por WhatsApp</button>
-</div></div>
-
-<div class="modal" id="ordersModal"><div class="box">
-<button class="close" onclick="closeModal('ordersModal')">✕</button>
-<h2>📋 Mis pedidos</h2><div id="orders"></div>
-</div></div>
-
-<script>
-const products=[
-['100 💎','2.30'],['300 💎','7.00'],['500 💎','10.00'],
-['1,000 💎','20.00'],['2,000 💎','40.00'],['6,000 💎','95.00'],
-['Pase Booyah','5.00']
-];
-let selected=null,order=null;
-const $=id=>document.getElementById(id);
-products.forEach((p,i)=>{
- let d=document.createElement('div');d.className='card';
- d.innerHTML=`<h2>${p[0]}</h2><div class="price">S/ ${p[1]}</div>
- ${i<6?'<div class="warn">⚠️ Antes de pagar, verifica si tu ID tiene descuento. No se hace reembolso.</div>':''}
- <button onclick="selectProduct(${i})">Comprar por S/ ${p[1]}</button>`;
- $('products').appendChild(d);
-});
-function selectProduct(i){
- selected=products[i];$('summary').innerHTML=`<p><b>Producto:</b> ${selected[0]}<br><b>Total:</b> S/ ${selected[1]}</p>`;
- $('orderModal').style.display='block';
+*{box-sizing:border-box}
+body{
+margin:0;font-family:Arial,sans-serif;color:#fff;
+background:
+radial-gradient(circle at 10% 20%,#006eff55,transparent 30%),
+radial-gradient(circle at 90% 80%,#ff003c55,transparent 30%),
+linear-gradient(135deg,#020205,#06132d,#160207);
+min-height:100vh
 }
-function createOrder(){
- let id=$('ffid').value.trim();if(!id)return alert('Ingresa tu ID de Free Fire.');
- order={id,product:selected[0],amount:selected[1],code:'WZ'+Date.now(),status:'Pendiente'};
- let a=JSON.parse(localStorage.wzorders||'[]');a.push(order);localStorage.wzorders=JSON.stringify(a);
- $('payment').innerHTML=`<p><b>Pedido:</b> ${order.code}<br><b>Monto:</b> S/ ${order.amount}<br><b>ID Free Fire:</b> ${order.id}</p>`;
- $('orderModal').style.display='none';$('payModal').style.display='block';
+header{text-align:center;padding:22px;background:#02040cdd;border-bottom:2px solid #168cff;box-shadow:0 0 25px #007bff55}
+.logo{font-size:38px;font-weight:900;letter-spacing:3px;text-shadow:0 0 15px #168cff,0 0 20px #ff1744}
+.logo span{color:#45baff}
+header p{color:#fff;font-weight:bold}
+button{
+border:0;border-radius:10px;padding:11px 15px;margin:4px;
+background:linear-gradient(135deg,#087cff,#253bdb);
+color:white;font-weight:bold;cursor:pointer;
+box-shadow:0 0 12px #007bff55
 }
-function sendProof(){
- let msg=`Hola WEYZON STORE 👋%0AQuiero enviar el comprobante de mi pedido.%0A%0APedido: ${order.code}%0AProducto: ${order.product}%0AMonto: S/ ${order.amount}%0AID Free Fire: ${order.id}`;
- window.open('https://wa.me/51997456709?text='+msg,'_blank');
- alert('✅ WhatsApp abierto. Envía tu comprobante para que WEYZON confirme tu pedido.');
-}
-function copyNum(){navigator.clipboard?.writeText('963348614');alert('✅ Número Prexpe copiado.')}
-function openOrders(){
- let a=JSON.parse(localStorage.wzorders||'[]');
- $('orders').innerHTML=a.length?a.map((o,i)=>`<div class="order"><b>${o.product}</b><br>S/ ${o.amount}<br>ID: ${o.id}<br>Pedido: ${o.code}<br>Estado: ${o.status}${o.status!='Completado'?`<br><br><button onclick="complete(${i})">✅ Marcar como completado</button>`:''}</div>`).join(''):'<p>No tienes pedidos todavía.</p>';
- $('ordersModal').style.display='block';
-}
-function complete(i){let a=JSON.parse(localStorage.wzorders||'[]');a[i].status='Completado';localStorage.wzorders=JSON.stringify(a);openOrders()}
-function closeModal(id){$(id).style.display='none'}
-</script>
-</body>
-</html>
+button:hover{filter:brightness(1.2)}
