@@ -1304,47 +1304,30 @@ document.getElementById(
 <script>
 
 /* =========================
-   ENVIAR COMPROBANTE
+   WHATSAPP — COMPROBANTE
 ========================= */
 
-function enviarComprobante(){
+function enviarWhatsApp(){
 
-if(!ultimoPedido){
+  if(!pedidoActual){
+    notify("⚠️ Primero realiza un pedido.");
+    return;
+  }
 
-notify(
-"⚠️ Primero crea un pedido."
-);
+  const mensaje =
+    "Hola WEYZON -STORE 👋\n\n" +
+    "Ya realicé mi pedido.\n\n" +
+    "📦 Producto: " + pedidoActual.producto + "\n" +
+    "💎 ID Free Fire: " + pedidoActual.ffid + "\n" +
+    "💰 Precio: S/ " + pedidoActual.precio + "\n" +
+    "🔢 Código: " + pedidoActual.codigo_pedido + "\n\n" +
+    "Adjunto mi comprobante de pago.";
 
-return;
+  const url =
+    "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(mensaje);
 
-}
-
-
-const mensaje=
-`Hola WEYZON -STORE 👋
-
-Quiero enviar el comprobante de mi pedido.
-
-📦 Código: ${ultimoPedido.codigo_pedido}
-💎 Producto: ${ultimoPedido.producto}
-🆔 ID: ${ultimoPedido.ffid}
-💰 Total: S/ ${Number(ultimoPedido.precio).toFixed(2)}
-
-Adjunto mi comprobante de pago.`;
-
-
-const url=
-"https://wa.me/"+
-WHATSAPP+
-"?text="+
-encodeURIComponent(mensaje);
-
-
-window.open(
-url,
-"_blank"
-);
-
+  window.open(url, "_blank");
 }
 
 
@@ -1354,837 +1337,521 @@ url,
 
 async function cargarMisPedidos(){
 
-const contenedor=
-document.getElementById(
-"listaMisPedidos"
-);
-
-contenedor.innerHTML=
-"⏳ Cargando pedidos...";
-
-
-try{
-
-const respuesta=
-await fetch(
-
-SUPABASE_URL+
-"/rest/v1/rpc/obtener_mis_pedidos",
-
-{
-
-method:"POST",
-
-headers:{
-
-"apikey":
-SUPABASE_KEY,
-
-"Authorization":
-"Bearer "+SUPABASE_KEY,
-
-"Content-Type":
-"application/json"
-
-},
-
-body:JSON.stringify({
-
-token:clienteToken
-
-})
-
-}
-
-);
-
-
-if(!respuesta.ok){
-
-throw new Error(
-await respuesta.text()
-);
-
-}
-
-
-const pedidos=
-await respuesta.json();
-
-
-if(!pedidos.length){
-
-contenedor.innerHTML=`
-
-<div class="order">
-
-📭 Todavía no tienes pedidos.
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-contenedor.innerHTML="";
-
-
-pedidos.forEach(p=>{
-
-const terminado=
-
-p.estado==="Completado" ||
-
-p.estado==="Diamantes enviados";
-
-
-contenedor.innerHTML+=`
-
-<div class="order">
-
-<b>📦 Pedido:</b>
-
-${p.id}
-
-<br><br>
-
-<b>💎 Producto:</b>
-
-${p.producto}
-
-<br><br>
-
-<b>🆔 ID:</b>
-
-${p.ffid}
-
-<br><br>
-
-<b>💰 Precio:</b>
-
-S/ ${Number(
-p.precio
-).toFixed(2)}
-
-<br><br>
-
-<b>Estado:</b>
-
-<div class="status ${
-terminado
-?
-"done"
-:
-"pending"
-}">
-
-${
-terminado
-?
-"✅ "+p.estado
-:
-"⏳ "+p.estado
-}
-
-</div>
-
-</div>
-
-`;
-
-});
-
-
-}catch(error){
-
-console.error(error);
-
-contenedor.innerHTML=`
-
-<div class="order">
-
-❌ No se pudieron cargar tus pedidos.
-
-</div>
-
-`;
-
-}
-
+  const contenedor = document.getElementById("misPedidos");
+
+  if(!contenedor) return;
+
+  const token = localStorage.getItem("weyzon_cliente_token");
+
+  if(!token){
+    contenedor.innerHTML = `
+      <div class="notice">
+        📦 Todavía no tienes pedidos registrados.
+      </div>
+    `;
+    return;
+  }
+
+  try{
+
+    const respuesta = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/rpc/obtener_mis_pedidos",
+      {
+        method:"POST",
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Authorization":"Bearer " + SUPABASE_KEY,
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          token:token
+        })
+      }
+    );
+
+    const pedidos = await respuesta.json();
+
+    if(!Array.isArray(pedidos) || pedidos.length === 0){
+
+      contenedor.innerHTML = `
+        <div class="notice">
+          📦 No tienes pedidos todavía.
+        </div>
+      `;
+
+      return;
+    }
+
+    contenedor.innerHTML = pedidos.map(p => `
+
+      <div class="order-card">
+
+        <h3>📦 ${p.producto}</h3>
+
+        <p>
+          💎 ID: <b>${p.ffid}</b>
+        </p>
+
+        <p>
+          💰 Precio: <b>S/ ${p.precio}</b>
+        </p>
+
+        <p>
+          💳 Pasarela: <b>${p.pasarela}</b>
+        </p>
+
+        <p>
+          📅 ${new Date(p.creado_en).toLocaleString()}
+        </p>
+
+        <p>
+          📌 Estado:
+          <b class="${
+            p.estado === "Completado"
+            ? "estado-ok"
+            : "estado-pendiente"
+          }">
+            ${p.estado}
+          </b>
+        </p>
+
+      </div>
+
+    `).join("");
+
+  }catch(error){
+
+    console.error(error);
+
+    contenedor.innerHTML = `
+      <div class="notice">
+        ❌ No se pudieron cargar tus pedidos.
+      </div>
+    `;
+  }
 }
 
 
 /* =========================
-   SEGUIMIENTO
+   CONSULTAR PEDIDO
 ========================= */
 
 async function consultarPedido(){
 
-const input=
-document.getElementById(
-"codigoSeguimiento"
-);
-
-const resultado=
-document.getElementById(
-"resultadoPedido"
-);
-
-
-let codigo=
-input.value
-.trim()
-.toUpperCase();
-
-
-if(!codigo){
-
-resultado.innerHTML=`
-
-<div class="status pending">
-
-⚠️ Escribe tu código de pedido.
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-resultado.innerHTML=
-"⏳ Buscando pedido...";
-
-
-try{
-
-const respuesta=
-await fetch(
-
-SUPABASE_URL+
-"/rest/v1/rpc/consultar_pedido",
-
-{
-
-method:"POST",
-
-headers:{
-
-"apikey":
-SUPABASE_KEY,
-
-"Authorization":
-"Bearer "+SUPABASE_KEY,
-
-"Content-Type":
-"application/json"
-
-},
-
-body:JSON.stringify({
-
-codigo:codigo
-
-})
-
-}
-
-);
-
-
-if(!respuesta.ok){
-
-throw new Error(
-await respuesta.text()
-);
-
-}
-
-
-const pedidos=
-await respuesta.json();
-
-
-if(!pedidos.length){
-
-resultado.innerHTML=`
-
-<div class="status pending">
-
-❌ No encontramos ese pedido.
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-const p=
-pedidos[0];
-
-
-const terminado=
-
-p.estado==="Completado" ||
-
-p.estado==="Diamantes enviados";
-
-
-resultado.innerHTML=`
-
-<div class="order">
-
-<h3>
-📦 Pedido encontrado
-</h3>
-
-<b>Código:</b>
-
-${p.codigo_pedido}
-
-<br><br>
-
-<b>💎 Producto:</b>
-
-${p.producto}
-
-<br><br>
-
-<b>🆔 ID:</b>
-
-${p.ffid}
-
-<br><br>
-
-<b>💰 Precio:</b>
-
-S/ ${Number(
-p.precio
-).toFixed(2)}
-
-<br><br>
-
-<b>Estado:</b>
-
-<div class="status ${
-terminado
-?
-"done"
-:
-"pending"
-}">
-
-${
-terminado
-?
-"✅ "+p.estado
-:
-"⏳ "+p.estado
-}
-
-</div>
-
-${
-p.entregado_en
-?
-`
-<div class="small">
-
-📅 Entregado:
-
-${new Date(
-p.entregado_en
-).toLocaleString("es-PE")}
-
-</div>
-`
-:
-""
-}
-
-</div>
-
-`;
-
-
-}catch(error){
-
-console.error(error);
-
-resultado.innerHTML=`
-
-<div class="status pending">
-
-❌ Error al consultar el pedido.
-
-</div>
-
-`;
-
-}
-
+  const input =
+    document.getElementById("codigoConsulta");
+
+  const resultado =
+    document.getElementById("resultadoConsulta");
+
+  if(!input || !resultado) return;
+
+  const codigo =
+    input.value.trim().toUpperCase();
+
+  if(!codigo){
+
+    resultado.innerHTML = `
+      <div class="notice">
+        ⚠️ Escribe tu código de pedido.
+      </div>
+    `;
+
+    return;
+  }
+
+  resultado.innerHTML = `
+    <div class="notice">
+      🔎 Buscando pedido...
+    </div>
+  `;
+
+  try{
+
+    const respuesta = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/rpc/consultar_pedido",
+      {
+        method:"POST",
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Authorization":"Bearer " + SUPABASE_KEY,
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          codigo:codigo
+        })
+      }
+    );
+
+    const pedidos = await respuesta.json();
+
+    if(!Array.isArray(pedidos) || pedidos.length === 0){
+
+      resultado.innerHTML = `
+        <div class="notice">
+          ❌ No encontramos un pedido con ese código.
+        </div>
+      `;
+
+      return;
+    }
+
+    const p = pedidos[0];
+
+    resultado.innerHTML = `
+
+      <div class="order-card">
+
+        <h3>📦 Pedido encontrado</h3>
+
+        <p>
+          🔢 Código:
+          <b>${p.codigo_pedido}</b>
+        </p>
+
+        <p>
+          💎 ID Free Fire:
+          <b>${p.ffid}</b>
+        </p>
+
+        <p>
+          🛒 Producto:
+          <b>${p.producto}</b>
+        </p>
+
+        <p>
+          💰 Precio:
+          <b>S/ ${p.precio}</b>
+        </p>
+
+        <p>
+          📌 Estado:
+          <b class="${
+            p.estado === "Completado"
+            ? "estado-ok"
+            : "estado-pendiente"
+          }">
+            ${p.estado}
+          </b>
+        </p>
+
+        ${
+          p.estado === "Completado"
+          ? `
+            <div class="success">
+              ✅ ¡Tu pedido fue completado!
+              <br>
+              💎 Los diamantes fueron enviados.
+            </div>
+          `
+          : `
+            <div class="notice">
+              ⏳ Tu pedido está pendiente.
+              <br>
+              Estamos procesando tu recarga.
+            </div>
+          `
+        }
+
+      </div>
+    `;
+
+  }catch(error){
+
+    console.error(error);
+
+    resultado.innerHTML = `
+      <div class="notice">
+        ❌ Error al consultar el pedido.
+      </div>
+    `;
+  }
 }
 
 
 /* =========================
-   ADMIN
-========================= */
-
-let adminToken=null;
-
-
-/* =========================
-   INICIAR ADMIN
+   ADMIN — LOGIN
 ========================= */
 
 async function iniciarAdmin(){
 
-const email=
-document.getElementById(
-"adminEmail"
-).value.trim();
+  const email =
+    document.getElementById("adminEmail").value.trim();
 
+  const password =
+    document.getElementById("adminPassword").value;
 
-const password=
-document.getElementById(
-"adminPassword"
-).value;
+  const mensaje =
+    document.getElementById("adminMensaje");
 
+  if(!email || !password){
 
-if(!email || !password){
+    mensaje.innerHTML =
+      "⚠️ Completa todos los campos.";
 
-notify(
-"⚠️ Ingresa correo y contraseña."
-);
+    return;
+  }
 
-return;
+  mensaje.innerHTML =
+    "🔐 Iniciando sesión...";
 
-}
+  try{
 
+    const respuesta = await fetch(
+      SUPABASE_URL +
+      "/auth/v1/token?grant_type=password",
+      {
+        method:"POST",
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          email:email,
+          password:password
+        })
+      }
+    );
 
-try{
+    const data = await respuesta.json();
 
-const respuesta=
-await fetch(
+    if(!respuesta.ok){
 
-SUPABASE_URL+
-"/auth/v1/token?grant_type=password",
+      mensaje.innerHTML =
+        "❌ Correo o contraseña incorrectos.";
 
-{
+      return;
+    }
 
-method:"POST",
+    localStorage.setItem(
+      "weyzon_admin_token",
+      data.access_token
+    );
 
-headers:{
+    localStorage.setItem(
+      "weyzon_admin_refresh",
+      data.refresh_token || ""
+    );
 
-"apikey":
-SUPABASE_KEY,
+    mensaje.innerHTML =
+      "✅ Sesión iniciada.";
 
-"Content-Type":
-"application/json"
+    await cargarPedidosAdmin();
 
-},
+  }catch(error){
 
-body:JSON.stringify({
+    console.error(error);
 
-email:email,
-
-password:password
-
-})
-
-}
-
-);
-
-
-const datos=
-await respuesta.json();
-
-
-if(!respuesta.ok){
-
-throw new Error(
-
-datos.msg ||
-
-datos.error_description ||
-
-"Error de inicio de sesión"
-
-);
-
-}
-
-
-adminToken=
-datos.access_token;
-
-
-document.getElementById(
-"adminLogin"
-).style.display="none";
-
-
-document.getElementById(
-"adminPanel"
-).style.display="block";
-
-
-await cargarPedidosAdmin();
-
-
-notify(
-"✅ Sesión iniciada."
-);
-
-
-}catch(error){
-
-console.error(error);
-
-notify(
-"❌ Correo o contraseña incorrectos."
-);
-
-}
-
+    mensaje.innerHTML =
+      "❌ No se pudo iniciar sesión.";
+  }
 }
 
 
 /* =========================
-   CARGAR PEDIDOS ADMIN
+   ADMIN — CARGAR PEDIDOS
 ========================= */
 
 async function cargarPedidosAdmin(){
 
-if(!adminToken){
-
-return;
-
-}
-
-
-const contenedor=
-document.getElementById(
-"pedidosAdmin"
-);
-
-
-const stats=
-document.getElementById(
-"adminStats"
-);
-
-
-contenedor.innerHTML=
-"⏳ Cargando pedidos...";
-
-
-try{
-
-const respuesta=
-await fetch(
-
-SUPABASE_URL+
-"/rest/v1/pedidos?select=*&order=creado_en.desc",
-
-{
-
-headers:{
-
-"apikey":
-SUPABASE_KEY,
-
-"Authorization":
-"Bearer "+adminToken
-
-}
-
-}
-
-);
-
-
-if(!respuesta.ok){
-
-throw new Error(
-await respuesta.text()
-);
-
-}
-
-
-const pedidos=
-await respuesta.json();
-
-
-const pendientes=
-pedidos.filter(
-p=>p.estado==="Pendiente"
-).length;
-
-
-const completados=
-pedidos.filter(
-
-p=>
-p.estado==="Completado" ||
-
-p.estado==="Diamantes enviados"
-
-).length;
-
-
-stats.innerHTML=`
-
-<div class="stat">
-
-📦 Total:
-
-<b>${pedidos.length}</b>
-
-</div>
-
-<div class="stat">
-
-⏳ Pendientes:
-
-<b>${pendientes}</b>
-
-</div>
-
-<div class="stat">
-
-✅ Completados:
-
-<b>${completados}</b>
-
-</div>
-
-`;
-
-
-if(!pedidos.length){
-
-contenedor.innerHTML=`
-
-<div class="order">
-
-📭 No hay pedidos todavía.
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-contenedor.innerHTML="";
-
-
-pedidos.forEach(p=>{
-
-const terminado=
-
-p.estado==="Completado" ||
-
-p.estado==="Diamantes enviados";
-
-
-contenedor.innerHTML+=`
-
-<div class="order">
-
-<h3>
-
-📦 ${
-p.codigo_pedido ||
-"Sin código"
-}
-
-</h3>
-
-<b>🆔 ID:</b>
-
-${p.ffid}
-
-<br><br>
-
-<b>💎 Producto:</b>
-
-${p.producto}
-
-<br><br>
-
-<b>💰 Precio:</b>
-
-S/ ${Number(
-p.precio
-).toFixed(2)}
-
-<br><br>
-
-<b>🚪 Pasarela:</b>
-
-${p.pasarela}
-
-<br><br>
-
-<b>Estado:</b>
-
-<div class="status ${
-terminado
-?
-"done"
-:
-"pending"
-}">
-
-${
-terminado
-?
-"✅ "+p.estado
-:
-"⏳ "+p.estado
-}
-
-</div>
-
-${
-!terminado
-?
-`
-<button
-onclick="completarPedido(${p.id})">
-
-💎 Marcar como enviado
-
-</button>
-`
-:
-""
-}
-
-</div>
-
-`;
-
-});
-
-
-}catch(error){
-
-console.error(error);
-
-contenedor.innerHTML=`
-
-<div class="status pending">
-
-❌ No se pudieron cargar los pedidos.
-
-</div>
-
-`;
-
-}
-
+  const panel =
+    document.getElementById("adminPedidos");
+
+  if(!panel) return;
+
+  const token =
+    localStorage.getItem("weyzon_admin_token");
+
+  if(!token){
+
+    panel.innerHTML = `
+      <div class="notice">
+        🔐 Inicia sesión como administrador.
+      </div>
+    `;
+
+    return;
+  }
+
+  panel.innerHTML = `
+    <div class="notice">
+      🔄 Cargando pedidos...
+    </div>
+  `;
+
+  try{
+
+    const respuesta = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/pedidos?select=*&order=creado_en.desc",
+      {
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Authorization":"Bearer " + token
+        }
+      }
+    );
+
+    if(!respuesta.ok){
+
+      panel.innerHTML = `
+        <div class="notice">
+          ❌ No tienes permiso para ver los pedidos.
+        </div>
+      `;
+
+      return;
+    }
+
+    const pedidos = await respuesta.json();
+
+    if(!pedidos.length){
+
+      panel.innerHTML = `
+        <div class="notice">
+          📦 No hay pedidos todavía.
+        </div>
+      `;
+
+      return;
+    }
+
+    panel.innerHTML = pedidos.map(p => `
+
+      <div class="order-card">
+
+        <h3>📦 ${p.producto}</h3>
+
+        <p>
+          🔢 Código:
+          <b>${p.codigo_pedido || "Sin código"}</b>
+        </p>
+
+        <p>
+          💎 ID:
+          <b>${p.ffid}</b>
+        </p>
+
+        <p>
+          💰 Precio:
+          <b>S/ ${p.precio}</b>
+        </p>
+
+        <p>
+          💳 Pasarela:
+          <b>${p.pasarela}</b>
+        </p>
+
+        <p>
+          📌 Estado:
+          <b>${p.estado}</b>
+        </p>
+
+        <p>
+          📅 ${new Date(p.creado_en).toLocaleString()}
+        </p>
+
+        ${
+          p.estado !== "Completado"
+          ? `
+            <button
+              class="primary"
+              onclick="completarPedido(${p.id})">
+              ✅ Marcar como completado
+            </button>
+          `
+          : `
+            <div class="success">
+              ✅ Pedido completado
+            </div>
+          `
+        }
+
+      </div>
+
+    `).join("");
+
+  }catch(error){
+
+    console.error(error);
+
+    panel.innerHTML = `
+      <div class="notice">
+        ❌ Error al cargar los pedidos.
+      </div>
+    `;
+  }
 }
 
 
 /* =========================
-   COMPLETAR PEDIDO
+   ADMIN — COMPLETAR PEDIDO
 ========================= */
 
 async function completarPedido(id){
 
-if(!adminToken){
+  const token =
+    localStorage.getItem("weyzon_admin_token");
 
-notify(
-"⚠️ Inicia sesión como administrador."
-);
+  if(!token){
 
-return;
+    notify("❌ Debes iniciar sesión como administrador.");
 
-}
+    return;
+  }
 
+  try{
 
-try{
+    const respuesta = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/pedidos?id=eq." + id,
+      {
+        method:"PATCH",
 
-const respuesta=
-await fetch(
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Authorization":"Bearer " + token,
+          "Content-Type":"application/json",
+          "Prefer":"return=minimal"
+        },
 
-SUPABASE_URL+
-"/rest/v1/pedidos?id=eq."+id,
+        body:JSON.stringify({
+          estado:"Completado",
+          entregado_en:new Date().toISOString()
+        })
+      }
+    );
 
-{
+    if(!respuesta.ok){
 
-method:"PATCH",
+      const errorText =
+        await respuesta.text();
 
-headers:{
+      console.error(errorText);
 
-"apikey":
-SUPABASE_KEY,
+      notify(
+        "❌ No se pudo actualizar el pedido."
+      );
 
-"Authorization":
-"Bearer "+adminToken,
+      return;
+    }
 
-"Content-Type":
-"application/json",
+    notify(
+      "✅ Pedido marcado como completado."
+    );
 
-"Prefer":
-"return=minimal"
+    await cargarPedidosAdmin();
 
-},
+  }catch(error){
 
-body:JSON.stringify({
+    console.error(error);
 
-estado:"Diamantes enviados",
-
-entregado_en:
-new Date().toISOString()
-
-})
-
-}
-
-);
-
-
-if(!respuesta.ok){
-
-throw new Error(
-await respuesta.text()
-);
-
-}
-
-
-notify(
-"✅ Pedido marcado como enviado."
-);
-
-
-await cargarPedidosAdmin();
-
-
-}catch(error){
-
-console.error(error);
-
-notify(
-"❌ No se pudo actualizar el pedido."
-);
-
+    notify(
+      "❌ No se pudo actualizar el pedido."
+    );
+  }
 }
 
 
@@ -2192,74 +1859,75 @@ notify(
    CERRAR ADMIN
 ========================= */
 
-async function cerrarAdmin(){
+function cerrarAdmin(){
 
-adminToken=null;
+  localStorage.removeItem(
+    "weyzon_admin_token"
+  );
+
+  localStorage.removeItem(
+    "weyzon_admin_refresh"
+  );
+
+  const panel =
+    document.getElementById("adminPedidos");
+
+  if(panel){
+
+    panel.innerHTML = `
+      <div class="notice">
+        🔐 Sesión cerrada correctamente.
+      </div>
+    `;
+  }
+
+  notify("👋 Sesión de administrador cerrada.");
+}
 
 
-document.getElementById(
-"adminPanel"
-).style.display="none";
+/* =========================
+   COMPROBAR SESIÓN ADMIN
+========================= */
+
+function comprobarSesionAdmin(){
+
+  const token =
+    localStorage.getItem("weyzon_admin_token");
+
+  const panel =
+    document.getElementById("adminPedidos");
+
+  if(!panel) return;
+
+  if(token){
+
+    cargarPedidosAdmin();
+
+  }else{
+
+    panel.innerHTML = `
+      <div class="notice">
+        🔐 Inicia sesión para administrar los pedidos.
+      </div>
+    `;
+  }
+}
 
 
-document.getElementById(
-"adminLogin"
-).style.display="block";
+/* =========================
+   INICIALIZAR
+========================= */
 
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-document.getElementById(
-"adminPassword"
-).value="";
+    cargarMisPedidos();
 
+    comprobarSesionAdmin();
 
-document.getElementById(
-"pedidosAdmin"
-).innerHTML="";
-
-
-notify(
-"👋 Sesión cerrada."
+  }
 );
-
-
-/* =========================
-   COMPROBAR ADMIN
-========================= */
-
-function comprobarAdmin(){
-
-if(adminToken){
-
-document.getElementById(
-"adminLogin"
-).style.display="none";
-
-document.getElementById(
-"adminPanel"
-).style.display="block";
-
-cargarPedidosAdmin();
-
-}else{
-
-document.getElementById(
-"adminLogin"
-).style.display="block";
-
-document.getElementById(
-"adminPanel"
-).style.display="none";
-
-}
-
-}
-
-
-/* =========================
-   CARGAR PRODUCTOS
-========================= */
-
-renderProductos();
 
 </script>
 <script>
