@@ -1,85 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>WEYZON STORE</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:linear-gradient(180deg,#071a33 0%,#0b2b52 42%,#071a33 100%);color:#eaf4ff;min-height:100vh}
-header{background:rgba(4,18,38,.96);color:white;border-bottom:1px solid #1e5fa8;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-.logo{font-size:25px;font-weight:800;letter-spacing:.5px}.logo span{color:#3b82f6}
-.cart{background:#2563eb;border:0;color:white;padding:10px 15px;border-radius:10px;cursor:pointer}
-.hero{padding:60px 7%;background:radial-gradient(circle at 85% 20%,#3b82f655 0,transparent 35%),linear-gradient(135deg,#06162b,#0b4f91,#123a70);color:white;border-bottom:1px solid #1d5c9d;box-shadow:0 12px 40px #00152e88}
-.hero h1{font-size:42px;margin-bottom:10px}.hero p{font-size:18px;opacity:.9}
-main{padding:40px 7%;background:radial-gradient(circle at 15% 20%,#1683ff14 0,transparent 30%),transparent}.title{margin-bottom:22px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
-.card{background:linear-gradient(145deg,#0d315a,#092746);border:1px solid #2477c455;border-radius:18px;padding:22px;box-shadow:0 8px 28px #00000045;transition:.2s;color:#eaf4ff}
-.card:hover{transform:translateY(-3px);box-shadow:0 12px 34px #00000055;border-color:#3b9cff88}
-.icon{font-size:32px;margin-bottom:10px}.card h3{margin-bottom:8px;color:#fff}.card p{color:#b9d8f7}
-.price{font-size:25px;font-weight:800;margin:15px 0;color:#69b7ff}
-.buy,.primary{width:100%;padding:12px;border:0;border-radius:10px;background:#2563eb;color:white;font-weight:bold;cursor:pointer}
-.buy:hover,.primary:hover{background:#1d4ed8}
-.secondary{width:100%;padding:12px;border:0;border-radius:10px;background:#e5e7eb;color:#172033;font-weight:bold;cursor:pointer;margin-top:8px}
-.wa{width:100%;padding:12px;border:0;border-radius:10px;background:#16a34a;color:white;font-weight:bold;cursor:pointer;margin-top:8px}
-footer{text-align:center;padding:30px;color:#8fb5d8;background:#06182e;border-top:1px solid #1d568d}
-.modal{display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;padding:20px;z-index:20;overflow:auto}
-.box{background:linear-gradient(145deg,#06182d,#04101f);color:#eef8ff;border:1px solid #3184c966;border-radius:18px;padding:25px;width:min(460px,100%);max-height:92vh;overflow:auto;box-shadow:0 20px 70px #00000088}
-.box h2{margin-bottom:15px}.close{float:right;border:0;background:none;color:#fff;font-size:22px;cursor:pointer}
-input{width:100%;padding:12px;margin:7px 0;border:1px solid #3d76a8;background:#071d36;color:#fff;border-radius:9px;outline:none}
-input:focus{border-color:#4aa7ff;box-shadow:0 0 0 3px #3184c933}
-.notice{margin-top:12px;font-size:13px;color:#b9d8f7}
-.summary{background:#071d36;border:1px solid #2a6ea855;border-radius:12px;padding:14px;margin:12px 0;line-height:1.6}
-.payment{display:none;margin-top:15px;background:linear-gradient(145deg,#06182d,#081f3a);border:1px solid #3b82f6;border-radius:14px;padding:18px;color:#eef8ff;box-shadow:0 10px 35px #0008}
-.payment h3{margin-bottom:8px;color:#fff}
-.yape-number{font-size:22px;font-weight:800;margin:10px 0;color:#fff}
-.qr{width:230px;height:230px;object-fit:contain;display:flex;align-items:center;justify-content:center;text-align:center;margin:12px auto;border-radius:10px;background:#fff;color:#172033;font-weight:bold}
-.status{margin-top:12px;background:#3a2410;border:1px solid #b45309;border-radius:10px;padding:12px;color:#fed7aa}
-.order-box{background:#071d36;color:#eef8ff;border:1px solid #2a6ea8;border-radius:12px;padding:15px;margin-top:12px;box-shadow:0 4px 14px #00000055}
-.order-actions button{padding:9px 12px;border:0;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:8px}
-.complete{background:#16a34a;color:white}.pending{background:#f59e0b;color:white}
-.admin{margin-top:18px}
-hr{border:0;border-top:1px solid #e5e7eb;margin:18px 0}
-.small{font-size:12px;color:#b9d8f7}
-.feature-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:25px 0}
-.feature-btn{padding:13px;border:1px solid #2563eb;background:#0a2340;color:#fff;border-radius:12px;font-weight:bold;cursor:pointer}
-.feature-btn:hover{background:#123b68}
-.copy-yape{background:#2563eb;color:white;border:0;padding:8px 12px;border-radius:8px;font-weight:bold;cursor:pointer;margin-left:8px}
-.status-good{background:#082b1d;color:#bbf7d0;border:1px solid #16a34a;border-radius:10px;padding:12px;margin-top:10px}
-.search-order{margin-top:10px}
-.product-warning{margin:10px 0;padding:9px 10px;border-radius:9px;background:#3a2410;border:1px solid #b45309;color:#ffd9a3;font-size:12px;line-height:1.4}
-.product-warning b{color:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#070b18;color:#fff}
+header{padding:18px;text-align:center;background:linear-gradient(135deg,#071a45,#101020)}
+h1{margin:0;color:#54a8ff}header p{margin:6px 0 12px;color:#b8c7df}
+button{border:0;border-radius:10px;padding:11px 14px;background:#1677ff;color:white;font-weight:bold;cursor:pointer}
+nav button{margin:4px}.wrap{max-width:900px;margin:auto;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card{background:#10182b;border:1px solid #20365d;border-radius:15px;padding:16px;box-shadow:0 8px 25px #0005}
+.card h2{margin:0 0 8px}.price{font-size:23px;font-weight:bold;color:#61b1ff;margin:8px 0}
+.warn{font-size:12px;color:#ffd166;background:#2a210b;padding:9px;border-radius:8px;margin:10px 0}
+.modal{display:none;position:fixed;inset:0;background:#000b;padding:20px;overflow:auto;z-index:5}
+.box{max-width:520px;margin:30px auto;background:#0e1628;border:1px solid #284777;border-radius:16px;padding:20px}
+input{width:100%;padding:13px;margin:8px 0;border-radius:9px;border:1px solid #38537d;background:#080d19;color:white}
+.close{float:right;background:#27334b}.qr{width:230px;max-width:100%;display:block;margin:12px auto;border-radius:10px;background:white;padding:8px}
+.status{background:#101f36;padding:12px;border-radius:10px;margin:12px 0}
+.order{border:1px solid #29466f;border-radius:10px;padding:12px;margin:10px 0;background:#0b1220}
+small{color:#9eb0ca}
 </style>
 </head>
-
 <body>
-
 <header>
-<div class="logo">WEYZON <span>STORE</span></div>
-<button class="cart" onclick="showOrders()">📋 Pedidos (<span id="count">0</span>)</button>
+<h1>💎 WEYZON STORE</h1>
+<p>Recarga tus mejores diamantes aquí</p>
+<nav>
+<button onclick="openOrders()">📋 Mis pedidos</button>
+<button onclick="window.open('https://chat.whatsapp.com/LD7iTrhVber3jX8LUKdwud','_blank')">💬 Grupo</button>
+</nav>
 </header>
 
-<section class="hero">
-<h1>Recargas rápidas y seguras</h1>
-<p>Compra tus diamantes de Free Fire de forma sencilla.</p>
-</section>
+<main class="wrap"><div class="grid" id="products"></div></main>
 
-<main>
+<div class="modal" id="orderModal"><div class="box">
+<button class="close" onclick="closeModal('orderModal')">✕</button>
+<h2>🧾 Confirmar pedido</h2><div id="summary"></div>
+<input id="ffid" placeholder="Ingresa tu ID de Free Fire">
+<p>El comprobante se enviará por WhatsApp al <b>997456709</b>.</p>
+<button onclick="createOrder()">Continuar al pago</button>
+</div></div>
 
-<div class="feature-bar">
-<button class="feature-btn" onclick="showOrders()">📋 Mis pedidos</button>
-<button class="feature-btn" onclick="askOrderStatus()">🔍 Consultar estado</button>
-<button class="feature-btn" onclick="contactWhatsApp()">💬 WhatsApp 997456709</button>
-<button class="feature-btn" onclick="openGroup()">👥 Grupo</button>
-</div>
+<div class="modal" id="payModal"><div class="box">
+<button class="close" onclick="closeModal('payModal')">✕</button>
+<h2>💜 Pago por Prexpe</h2><div id="payment"></div>
+<img class="qr" src="prexpe_qr_compact.jpg" alt="QR Prexpe">
+<p style="text-align:center">Número Prexpe: <b>963348614</b></p>
+<button onclick="copyNum()">📋 Copiar número</button>
+<div class="status">⏳ Pedido pendiente de verificación.</div>
+<button onclick="sendProof()">📲 Enviar comprobante por WhatsApp</button>
+</div></div>
 
-<h2 class="title">💎 Diamantes Free Fire</h2>
+<div class="modal" id="ordersModal"><div class="box">
+<button class="close" onclick="closeModal('ordersModal')">✕</button>
+<h2>📋 Mis pedidos</h2><div id="orders"></div>
+</div></div>
 
-<div class="grid" id="products">
-
-<article class="card">
-<div class="icon">💎</div>
-<h3>100 💎</h3>
-<p>Recarga Free Fire</p>
-<div class="price">S/ 2.30</div>
-<div class="product-warning">⚠
+<script>
+const products=[
+['100 💎','2.30'],['300 💎','7.00'],['500 💎','10.00'],
+['1,000 💎','20.00'],['2,000 💎','40.00'],['6,000 💎','95.00'],
+['Pase Booyah','5.00']
+];
+let selected=null,order=null;
+const $=id=>document.getElementById(id);
+products.forEach((p,i)=>{
+ let d=document.createElement('div');d.className='card';
+ d.innerHTML=`<h2>${p[0]}</h2><div class="price">S/ ${p[1]}</div>
+ ${i<6?'<div class="warn">⚠️ Antes de pagar, verifica si tu ID tiene descuento. No se hace reembolso.</div>':''}
+ <button onclick="selectProduct(${i})">Comprar por S/ ${p[1]}</button>`;
+ $('products').appendChild(d);
+});
+function selectProduct(i){
+ selected=products[i];$('summary').innerHTML=`<p><b>Producto:</b> ${selected[0]}<br><b>Total:</b> S/ ${selected[1]}</p>`;
+ $('orderModal').style.display='block';
+}
+function createOrder(){
+ let id=$('ffid').value.trim();if(!id)return alert('Ingresa tu ID de Free Fire.');
+ order={id,product:selected[0],amount:selected[1],code:'WZ'+Date.now(),status:'Pendiente'};
+ let a=JSON.parse(localStorage.wzorders||'[]');a.push(order);localStorage.wzorders=JSON.stringify(a);
+ $('payment').innerHTML=`<p><b>Pedido:</b> ${order.code}<br><b>Monto:</b> S/ ${order.amount}<br><b>ID Free Fire:</b> ${order.id}</p>`;
+ $('orderModal').style.display='none';$('payModal').style.display='block';
+}
+function sendProof(){
+ let msg=`Hola WEYZON STORE 👋%0AQuiero enviar el comprobante de mi pedido.%0A%0APedido: ${order.code}%0AProducto: ${order.product}%0AMonto: S/ ${order.amount}%0AID Free Fire: ${order.id}`;
+ window.open('https://wa.me/51997456709?text='+msg,'_blank');
+ alert('✅ WhatsApp abierto. Envía tu comprobante para que WEYZON confirme tu pedido.');
+}
+function copyNum(){navigator.clipboard?.writeText('963348614');alert('✅ Número Prexpe copiado.')}
+function openOrders(){
+ let a=JSON.parse(localStorage.wzorders||'[]');
+ $('orders').innerHTML=a.length?a.map((o,i)=>`<div class="order"><b>${o.product}</b><br>S/ ${o.amount}<br>ID: ${o.id}<br>Pedido: ${o.code}<br>Estado: ${o.status}${o.status!='Completado'?`<br><br><button onclick="complete(${i})">✅ Marcar como completado</button>`:''}</div>`).join(''):'<p>No tienes pedidos todavía.</p>';
+ $('ordersModal').style.display='block';
+}
+function complete(i){let a=JSON.parse(localStorage.wzorders||'[]');a[i].status='Completado';localStorage.wzorders=JSON.stringify(a);openOrders()}
+function closeModal(id){$(id).style.display='none'}
+</script>
+</body>
+</html>
