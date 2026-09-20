@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>WEYZON -STORE</title>
+
 <meta name="description" content="WEYZON -STORE | Recargas Free Fire rápidas y seguras.">
 
 <meta property="og:title" content="WEYZON -STORE">
@@ -13,7 +14,10 @@
 <meta property="og:type" content="website">
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box
+}
 
 body{
 margin:0;
@@ -86,7 +90,9 @@ grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:14px
 }
 
-.card,.order,.panel{
+.card,
+.order,
+.panel{
 background:rgba(5,12,28,.96);
 border:1px solid #168cff;
 border-radius:18px;
@@ -95,7 +101,9 @@ box-shadow:0 0 16px #0077ff22;
 margin-bottom:12px
 }
 
-.card{text-align:center}
+.card{
+text-align:center
+}
 
 .card h2{
 margin:5px 0 10px
@@ -114,7 +122,8 @@ color:#91d5ff;
 margin:9px
 }
 
-.warn,.notice{
+.warn,
+.notice{
 background:#3b2805;
 border:1px solid #d99b00;
 padding:11px;
@@ -127,7 +136,9 @@ button{
 cursor:pointer
 }
 
-.card button,.primary,.order button{
+.card button,
+.primary,
+.order button{
 width:100%;
 padding:13px;
 border:0;
@@ -138,7 +149,9 @@ font-weight:bold;
 font-size:15px
 }
 
-.card button:hover,.primary:hover,.order button:hover{
+.card button:hover,
+.primary:hover,
+.order button:hover{
 filter:brightness(1.15)
 }
 
@@ -200,8 +213,13 @@ background:#081e35;
 border:1px solid #168cff
 }
 
-.pending{border-color:#d79500}
-.done{border-color:#18c86b}
+.pending{
+border-color:#d79500
+}
+
+.done{
+border-color:#18c86b
+}
 
 #notify{
 display:none;
@@ -241,7 +259,8 @@ background:#07152b
 display:none!important
 }
 
-/* QR PREXPE */
+/* QR */
+
 .qr-prexpe{
 text-align:center;
 margin:18px 0
@@ -259,7 +278,8 @@ border-radius:16px;
 box-shadow:0 0 20px rgba(22,140,255,.45)
 }
 
-/* REDES */
+/* TIKTOK */
+
 .socials{
 display:flex;
 justify-content:center;
@@ -282,6 +302,8 @@ color:#fff;
 box-shadow:0 0 15px rgba(37,244,238,.35)
 }
 
+/* SOPORTE */
+
 .support{
 text-align:center;
 margin:10px 0 24px;
@@ -293,66 +315,135 @@ color:#42aaff;
 font-weight:bold;
 text-decoration:none
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">💎 WEYZON -STORE</div>
-<p>Recargas Free Fire rápidas y seguras</p>
+
+<div class="logo">
+💎 WEYZON -STORE
+</div>
+
+<p>
+Recargas Free Fire rápidas y seguras
+</p>
 
 <div class="socials">
+
 <a
 class="social-btn"
 href="https://www.tiktok.com/@blezitocuentaoficial?_r=1&_t=ZS-99tiWtvfO9V"
 target="_blank"
 rel="noopener noreferrer"
 aria-label="TikTok de WEYZON -STORE">
+
 🎵
+
 </a>
+
 </div>
 
 <div class="support">
+
 🛟 Soporte 24/7:
-<a href="https://wa.me/51920757455"
+
+<a
+href="https://wa.me/51920757455"
 target="_blank"
 rel="noopener noreferrer">
+
 +51 920 757 455
+
 </a>
+
 </div>
+
 </header>
 
 <nav>
-<button onclick="mostrar('pasarela1')">💎 Pasarela 1</button>
-<button onclick="mostrar('pasarela2')">⚡ Pasarela 2</button>
-<button onclick="mostrar('misPedidos')">📋 Mis pedidos</button>
-<button onclick="mostrar('seguimiento')">🔎 Seguimiento</button>
-<button onclick="mostrar('admin')">🔐 Admin</button>
+
+<button onclick="mostrar('pasarela1')">
+💎 Pasarela 1
+</button>
+
+<button onclick="mostrar('pasarela2')">
+⚡ Pasarela 2
+</button>
+
+<button onclick="mostrar('misPedidos')">
+📋 Mis pedidos
+</button>
+
+<button onclick="mostrar('seguimiento')">
+🔎 Seguimiento
+</button>
+
+<button onclick="mostrar('admin')">
+🔐 Admin
+</button>
+
 </nav>
 
 <main>
 
 <section id="pasarela1">
-<h1>💎 Recargas Free Fire</h1>
-<div id="productos1" class="grid"></div>
+
+<h1>
+💎 Recargas Free Fire
+</h1>
+
+<div
+id="productos1"
+class="grid">
+</div>
+
 </section>
 
-<section id="pasarela2" style="display:none">
-<h1>⚡ Diamantes infinitos</h1>
+<section
+id="pasarela2"
+style="display:none">
+
+<h1>
+⚡ Diamantes infinitos
+</h1>
+
 <p style="text-align:center">
 ♾️ Stock ilimitado · Cualquier ID
 </p>
-<div id="productos2" class="grid"></div>
+
+<div
+id="productos2"
+class="grid">
+</div>
+
 </section>
 
-<section id="misPedidos" style="display:none" class="section">
-<h2>📋 Mis pedidos</h2>
-<div id="listaMisPedidos">Cargando...</div>
+<section
+id="misPedidos"
+style="display:none"
+class="section">
+
+<h2>
+📋 Mis pedidos
+</h2>
+
+<div id="listaMisPedidos">
+Cargando...
+</div>
+
 </section>
 
-<section id="seguimiento" style="display:none" class="section">
-<h2>🔎 Seguimiento</h2>
+<section
+id="seguimiento"
+style="display:none"
+class="section">
+
+<h2>
+🔎 Seguimiento
+</h2>
 
 <input
 id="codigoSeguimiento"
@@ -361,17 +452,26 @@ placeholder="Ejemplo: WZ-AB12CD34">
 <button
 class="primary"
 onclick="consultarPedido()">
+
 🔎 Consultar pedido
+
 </button>
 
-<div id="resultadoPedido"></div>
+<div id="resultadoPedido">
+</div>
+
 </section>
 
-<section id="admin" style="display:none" class="section">
+<section
+id="admin"
+style="display:none"
+class="section">
 
 <div id="adminLogin">
 
-<h2>🔐 Panel administrador</h2>
+<h2>
+🔐 Panel administrador
+</h2>
 
 <p class="small">
 Usa el correo y contraseña de tu cuenta de Supabase.
@@ -390,21 +490,32 @@ placeholder="Contraseña">
 <button
 class="primary"
 onclick="iniciarAdmin()">
+
 🔐 Iniciar sesión
+
 </button>
 
 </div>
 
-<div id="adminPanel" style="display:none">
+<div
+id="adminPanel"
+style="display:none">
 
-<h2>📊 Pedidos</h2>
+<h2>
+📊 Pedidos
+</h2>
 
-<div id="adminStats" class="stats"></div>
+<div
+id="adminStats"
+class="stats">
+</div>
 
 <button
 class="primary"
 onclick="cargarPedidosAdmin()">
+
 🔄 Actualizar
+
 </button>
 
 <div
@@ -415,29 +526,40 @@ style="margin-top:14px">
 <button
 class="primary"
 onclick="cerrarAdmin()">
+
 🚪 Cerrar sesión
+
 </button>
 
 </div>
+
 </section>
 
 </main>
 
-<div id="notify"></div>
+<div id="notify">
+</div>
 
-<div class="modal" id="modal">
+<div
+class="modal"
+id="modal">
 
 <div class="box">
 
 <button
 class="close"
 onclick="cerrar('modal')">
+
 ✕
+
 </button>
 
-<h2>💎 Confirmar pedido</h2>
+<h2>
+💎 Confirmar pedido
+</h2>
 
-<div id="resumenPedido"></div>
+<div id="resumenPedido">
+</div>
 
 <input
 id="ffid"
@@ -448,141 +570,196 @@ placeholder="Ingresa tu ID de Free Fire">
 id="btnCrearPedido"
 class="primary"
 onclick="crearPedido()">
+
 ✅ Confirmar pedido
+
 </button>
 
 </div>
+
 </div>
 
-<div class="modal" id="modalPago">
+<div
+class="modal"
+id="modalPago">
 
 <div class="box">
 
 <button
 class="close"
 onclick="cerrar('modalPago')">
+
 ✕
 </button>
 
-<h2>💳 Datos del pedido</h2>
+<h2>
+💳 Datos del pedido
+</h2>
 
-<div id="datosPago"></div>
+<div id="datosPago">
+</div>
 
 <div class="notice">
+
 📲 Después de pagar, envía tu comprobante por WhatsApp.
+
 </div>
 
 <button
 class="primary"
 onclick="enviarComprobante()">
+
 📲 Enviar comprobante
+
 </button>
 
 </div>
+
 </div>
 <script>
+
 const SUPABASE_URL="https://dwvlhdatthuedsjtrtna.supabase.co";
+
 const SUPABASE_KEY="sb_publishable_K2lzpQJ9oj-fF-_VGtNdQw_4OSJ-nxX";
 
 const PREXPE="9633348614";
+
 const WHATSAPP="51946663612";
+
 const SOPORTE_24_7="51920757455";
 
 const TIKTOK="https://www.tiktok.com/@blezitocuentaoficial?_r=1&_t=ZS-99tiWtvfO9V";
 
 const PREXPE_TITULAR="Rosmeri M. T.";
 
-let productoSeleccionado=null;
-let ultimoPedido=null;
-let clienteToken=localStorage.getItem("weyzon_cliente_token");
+
+/* TOKEN DEL CLIENTE */
+
+let clienteToken=
+localStorage.getItem("weyzon_cliente_token");
 
 if(!clienteToken){
-  clienteToken=crypto.randomUUID();
-  localStorage.setItem("weyzon_cliente_token",clienteToken);
+
+clienteToken=crypto.randomUUID();
+
+localStorage.setItem(
+"weyzon_cliente_token",
+clienteToken
+);
+
 }
 
+
+/* PRODUCTO SELECCIONADO */
+
+let productoSeleccionado=null;
+
+let ultimoPedido=null;
+
+
 /* =========================
-   PRODUCTOS PASARELA 1
+   PASARELA 1
 ========================= */
 
 const productos1=[
-  {
-    nombre:"100 💎",
-    precio:2.30
-  },
-  {
-    nombre:"300 💎",
-    precio:7.00
-  },
-  {
-    nombre:"500 💎",
-    precio:10.00
-  },
-  {
-    nombre:"1,000 💎",
-    precio:20.00
-  },
-  {
-    nombre:"2,000 💎",
-    precio:40.00
-  },
-  {
-    nombre:"6,000 💎",
-    precio:95.00
-  },
-  {
-    nombre:"Pase Booyah",
-    precio:5.00,
-    booyah:true
-  }
+
+{
+nombre:"100 💎",
+precio:2.30
+},
+
+{
+nombre:"300 💎",
+precio:7.00
+},
+
+{
+nombre:"500 💎",
+precio:10.00
+},
+
+{
+nombre:"1,000 💎",
+precio:20.00
+},
+
+{
+nombre:"2,000 💎",
+precio:40.00
+},
+
+{
+nombre:"6,000 💎",
+precio:95.00
+},
+
+{
+nombre:"Pase Booyah",
+precio:5.00,
+booyah:true
+}
+
 ];
 
+
 /* =========================
-   PRODUCTOS PASARELA 2
+   PASARELA 2
 ========================= */
 
 const productos2=[
-  {
-    nombre:"100 💎",
-    precio:3.30
-  },
-  {
-    nombre:"300 💎",
-    precio:9.40
-  },
-  {
-    nombre:"500 💎",
-    precio:14.30
-  },
-  {
-    nombre:"1,000 💎",
-    precio:25.34
-  },
-  {
-    nombre:"2,000 💎",
-    precio:53.00
-  },
-  {
-    nombre:"3,000 💎",
-    precio:75.00
-  },
-  {
-    nombre:"6,000 💎",
-    precio:128.00
-  },
-  {
-    nombre:"Membresía básica",
-    precio:2.00
-  },
-  {
-    nombre:"Membresía semanal",
-    precio:6.20
-  },
-  {
-    nombre:"Membresía mensual",
-    precio:31.00
-  }
+
+{
+nombre:"100 💎",
+precio:3.30
+},
+
+{
+nombre:"300 💎",
+precio:9.40
+},
+
+{
+nombre:"500 💎",
+precio:14.30
+},
+
+{
+nombre:"1,000 💎",
+precio:25.34
+},
+
+{
+nombre:"2,000 💎",
+precio:53.00
+},
+
+{
+nombre:"3,000 💎",
+precio:75.00
+},
+
+{
+nombre:"6,000 💎",
+precio:128.00
+},
+
+{
+nombre:"Membresía básica",
+precio:2.00
+},
+
+{
+nombre:"Membresía semanal",
+precio:6.20
+},
+
+{
+nombre:"Membresía mensual",
+precio:31.00
+}
+
 ];
+
 
 /* =========================
    MOSTRAR PRODUCTOS
@@ -590,315 +767,459 @@ const productos2=[
 
 function renderProductos(){
 
-  const cont1=document.getElementById("productos1");
-  const cont2=document.getElementById("productos2");
+const cont1=
+document.getElementById("productos1");
 
-  cont1.innerHTML="";
+const cont2=
+document.getElementById("productos2");
 
-  productos1.forEach((p,index)=>{
 
-    cont1.innerHTML+=`
-      <div class="card">
+cont1.innerHTML="";
 
-        <h2>${p.nombre}</h2>
 
-        <div class="price">
-          S/ ${p.precio.toFixed(2)}
-        </div>
+productos1.forEach((p,index)=>{
 
-        <div class="stock">
-          ⚡ Entrega rápida
-        </div>
+cont1.innerHTML+=`
 
-        ${
-          p.booyah
-          ? ""
-          :
-          `<div class="warn">
-            ⚠️ Antes de pagar, verifica si tu ID tiene descuento.
-            No se hace reembolso.
-          </div>`
-        }
+<div class="card">
 
-        <button onclick="seleccionarProducto(1,${index})">
-          Comprar
-        </button>
+<h2>
+${p.nombre}
+</h2>
 
-      </div>
-    `;
+<div class="price">
+S/ ${p.precio.toFixed(2)}
+</div>
 
-  });
+<div class="stock">
+⚡ Entrega rápida
+</div>
 
-  cont2.innerHTML="";
+${
+p.booyah
+?
+""
+:
+`
+<div class="warn">
 
-  productos2.forEach((p,index)=>{
+⚠️ Antes de pagar, verifica si tu ID tiene descuento.
+No se hace reembolso.
 
-    cont2.innerHTML+=`
-      <div class="card">
+</div>
+`
+}
 
-        <h2>${p.nombre}</h2>
+<button
+onclick="seleccionarProducto(1,${index})">
 
-        <div class="price">
-          S/ ${p.precio.toFixed(2)}
-        </div>
+Comprar
 
-        <div class="stock">
-          ♾️ Stock ilimitado
-        </div>
+</button>
 
-        <div class="small">
-          ✅ Disponible para cualquier ID
-        </div>
+</div>
 
-        <button onclick="seleccionarProducto(2,${index})">
-          Comprar
-        </button>
+`;
 
-      </div>
-    `;
+});
 
-  });
+
+cont2.innerHTML="";
+
+
+productos2.forEach((p,index)=>{
+
+cont2.innerHTML+=`
+
+<div class="card">
+
+<h2>
+${p.nombre}
+</h2>
+
+<div class="price">
+S/ ${p.precio.toFixed(2)}
+</div>
+
+<div class="stock">
+♾️ Stock ilimitado
+</div>
+
+<div class="small">
+✅ Disponible para cualquier ID
+</div>
+
+<button
+onclick="seleccionarProducto(2,${index})">
+
+Comprar
+
+</button>
+
+</div>
+
+`;
+
+});
 
 }
 
+
 /* =========================
-   CAMBIAR SECCIONES
+   CAMBIAR SECCIÓN
 ========================= */
 
 function mostrar(id){
 
-  const secciones=[
-    "pasarela1",
-    "pasarela2",
-    "misPedidos",
-    "seguimiento",
-    "admin"
-  ];
+const secciones=[
 
-  secciones.forEach(x=>{
-    const elemento=document.getElementById(x);
+"pasarela1",
+"pasarela2",
+"misPedidos",
+"seguimiento",
+"admin"
 
-    if(elemento){
-      elemento.style.display=
-        x===id ? "block" : "none";
-    }
-  });
+];
 
-  if(id==="misPedidos"){
-    cargarMisPedidos();
-  }
 
-  if(id==="admin"){
-    comprobarAdmin();
-  }
+secciones.forEach(x=>{
+
+const elemento=
+document.getElementById(x);
+
+if(elemento){
+
+elemento.style.display=
+x===id
+?
+"block"
+:
+"none";
 
 }
+
+});
+
+
+if(id==="misPedidos"){
+
+cargarMisPedidos();
+
+}
+
+
+if(id==="admin"){
+
+comprobarAdmin();
+
+}
+
+}
+
 
 /* =========================
    SELECCIONAR PRODUCTO
 ========================= */
 
-function seleccionarProducto(pasarela,index){
+function seleccionarProducto(
+pasarela,
+index
+){
 
-  const lista=
-    pasarela===1
-    ? productos1
-    : productos2;
+const lista=
+pasarela===1
+?
+productos1
+:
+productos2;
 
-  productoSeleccionado={
-    ...lista[index],
-    pasarela
-  };
 
-  document.getElementById("ffid").value="";
+productoSeleccionado={
 
-  document.getElementById("resumenPedido").innerHTML=`
+...lista[index],
 
-    <div class="order">
+pasarela:pasarela
 
-      <b>Producto:</b>
-      ${productoSeleccionado.nombre}
+};
 
-      <br><br>
 
-      <b>Precio:</b>
-      S/ ${productoSeleccionado.precio.toFixed(2)}
+document.getElementById(
+"ffid"
+).value="";
 
-      <br><br>
 
-      <b>Pasarela:</b>
-      ${pasarela}
+document.getElementById(
+"resumenPedido"
+).innerHTML=`
 
-    </div>
+<div class="order">
 
-  `;
+<b>Producto:</b>
+${productoSeleccionado.nombre}
 
-  document.getElementById("modal").style.display="block";
+<br><br>
+
+<b>Precio:</b>
+S/ ${productoSeleccionado.precio.toFixed(2)}
+
+<br><br>
+
+<b>Pasarela:</b>
+${pasarela}
+
+</div>
+
+`;
+
+
+document.getElementById(
+"modal"
+).style.display="block";
 
 }
 
+
 /* =========================
-   CERRAR MODAL
+   CERRAR
 ========================= */
 
 function cerrar(id){
-  document.getElementById(id).style.display="none";
+
+document.getElementById(id)
+.style.display="none";
+
 }
 
+
 /* =========================
-   NOTIFICACIONES
+   NOTIFICACIÓN
 ========================= */
 
 function notify(text){
 
-  const n=document.getElementById("notify");
+const n=
+document.getElementById("notify");
 
-  n.innerHTML=text;
-  n.style.display="block";
+n.innerHTML=text;
 
-  setTimeout(()=>{
-    n.style.display="none";
-  },3500);
+n.style.display="block";
+
+
+setTimeout(()=>{
+
+n.style.display="none";
+
+},3500);
 
 }
 
+
 /* =========================
    CREAR PEDIDO
+   CORREGIDO
 ========================= */
 
 async function crearPedido(){
 
-  if(!productoSeleccionado){
-    notify("❌ Selecciona un producto.");
-    return;
-  }
+if(!productoSeleccionado){
 
-  const ffid=document.getElementById("ffid").value.trim();
+notify(
+"❌ Selecciona un producto."
+);
 
-  if(!ffid){
-    notify("⚠️ Ingresa tu ID de Free Fire.");
-    return;
-  }
-
-  if(ffid.length<4){
-    notify("⚠️ Verifica tu ID de Free Fire.");
-    return;
-  }
-
-  const boton=document.getElementById("btnCrearPedido");
-
-  boton.disabled=true;
-  boton.textContent="⏳ Creando pedido...";
-
-  try{
-
-    const respuesta=await fetch(
-      SUPABASE_URL+"/rest/v1/pedidos",
-      {
-        method:"POST",
-
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":"Bearer "+SUPABASE_KEY,
-          "Content-Type":"application/json",
-          "Prefer":"return=minimal"
-        },
-
-        body:JSON.stringify({
-
-          cliente_token:clienteToken,
-
-          ffid:ffid,
-
-          producto:productoSeleccionado.nombre,
-
-          precio:productoSeleccionado.precio,
-
-          pasarela:productoSeleccionado.pasarela,
-
-          estado:"Pendiente"
-
-        })
-      }
-    );
-
-    if(!respuesta.ok){
-
-      const errorTexto=await respuesta.text();
-
-      throw new Error(errorTexto);
-
-    }
-
-    await buscarUltimoPedido();
-
-    cerrar("modal");
-
-    if(ultimoPedido){
-
-      mostrarPago(ultimoPedido);
-
-    }else{
-
-      notify(
-        "✅ Pedido creado. Revisa la sección Seguimiento."
-      );
-
-    }
-
-  }catch(error){
-
-    console.error(error);
-
-    notify(
-      "❌ No se pudo crear el pedido. Intenta nuevamente."
-    );
-
-  }finally{
-
-    boton.disabled=false;
-    boton.textContent="✅ Confirmar pedido";
-
-  }
+return;
 
 }
 
-/* =========================
-   BUSCAR ÚLTIMO PEDIDO
-========================= */
 
-async function buscarUltimoPedido(){
+const ffid=
+document.getElementById(
+"ffid"
+).value.trim();
 
-  try{
 
-    const respuesta=await fetch(
-      SUPABASE_URL+
-      "/rest/v1/pedidos?cliente_token=eq."+
-      encodeURIComponent(clienteToken)+
-      "&order=creado_en.desc&limit=1",
-      {
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":"Bearer "+SUPABASE_KEY
-        }
-      }
-    );
+if(!ffid){
 
-    if(!respuesta.ok){
-      throw new Error("Error");
-    }
+notify(
+"⚠️ Ingresa tu ID de Free Fire."
+);
 
-    const datos=await respuesta.json();
-
-    ultimoPedido=datos[0]||null;
-
-  }catch(error){
-
-    console.error(error);
-
-  }
+return;
 
 }
+
+
+if(ffid.length<4){
+
+notify(
+"⚠️ Verifica tu ID de Free Fire."
+);
+
+return;
+
+}
+
+
+const boton=
+document.getElementById(
+"btnCrearPedido"
+);
+
+
+boton.disabled=true;
+
+boton.textContent=
+"⏳ Creando pedido...";
+
+
+try{
+
+
+/* GENERAR CÓDIGO */
+
+const codigoPedido=
+
+"WZ-"+
+
+crypto
+.randomUUID()
+.replace(/-/g,"")
+.substring(0,8)
+.toUpperCase();
+
+
+/* DATOS DEL PEDIDO */
+
+const pedido={
+
+cliente_token:clienteToken,
+
+codigo_pedido:codigoPedido,
+
+ffid:ffid,
+
+producto:
+productoSeleccionado.nombre,
+
+precio:
+productoSeleccionado.precio,
+
+pasarela:
+productoSeleccionado.pasarela,
+
+estado:"Pendiente"
+
+};
+
+
+/* ENVIAR A SUPABASE */
+
+const respuesta=
+await fetch(
+
+SUPABASE_URL+
+"/rest/v1/pedidos",
+
+{
+
+method:"POST",
+
+headers:{
+
+"apikey":
+SUPABASE_KEY,
+
+"Authorization":
+"Bearer "+SUPABASE_KEY,
+
+"Content-Type":
+"application/json",
+
+"Prefer":
+"return=minimal"
+
+},
+
+body:
+JSON.stringify(pedido)
+
+}
+
+);
+
+
+/* COMPROBAR RESPUESTA */
+
+if(!respuesta.ok){
+
+const errorTexto=
+await respuesta.text();
+
+console.error(
+"SUPABASE:",
+errorTexto
+);
+
+throw new Error(
+errorTexto
+);
+
+}
+
+
+/* GUARDAR PEDIDO */
+
+ultimoPedido={
+
+...pedido,
+
+creado_en:
+new Date().toISOString()
+
+};
+
+
+/* CERRAR VENTANA */
+
+cerrar("modal");
+
+
+/* MOSTRAR PAGO */
+
+mostrarPago(
+ultimoPedido
+);
+
+
+notify(
+"✅ Pedido creado correctamente."
+);
+
+
+}catch(error){
+
+console.error(
+"ERROR:",
+error
+);
+
+
+notify(
+"❌ No se pudo crear el pedido. Intenta nuevamente."
+);
+
+
+}finally{
+
+boton.disabled=false;
+
+boton.textContent=
+"✅ Confirmar pedido";
+
+}
+
+}
+
 
 /* =========================
    MOSTRAR PAGO
@@ -906,99 +1227,123 @@ async function buscarUltimoPedido(){
 
 function mostrarPago(pedido){
 
-  document.getElementById("datosPago").innerHTML=`
+document.getElementById(
+"datosPago"
+).innerHTML=`
 
-    <div class="order">
+<div class="order">
 
-      <b>📦 Pedido:</b>
-      ${pedido.codigo_pedido || "Generando código..."}
+<b>📦 Código:</b>
 
-      <br><br>
+${pedido.codigo_pedido}
 
-      <b>💎 Producto:</b>
-      ${pedido.producto}
+<br><br>
 
-      <br><br>
+<b>💎 Producto:</b>
 
-      <b>🆔 ID:</b>
-      ${pedido.ffid}
+${pedido.producto}
 
-      <br><br>
+<br><br>
 
-      <b>💰 Total:</b>
-      S/ ${Number(pedido.precio).toFixed(2)}
+<b>🆔 ID:</b>
 
-    </div>
+${pedido.ffid}
 
-    <div class="qr-prexpe">
-      <img src="1000008506.jpg" alt="QR Prexpe">
-    </div>
+<br><br>
 
-    <div class="notice">
+<b>💰 Total:</b>
 
-      <b>💳 Prexpe:</b>
-      ${PREXPE}
+S/ ${Number(
+pedido.precio
+).toFixed(2)}
 
-      <br><br>
+</div>
 
-      <b>ADVERTENCIA ⚠️</b>
 
-      <br>
+<div class="qr-prexpe">
 
-      Otros bancos → Prexpe
+<img
+src="1000008506.jpg"
+alt="QR Prexpe">
 
-      <br><br>
+</div>
 
-      <b>Titular:</b>
-      ${PREXPE_TITULAR}
 
-    </div>
+<div class="notice">
 
-  `;
+<b>💳 Prexpe:</b>
 
-  document.getElementById("modalPago").style.display="block";
+${PREXPE}
+
+<br><br>
+
+<b>ADVERTENCIA ⚠️</b>
+
+<br>
+
+Otros bancos → Prexpe
+
+<br><br>
+
+<b>Titular:</b>
+
+${PREXPE_TITULAR}
+
+</div>
+
+`;
+
+
+document.getElementById(
+"modalPago"
+).style.display="block";
 
 }
+
 </script>
 <script>
+
 /* =========================
    ENVIAR COMPROBANTE
 ========================= */
 
 function enviarComprobante(){
 
-  if(!ultimoPedido){
+if(!ultimoPedido){
 
-    notify("⚠️ Primero crea un pedido.");
+notify(
+"⚠️ Primero crea un pedido."
+);
 
-    return;
-  }
+return;
 
-  const codigo=
-    ultimoPedido.codigo_pedido || "";
+}
 
-  const mensaje=
+
+const mensaje=
 `Hola WEYZON -STORE 👋
 
 Quiero enviar el comprobante de mi pedido.
 
-📦 Código: ${codigo}
+📦 Código: ${ultimoPedido.codigo_pedido}
 💎 Producto: ${ultimoPedido.producto}
 🆔 ID: ${ultimoPedido.ffid}
 💰 Total: S/ ${Number(ultimoPedido.precio).toFixed(2)}
 
 Adjunto mi comprobante de pago.`;
 
-  const url=
-    "https://wa.me/"+
-    WHATSAPP+
-    "?text="+
-    encodeURIComponent(mensaje);
 
-  window.open(
-    url,
-    "_blank"
-  );
+const url=
+"https://wa.me/"+
+WHATSAPP+
+"?text="+
+encodeURIComponent(mensaje);
+
+
+window.open(
+url,
+"_blank"
+);
 
 }
 
@@ -1009,119 +1354,165 @@ Adjunto mi comprobante de pago.`;
 
 async function cargarMisPedidos(){
 
-  const contenedor=
-    document.getElementById("listaMisPedidos");
+const contenedor=
+document.getElementById(
+"listaMisPedidos"
+);
 
-  contenedor.innerHTML=
-    "⏳ Cargando pedidos...";
+contenedor.innerHTML=
+"⏳ Cargando pedidos...";
 
-  try{
 
-    const respuesta=await fetch(
-      SUPABASE_URL+
-      "/rest/v1/rpc/obtener_mis_pedidos",
-      {
-        method:"POST",
+try{
 
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":"Bearer "+SUPABASE_KEY,
-          "Content-Type":"application/json"
-        },
+const respuesta=
+await fetch(
 
-        body:JSON.stringify({
-          token:clienteToken
-        })
-      }
-    );
+SUPABASE_URL+
+"/rest/v1/rpc/obtener_mis_pedidos",
 
-    if(!respuesta.ok){
+{
 
-      throw new Error(
-        await respuesta.text()
-      );
+method:"POST",
 
-    }
+headers:{
 
-    const pedidos=
-      await respuesta.json();
+"apikey":
+SUPABASE_KEY,
 
-    if(!pedidos.length){
+"Authorization":
+"Bearer "+SUPABASE_KEY,
 
-      contenedor.innerHTML=`
-        <div class="order">
-          📭 Todavía no tienes pedidos.
-        </div>
-      `;
+"Content-Type":
+"application/json"
 
-      return;
-    }
+},
 
-    contenedor.innerHTML="";
+body:JSON.stringify({
 
-    pedidos.forEach(p=>{
+token:clienteToken
 
-      const terminado=
-        p.estado==="Completado" ||
-        p.estado==="Diamantes enviados";
+})
 
-      contenedor.innerHTML+=`
+}
 
-        <div class="order">
+);
 
-          <b>📦 Pedido</b><br>
-          ${p.id}
 
-          <br><br>
+if(!respuesta.ok){
 
-          <b>💎 Producto:</b><br>
-          ${p.producto}
+throw new Error(
+await respuesta.text()
+);
 
-          <br><br>
+}
 
-          <b>🆔 ID:</b><br>
-          ${p.ffid}
 
-          <br><br>
+const pedidos=
+await respuesta.json();
 
-          <b>💰 Precio:</b><br>
-          S/ ${Number(p.precio).toFixed(2)}
 
-          <br><br>
+if(!pedidos.length){
 
-          <b>Estado:</b>
+contenedor.innerHTML=`
 
-          <div class="status ${
-            terminado
-            ? "done"
-            : "pending"
-          }">
+<div class="order">
 
-            ${
-              terminado
-              ? "✅ "+p.estado
-              : "⏳ "+p.estado
-            }
+📭 Todavía no tienes pedidos.
 
-          </div>
+</div>
 
-        </div>
+`;
 
-      `;
+return;
 
-    });
+}
 
-  }catch(error){
 
-    console.error(error);
+contenedor.innerHTML="";
 
-    contenedor.innerHTML=`
-      <div class="order">
-        ❌ No se pudieron cargar tus pedidos.
-      </div>
-    `;
 
-  }
+pedidos.forEach(p=>{
+
+const terminado=
+
+p.estado==="Completado" ||
+
+p.estado==="Diamantes enviados";
+
+
+contenedor.innerHTML+=`
+
+<div class="order">
+
+<b>📦 Pedido:</b>
+
+${p.id}
+
+<br><br>
+
+<b>💎 Producto:</b>
+
+${p.producto}
+
+<br><br>
+
+<b>🆔 ID:</b>
+
+${p.ffid}
+
+<br><br>
+
+<b>💰 Precio:</b>
+
+S/ ${Number(
+p.precio
+).toFixed(2)}
+
+<br><br>
+
+<b>Estado:</b>
+
+<div class="status ${
+terminado
+?
+"done"
+:
+"pending"
+}">
+
+${
+terminado
+?
+"✅ "+p.estado
+:
+"⏳ "+p.estado
+}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+}catch(error){
+
+console.error(error);
+
+contenedor.innerHTML=`
+
+<div class="order">
+
+❌ No se pudieron cargar tus pedidos.
+
+</div>
+
+`;
+
+}
 
 }
 
@@ -1132,159 +1523,219 @@ async function cargarMisPedidos(){
 
 async function consultarPedido(){
 
-  const input=
-    document.getElementById(
-      "codigoSeguimiento"
-    );
+const input=
+document.getElementById(
+"codigoSeguimiento"
+);
 
-  const resultado=
-    document.getElementById(
-      "resultadoPedido"
-    );
+const resultado=
+document.getElementById(
+"resultadoPedido"
+);
 
-  let codigo=
-    input.value
-    .trim()
-    .toUpperCase();
 
-  if(!codigo){
+let codigo=
+input.value
+.trim()
+.toUpperCase();
 
-    resultado.innerHTML=`
-      <div class="status pending">
-        ⚠️ Escribe tu código de pedido.
-      </div>
-    `;
 
-    return;
-  }
+if(!codigo){
 
-  resultado.innerHTML=
-    "⏳ Buscando pedido...";
+resultado.innerHTML=`
 
-  try{
+<div class="status pending">
 
-    const respuesta=await fetch(
-      SUPABASE_URL+
-      "/rest/v1/rpc/consultar_pedido",
-      {
-        method:"POST",
+⚠️ Escribe tu código de pedido.
 
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":"Bearer "+SUPABASE_KEY,
-          "Content-Type":"application/json"
-        },
+</div>
 
-        body:JSON.stringify({
-          codigo:codigo
-        })
-      }
-    );
+`;
 
-    if(!respuesta.ok){
+return;
 
-      throw new Error(
-        await respuesta.text()
-      );
+}
 
-    }
 
-    const pedidos=
-      await respuesta.json();
+resultado.innerHTML=
+"⏳ Buscando pedido...";
 
-    if(!pedidos.length){
 
-      resultado.innerHTML=`
-        <div class="status pending">
-          ❌ No encontramos ese pedido.
-        </div>
-      `;
+try{
 
-      return;
-    }
+const respuesta=
+await fetch(
 
-    const p=pedidos[0];
+SUPABASE_URL+
+"/rest/v1/rpc/consultar_pedido",
 
-    const terminado=
-      p.estado==="Completado" ||
-      p.estado==="Diamantes enviados";
+{
 
-    resultado.innerHTML=`
+method:"POST",
 
-      <div class="order">
+headers:{
 
-        <h3>📦 Pedido encontrado</h3>
+"apikey":
+SUPABASE_KEY,
 
-        <b>Código:</b>
-        ${p.codigo_pedido}
+"Authorization":
+"Bearer "+SUPABASE_KEY,
 
-        <br><br>
+"Content-Type":
+"application/json"
 
-        <b>💎 Producto:</b>
-        ${p.producto}
+},
 
-        <br><br>
+body:JSON.stringify({
 
-        <b>🆔 ID:</b>
-        ${p.ffid}
+codigo:codigo
 
-        <br><br>
+})
 
-        <b>💰 Precio:</b>
-        S/ ${Number(p.precio).toFixed(2)}
+}
 
-        <br><br>
+);
 
-        <b>Estado:</b>
 
-        <div class="status ${
-          terminado
-          ? "done"
-          : "pending"
-        }">
+if(!respuesta.ok){
 
-          ${
-            terminado
-            ? "✅ "+p.estado
-            : "⏳ "+p.estado
-          }
+throw new Error(
+await respuesta.text()
+);
 
-        </div>
+}
 
-        ${
-          p.entregado_en
-          ?
-          `<div class="small">
-            📅 Entregado:
-            ${new Date(
-              p.entregado_en
-            ).toLocaleString("es-PE")}
-          </div>`
-          :
-          ""
-        }
 
-      </div>
+const pedidos=
+await respuesta.json();
 
-    `;
 
-  }catch(error){
+if(!pedidos.length){
 
-    console.error(error);
+resultado.innerHTML=`
 
-    resultado.innerHTML=`
-      <div class="status pending">
-        ❌ Error al consultar el pedido.
-      </div>
-    `;
+<div class="status pending">
 
-  }
+❌ No encontramos ese pedido.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const p=
+pedidos[0];
+
+
+const terminado=
+
+p.estado==="Completado" ||
+
+p.estado==="Diamantes enviados";
+
+
+resultado.innerHTML=`
+
+<div class="order">
+
+<h3>
+📦 Pedido encontrado
+</h3>
+
+<b>Código:</b>
+
+${p.codigo_pedido}
+
+<br><br>
+
+<b>💎 Producto:</b>
+
+${p.producto}
+
+<br><br>
+
+<b>🆔 ID:</b>
+
+${p.ffid}
+
+<br><br>
+
+<b>💰 Precio:</b>
+
+S/ ${Number(
+p.precio
+).toFixed(2)}
+
+<br><br>
+
+<b>Estado:</b>
+
+<div class="status ${
+terminado
+?
+"done"
+:
+"pending"
+}">
+
+${
+terminado
+?
+"✅ "+p.estado
+:
+"⏳ "+p.estado
+}
+
+</div>
+
+${
+p.entregado_en
+?
+`
+<div class="small">
+
+📅 Entregado:
+
+${new Date(
+p.entregado_en
+).toLocaleString("es-PE")}
+
+</div>
+`
+:
+""
+}
+
+</div>
+
+`;
+
+
+}catch(error){
+
+console.error(error);
+
+resultado.innerHTML=`
+
+<div class="status pending">
+
+❌ Error al consultar el pedido.
+
+</div>
+
+`;
+
+}
 
 }
 
 
 /* =========================
-   ADMINISTRADOR
+   ADMIN
 ========================= */
 
 let adminToken=null;
@@ -1296,84 +1747,114 @@ let adminToken=null;
 
 async function iniciarAdmin(){
 
-  const email=
-    document.getElementById(
-      "adminEmail"
-    ).value.trim();
+const email=
+document.getElementById(
+"adminEmail"
+).value.trim();
 
-  const password=
-    document.getElementById(
-      "adminPassword"
-    ).value;
 
-  if(!email || !password){
+const password=
+document.getElementById(
+"adminPassword"
+).value;
 
-    notify(
-      "⚠️ Ingresa correo y contraseña."
-    );
 
-    return;
-  }
+if(!email || !password){
 
-  try{
+notify(
+"⚠️ Ingresa correo y contraseña."
+);
 
-    const respuesta=await fetch(
-      SUPABASE_URL+
-      "/auth/v1/token?grant_type=password",
-      {
-        method:"POST",
+return;
 
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Content-Type":"application/json"
-        },
+}
 
-        body:JSON.stringify({
-          email:email,
-          password:password
-        })
-      }
-    );
 
-    const datos=
-      await respuesta.json();
+try{
 
-    if(!respuesta.ok){
+const respuesta=
+await fetch(
 
-      throw new Error(
-        datos.msg ||
-        datos.error_description ||
-        "Error de inicio de sesión"
-      );
+SUPABASE_URL+
+"/auth/v1/token?grant_type=password",
 
-    }
+{
 
-    adminToken=
-      datos.access_token;
+method:"POST",
 
-    document.getElementById(
-      "adminLogin"
-    ).style.display="none";
+headers:{
 
-    document.getElementById(
-      "adminPanel"
-    ).style.display="block";
+"apikey":
+SUPABASE_KEY,
 
-    await cargarPedidosAdmin();
+"Content-Type":
+"application/json"
 
-    notify(
-      "✅ Sesión iniciada."
-    );
+},
 
-  }catch(error){
+body:JSON.stringify({
 
-    console.error(error);
+email:email,
 
-    notify(
-      "❌ Correo o contraseña incorrectos."
-    );
+password:password
 
-  }
+})
+
+}
+
+);
+
+
+const datos=
+await respuesta.json();
+
+
+if(!respuesta.ok){
+
+throw new Error(
+
+datos.msg ||
+
+datos.error_description ||
+
+"Error de inicio de sesión"
+
+);
+
+}
+
+
+adminToken=
+datos.access_token;
+
+
+document.getElementById(
+"adminLogin"
+).style.display="none";
+
+
+document.getElementById(
+"adminPanel"
+).style.display="block";
+
+
+await cargarPedidosAdmin();
+
+
+notify(
+"✅ Sesión iniciada."
+);
+
+
+}catch(error){
+
+console.error(error);
+
+notify(
+"❌ Correo o contraseña incorrectos."
+);
+
+}
 
 }
 
@@ -1384,170 +1865,238 @@ async function iniciarAdmin(){
 
 async function cargarPedidosAdmin(){
 
-  if(!adminToken){
+if(!adminToken){
 
-    return;
-  }
+return;
 
-  const contenedor=
-    document.getElementById(
-      "pedidosAdmin"
-    );
+}
 
-  const stats=
-    document.getElementById(
-      "adminStats"
-    );
 
-  contenedor.innerHTML=
-    "⏳ Cargando pedidos...";
+const contenedor=
+document.getElementById(
+"pedidosAdmin"
+);
 
-  try{
 
-    const respuesta=await fetch(
-      SUPABASE_URL+
-      "/rest/v1/pedidos?select=*&order=creado_en.desc",
-      {
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":
-            "Bearer "+adminToken
-        }
-      }
-    );
+const stats=
+document.getElementById(
+"adminStats"
+);
 
-    if(!respuesta.ok){
 
-      throw new Error(
-        await respuesta.text()
-      );
+contenedor.innerHTML=
+"⏳ Cargando pedidos...";
 
-    }
 
-    const pedidos=
-      await respuesta.json();
+try{
 
-    const pendientes=
-      pedidos.filter(
-        p=>p.estado==="Pendiente"
-      ).length;
+const respuesta=
+await fetch(
 
-    const completados=
-      pedidos.filter(
-        p=>
-          p.estado==="Completado" ||
-          p.estado==="Diamantes enviados"
-      ).length;
+SUPABASE_URL+
+"/rest/v1/pedidos?select=*&order=creado_en.desc",
 
-    stats.innerHTML=`
+{
 
-      <div class="stat">
-        📦 Total: <b>${pedidos.length}</b>
-      </div>
+headers:{
 
-      <div class="stat">
-        ⏳ Pendientes: <b>${pendientes}</b>
-      </div>
+"apikey":
+SUPABASE_KEY,
 
-      <div class="stat">
-        ✅ Completados: <b>${completados}</b>
-      </div>
+"Authorization":
+"Bearer "+adminToken
 
-    `;
+}
 
-    if(!pedidos.length){
+}
 
-      contenedor.innerHTML=`
-        <div class="order">
-          📭 No hay pedidos todavía.
-        </div>
-      `;
+);
 
-      return;
-    }
 
-    contenedor.innerHTML="";
+if(!respuesta.ok){
 
-    pedidos.forEach(p=>{
+throw new Error(
+await respuesta.text()
+);
 
-      const terminado=
-        p.estado==="Completado" ||
-        p.estado==="Diamantes enviados";
+}
 
-      contenedor.innerHTML+=`
 
-        <div class="order">
+const pedidos=
+await respuesta.json();
 
-          <h3>
-            📦 ${p.codigo_pedido || "Sin código"}
-          </h3>
 
-          <b>🆔 ID:</b>
-          ${p.ffid}
+const pendientes=
+pedidos.filter(
+p=>p.estado==="Pendiente"
+).length;
 
-          <br><br>
 
-          <b>💎 Producto:</b>
-          ${p.producto}
+const completados=
+pedidos.filter(
 
-          <br><br>
+p=>
+p.estado==="Completado" ||
 
-          <b>💰 Precio:</b>
-          S/ ${Number(p.precio).toFixed(2)}
+p.estado==="Diamantes enviados"
 
-          <br><br>
+).length;
 
-          <b>🚪 Pasarela:</b>
-          ${p.pasarela}
 
-          <br><br>
+stats.innerHTML=`
 
-          <b>Estado:</b>
+<div class="stat">
 
-          <div class="status ${
-            terminado
-            ? "done"
-            : "pending"
-          }">
+📦 Total:
 
-            ${
-              terminado
-              ? "✅ "+p.estado
-              : "⏳ "+p.estado
-            }
+<b>${pedidos.length}</b>
 
-          </div>
+</div>
 
-          ${
-            !terminado
-            ?
-            `
-            <button
-              onclick="completarPedido(${p.id})">
-              💎 Marcar como enviado
-            </button>
-            `
-            :
-            ""
-          }
+<div class="stat">
 
-        </div>
+⏳ Pendientes:
 
-      `;
+<b>${pendientes}</b>
 
-    });
+</div>
 
-  }catch(error){
+<div class="stat">
 
-    console.error(error);
+✅ Completados:
 
-    contenedor.innerHTML=`
-      <div class="status pending">
-        ❌ No se pudieron cargar los pedidos.
-      </div>
-    `;
+<b>${completados}</b>
 
-  }
+</div>
+
+`;
+
+
+if(!pedidos.length){
+
+contenedor.innerHTML=`
+
+<div class="order">
+
+📭 No hay pedidos todavía.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+contenedor.innerHTML="";
+
+
+pedidos.forEach(p=>{
+
+const terminado=
+
+p.estado==="Completado" ||
+
+p.estado==="Diamantes enviados";
+
+
+contenedor.innerHTML+=`
+
+<div class="order">
+
+<h3>
+
+📦 ${
+p.codigo_pedido ||
+"Sin código"
+}
+
+</h3>
+
+<b>🆔 ID:</b>
+
+${p.ffid}
+
+<br><br>
+
+<b>💎 Producto:</b>
+
+${p.producto}
+
+<br><br>
+
+<b>💰 Precio:</b>
+
+S/ ${Number(
+p.precio
+).toFixed(2)}
+
+<br><br>
+
+<b>🚪 Pasarela:</b>
+
+${p.pasarela}
+
+<br><br>
+
+<b>Estado:</b>
+
+<div class="status ${
+terminado
+?
+"done"
+:
+"pending"
+}">
+
+${
+terminado
+?
+"✅ "+p.estado
+:
+"⏳ "+p.estado
+}
+
+</div>
+
+${
+!terminado
+?
+`
+<button
+onclick="completarPedido(${p.id})">
+
+💎 Marcar como enviado
+
+</button>
+`
+:
+""
+}
+
+</div>
+
+`;
+
+});
+
+
+}catch(error){
+
+console.error(error);
+
+contenedor.innerHTML=`
+
+<div class="status pending">
+
+❌ No se pudieron cargar los pedidos.
+
+</div>
+
+`;
+
+}
 
 }
 
@@ -1558,61 +2107,83 @@ async function cargarPedidosAdmin(){
 
 async function completarPedido(id){
 
-  if(!adminToken){
+if(!adminToken){
 
-    notify(
-      "⚠️ Inicia sesión como administrador."
-    );
+notify(
+"⚠️ Inicia sesión como administrador."
+);
 
-    return;
-  }
+return;
 
-  try{
+}
 
-    const respuesta=await fetch(
-      SUPABASE_URL+
-      "/rest/v1/pedidos?id=eq."+id,
-      {
-        method:"PATCH",
 
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":
-            "Bearer "+adminToken,
-          "Content-Type":"application/json",
-          "Prefer":"return=minimal"
-        },
+try{
 
-        body:JSON.stringify({
-          estado:"Diamantes enviados",
-          entregado_en:new Date().toISOString()
-        })
-      }
-    );
+const respuesta=
+await fetch(
 
-    if(!respuesta.ok){
+SUPABASE_URL+
+"/rest/v1/pedidos?id=eq."+id,
 
-      throw new Error(
-        await respuesta.text()
-      );
+{
 
-    }
+method:"PATCH",
 
-    notify(
-      "✅ Pedido marcado como enviado."
-    );
+headers:{
 
-    await cargarPedidosAdmin();
+"apikey":
+SUPABASE_KEY,
 
-  }catch(error){
+"Authorization":
+"Bearer "+adminToken,
 
-    console.error(error);
+"Content-Type":
+"application/json",
 
-    notify(
-      "❌ No se pudo actualizar el pedido."
-    );
+"Prefer":
+"return=minimal"
 
-  }
+},
+
+body:JSON.stringify({
+
+estado:"Diamantes enviados",
+
+entregado_en:
+new Date().toISOString()
+
+})
+
+}
+
+);
+
+
+if(!respuesta.ok){
+
+throw new Error(
+await respuesta.text()
+);
+
+}
+
+
+notify(
+"✅ Pedido marcado como enviado."
+);
+
+
+await cargarPedidosAdmin();
+
+
+}catch(error){
+
+console.error(error);
+
+notify(
+"❌ No se pudo actualizar el pedido."
+);
 
 }
 
@@ -1623,29 +2194,32 @@ async function completarPedido(id){
 
 async function cerrarAdmin(){
 
-  adminToken=null;
+adminToken=null;
 
-  document.getElementById(
-    "adminPanel"
-  ).style.display="none";
 
-  document.getElementById(
-    "adminLogin"
-  ).style.display="block";
+document.getElementById(
+"adminPanel"
+).style.display="none";
 
-  document.getElementById(
-    "adminPassword"
-  ).value="";
 
-  document.getElementById(
-    "pedidosAdmin"
-  ).innerHTML="";
+document.getElementById(
+"adminLogin"
+).style.display="block";
 
-  notify(
-    "👋 Sesión cerrada."
-  );
 
-}
+document.getElementById(
+"adminPassword"
+).value="";
+
+
+document.getElementById(
+"pedidosAdmin"
+).innerHTML="";
+
+
+notify(
+"👋 Sesión cerrada."
+);
 
 
 /* =========================
@@ -1654,29 +2228,29 @@ async function cerrarAdmin(){
 
 function comprobarAdmin(){
 
-  if(adminToken){
+if(adminToken){
 
-    document.getElementById(
-      "adminLogin"
-    ).style.display="none";
+document.getElementById(
+"adminLogin"
+).style.display="none";
 
-    document.getElementById(
-      "adminPanel"
-    ).style.display="block";
+document.getElementById(
+"adminPanel"
+).style.display="block";
 
-    cargarPedidosAdmin();
+cargarPedidosAdmin();
 
-  }else{
+}else{
 
-    document.getElementById(
-      "adminLogin"
-    ).style.display="block";
+document.getElementById(
+"adminLogin"
+).style.display="block";
 
-    document.getElementById(
-      "adminPanel"
-    ).style.display="none";
+document.getElementById(
+"adminPanel"
+).style.display="none";
 
-  }
+}
 
 }
 
@@ -1696,19 +2270,25 @@ renderProductos();
 
 window.addEventListener("click",function(event){
 
-  const modal=
-    document.getElementById("modal");
+const modal=
+document.getElementById("modal");
 
-  const modalPago=
-    document.getElementById("modalPago");
+const modalPago=
+document.getElementById("modalPago");
 
-  if(event.target===modal){
-    modal.style.display="none";
-  }
 
-  if(event.target===modalPago){
-    modalPago.style.display="none";
-  }
+if(event.target===modal){
+
+modal.style.display="none";
+
+}
+
+
+if(event.target===modalPago){
+
+modalPago.style.display="none";
+
+}
 
 });
 
@@ -1718,33 +2298,37 @@ window.addEventListener("click",function(event){
 ========================= */
 
 document
-  .getElementById("codigoSeguimiento")
-  .addEventListener("keydown",function(event){
+.getElementById("codigoSeguimiento")
+.addEventListener(
+"keydown",
+function(event){
 
-    if(event.key==="Enter"){
+if(event.key==="Enter"){
 
-      consultarPedido();
+consultarPedido();
 
-    }
+}
 
-  });
+});
 
 
 /* =========================
-   ENTER EN LOGIN ADMIN
+   ENTER EN ADMIN
 ========================= */
 
 document
-  .getElementById("adminPassword")
-  .addEventListener("keydown",function(event){
+.getElementById("adminPassword")
+.addEventListener(
+"keydown",
+function(event){
 
-    if(event.key==="Enter"){
+if(event.key==="Enter"){
 
-      iniciarAdmin();
+iniciarAdmin();
 
-    }
+}
 
-  });
+});
 
 
 /* =========================
