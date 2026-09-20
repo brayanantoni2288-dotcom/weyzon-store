@@ -4,24 +4,777 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>WEYZON STORE</title>
+
 <style>
 *{box-sizing:border-box}
 body{
-margin:0;font-family:Arial,sans-serif;color:#fff;
-background:
-radial-gradient(circle at 10% 20%,#006eff55,transparent 30%),
-radial-gradient(circle at 90% 80%,#ff003c55,transparent 30%),
-linear-gradient(135deg,#020205,#06132d,#160207);
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#020205,#06142b,#13030a);
+color:#fff;
 min-height:100vh
 }
-header{text-align:center;padding:22px;background:#02040cdd;border-bottom:2px solid #168cff;box-shadow:0 0 25px #007bff55}
-.logo{font-size:38px;font-weight:900;letter-spacing:3px;text-shadow:0 0 15px #168cff,0 0 20px #ff1744}
-.logo span{color:#45baff}
-header p{color:#fff;font-weight:bold}
-button{
-border:0;border-radius:10px;padding:11px 15px;margin:4px;
-background:linear-gradient(135deg,#087cff,#253bdb);
-color:white;font-weight:bold;cursor:pointer;
-box-shadow:0 0 12px #007bff55
+header{
+text-align:center;
+padding:25px 12px;
+background:linear-gradient(135deg,#050509,#071a38,#17040a);
+border-bottom:2px solid #147cff;
+box-shadow:0 0 25px #0066ff55
 }
-button:hover{filter:brightness(1.2)}
+.logo{
+font-size:30px;
+font-weight:900;
+color:#fff;
+text-shadow:0 0 12px #1687ff
+}
+.logo span{color:#1687ff}
+header p{color:#ddd;margin:8px 0 15px}
+
+button{
+border:0;
+border-radius:10px;
+padding:11px 15px;
+font-weight:bold;
+cursor:pointer;
+color:white;
+background:linear-gradient(135deg,#087cff,#d60035);
+box-shadow:0 0 12px #006eff55;
+margin:3px
+}
+button:hover{transform:scale(1.03)}
+
+.wrap{max-width:1100px;margin:auto;padding:20px}
+
+.tabs{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+flex-wrap:wrap
+}
+.tab{flex:1;min-width:220px}
+.tab.active{
+background:linear-gradient(135deg,#075eff,#ff003c);
+box-shadow:0 0 18px #1687ff88
+}
+
+.status{
+padding:13px;
+border-radius:12px;
+background:#08172b;
+border:1px solid #1687ff;
+margin-bottom:18px;
+text-align:center
+}
+
+.hidden{display:none!important}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px
+}
+
+.card{
+background:linear-gradient(145deg,#07111f,#0b0b12);
+border:1px solid #126eff;
+border-radius:16px;
+padding:18px;
+text-align:center;
+box-shadow:0 0 15px #0066ff25
+}
+
+.card:hover{
+border-color:#ff174f;
+box-shadow:0 0 20px #ff174f35
+}
+
+.card.membership{border-color:#b000ff}
+
+.title{
+font-size:21px;
+font-weight:bold;
+margin-bottom:10px
+}
+
+.price{
+font-size:25px;
+font-weight:900;
+color:#20a0ff;
+margin:10px
+}
+
+.warn{
+font-size:12px;
+color:#ffd43b;
+background:#332b0625;
+padding:8px;
+border-radius:8px;
+margin:10px 0
+}
+
+.stock{
+font-size:12px;
+color:#4dff8a;
+margin-bottom:10px
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:#000b;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:15px;
+z-index:20
+}
+
+.box{
+width:100%;
+max-width:450px;
+max-height:90vh;
+overflow:auto;
+background:#080d16;
+border:1px solid #1687ff;
+border-radius:18px;
+padding:20px;
+box-shadow:0 0 30px #006eff66
+}
+
+.close{
+float:right;
+background:#ff174f;
+padding:7px 11px
+}
+
+input{
+width:100%;
+padding:13px;
+margin:7px 0;
+border-radius:9px;
+border:1px solid #257dff;
+background:#02050a;
+color:white;
+outline:none
+}
+
+.order{
+background:#0c1522;
+border:1px solid #1d4f88;
+border-radius:12px;
+padding:12px;
+margin:10px 0
+}
+
+.pending{color:#ffd43b}
+.done{color:#4dff8a}
+
+.notify{
+position:fixed;
+right:15px;
+bottom:15px;
+background:#087cff;
+padding:13px 17px;
+border-radius:12px;
+display:none;
+z-index:50;
+box-shadow:0 0 20px #1687ff88
+}
+
+.stat{
+display:inline-block;
+padding:12px;
+margin:5px;
+border-radius:10px;
+background:#101b2a;
+border:1px solid #176dca
+}
+
+.adminOrder{
+border:1px solid #293e5a;
+padding:14px;
+border-radius:12px;
+margin:10px 0;
+background:#09111c
+}
+
+.small{font-size:12px;color:#aaa}
+
+@media(max-width:600px){
+.logo{font-size:25px}
+.wrap{padding:12px}
+.grid{grid-template-columns:1fr}
+button{padding:10px 12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">💎 <span>WEYZON</span> STORE</div>
+<p>Recarga tus mejores diamantes aquí 🔥</p>
+
+<button onclick="orders()">📋 Mis pedidos</button>
+<button onclick="adminLogin()">🔐 Panel administrador</button>
+<button onclick="window.open('https://chat.whatsapp.com/LD7iTrhVber3jX8LUKdwud','_blank')">
+💬 Grupo
+</button>
+</header>
+
+<main class="wrap">
+
+<div class="tabs">
+<button id="b1" class="tab active" onclick="pasarela(1)">
+💜 Pasarela 1 · Prexpe
+</button>
+
+<button id="b2" class="tab" onclick="pasarela(2)">
+⚡ Pasarela 2 · Infinitos
+</button>
+</div>
+
+<div id="info1" class="status">
+💜 Pago por Prexpe · Número: <b>963348614</b>
+</div>
+
+<div id="info2" class="status hidden">
+⚡ Segunda pasarela · ♾️ Diamantes ilimitados · Cualquier ID
+</div>
+
+<div id="productos" class="grid"></div>
+
+</main>
+
+<div id="noti" class="notify"></div>
+
+
+<!-- MODAL PEDIDO -->
+<div id="modalPedido" class="modal hidden">
+<div class="box">
+
+<button class="close" onclick="cerrar('modalPedido')">✕</button>
+
+<h2>🛒 Crear pedido</h2>
+
+<div id="productoElegido"></div>
+
+<input id="ffid" placeholder="🎮 Ingresa tu ID de Free Fire">
+
+<input id="nombre" placeholder="👤 Tu nombre (opcional)">
+
+<button onclick="crearPedido()">Continuar al pago 💳</button>
+
+</div>
+</div>
+
+
+<!-- MODAL PAGO -->
+<div id="modalPago" class="modal hidden">
+<div class="box">
+
+<button class="close" onclick="cerrar('modalPago')">✕</button>
+
+<h2>💳 Realizar pago</h2>
+
+<div id="datosPago"></div>
+
+<button onclick="copiar()">📋 Copiar número Prexpe</button>
+
+<button onclick="whatsapp()">📲 Enviar comprobante por WhatsApp</button>
+
+<p class="small">
+Después de realizar el pago, envía tu comprobante por WhatsApp.
+Tu pedido aparecerá en “Mis pedidos”.
+</p>
+
+</div>
+</div>
+
+
+<!-- MIS PEDIDOS -->
+<div id="modalPedidos" class="modal hidden">
+<div class="box">
+
+<button class="close" onclick="cerrar('modalPedidos')">✕</button>
+
+<h2>📋 Mis pedidos</h2>
+
+<div id="listaPedidos"></div>
+
+</div>
+</div>
+
+
+<!-- LOGIN ADMIN -->
+<div id="modalAdminLogin" class="modal hidden">
+<div class="box">
+
+<button class="close" onclick="cerrar('modalAdminLogin')">✕</button>
+
+<h2>🔐 Administrador</h2>
+
+<input id="claveAdmin" type="password" placeholder="Contraseña">
+
+<button onclick="entrarAdmin()">Entrar</button>
+
+</div>
+</div>
+
+
+<!-- PANEL ADMIN -->
+<div id="modalAdmin" class="modal hidden">
+<div class="box">
+
+<button class="close" onclick="cerrar('modalAdmin')">✕</button>
+
+<h2>⚙️ Panel administrador</h2>
+
+<div id="estadisticas"></div>
+
+<hr>
+
+<div id="listaAdmin"></div>
+
+</div>
+</div>
+
+
+<script>
+
+const p1=[
+["100 💎","2.30"],
+["300 💎","7.00"],
+["500 💎","10.00"],
+["1,000 💎","20.00"],
+["2,000 💎","40.00"],
+["6,000 💎","95.00"],
+["🎟️ Pase Booyah","5.00"]
+];
+
+const p2=[
+["100 💎","3.30"],
+["300 💎","9.40"],
+["500 💎","14.30"],
+["1,000 💎","25.34"],
+["2,000 💎","53.00"],
+["3,000 💎","75.00"],
+["6,000 💎","128.00"]
+];
+
+const membresias=[
+["Membresía básica","2.00"],
+["Membresía semanal","6.20"],
+["Membresía mensual","31.00"]
+];
+
+let pas=1;
+let seleccion=null;
+let pedido=null;
+
+const CLAVE="WEYZON2026";
+
+const $=x=>document.getElementById(x);
+
+
+function pasarela(n){
+
+pas=n;
+
+$("b1").classList.toggle("active",n===1);
+$("b2").classList.toggle("active",n===2);
+
+$("info1").classList.toggle("hidden",n!==1);
+$("info2").classList.toggle("hidden",n!==2);
+
+mostrarProductos();
+}
+
+
+function mostrarProductos(){
+
+let arr=pas===1?p1:p2;
+
+let html="";
+
+arr.forEach((p,i)=>{
+
+let warn="";
+
+if(i<arr.length-1 || pas===1 && p[0]!=="🎟️ Pase Booyah"){
+
+warn=`
+<div class="warn">
+⚠️ Antes de pagar, verifica si tu ID tiene descuento.
+No se hace reembolso.
+</div>`;
+}
+
+html+=`
+<div class="card">
+
+<div class="title">${p[0]}</div>
+
+<div class="price">S/ ${p[1]}</div>
+
+<div class="stock">
+${pas===2?"♾️ Stock ilimitado":"⚡ Entrega rápida"}
+</div>
+
+${warn}
+
+<button onclick="seleccionar('${p[0]}','${p[1]}',false)">
+Comprar ahora 💎
+</button>
+
+</div>`;
+});
+
+
+if(pas===2){
+
+html+=`
+<div style="grid-column:1/-1">
+<h2 style="text-align:center">👑 Membresías</h2>
+</div>`;
+
+membresias.forEach(p=>{
+
+html+=`
+<div class="card membership">
+
+<div class="title">👑 ${p[0]}</div>
+
+<div class="price">S/ ${p[1]}</div>
+
+<div class="stock">♾️ Disponible</div>
+
+<button onclick="seleccionar('${p[0]}','${p[1]}',true)">
+Comprar membresía 👑
+</button>
+
+</div>`;
+});
+}
+
+$("productos").innerHTML=html;
+}
+
+
+function seleccionar(nombre,precio,membresia){
+
+seleccion={
+nombre:nombre,
+precio:precio,
+membresia:membresia,
+pasarela:pas
+};
+
+$("productoElegido").innerHTML=`
+<div class="status">
+<b>${nombre}</b><br>
+💰 Precio: <b>S/ ${precio}</b><br>
+⚡ Pasarela: ${pas===1?"Prexpe":"Diamantes infinitos"}
+</div>`;
+
+$("modalPedido").classList.remove("hidden");
+}
+
+
+function crearPedido(){
+
+let id=$("ffid").value.trim();
+let nombre=$("nombre").value.trim();
+
+if(!id){
+alert("Ingresa tu ID de Free Fire.");
+return;
+}
+
+pedido={
+id:"WZ"+Date.now(),
+ffid:id,
+cliente:nombre||"Sin nombre",
+producto:seleccion.nombre,
+precio:seleccion.precio,
+pasarela:seleccion.pasarela,
+membresia:seleccion.membresia,
+estado:"pendiente",
+creado:new Date().toLocaleString(),
+entregado:null
+};
+
+let pedidos=JSON.parse(localStorage.getItem("weyzon_pedidos")||"[]");
+
+pedidos.unshift(pedido);
+
+localStorage.setItem("weyzon_pedidos",JSON.stringify(pedidos));
+
+cerrar("modalPedido");
+
+$("datosPago").innerHTML=`
+<div class="status">
+
+<h3>💳 Datos de pago</h3>
+
+<p>Producto: <b>${pedido.producto}</b></p>
+
+<p>Total: <b>S/ ${pedido.precio}</b></p>
+
+<p>Free Fire ID: <b>${pedido.ffid}</b></p>
+
+<p>Prexpe: <b>963348614</b></p>
+
+</div>`;
+
+$("modalPago").classList.remove("hidden");
+
+notificar("🔔 ¡Nuevo pedido creado!");
+
+}
+
+
+function copiar(){
+
+navigator.clipboard.writeText("963348614");
+
+notificar("📋 Número Prexpe copiado");
+
+}
+
+
+function whatsapp(){
+
+let texto=
+`Hola WEYZON STORE 👋
+Quiero enviar mi comprobante.
+
+Pedido: ${pedido.id}
+Producto: ${pedido.producto}
+Precio: S/ ${pedido.precio}
+ID Free Fire: ${pedido.ffid}`;
+
+window.open(
+"https://wa.me/51997456709?text="+encodeURIComponent(texto),
+"_blank"
+);
+
+}
+
+
+function orders(){
+
+let pedidos=JSON.parse(localStorage.getItem("weyzon_pedidos")||"[]");
+
+if(!pedidos.length){
+
+$("listaPedidos").innerHTML=
+`<p>No tienes pedidos todavía.</p>`;
+
+}else{
+
+$("listaPedidos").innerHTML=pedidos.map(p=>`
+
+<div class="order">
+
+<b>${p.producto}</b>
+
+<p>💎 ID: ${p.ffid}</p>
+
+<p>💰 S/ ${p.precio}</p>
+
+<p>⚡ ${p.pasarela===1?"Pasarela 1 · Prexpe":"Pasarela 2 · Infinitos"}</p>
+
+<p>📅 ${p.creado}</p>
+
+<p class="${p.estado==="completado"?"done":"pending"}">
+
+${p.estado==="completado"
+?"✅ Diamantes enviados"
+:"🟡 Pedido pendiente"}
+
+</p>
+
+${p.entregado?
+`<p>📦 Entregado: ${p.entregado}</p>`:""}
+
+</div>
+
+`).join("");
+
+}
+
+$("modalPedidos").classList.remove("hidden");
+}
+
+
+function adminLogin(){
+
+$("claveAdmin").value="";
+
+$("modalAdminLogin").classList.remove("hidden");
+
+}
+
+
+function entrarAdmin(){
+
+if($("claveAdmin").value!==CLAVE){
+
+alert("❌ Contraseña incorrecta");
+
+return;
+
+}
+
+cerrar("modalAdminLogin");
+
+admin();
+
+}
+
+
+function admin(){
+
+let pedidos=
+JSON.parse(localStorage.getItem("weyzon_pedidos")||"[]");
+
+let total=pedidos.length;
+
+let pendientes=
+pedidos.filter(p=>p.estado==="pendiente").length;
+
+let completados=
+pedidos.filter(p=>p.estado==="completado").length;
+
+let ventas=
+pedidos
+.filter(p=>p.estado==="completado")
+.reduce((a,p)=>a+Number(p.precio),0);
+
+$("estadisticas").innerHTML=`
+
+<div class="stat">
+📦 Total: <b>${total}</b>
+</div>
+
+<div class="stat">
+🟡 Pendientes: <b>${pendientes}</b>
+</div>
+
+<div class="stat">
+✅ Completados: <b>${completados}</b>
+</div>
+
+<div class="stat">
+💰 Ventas: <b>S/ ${ventas.toFixed(2)}</b>
+</div>
+
+`;
+
+if(!pedidos.length){
+
+$("listaAdmin").innerHTML="<p>No hay pedidos.</p>";
+
+}else{
+
+$("listaAdmin").innerHTML=pedidos.map((p,i)=>`
+
+<div class="adminOrder">
+
+<h3>${p.producto}</h3>
+
+<p>🆔 Pedido: ${p.id}</p>
+
+<p>👤 Cliente: ${p.cliente}</p>
+
+<p>🎮 Free Fire ID: <b>${p.ffid}</b></p>
+
+<p>💰 Precio: S/ ${p.precio}</p>
+
+<p>⚡ Pasarela:
+${p.pasarela===1?"Prexpe":"Infinitos"}
+</p>
+
+<p>📅 Creado: ${p.creado}</p>
+
+<p class="${p.estado==="completado"?"done":"pending"}">
+
+${p.estado==="completado"
+?"✅ COMPLETADO"
+:"🟡 PENDIENTE"}
+
+</p>
+
+${p.estado==="pendiente"?
+
+`<button onclick="entregar(${i})">
+💎 Diamantes enviados
+</button>`
+
+:
+
+`<p>📦 Entregado: ${p.entregado}</p>`
+
+}
+
+</div>
+
+`).join("");
+
+}
+
+$("modalAdmin").classList.remove("hidden");
+}
+
+
+function entregar(i){
+
+let pedidos=
+JSON.parse(localStorage.getItem("weyzon_pedidos")||"[]");
+
+pedidos[i].estado="completado";
+
+pedidos[i].entregado=
+new Date().toLocaleString();
+
+localStorage.setItem(
+"weyzon_pedidos",
+JSON.stringify(pedidos)
+);
+
+notificar("✅ Pedido marcado como entregado");
+
+admin();
+
+}
+
+
+function notificar(t){
+
+let n=$("noti");
+
+n.innerText=t;
+
+n.style.display="block";
+
+setTimeout(()=>{
+n.style.display="none";
+},3000);
+
+}
+
+
+function cerrar(id){
+
+$(id).classList.add("hidden");
+
+}
+
+
+mostrarProductos();
+
+</script>
+
+</body>
+</html>
