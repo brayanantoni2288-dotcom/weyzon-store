@@ -154,17 +154,17 @@ const productos1=[
 ];
 
 const cajas=[
-{nombre:"30 📦",precio:19.90},
-{nombre:"60 📦",precio:36.50},
-{nombre:"120 📦",precio:73.50}
+{nombre:"30",precio:19.90,tipo:"caja"},
+{nombre:"60",precio:36.50,tipo:"caja"},
+{nombre:"120",precio:73.50,tipo:"caja"}
 ];
 
 const fragmentos=[
-{nombre:"90 🧩",precio:15.99},
-{nombre:"150 🧩",precio:21.30},
-{nombre:"300 🧩",precio:36.90},
-{nombre:"600 🧩",precio:73.50},
-{nombre:"1200 🧩",precio:135.90}
+{nombre:"90",precio:15.99,tipo:"fragmento"},
+{nombre:"150",precio:21.30,tipo:"fragmento"},
+{nombre:"300",precio:36.90,tipo:"fragmento"},
+{nombre:"600",precio:73.50,tipo:"fragmento"},
+{nombre:"1200",precio:135.90,tipo:"fragmento"}
 ];
 
 const productos2=[
@@ -195,13 +195,19 @@ if(id==="admin")mostrarAdmin();
 }
 
 function crearTarjetas(id,lista,pasarela){
-const box=$(id);if(!box)return;box.innerHTML="";
+const box=$(id);
+if(!box)return;
+box.innerHTML="";
 lista.forEach(p=>{
-const d=document.createElement("div");d.className="card";
+const d=document.createElement("div");
+d.className="card";
+let icono="💎";
+if(p.tipo==="caja")icono="📦";
+if(p.tipo==="fragmento")icono="🧩";
 let aviso=pasarela===1&&p.nombre!=="Pase Booyah"
 ?'<div class="warn">⚠️ Antes de pagar, verifica si tu ID tiene descuento. No se hace reembolso.</div>':"";
 let stock=pasarela===2?'<div class="stock">♾️ Stock ilimitado · Cualquier ID</div>':'<div class="stock">⚡ Entrega después de verificar el pago</div>';
-d.innerHTML=`<h2>💎 ${p.nombre}</h2><div class="price">S/ ${p.precio.toFixed(2)}</div>${stock}${aviso}<button type="button">Comprar</button>`;
+d.innerHTML=`<h2>${icono} ${p.nombre}</h2><div class="price">S/ ${p.precio.toFixed(2)}</div>${stock}${aviso}<button type="button">Comprar</button>`;
 d.querySelector("button").onclick=()=>abrirPedido(p.nombre,p.precio,pasarela);
 box.appendChild(d);
 });
@@ -238,6 +244,7 @@ precio:Number(pedidoActual.precio),
 pasarela:Number(pedidoActual.pasarela),
 estado:"Pendiente"
 };
+
 try{
 const r=await fetch(SUPABASE_URL+"/rest/v1/pedidos",{
 method:"POST",
@@ -354,6 +361,7 @@ mostrarAdmin();
 cargarPedidosAdmin();
 }catch(e){alert("❌ No se pudo iniciar sesión.\n\n"+e.message)}
 }
+
 function mostrarAdmin(){
 if(adminToken){
 $("adminLogin").style.display="none";
