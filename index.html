@@ -10,98 +10,916 @@
 <meta property="og:site_name" content="WEYZON -STORE">
 <meta property="og:type" content="website">
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;color:#fff;background:#0d0d0d;min-height:100vh;overflow-x:hidden}
-body:before,body:after{content:"";position:fixed;inset:auto;width:280px;height:280px;border-radius:50%;filter:blur(70px);opacity:.10;z-index:-3;pointer-events:none}
-body:before{background:#087cff;top:8%;left:-90px;animation:orb 9s ease-in-out infinite alternate}body:after{background:#e9003c;right:-100px;bottom:5%;animation:orb 11s ease-in-out infinite alternate-reverse}
-@keyframes orb{to{transform:translate(80px,-50px) scale(1.25)}}
-.bg{position:fixed;inset:0;overflow:hidden;z-index:-2;pointer-events:none;background:linear-gradient(180deg,#0d0d0d 0%,#151515 48%,#101010 100%)}
-.particle{position:absolute;opacity:.35;animation:float 9s linear infinite;color:#aaa;text-shadow:0 0 12px #777;font-size:22px}.p1{left:7%;top:28%;animation-delay:0s}.p2{left:18%;top:72%;animation-delay:2s;color:#888}.p3{left:75%;top:22%;animation-delay:4s}.p4{left:88%;top:66%;animation-delay:1s;color:#777}.p5{left:48%;top:14%;animation-delay:5s}.p6{left:58%;top:82%;animation-delay:3s}
-@keyframes float{0%,100%{transform:translateY(0) rotate(0);opacity:.15}50%{transform:translateY(-45px) rotate(25deg);opacity:.5}}
-header{position:relative;padding:28px 15px;text-align:center;background:#101010;border-bottom:1px solid #3b2c1d;box-shadow:0 8px 30px #0008;overflow:hidden}header:after{content:"";position:absolute;left:-20%;right:-20%;bottom:0;height:2px;background:linear-gradient(90deg,transparent,#168cff,#777,#168cff,transparent);animation:scan 4s linear infinite}@keyframes scan{from{transform:translateX(-30%)}to{transform:translateX(30%)}}
-.logo{font-size:34px;font-weight:900;text-shadow:0 0 12px #168cff,0 0 28px #168cff;animation:glow 2.5s ease-in-out infinite alternate}@keyframes glow{to{text-shadow:0 0 20px #168cff,0 0 38px #168cff}}header p{margin:8px 0 0;color:#ddd}.socials{display:flex;justify-content:center;gap:12px;margin:18px 0 10px}.social-btn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;text-decoration:none;font-size:24px;border:2px solid #555;background:#000;color:#fff}.support{text-align:center;margin:10px 0 5px;color:#ddd}.support a{color:#42aaff;font-weight:bold;text-decoration:none}
-nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#101010;position:sticky;top:0;z-index:10;border-bottom:1px solid #30271f;backdrop-filter:blur(10px)}nav button{white-space:nowrap;border:1px solid #444;background:#191919;color:#fff;padding:12px 16px;border-radius:12px;font-weight:bold;transition:.25s}nav button:hover{transform:translateY(-2px);border-color:#777}
-main{max-width:980px;margin:auto;padding:20px 16px}h1{text-align:center;font-size:30px}.hero{display:none}.section{padding:0;background:transparent;border:0}.section-title{font-size:23px;font-weight:bold;text-align:center;margin:24px 0 14px}.section-head{display:flex;align-items:center;gap:14px;text-align:left;padding:16px 8px;margin-bottom:18px;background:#111;border:0;border-bottom:1px solid #33281d;border-radius:0}.section-head .big{display:none}.section-head h2{font-size:26px;margin:0;letter-spacing:.2px}.section-head h2:before{content:"";display:inline-block;width:7px;height:38px;border-radius:5px;background:#f49a16;margin-right:15px;vertical-align:middle}.section-head p{margin-left:auto;color:#aaa;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card{background:linear-gradient(180deg,#191919,#151515);border:1px solid #322c25;border-radius:22px;padding:14px 14px 18px;box-shadow:0 8px 24px #0008;color:#fff;position:relative;overflow:hidden;transition:.28s;text-align:center}.card:hover{transform:translateY(-3px);border-color:#624820;box-shadow:0 12px 28px #000b}.product-image{height:300px;border:0;border-radius:18px;background:#0b0b0b;box-shadow:none;margin-bottom:14px;overflow:hidden;position:relative}.product-image img{width:100%;height:100%;object-fit:cover;display:block;border-radius:18px}.product-image:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 35%,#fff1 50%,transparent 65%);transform:translateX(-120%);animation:imageSweep 5s linear infinite;pointer-events:none}@keyframes imageSweep{to{transform:translateX(120%)}}
-.card h2{font-size:20px;line-height:1.25;min-height:50px;margin:12px 0 8px;text-transform:uppercase}.price{font-size:25px;font-weight:900;color:#f2a11b;margin:10px;text-shadow:none}.stock{display:inline-block;font-size:13px;color:#55df87;background:#123522;border:1px solid #1e5a39;padding:7px 12px;border-radius:999px;margin:9px 0 12px}.tag{display:none}.card button,.primary,.order button{width:100%;padding:13px;border:0;border-radius:12px;background:#f49a16;color:#111;font-weight:900;font-size:15px;transition:.25s;box-shadow:none}.card button:hover,.primary:hover,.order button:hover{filter:brightness(1.08);transform:scale(1.02)}
-.notice{background:#181818;border:1px solid #3a3a3a;padding:11px;border-radius:11px;font-size:13px;margin:10px 0}.rednotice{background:#2a1710;border-color:#68401e}.green{color:#36e98b}button{cursor:pointer}.input,input{width:100%;padding:14px;margin:7px 0;border-radius:12px;border:1px solid #444;background:#111;color:#fff;font-size:16px}.modal{display:none;position:fixed;inset:0;background:#000d;z-index:50;padding:18px;overflow:auto;backdrop-filter:blur(7px)}.box{max-width:600px;margin:5% auto;background:#181818;border:1px solid #555;border-radius:22px;padding:24px;position:relative;box-shadow:0 0 40px #000}.close{position:absolute;right:12px;top:12px;background:#292929;color:#fff;border:1px solid #555;border-radius:10px;padding:9px 13px;font-size:19px}.status{padding:14px;margin:12px 0;border-radius:12px;background:#181818;border:1px solid #444}.pending{border-color:#8b6200}.done{border-color:#18c86b}#notify{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#181818;border:1px solid #555;padding:14px 20px;border-radius:13px;z-index:100;max-width:90%;text-align:center}.small{font-size:13px;opacity:.8}.stats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.stat{padding:11px;border:1px solid #444;border-radius:10px;background:#181818}.qr-yape{text-align:center;margin:18px 0}.qr-yape img{width:280px;max-width:90%;height:auto;display:block;margin:auto;padding:10px;background:#fff;border-radius:16px}.hidden{display:none!important}
-footer{text-align:center;padding:30px 15px;color:#888;border-top:1px solid #292929;margin-top:40px}footer b{color:#ddd}
-@media(max-width:600px){.logo{font-size:28px}h1{font-size:25px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:13px}.card h2{font-size:17px}.price{font-size:20px}.product-image{height:235px}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;color:#fff;background:#0d0d0d;min-height:100vh;overflow-x:hidden}body:before,body:after{content:"";position:fixed;inset:auto;width:280px;height:280px;border-radius:50%;filter:blur(70px);opacity:.28;z-index:-3;pointer-events:none}body:before{background:#087cff;top:8%;left:-90px;animation:orb 9s ease-in-out infinite alternate}body:after{background:#e9003c;right:-100px;bottom:5%;animation:orb 11s ease-in-out infinite alternate-reverse}@keyframes orb{to{transform:translate(80px,-50px) scale(1.25)}}
+.bg{position:fixed;inset:0;overflow:hidden;z-index:-2;pointer-events:none;background:radial-gradient(circle at 50% 10%,#202020 0,#111 42%,#090909 100%)}.particle{position:absolute;opacity:.55;animation:float 9s linear infinite;color:#aaa;text-shadow:0 0 12px #777;font-size:22px}.p1{left:7%;top:28%;animation-delay:0s}.p2{left:18%;top:72%;animation-delay:2s;color:#888}.p3{left:75%;top:22%;animation-delay:4s}.p4{left:88%;top:66%;animation-delay:1s;color:#777}.p5{left:48%;top:14%;animation-delay:5s}.p6{left:58%;top:82%;animation-delay:3s}@keyframes float{0%,100%{transform:translateY(0) rotate(0);opacity:.25}50%{transform:translateY(-45px) rotate(25deg);opacity:.8}}
+header{position:relative;padding:28px 15px;text-align:center;background:linear-gradient(135deg,#01040a,#061b3c 55%,#19020a);border-bottom:2px solid #168cff;box-shadow:0 0 30px #087cff55;overflow:hidden}header:after{content:"";position:absolute;left:-20%;right:-20%;bottom:0;height:2px;background:linear-gradient(90deg,transparent,#168cff,#ff174f,#168cff,transparent);animation:scan 4s linear infinite}@keyframes scan{from{transform:translateX(-30%)}to{transform:translateX(30%)}}.logo{font-size:34px;font-weight:900;text-shadow:0 0 12px #168cff,0 0 28px #168cff,0 0 35px #f03;animation:glow 2.5s ease-in-out infinite alternate}@keyframes glow{to{text-shadow:0 0 20px #168cff,0 0 38px #168cff,0 0 45px #f03}}header p{margin:8px 0 0;color:#ddd}.socials{display:flex;justify-content:center;gap:12px;margin:18px 0 10px}.social-btn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;text-decoration:none;font-size:24px;border:2px solid #25f4ee;background:#000;color:#fff;box-shadow:0 0 15px #25f4ee55;transition:.25s}.social-btn:hover{transform:scale(1.12) rotate(5deg)}.support{text-align:center;margin:10px 0 5px;color:#ddd}.support a{color:#42aaff;font-weight:bold;text-decoration:none}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#030712ee;position:sticky;top:0;z-index:10;border-bottom:1px solid #0d4d86;backdrop-filter:blur(10px)}nav button{white-space:nowrap;border:1px solid #168cff;background:linear-gradient(135deg,#061b38,#090b19);color:#fff;padding:12px 16px;border-radius:12px;font-weight:bold;transition:.25s;box-shadow:0 0 10px #168cff22}nav button:hover{transform:translateY(-2px);box-shadow:0 0 18px #168cff66;border-color:#ff174f}
+main{max-width:1050px;margin:auto;padding:18px}h1{text-align:center;font-size:30px;text-shadow:0 0 18px #168cff}.hero{text-align:center;padding:20px 12px;margin-bottom:18px;border:1px solid #0b69bb;border-radius:22px;background:linear-gradient(135deg,#03102aee,#070912dd);box-shadow:0 0 30px #0077ff22;position:relative;overflow:hidden}.hero .hero-icon{font-size:65px;animation:diamondFloat 3s ease-in-out infinite}@keyframes diamondFloat{50%{transform:translateY(-12px) rotate(5deg);filter:drop-shadow(0 0 20px #168cff)}}.section-title{font-size:23px;font-weight:bold;text-align:center;margin:24px 0 14px}.section{padding:18px;background:#030916dd;border:1px solid #174d88;border-radius:18px;box-shadow:0 0 28px #006cff18}.section-head{text-align:center;padding:14px;border-radius:18px;margin-bottom:16px;background:linear-gradient(135deg,#041a38,#13050d);border:1px solid #168cff}.section-head .big{font-size:52px;display:block;animation:floatIcon 3s ease-in-out infinite}@keyframes floatIcon{50%{transform:translateY(-8px) rotate(-4deg)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.card,.order,.panel{background:linear-gradient(145deg,rgba(5,15,34,.97),rgba(9,4,18,.97));border:1px solid #168cff;border-radius:18px;padding:18px;box-shadow:0 0 16px #0077ff22;margin-bottom:12px;position:relative;overflow:hidden;transition:.28s}.card:before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg,transparent 25%,#168cff44 50%,transparent 75%);transform:translateX(-100%);transition:.6s}.card:hover:before{transform:translateX(100%)}.card:hover{transform:translateY(-6px);border-color:#5a5a5a;box-shadow:0 12px 28px #000b}.card{text-align:center}.card h2{margin:10px 0 10px}.product-image{height:185px;border-radius:16px;overflow:hidden;margin-bottom:10px;background:#111;border:1px solid #292929;box-shadow:inset 0 0 20px #000,0 0 8px #000;position:relative}.product-image svg{width:100%;height:100%;display:block}.product-image:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,#fff2 50%,transparent 75%);transform:translateX(-120%);animation:imageSweep 6s linear infinite;pointer-events:none}@keyframes imageSweep{to{transform:translateX(120%)}}.card .icon{font-size:48px;display:none;animation:floatIcon 3.2s ease-in-out infinite}.price{font-size:23px;font-weight:bold;color:#42aaff;margin:10px;text-shadow:0 0 10px #168cff66}.stock{font-size:13px;color:#91d5ff;margin:9px}.tag{display:inline-block;padding:6px 10px;border-radius:20px;background:#071f3d;border:1px solid #168cff;color:#7dccff;font-size:12px}.card button,.primary,.order button{width:100%;padding:13px;border:0;border-radius:12px;background:linear-gradient(135deg,#006cff,#1555ff 55%,#e5003f);color:#fff;font-weight:bold;font-size:15px;transition:.25s;box-shadow:0 0 14px #006cff33}.card button:hover,.primary:hover,.order button:hover{filter:brightness(1.15);transform:scale(1.02);box-shadow:0 0 22px #168cff66}.notice{background:#081a31;border:1px solid #168cff;padding:11px;border-radius:11px;font-size:13px;margin:10px 0}.rednotice{background:#2a0712;border-color:#ff174f}.green{color:#36e98b}button{cursor:pointer}.input,input{width:100%;padding:14px;margin:7px 0;border-radius:12px;border:1px solid #287ec8;background:#070d1c;color:#fff;font-size:16px}.modal{display:none;position:fixed;inset:0;background:#000d;z-index:50;padding:18px;overflow:auto;backdrop-filter:blur(7px)}.box{max-width:600px;margin:5% auto;background:linear-gradient(145deg,#07152d,#10091c);border:2px solid #168cff;border-radius:22px;padding:24px;position:relative;box-shadow:0 0 40px #006cff44}.close{position:absolute;right:12px;top:12px;background:#172b4d;color:#fff;border:1px solid #287ec8;border-radius:10px;padding:9px 13px;font-size:19px}.status{padding:14px;margin:12px 0;border-radius:12px;background:#081e35;border:1px solid #168cff}.pending{border-color:#d79500}.done{border-color:#18c86b}#notify{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#071b32;border:1px solid #168cff;padding:14px 20px;border-radius:13px;z-index:100;max-width:90%;text-align:center}.small{font-size:13px;opacity:.8}.stats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.stat{padding:11px;border:1px solid #286a9c;border-radius:10px;background:#07152b}.qr-yape{text-align:center;margin:18px 0}.qr-yape img{width:280px;max-width:90%;height:auto;display:block;margin:auto;padding:10px;background:#fff;border-radius:16px;box-shadow:0 0 25px #168cff66}.hidden{display:none!important}@media(max-width:600px){.logo{font-size:28px}h1{font-size:25px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:13px}.card h2{font-size:17px}.price{font-size:20px}.card .icon{font-size:40px}}
+
+/* ===== Estilo visual inspirado en la referencia ===== */
+body{background:#101010;color:#f4f4f4}
+body:before,body:after{opacity:.10;filter:blur(90px)}
+.bg{background:linear-gradient(180deg,#0d0d0d 0%,#151515 48%,#101010 100%)}
+header{background:#101010;border-bottom:1px solid #3b2c1d;box-shadow:0 8px 30px #0008}
+nav{background:#101010;border-bottom:1px solid #30271f}
+main{max-width:980px;padding:20px 16px}
+.hero,.section-head{background:#111;border:0;border-bottom:1px solid #33281d;border-radius:0;box-shadow:none}
+.hero{display:none}
+.section-head{display:flex;align-items:center;gap:14px;text-align:left;padding:16px 8px;margin-bottom:18px}
+.section-head .big{display:none}
+.section-head h2{font-size:26px;margin:0;letter-spacing:.2px}
+.section-head h2:before{content:"";display:inline-block;width:7px;height:38px;border-radius:5px;background:#f49a16;margin-right:15px;vertical-align:middle}
+.section-head p{margin-left:auto;color:#aaa;font-weight:700}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:#181818;border:1px solid #332c26;border-radius:22px;padding:16px 14px 18px;box-shadow:0 8px 24px #0008;color:#fff}
+.card:hover{transform:translateY(-3px);border-color:#624820;box-shadow:0 12px 28px #000b}
+.product-image{height:290px;border:0;border-radius:18px;background:#0b0b0b;box-shadow:none;margin-bottom:14px}
+.product-image img{width:100%;height:100%;object-fit:cover;display:block;border-radius:18px}.product-image.image-error:before{content:"💎";position:absolute;inset:0;display:grid;place-items:center;font-size:64px;color:#777;background:#0b0b0b}
+.product-image:after{background:linear-gradient(120deg,transparent 35%,#fff1 50%,transparent 65%);animation:imageSweep 5s linear infinite}
+.card h2{font-size:20px;line-height:1.25;min-height:50px;margin:12px 0 8px;text-transform:uppercase}
+.card .tag{display:none}
+.price{font-size:27px;color:#ff6d6d;text-shadow:none;margin:12px 0;font-weight:900}
+.stock{display:inline-block;background:#103a28;color:#43e879;border:0;border-radius:22px;padding:8px 13px;font-weight:700;margin:5px 0 14px}
+.card button,.primary,.order button{background:#f39a16;color:#111;box-shadow:none;border-radius:15px;font-size:18px;padding:14px;font-weight:900}
+.card button:hover,.primary:hover,.order button:hover{background:#ffad28;box-shadow:0 6px 16px #0008;filter:none}
+@media(max-width:600px){main{padding:16px 12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{padding:12px 10px 14px;border-radius:20px}.product-image{height:235px}.card h2{font-size:17px;min-height:44px}.price{font-size:24px}.stock{font-size:12px;padding:7px 10px}.card button{font-size:16px;padding:13px 8px}.section-head h2{font-size:21px}.section-head p{font-size:13px}}
 </style>
 </head>
-<body>
-<div class="bg"><span class="particle p1">💎</span><span class="particle p2">✦</span><span class="particle p3">💎</span><span class="particle p4">✦</span><span class="particle p5">💎</span><span class="particle p6">✦</span></div>
+<body><div class="bg"><span class="particle p1">💎</span><span class="particle p2">✦</span><span class="particle p3">💎</span><span class="particle p4">◆</span><span class="particle p5">✦</span><span class="particle p6">💎</span></div>
+
 <header>
 <div class="logo">💎 WEYZON -STORE</div>
-<p>Recarga tus diamantes de Free Fire rápida y fácilmente ⚡</p>
-<div class="socials"><a class="social-btn" href="https://www.tiktok.com/@blezitocuentaoficial?_r=1&_t=ZS-99tiWtvfO9V" target="_blank" rel="noopener">♪</a><a class="social-btn" href="https://wa.me/51920757455" target="_blank" rel="noopener">☏</a></div>
-<div class="support">🟢 Soporte 24/7: <a href="https://wa.me/51920757455" target="_blank" rel="noopener">+51 920 757 455</a></div>
+<p>Recargas Free Fire rápidas y seguras</p>
+<div class="socials"><a class="social-btn" href="https://www.tiktok.com/@blezitocuentaoficial?_r=1&_t=ZS-99tiWtvfO9V" target="_blank" rel="noopener noreferrer" aria-label="TikTok de WEYZON -STORE">🎵</a></div>
+<div class="support">🛟 Soporte 24/7: <a href="https://wa.me/51920757455" target="_blank" rel="noopener noreferrer">+51 920 757 455</a></div>
 </header>
+
 <nav>
 <button onclick="mostrar('pasarela2')">💎 Diamantes</button>
-<button onclick="mostrar('cajasFragmentos')">📦 Cajas / 🧩 Fragmentos</button>
-<button onclick="mostrar('misPedidos')">📦 Mi pedido</button>
+<button onclick="mostrar('cajasFragmentos')">📦 Cajas y fragmentos</button>
+<button onclick="mostrar('misPedidos')">📋 Mis pedidos</button>
 <button onclick="mostrar('seguimiento')">🔎 Seguimiento</button>
 <button onclick="mostrar('admin')">🔐 Admin</button>
 </nav>
+
 <main>
-<section id="pasarela2" class="section">
-<div class="section-head"><h2>💎 Diamantes y membresías</h2><p>Yape</p></div>
+<section id="pasarela2">
+<div class="hero"><span class="hero-icon">💎</span><h1>RECARGA TUS DIAMANTES</h1><p>⚡ Entrega rápida · 🔒 Compra segura · ♾️ Stock disponible</p></div>
+<div class="section-head"><span class="big">💎</span><h2>💎 DIAMANTES - FREE FIRE</h2><p>10 items</p></div>
 <div id="productos2" class="grid"></div>
 </section>
-<section id="cajasFragmentos" class="section" style="display:none">
-<div class="section-head"><h2>📦 Cajas y 🧩 Fragmentos</h2><p>Yape</p></div>
+
+<section id="cajasFragmentos" style="display:none">
+<div class="section-head"><span class="big">📦 🧩</span><h2>📦 Cajas y fragmentos</h2><p>Productos especiales de Free Fire</p></div>
 <h3 class="section-title">📦 Cajas</h3><div id="productosCajas" class="grid"></div>
 <h3 class="section-title">🧩 Fragmentos</h3><div id="productosFragmentos" class="grid"></div>
 </section>
-<section id="misPedidos" class="section" style="display:none">
-<div class="section-head"><h2>📦 Mi pedido</h2></div>
-<div class="notice">Aquí puedes consultar el último pedido guardado en este dispositivo.</div>
-<div id="listaMisPedidos"></div>
+
+<section id="misPedidos" style="display:none" class="section">
+<h2>📋 Mis pedidos</h2>
+<div id="listaMisPedidos">Cargando...</div>
 </section>
-<section id="seguimiento" class="section" style="display:none">
-<div class="section-head"><h2>🔎 Seguimiento</h2></div>
-<div class="box" style="margin:0;max-width:none"><input id="codigoSeguimiento" placeholder="Ejemplo: WZ-ABC123456789"><button class="primary" onclick="consultarPedido()">🔎 Consultar pedido</button><div id="resultadoPedido"></div></div>
+
+<section id="seguimiento" style="display:none" class="section">
+<h2>🔎 Seguimiento</h2>
+<input id="codigoSeguimiento" placeholder="Ejemplo: WZ-AB12CD34">
+<button class="primary" onclick="consultarPedido()">🔎 Consultar pedido</button>
+<div id="resultadoPedido"></div>
 </section>
-<section id="admin" class="section" style="display:none">
-<div class="section-head"><h2>🔐 Panel administrador</h2></div>
-<div id="adminLogin" class="box" style="margin:0;max-width:none"><h3>Iniciar sesión</h3><input id="adminEmail" type="email" placeholder="Correo"><input id="adminPassword" type="password" placeholder="Contraseña"><button class="primary" onclick="iniciarAdmin()">🔐 Entrar</button></div>
-<div id="adminPanel" style="display:none"><div class="stats" id="adminStats"></div><button class="primary" onclick="cargarPedidosAdmin()">🔄 Actualizar pedidos</button><button class="primary" style="margin-top:8px" onclick="cerrarAdmin()">🚪 Cerrar sesión</button><div id="pedidosAdmin" style="margin-top:14px"></div></div>
+
+<section id="admin" style="display:none" class="section">
+<div id="adminLogin">
+<h2>🔐 Panel administrador</h2>
+<p class="small">Usa el correo y contraseña de tu cuenta de Supabase.</p>
+<input id="adminEmail" value="brayanantoni2288@gmail.com" placeholder="Correo">
+<input id="adminPassword" type="password" placeholder="Contraseña">
+<button class="primary" onclick="iniciarAdmin()">🔐 Iniciar sesión</button>
+</div>
+<div id="adminPanel" style="display:none">
+<h2>📊 Pedidos</h2>
+<div id="adminStats" class="stats"></div>
+<button class="primary" onclick="cargarPedidosAdmin()">🔄 Actualizar</button>
+<div id="pedidosAdmin" style="margin-top:14px"></div>
+<button class="primary" onclick="cerrarAdmin()">🚪 Cerrar sesión</button>
+</div>
 </section>
 </main>
-<footer>© 2026 <b>WEYZON -STORE</b> · Soporte 24/7</footer>
+
 <div id="notify"></div>
-<div class="modal" id="modal"><div class="box"><button class="close" onclick="cerrar('modal')">✕</button><h2>💎 Confirmar pedido</h2><div id="resumenPedido"></div><input id="ffid" inputmode="numeric" placeholder="Ingresa tu ID de Free Fire"><button id="btnCrearPedido" class="primary" onclick="crearPedido()">✅ Confirmar pedido</button></div></div>
-<div class="modal" id="modalPago"><div class="box"><button class="close" onclick="cerrar('modalPago')">✕</button><h2>💳 Datos del pedido</h2><div id="datosPago"></div><div class="notice">📲 Después de pagar, envía tu comprobante por WhatsApp.</div><button class="primary" onclick="enviarComprobante()">📲 Enviar comprobante</button></div></div>
+<div class="modal" id="modal">
+<div class="box">
+<button class="close" onclick="cerrar('modal')">✕</button>
+<h2>💎 Confirmar pedido</h2>
+<div id="resumenPedido"></div>
+<input id="ffid" inputmode="numeric" placeholder="Ingresa tu ID de Free Fire">
+<button id="btnCrearPedido" class="primary" onclick="crearPedido()">✅ Confirmar pedido</button>
+</div>
+</div>
+
+<div class="modal" id="modalPago">
+<div class="box">
+<button class="close" onclick="cerrar('modalPago')">✕</button>
+<h2>💳 Datos del pedido</h2>
+<div id="datosPago"></div>
+<div class="notice">📲 Después de pagar, envía tu comprobante por WhatsApp.</div>
+<button class="primary" onclick="enviarComprobante()">📲 Enviar comprobante</button>
+</div>
+</div>
+
 <script>
 const SUPABASE_URL="https://dwvlhdatthuedsjtrtna.supabase.co";
 const SUPABASE_KEY="sb_publishable_K2lzpQJ9oj-fF-_VGtNdQw_4OSJ-nxX";
-const YAPE="964225888";const WHATSAPP="51964225888";const SOPORTE_24_7="51920757455";const TIKTOK="https://www.tiktok.com/@blezitocuentaoficial?_r=1&_t=ZS-99tiWtvfO9V";const YAPE_TITULAR="Ruth Nery Cabana M.";const ADMIN_EMAIL="brayanantoni2288@gmail.com";
-const productos2=[{nombre:"100 💎",precio:3.30},{nombre:"300 💎",precio:9.40},{nombre:"500 💎",precio:14.30},{nombre:"1,000 💎",precio:25.34},{nombre:"2,000 💎",precio:53},{nombre:"3,000 💎",precio:75},{nombre:"6,000 💎",precio:128},{nombre:"Membresía básica",precio:2},{nombre:"Membresía semanal",precio:6.20},{nombre:"Membresía mensual",precio:31}];
-const cajas=[{nombre:"30 Cajas",precio:19.90,tipo:"caja"},{nombre:"60 Cajas",precio:36.50,tipo:"caja"},{nombre:"120 Cajas",precio:73.50,tipo:"caja"}];
-const fragmentos=[{nombre:"90 Fragmentos",precio:15.99,tipo:"fragmento"},{nombre:"150 Fragmentos",precio:21.30,tipo:"fragmento"},{nombre:"300 Fragmentos",precio:36.90,tipo:"fragmento"},{nombre:"600 Fragmentos",precio:73.50,tipo:"fragmento"},{nombre:"1200 Fragmentos",precio:135.90,tipo:"fragmento"}];
-let pedidoActual=null;let codigoCliente=localStorage.getItem("weyzon_codigo_cliente")||"";let adminToken=localStorage.getItem("weyzon_admin_token")||"";
-function $(id){return document.getElementById(id)}
-function mostrar(id){["pasarela2","cajasFragmentos","misPedidos","seguimiento","admin"].forEach(x=>{const e=$(x);if(e)e.style.display=x===id?"block":"none"});if(id==="misPedidos")cargarMiPedido();if(id==="admin")mostrarAdmin()}
-const WZSPRITE="data:image/webp;base64,UklGRkRMAABXRUJQVlA4IDhMAACwnAGdASqAArgBPwF0sVKrJqUvqNaLcfAgCUhdXSqUWVhp4hTOaw44zaf+2n+n3Zsb/Qv7H2q/BhyL5RfTumz5ysqjpTNDyZvlr/4vXF+r/YT/WrqO+ZfzZvNi82Drtd6YyBH1P/uu5P/meI/n6+tTEnEvVK8D8d/+94l/Ov6L9hT3Tvb/A+YR7ne//oGffeeeme0Cv6n/sfVo8JP6MVUcyVw/6d9V8zxIPeNOz+aP/6jLIkzOucHmZ5gLSQbF+58gyw/0hLM55FOQJzBRwgx+iNC6GqSzQGtKOWoxQhHRCvkv3reMJGbdVKEuVocsFVRCtMKj7aLtCm2DJBU3T5nETdD+E0hz8A8zSL6WmMnuJtruZtob86v4FkoqKWCk3VYYSK7p8RsUsZy2hgEyYZfvoZsJcNE3Fxy8brMrtpD/kdB/YslAp7rbUKkOO/BmtPIVnKuGEllwHCE7OtJ7KDUW4pVbtGiNoYdjvhhFTkrwZ+Bu7G9wI38HUN0THDjb292QzK3hZPwGwvWevvb6KrQAwoHw4IC40mYZP+CmV/rqRs53NpK14vX3zGubls7b9+MJPS58gxrwY2Rk/Y0HLd0og4WfARaMGInKwJctLEcz63P5HXM7hVNU4mBW9diY0LyG+FR6DQ8eZqnr2EzjfAWv1e9pdsX8sE3kqRlslXYVA6ZutI+qp5J4yGcxipOjwbomgbP/NZaDDYLIJHJwUDYwz1d9JnYRQDyd1fHHB2xrCUHbR+o19ynDM727wqvQ3RFlLyXJsy8KWePFaG1Jp7g0eZ+96yxGxHD7Jnmfa1FeLLagaw73xm8epbP4CdN8AVVOSdeo8GpyHvvBqE213hBjw+VX3rfmCYL+aDt6AD5WSpiiWcFHl3wpuVML21qSC35Cd/bIFzlvwoRL2PQLN2EzAF9dKHJBJEyksh2wANzBdVhpPFSQsO5u16De8Ra2zJVtjDNFnlgUPtUIJ+WdnU0M38LwJOshHMjW+CH3Img40oImhmOKatIA8W50AKpZ1L+tArYIXJucUjuOdrfr93JUUXVrbx/qo7JK9BMnPMjLrPNEB+OKc5FHB+MXDs+fpo7ulNpRUL9jwR+yyGervK3PMA0ONP4umNtMUnOOl5Sn4P2JG/E+qRAlimzjPWh/ICAbCKzsFoO+C6AcXYhf9ZJvoYQNhVuFbUmyVgTLyZcBd6sC8W4BIEbk73WkQwMQqKUXK1coW3fiww8xZiy2aOA1zmG0lR5IbFDhUKf8vXyINoTgmq1Y1AH9dRXUUmPv5CdpPLCT2YN4NZnej+UfzeZWQzB9r61CmNOduQI7jPH+nu+YlrUQg9b6D+mYb6W3PY8nc8OsMJd040avJnwBb2MxzgFZS09yQ8WeEVrwGmyZ/eTuomg29tgoJusbUluj5fwIcGc0W3ZMEZ0X4V/2fg/PR0R16hM3UBGhPUmrWxZJKTBjGVMJYJLB00aH3xua9K98njTmCuk8wMHfvO4lYCKaUDiD5bJjvOXgI7cZ98qvGxqvuXZ75W3RddZ6MMv7ePOACbPQ0LLrOFlXTTsuPIadZUXUMgP19ZhJJrQ049MkvNFyHEyaKMjzBVw7FdTye1hD5krF6cdxFSgy1Jrt6wvMHVVt1HHhYSWl2oTXMlSMvzh2NPXcqizR4r3j9BlwyPQIGcKZHQ15zg3CU51B5KkrY/0pOWw3IMwxapNonk5zh43yxEdLkwOnqzyPnAwrIB9jtljS0kjM3HEWGLrxCF00g3CvTJzbNVP/tcrvKP+Ghf6+eNQ+xcTVI9T2HD39SAJPxII0GhnMTb8UdGzEz81TXTjCciGeUisfVpa+zvp/R0jASeCeKoOIrheTTnsWNSBu2yo+GYVMKFQaqjj3O9DvQqq4w67dtTBxwYLZ1hu4pXkwn66px3rKjBcLZF7rQ8ZLfusGceF2XRX8t7YcCZIJXwz30MMkxgos15kWFfoPkFnvtavnuENASmYgCDuAbDn9LjKkHEpH9D0C3raecE6EtPvOUXCY+36SrvtHMDIWeNA8FZ8Ix1f1RXiwEcQjhC2PNR4Qb03Cw1r86mkNErDmTFWbmiL0rFVqJuqFV9LDMKDiNhZUo7MGo63x7dFznmfggDUbeMiMeNEKwJhT82gqZ4e3z21OOsmUp+Wh5SYwatgFrp3pgTItq7/t0wlfoQKH/+G5nmEKVBKELRPjVoHqGLyK55IKsrcver9yn7TqVy05ud7pA1yzhi4Oj1L+ubCxXcU9p9mKGs3m7V2Ge1n7qmfIR4JlvieCh/8ThOJ0wfQiTZuczFEUcaCM5IBCmQul3Kfe/7zCSGqAGj0RuQa2ca89i0iQ/OJun2V11rwhKFvdWpBHx3fatw9KGGxQ5ETxTJQIvkMbOEJnh4uajo8D6i9OVFEyiu4JmcQQnamNYQhKIJ/HLqmL45AYC9/h2FVYrJzDJBuXiAF+rAzFgBU/ZGszzt0PObe+beNxTNRVzhHNyMKZw+9GHZ1l6FzCRlpwoxqD2Bu6nF0PA44WaqUiakiti9RamQ1rsby6KgRDxyIJ2dPeDPhSRME9K58I2nN5n1M+xJE3euuITVmW4pmlSEZu8NtxotzW1+pSZbdOj/bhH//7gPVsuPs6wVtSQhMoygonsqo1ycShHiFXCqdSH3vuh7w8yAMpOw3YRsBWvOssBs6E5nxvxvbJIIZ6aKkuuXS9rmOVUsJcv8bHXN6QSosqTgcrx0qmu1sG/z2xoXx/mEIfW8YwO/4x62GKAcDmlL4xQNH5GJmAy2RXamwyTA7rVjLARp4rnMjJGPV1zS148kv+3qqa4ccMoax+En+XOaOJ4QTYJBbVsFi7UO487a+yIgoF98BW+mtMdb5a8uQLbm7v9KGtleLSH6usKyx5oDExoCpDA0bX98lTJphu+qjJU/9yArrTu8xP2x9yoKVfCpVOSqgAWLjlLtMdKSdcwFDbJaNrmAHAz5Mb8aYx8cpd4ZBWIQnGOy5xspEqlXSeON7yqXukywIkXbeftIHvKDZKEkqRacR7Ku+pse3w4f+95NtIk6kBDCFcCwiR6mQz9keWlziC+sHY2FsORFSlap3sfKsVDW7ChOK3R4LVwC0lKdmSPH0NjuSjpVxd0OvALJRKviJMHUMdeWtA2Go1HM5g6ApEwT5PGHRvPq2r8Cj/2rSCm4iS7MTdFrvIUqy6jK0c5eJvL1FrvfHrPcz0xhYSpjOChkEHENXQf/VDz5dvpX0T1EHcNDVjjUAQ/Xr+VF6nqE9ze4R41aDwb7/WyICkjZAcBDCE97J++4Ct9Z9OQLmT15lU0674WFOlQoOOpVskIKoaaUbZTe2yFPV28Flnc3fHZi37Q8mEcOqUjuKaaAjiSxXultpKCpN/Qk1oRbBFt0Hx+xAQb3TXVOkZi80tDfjBeaAncws5XIsKLYZ8u7rzwD+TzK4RH3zodMnLmKHm8CgC4H8V8FmlYR07kYcLBqI4BwwVKNrV0m1KIrOCF942C2AYOAzhLIetXTl4QBfvltE0FbIa/QyNOLr/Q5jxl601CUzLtmg3ohl/yjV6DsL9TvwTPX3xz0xS5nDsYHMB/HQMX41PS9BtaC55+eH/UR6OfBrzp3/EEiCNBpK4GuOhLvMfmkkQvXYybR9RSCUD3tAAiDNXmH3CzwqICUI4660AEvZw9YeOrjQrE0qMC0phkM6/UDoMGwQSKhf79/xBSSZAkTd9EOj91Cyw1bChhyzDosDdixJYzD+qd4pAhoyPFxvuxgGDgKw0Qcj5UGdNfzE3bor0Jy3JoXyarGmVH1xdBQmRXjdTH5oM8aHl1TxiFE/mtHLGuxtxGZzckHDAnMmQ402Sd2H0nYPbvaU0qirAcxQkIHDwrAkxhZrb5758aS4qI2hcUP9EAi0KmKxSHHV8xaFuo80UMS3MsFVikGH+QPbYbbl3TVO0d6fCLtMIvpFUxaMPIr5qtEYT2SvBEJTF4gvTZVeSaBg755LR9CQ65k6kxviaYBkX1qQJZ/PxtEi9v6dZvJqruWbbo8mcdgiJyXcwMhgH/WYNt2pR4NzbhnWbMkX4wMajz+URjotmBrXQ+u3eR5vKKc57J/B3jEBalh8Luvt57HXohFejHHkR7k6eNbcPpRT06POOAr79Rb2/0ISzbG3N8wnpG/jpu1dcdPUaXaVMc5gRp9ppxB+e2TApZbOgq8WjsMzGUg23vIze91TTURvuLVT38oMge+WYso6f7PwpGgAwqay+xIoyvfbAQ8cg616Ut6JUZPznICeb+fzsvf7sAMNPqBJRsL5mtZ2Nkvd+ePX2xz+8SzRpBo//cTV3up5ob2V9TffanYiMOkN/jwreJtP3pEtaVFFzB0xmLjN17JDs5EsoUWE3nkH0gZpZ/9LBCuemZFBMUtORONHUZfXOkBGYGu+rOsSEV3qN4rEAAP7HGVgFcc9TeQmGgyqkR7obD3VF7h/t5PZHUNWXnWUB1r0IMHGHN2QdqWRgGV+kJ2MmHXF9FqbKTrocTUZxZ61yC0shPAWdF+6q0D5a0XxLHMIejlPBCQW7l4zu2SqGmiycYwgaQ80UfJEgbOWDSlKtePXng22bSaV447ddulYjABAW5x2YP9KWMkMA8iUjYbeJ++Dreu9MYzprOrLl8TIj/K5rokBOItrZdcGsy9NM0jCHQ3uEDBpQr7eBTetu6LqEEHCAiK4axCRWJRC0nwog3a2GqWQ09Cs81Yo6s/jqMfcNRwn93H//JMtknAy2HGWawN3BYgHU299BDdhwi5cj4MA64pBq121YvG262JwV6lHLFBif/KpyQiw3wCKMvhVItvUX20/QbLq58jCuOpa3WWGBSNckroqSOEiwaFMpjDlqMy77R49h1GbQeaWiJwCwwmBV6Mdg1WRatAnSUyVvESlbmsS02A+bGEZAq145jaPEVU93BVQdjCujaIlQBR1mFaqXd/cXxiHKnbJGf0DeqQ2zkKlI3G+EsMDy6d05q9rMQX41/c/7AFh4PSyHeq7eY6T2CFvFOa496GeT/f4lK0EKysqtgsEMJQRQyPr7FSHLy3eG7nc+lVlIiG8TUVFe+gS7n4OX0MWcCJ74dSKGeyTkVjL85M42lRtZF6cS7r3ExuF9yymfKS3EP1yYrhE9o/HK6B/6qczBuUi4XiKrI94pkYB1ki+gh9y7ZN+oxVqrsL+8Ia426jW30mXJbjuYm+d/JU2rpQBmxdaq+47/MH3Mj1PDCqQPXi+94YCnhl/6mVr5JwqEWLOgW8VwbESfrniIkzTWkRXYzMNbx+xWKiV9Sot3SjmvHTNZQyFKUzvWIlFLEam56gMxFtEDhx/FFeyzX0G2/sLKnrJsF4jqznnD27uCLOcjRlsRzHEzi5sp58zT0RTUquoySG23nDk28/mm4hRROyD3dkkD3wD89hYRqLey52n2v39gd6zQUqZ8Zw/TwiRG9k56wWe+awQzLpmM7WepgxOdAFE2Nj4Q17tT7JPpaVikPhmBWul7T0ABz6a92+A/JLWD9GuvAUL4EfeMKzusyukWmpEnAg6W+grA/MArb1QvcUv6eTtfelPddxtBbyWpNXL62QlidZJNGYXoG9Q5Smp/L5Rg6YdKuMwbhp38/InwdG0G04KOt/gLPlNSkRIjaKb5M2h+ZnhyMIKBpl+DrfT+IUQmOeCRUMAC8h+ni0j3bwOnv+jsmCJ1f5b3ilkCk33hQNPVk/yo88LzaiZzTVzhwdIBu/TYpD6hX5hpq48iKBNZxUi1+tOfG/NuT5IXG2/EI1loQPWL4g5XBokejSfITUSv2lwDWhVfkr4gY9KBJT87VxTc2T4wFGbmVthsLz/BvtnOKqzTTJevw6k5e/aG8TZnlcSGxzKRfNeK7akctcNlWyzRGusADPzGc2QO2FOg+Y+GH6+8jRr+Qy3RIqINcT/hh2PL3yEXGL9eBX9Eddl4iE5S1qTTG0wFtkA7R2yeEPa8FIvTGAcK3q7KFxNOPTYEhFDy4UX5DXzycM8vLXSu9ZMS1UwN1vLvu0/6Z54kvCrAF5d7YbsyUQiB+SuoARVw9Go+YSi/bdHwUO7VyE1TvdRS6UJKEuBkQYX2KQPQs2pNf6R99f/ItOQ/63Yr1tXR1ghM3HxKLQu4tJckZqStsBVHqy02xxyUUgQ06X8jGkqhvKXsFqFIAKpSneiiy3GTzi6JXxJCcL5KNCCNiQM72verQ5bZ44+UsKlSTPaf0JEcl63znFY6h1srD+DIDXeY68S8hFSE9CabXO+e3aXgBdjaqx6nZPzFZOgJCz9qgpylkx75ljmow9E3I5B45djTfp/J5XgcOR0Ci+9AYCZmllHFaRi8FzA73RBH/Q2R37ei9rs4bDLumqrJGrQitJGyjesOLUsISIYGzsHOkiFu/EcYQd3W85aWoGDo/85iFy5I7e+poGo6zwU6Ou1nyVzJGq3AWwTb3oX05qHIPGczzNhkUrTtN4YJ/gVfnZ29j59Cu/PZEYJtfHuhPX8QzpG/3T2Rj3RnTXTDHrUckcAGiMOTfKz6E3i7kkDkK9vp/zCgGR4vGHw5uFKC5bO1ADNvK0JufBUteuTJN6T16euiBs8wbVf8nLJeLKy4xL1VF8XvIo6NG4n5wfum920/bSEDXZPuKt/x4SvDlCH64y7FnawxEPzCbCbZ1Oi4nRqV5ymUq470NEWda/uhlYEZwLmFItbxm55Nnz5zqMuW6E6KQXIBEbVWK+WthEYQNaFH81YMD1u7OSXqy4TqBuFZvXzf8B4GBz8l3bKA0sznVHXTxW7EdCe7kWqLvc310Rv6DlQ0a5KpCVtiApH708ZH5Ss4JVDAE5VYDxqSEY/UhxJtt5wrfqSXmM1YCDPfj1X7UX6yKAZquhR7cUwg6DTph4kmhxUnNEmftRkuUTUrHK0DP0uOwDe6R5HvCzTHIr32lWQL8HCd0d1g8veB+UaB536wWTH+yoKiJdPVySJrrMAlAimbueLKIPeNyu3Rw6ppf8+byIu5CO+vWIzBo/4xyvi7gROGxId0glUvjY73RHGHjsHgTEDf9PVSTE5HFgRHpk0zDFy3xNzLMaNMnGrv+1GsvXuxYcu6Dl1G2hYZp0UAuQPKq6sl79OFt7eHbpihrl1y3dSLtLNJ5popXjEUvPdRo8zv29cwYLG2mEehU23tPlXYxfMDEFP3soqiEGBSQtGmSEMYgjoXO3tdZHyuiF1hEdtqeuB82BaKaNgF2hgTDubJ1PpbErCpfuqOaseyeTWzATmO/ZiN4e0WxOCzTWgLvPQeDKZjlEeABk12DxeO4H4XGl5Lo7rGXnujODfsWP1D8fOXHslND4RErkz3aNQazDUZpkAjfGYjRZJC7kxYMZnpEED4x+KZb96JPbLmYRYoIx5hlecHcviVizMqPk6to4PrkLNILzZGlK14ogB8iskLmusMuWwFMSswl8UQ0e02bW5jMECu4Vo/62nhBV2aCblF9fuMqX4bgITYkFXYsvG/jEKCrkHP0smOUz5MpHYnBOrEJpAW9gGRFz7lPscilUr75RdPbdb6bp+PeDsfi1BXS6gOZr7qwG3Ws+Cex77NB1EDcCd5MlAM+e1nFerldiYfkPI6rZJnHBCbXd+FXnkPHbTX11eMjKrwbh/CMS09b9hSp8tj6IsLoRWAQ/TJauGvJXw5XLG566TLPAoj9LvPCMEzRel0pV2wBOh2hR6yt8qg/4a1K8tkRZyY6h/9FKYq6CF5Og4AEejlIceSf3ZdGFMmViCSQBKU697eKtFig70E/4ZcoK0jTTsZKWIlzexgFYD6pof469YF7MhJEyw2isJ20sqfEdQvBfQBUoilJFqsUMq54r/zA5fu62fIgf53LQZdJWJp0V8xtAlBjsuYrkRcVgmbM1LF0AWZ62/yO1xlVrtDt52uU6FL4r6Q4Bz4Z6OkSzybKjLKwh8Eypj9ukQMns+C1mBIIAwBleprngZxVswIIPYuoIYr8aTmg31BS+YF/wOV0MbIRcfWHVg2c9eLDEKicwWlskrqvlU3pp60y3JqplqQXFl5waUEAxRqiaL9ErNBw7f4VZklnVXPMXwGDz/j9eHxMXsHoQk/RjoWSiCssdecj1uT7uJiVNDgB/vEyTvcsVqLlqizXN0MjwHvQ6Tg5dQnQEOEtIGs3T1EW3md6HObgwiGvUmW85YTYOATwH1MGslcbcYhwYVUiaSiZdBemJABt6THmNTGKN1opJC39+RWc8Sz8RPejZR6oJd4ELclgSJVxAXxoOeYe+Kc7CDVq3KAZJd8H33aDVyrWVIB6/Vvv2XxZoFIZ/qqMd9SjwrXTaS7L/8KVUSDMEMrLhtRsGwm49vuNgqx9f/vRa9ja6StRgH8JH9TKi7ig4FF1ecsNVhhmkUPUiGoACCXDwyx0bPYc+5xIIZJJrqxvixFUQ5nZl0nit7par5Gq6F+GkvN3EsjC7+X0dfUmxSVXjbHsbvnoZQ1KkN9g/9A884/gO2x+awgPc9BGwoZHl+lJsIfrvWJD5mCeNIL2vavbS1Qiw/V7rsLF8JYCpxqfaKFRhw1cGEvziVgDxI0qbBdVFD/R2xYzovSsBtzwx4MxqN5Q+jZ2slyUPhPyH6weeewRZM84D9CFFAdI3LrFjUIXCv4q9xApFs2UPJtIq7sRzWU2OF3xxu4n/b65m8JCMMtCbb/nD/+Lc4d++0DWBviuO8M5I/ph8ItpFRTjh4iPPk5Z3ZAT1+5iJtbRkNgg8Z33fmJw2m0kd7wAGoBWgy8E+afwXxRr3IbdqOPx/E2yfgnnoF1RLjvy19fu23Z1CG+/l17v7WCfrqCXr2qtMhW4z26gAf0TY4uwLmvGfzpCq/KKZGs7OHqq1ly33F36vzcCTCwcXkgNNDtlgzm8BVa0QfGQio6XkV8jXUf8nEyiKUmxmJslhviRfVI0ZwcWyzvivHMXFZlfiaD0vYJVYyHL/942MhVR/5/4ymCeeDTMMAB7zNvDA5QhLilvBqBJuhWe4pSF5jGE6qtK+ejGpI0+coUXU/emTAQthUI/9Pp7Ok6q0Ij1UjfdXnMSvqCLSpQkpqvfkn4eiRv/i3f55taoEuDAYl3yfDZPd+Xdcs2MvdK/jRJx6Y2BmVpfdtH/OP3bbqt/jOCqR9hBwf1w5b6q+cKsNTUFQzziPLaw4AokYzTE/NT+X8zaAefcfDzQRtZ+/SxkK6g9P2xriZ0q0azSwVuNTFhC1ZiF6JY+p6vEa4ZxZGjYFDS3qjii9oCZRQNlLqjbBfHZVjvHGbxa8O7f1skPn7NrQAFZaTbGbInEmmh1S52JUOdoRI0xO9Hs1yIKz/WNdcVvecr0j+CPSJD/DjdkxzW3TdF9UFEFieh+Ot3dgqa/7iU9F6srWG7f7Bmca60FkJAsTp7aUSF2afVUDkCsYA6T/iAp2KQS7TOH7CvUgKO6F8GS1UpW6H5ODI5kHi3cPERw996vB02GEkMBLGyw6w/JWdVsAvC7ws5gZBzXqdj5QyZrgptl/5cVdLWppfobSUYYjneotVcAfGu3FaQwhFHAUom5MT14MDGZOyoSN05dE1lBItJRGa6q0x5tOCmOacvCpSvz69gA7unBHZdPkccZDxjpntqinJo6+33LfFKD3DebeniWtMjmL1FNbwiN8yrvjYAGd3FHsPZtXsMHa+1/0qMQjFXyz4cdZvmPnqz3FmQ5Dphs1VL9pCNiCJKEKLsvD8dUMV+lBSNbEMwT+h9juzg2wAKf2IKD6Ov08RyCfKVtGI3A9Is6q1a8aCuqdnQ7/kIcTJMZfkxAOycXNNdL7oQtOtzJ1u9G2UjPgneR9a8bIth5Fs9jLmvQQHBhsMFQa/wTdixPV+ZayqHEbO+//GT9aRu49KqHh308+Yt5WTBoQj/uPoEhMEDtDxKdyQJYNVrAVZwhEP+shhdRDCGD66iurm1GbXqxgQ2brFK7n7anNDU/BxbC5oXfA4PutBDrZcOjZYI24sRK2I/mms6E08GyVnN7dq9X9hygXpge1SuEB86KurVhH4fUnEN1EA6WzvalelEUO5UG1ymWBS0AQY9cWHXw8jGnTDifmPEFeRjP1T3meoZB6s1nS5mSIclt1qAwd/JW90mecP5tk5dQ9QV98sAYKg4BJxqhWOF7gS9jEAkpGs9BQqtR3/CV1NG7zVVwzs80fyreIgFjSWxyHVLDvBqIW4HBkcQ0vZq6noNnviZKFBjgqP2sOdBAbbevljhSCxWp5gQEwI1IV+Qmc1hQblOzs96GvlohMN23DYY5lr8Xc01HgMR1mHLqsn3gC0kAHx7x2Lhmpg7j5o8ZEeoz3yrQghLidrjXCS0lcMc5G+klXKcUVS5m0uWVjjg3us/d72TmD1wRiq8oTLpFxmfXJCvoev1odwL1z8FsEdomlW9WEwWV5qfFyjjGV99R0H+d9PxlVvxf8iLZ4bCdYEfeswT9+vmKIezgQPICa07bChAtH/fCwQLe1mwfKZOwTNOiTpwjGn9frSB5beLK+T/F+J978V8UzfYskL/4CXxuKZdkQ+PK/Udf0qq140LvzejshUPAb9vtJ1/2cnkCMhSDt3QnvChuUn5UORH3qt3Lc49X3YQkr8jaCxHUZb8J1dMMZeaIpYe1M1dP/oBzsY56UTkVQNqMyt40i5ZvYoOAzZZMcH/U/HD5YhWHVbc3QubNa8BjKPYjXUvAGWphDfJZVbiQmTa3ErzFn64DhMz1KmA1rms54kVZ6BodYF7h9PhSExL4Oxz+LWtnky9eEOXN1gRr9byUkCaT8FqorQyT58Cm3Dl0nFB6+58Zg6zl2Z2X/KnaRR/325ZBdn/5pijQiP3k71cBd2voJZ35RiQujfHuRsiTmFw8W/G24MOawQVUxLimsKSnR5r4GyIITbnOIgnW3YDlYEWeASFYUwV1DpnT4+7kExTJl3woLjFg4Y0DMC9fNXCR2v36dDgNfdWGTcLZUAv7zl76ltHNstjbp03JsdOtseBkiZMslZ0WJU1UFEP3F6AlG1u9veZEg2DNrJLhGig5Hypth1MlW9CkesX2PkYAPY8DPz6vag2L8t9SaJXke6eg695QN40vUF5thQGT/Y0AOSCQWFsgs3vFVs8uoO1kBNOFPQk3yhMTRV1MGiZKoaG6YBMW7KSho1TSQKYoHWI0bHUOWTwixlpnd3PePfuG2P+ZXRILZzgQii2VZc1y95I7yD2m0wHuUNS77sS9yV86BW0syKfQ48KXT+bTvPYhhdW2HlHh5u3q3/9mXww3VMgVoTnb8ErafomtxxaX3vpQYsziSilfBipTpydaXTSHPPvJvdExY6D2GlF5a2o3cTQ7LA0Nxh3tMt1Ol4jBLmRRPqyaQw3S8QrQspzw6DdHnC7hO/1AJAi85zU2Y+SSk13p6sJx9Kua4Gc2hwACjIFwDohIx7FdzCrfZyqQAJ9s4X28+I7j0OwKXLqqujyYVliIHnKmrKT2Ojh7XDtIINVLzqvGF86uYLeeLDW2MYfByME0BWdm2b9E/cWf2+KWN6rQAzzK6LWfnWl4QcPYKXCFAinNyoleGSpr96Ny7XaBwB3azoCWMkp45UX0sq5tFvtbAouNODIeFl4jeGHdPLjUouiItFBSHdiiRm8iav3G56jV6mXMwFA9EpgPycbNN8LOif2gNBaWzQrQ72xuSaW+leYGie/aEaQEB3G74TSb+wrC62/ZDPZp1jWHNzNx2LvlytHN8Z5tCcPapZ1lEgU8PYb9zcVzUkdybWh87GDoxLNxCY25AnL+QXlOZ9+jfaXQuyWg3qVfScqe9ZqPHt90t6PPoY6MxY41y3RFlnAWvnV/bDSVPYgNEK3jhAoj/n4QJd5cJLdVm8Oocrd8l0AZk6HqFBugYjQn3j4RNkjZaeaaZWz7vCmZmeqzmKRXcdeIEYChgIC/BryQB/UnEMbSwNQRWjdkIhSbbv8XuJJEE3RMBZkSBcTGzn7pT8F424KyNcC14WqKia/KQWdLVk2TcvV19r83M8nmypxqdHpQEFy7DKMYKsCpPknSSxrf/E+rR/s9sgXbu8OHarXBIPGjKoVJfipXHYdSLTJWuiLK9Y3ysmytZUhw9EVLfG61y5/R7Zf4hl+d5XGJmTn1IoJmXSB/et9zwnZT/C78scknjhI61bF6UwA+G5mVkcxjXM+wDSEwzIEs7FtDwgH0OWdG+izoeRAVEN4mTos0Vox8UeJ5x3PD4PBdksRC4oX/4K4K1PdXHqk6U9rjwdvaSmb6oGMqysZUE81B7de66uLrqcewV/f0UsGpoEqZbInTGzfX70id+pnfG/qwvISb97pdcfshCbVhU30cRq1JG7M9m6wwpcRCnCIbCJFLdqNDCxpMKdtAeYkxVDtLTDKt6Cg1850SSkOzdIHFrj9VTKQhqmwMqx5jo0ZlcgH1Uh4+rgqAkdDzrc5oTaynWAgBB5XpL/0PQ0bPlkrOSfMdNKMCkQZkERz//Jg24QYBrDIWqUujY8aoqjtkTLnq7QvQ699iuj0cgJ4KjHgfNSKOtk+nKWRPJfZV6MGGdWfFoi0gKszQwd5DH0nuwBuYlbxQidvl7UpeunZJXRILM3e6dJIWvKRVgDBE8anW3lJCrlwGLbpNWYCbRAYir1/TTHcXHDAHu8h0ZxG5Abo/Gb1em/VMrppHRC29q2jtPo278T3v/6JwaR8UEciT/D+A/HnXtUXEiRx4l2nHT78eiOfqRFAYgvLtIdrsLuFZ7CkKA9XCtY7Ps2CxgMKfPBhjYih5BMYvrbju89j8C04idD7092mqK7TfJpfAPcCJjaYwwF6/rKbP3mgZD9aT7j30kXFbB5+fFLezuMInoFVpiVUCRCfNunAyM8GTadRIdgIGO14/cyHCK6MH1BQYkJl99HaUrI/z3lVkrfPmPfv1CU11UPsWm3TVmEv0jFHNTI+Zh7ojS8D6beF/YoVtw3Ijkt0mQioTH42TYP3SwTRepzvMUVojERdWfFQjAmEoBZD8foc2psSAik8CXRnxeus4TE8UCelysngeDcgt0IStyVk10qFzlw7/R8XwTYp0tDWfZndprjR4PlDpV85mgp0YfFrhkG93jYHdyTX9x8Soq/KhRkB3tRUR/DgzDmW3qZ+sAWknUodoyF7JF8ea/XivjfBR4hDShE38goQvg9jmdGvklH7hya3FzGWGyB9Bpb28/g7EJc7c7gdm0CtQj/t+XwGT3mBugBLm6Ltn8mD5ia7BL8WLSylh69Tgg/U+LoVOmhZYYNdv+nWGR9robwC/ADqdRRs5Je1u5RthYhJcgFThJ+C9PgKcDCnh2rmwscLb945rowFrlMw/TeYDt8qBurj9UN3aM1xBzxLnMTMMc2k+ScRE7xj/moSrdDCKAj9KJQWyDUupcg10ZDfOM0WSjM8vHbp7ZDtTPhgOyrEZqTYpth5YOGwM2zxTw+2YSEuW82yBaxsXd4geGmzsVE9NyKe6W2xqEL8A7eNP848n3RZwVbMrBaQSkPvq8rE00ybbAoX2QN421euvuQw6J3rRb2xMX7Zpc7kOuqWfLJJNIhgJHWaKSLapbEHZwrXocBpaDmrw7EjseFkYZmPxenAgRNX2KPDP40du88LkpI/lVY6z7IaMxoKFuHyuAHYsO+wqigXrUTRV17Uk8Dxe34WxvTMxJ75SLXoW/1Md8j8W3va2nq7Sw6Z4beAJ0oDAOVlq6rXrx4RnFthq4fRQtc43Ct4vtKWU/grW3Wn5i4RPojUmsbbF3CuBdvxIA5vxDmFfPMiwoaBnMoolaQ5BB0n2j5NXmiSoL7IykWR62+MNnG6OeUHHiRipltchJjWM95mfyILSj7Difob/KY6Kvmt8X4ilQA8MzAbWjrQvTcpCZs9XXv6J5DEil2aCyzLYZuJsuot2exvt+WEzV3i9LJl79c8b5mw8IFeJgrhCnAQ4JVCY5QPKTz/wTWa0VZIhaP+2p3rptOpYlGIYstQiUv7oLvEJU0ZEB9Rby1xLvmLD+jpKxvhUzcKCInoXYpGxE/NJq2Z+9NjlvcAnhSFHGeqtoyo+8W5TMag/TCYFmNpTj+b57rWRptozopiKWVGiPwlBsHLq3JeT1h+KewLfG4HPQdbKbjXJFXt9IosntOkL8L0n2Pjq6IuHsMjtf4PUYW4AW5AmHS1TgqWto54ZxOydApYNjGNo8XYdGceCWIrAjXkmHSP1s0jCSfV1Ie3JXndH4n+Vyt0M66mInkOV68X/u42ZPZVQxM3Dmb8jrfUZ+Z7sbUiO6JYFnzBrgGpqRopJiBvY8KwLvqPZ62RzXv8sakTD7vV23AcKs93LsQTZAninxKLbD/KbdRnTJIemlhTEZF860Z8geNcetfTwuBPMT235SbhPBw7V5BexyVGIvt5ZSrlk0KtO7W2YAdm+7fB/PZfQ/xZKMY+zCaqtaW1/lD12OMR+887lfoKtTnBsJXi0tSoPFqARFHe8XQ1yKHSOnX5a/QPyabjUdxFg0DCtWMyVeE1Y4+qjzt/n9dzdx1wx1xNJlpTt2Y+dsnc9Us1zVD3mGZZTGvoZKPChVP80zNa0NSXI5cjOhV9YwfTBzfiDhbVE+olYMv9sXxRsaF6lupoOJ/NKVeFSwsVGwakoZzHjdABUHLEDU4Bx8B4mZg/1Gf+bBuCbZtCvarNfYyGbff9UR1qvR+2PQXP2xoPWczkaDOujW53x/PoXJH0QGj+A2Ecf4nZYNzK36Ff40ps0b3d2cR05v/Hlyd1B/6NNpiIyobl3mv7C0Rsn/niuB5agZ3Rj4Gv3KiaQIE5bjlgrPMT1ciYWyJq3VQ14Xs3NJ/XAlUf5VIJHOvfrx80LbxyRBzvcA+jmGb22Toqiy4o/E2fLFe6weFLxE7VHncaWSfb5whor/rehTnJaSbGARfTOtq0uEJc+UU430zzi5igvQoiNbYFy+gTthCDB3uO7m9Z6X4PftL7MJZ7jgscyAIKbIL0kQTUuvPt+jlG1V7+Fs5/mWBjuX+gHtat5JB7QQimMF1F21t3tu5q4Im095wQDr+8twCZOiXlJ1gjWBg/rX86ZdMdjgyMMx933/e0vqRteAR5QxGXPiQpR/q3F4JOFxsKQ3YWYmXzgQx9v7WZtaU5fzba1vJJDfi/r6doIkx/zTZmRWKTQ+iF9g39bj/usTRMxR7W+NsZDxP0L+UgOSswm+r77eFuuB3AWl+8JgTogmFPF+ZDyDTRUXeWHPuwefGK90hK+0ORW5vERAybukqil/x88PI9XEYDwp93vo3mCw/S3NJOp9AEkIGL4WMWQps7pYU+hO/G/paWFsyc2mQg5QVEdVGd+G9IllGcNvkfY37bEiEKDgQiK11CwaEfoYUYNi3eOWKp7CsMs0UQGIkWsIpz/wuGcww2IByCdclriaUOGhrGfhoddDf0jLKkFWQjpAFBV5RNvcgw51CflbMyrli1jq6+qwTuRuJ3uO2QIlRL7G0WLXGNVTKidhI+92xE33AICy/9s34Gm404HA4Ut8rJIZywTvs4vJiKWP/F7i6IGAVm/HJMwIahpicb6nnAlChzoiN2whDw1O63e7tGhCujng4mIjDb/f+J6UjGgCxBRptYK6jzlWxlNq+xkTjr+8vzbVkoeENgSfI+pU9tKGJ9tZDDgYMB5eX0hhrML5vykc8mYk8i3DTmRkK/xovB7egQPt5IeO3aOYPVUaCRHGYOdu+o/TYsf5kYGMT7rRSiBXK5rjTqhj1MARbd+FuBR1cb1B+5BsLBPy6YD6gftX1UrW+/8aMnPMUYzq21XnsKyBMf+KoledquIyEr/Y+WSoG0obZN1oDf04z3YNlqBvatelt004cCto8vTqbAnfU54lYltJsi/odF40LxXS5MglTfk9RGfyhDOQROPpwKciiIG0gqB0d3+CxA/UuURu7XGza9C8VvuHo44JILHACvk2jw847E5dDzqB1pTn3SaaZzHu5ej3GbC0HpNIo3c1335m6hrnu49xj0gmWmyoW1Zj8/JrCW7dX8q1u4xZi9wHXEs8QxV9UZhXSerKqWu1n0x4rA0OnzGRtUbmCEQr4robcBW/HJL7v172woFtlFnhWaacHlxHDS+iEKJX1mcgCX1Im7N9Yp2TtUxxgfz9ly5GL0ff1vxji3EzumcH0Te779zeiYFNO9R+GLZ31pRT3bv4RcII4UTKGGPgLoDrEwjHfjMT3YR9h1RtzPXt0Kwbb1TSjX4Pb3aZ2y9X/+WxOBgH0398d3oO1tVrCyYg3vNnGtnrtn6wjgaqeuyyWtzJWrqcnoHuQpHebWWzCcJdJCWc87Y4NFWAXdg0Z9ka5siw4wXtRqSD0hEZSdQ+2D+L5NfQ1j8EzwxHxGTilMEuxbJP9ifMIlrGpMhoU1C/dzOc/a4W3S/BXfjzr2r/kSzfe55piUc97GvXZ6HilO1mTJ+tiCZHdpnbJGRFR5QaYVDGlv2Zn84hx6RyzqFpVV8YgmLwNFemzmVX+POzqWtK+7k2fLAtxBlNbSrAnbPzEZK+/czWkLbVt/ykeUdmPe7R0FLhd5N0vpb2urhmGdYzkXljTtLWYSFl/F+m/VnEYx78Ye0U12CDAt6YaQveZs54pv6XTQXoSvNQByFqITo2hdQ+qOyJD/MGvcQrxwZA2JUYCkwew/3AgfDVe9Ji65g4R1Q/7XkD9zNTFiCG6bpyk4gtq3C86et/6Vtl6xw0UlsQvw1KnAZ9UzHeJOLFc858H+cklIoo7M04qxJqjLS2TcMIGGXAmMAbX2GJSxUgkQFHp4WGhgV4gBfhMKejWVxEPtNGsEZbJ5es9uJ9ogeP2byoTgfDHVSAVQ6JI8DjR43IcYWZpWhSkINnvWv1YPGEDtSd/gbwvsJ/SkUlrYK5pTwYjOVvsThefgSq8FHn7G5awMbkBwOJPlZ8VlJH3+LWTxXSszZAsafBwfHuUo45uclFKS9ErBqRtK6lPbBLqt9T6A12XlYa/+ktl00quNYuAknl1QGdycCj+mGs+dFF8njgJLEFzHGH9e53BgeZ8g+T7bXJXe7yX8bjDoMFPUuzk7tTrS6Nsd+JrgS4zhtAMbYrUqZUbqZhVsueWqyF+GJbk27D9+nlUuTVA4ILqFE9daQpyV3zDb1qVXd5g3olVx3CVrYL7vzcL1nYxekqL4tMCINdofGRzR0uchZYP3oTnKwD6fN//AcxwPRyZp7EtMJ6sTNWhQhU5K7DSbbAOBVWfvXjkE90oVmForkYmZDg5TJi1wsuRyyIUANglMtZfK7GcKMoyqISrlVVvqZFqHAXqhrimBA7DFOMjMPLQLQxEjOJ0kbC1SwA0883eczBNN0QSZ/y4396gL8448MmCCkOFLJleRQX2UQ97ADKRILjzlwKUAcAADkgXsPKFOejiJgiMgKdLL4mrQV+3mRdBppC5eEEOfxCc4iibrpQya1kKaP8GfdZPlA/Br+qIBd9i+570HcVlljCNucDyTLxcDrfvuXprN2Aq/yqGRwWegJIwMSgDLAkKSSbbREuT6HNNTlgtgYNGupZ6N//uU34nV/1U2IG8/fDxkzC5DpMnwzzI/N+V8udItPLJZHv1zBSr8tSJUCTzoMrthA+T/YVV7dALsAJzwjF2YReJAP0PTd8OCyiZjbdXXnyOAtlKg1K/VsR7sTFL+lba9CxTw3AnKQwWioufeBhynyR2Wt580jSxOxDIssSW2Da3hhXQIqzdFjGd4Y4JvOZrqvuud0OhhOrh5hU054+f7cPxpPldsr46PxpdBdzbvErFdTMPvOukhwwzOxalnBnVdy8Zz6IxZPe1p3KeKoryELPDtbsW3fuMmH+ywUus5k6jQ5fob0RtH/wAa8+viCVSEDandArL8cSjTviCovj1cOfuOx5jHvUsOz4Gdbxu9QByYeF04+jq4nVHYwF6lInd91rhn93wA5EHY34bJkYVc2qJS91ir0GCG+eN2Mz127DUE4RrFDXDs9R3tL+EpOuYDbU+NDL6nYqoD4YTQdrkIR9BGTBEzPWxzMNjgB5h07wmRlZwPm8Sd9jejcAeOO2yqBauMGwmtqW9j/zrxTri3v1eFpHaJ8kyGGJM8dbKJOD7Zjv4ttWPQljpwvBXs6RwZ95t8/uTyPSMKhxKnaKIaBQxXADHTN4Un7HyDcMN8IamkP5zZ6M/mU0Reu8UIZBtaoC+t5+LM3SyPO3D2lirN+Ci/bDfUrctSefeAVyhx8cvLU7udrG4FgHjbcDtLGffwzDdVWGbzTIEluDBwN1mh8hclPaVmU2NQs1NJ9rdwv3JhXLTN3ReYyuJ5bhn2/qvdoh9G3a+b+C7TPvcWmAYNW1cJSzT85Ntvy1UpLFWKOcqkAWfr12XIC+Zvw5CisuOWoUEh2kjL4/BZpOi/3f8oLyW0qV1SWIgDA+zkPOJYEAa78MkiuxPdq+zDX3Fe1dn+vlbMbByjCJ3cp6AmozHYitAb4l3Ae4jQNGo5oHDVesb6lnsJM0K03ijBcUl771K7y/R5Y31Sx33Rc4cewDBMq/7aoc856ZTpXJ0/yg8A6/JFLU5S2HXmt1gRAR3EmeYzPhC2s/oIHiDhRfsEN2PbRXazfJzOVtsQDxAx7rs7LAU3OVYiw4AmzsNCakAnQ6iWMWtBDNZZC6v4h8ouO7fKGex0RmZH92RvOdFguj/1kntM+g1z1HXzHp0NKILLjheIGUKgd7Lb5B0Jv8RmRgE9MYk92vHxnDfbyoVCa0IgG9mFugeIOXW0RgGwfD2EZAW7w4RQ2QdEeDhScGU3zwrYcgb1jmci0M644Bs4ly6ZMFxVtH7YUUYq+AaY+IX7Tg0/uRso77aEUdWCCt8bilsDXr76HysgCmwqO/2v3ACGKIe6Apl6oYZzGEGqAXNx4uBu5vS9sRGdnRxPIXNgYa9dWSVUaB2sK64YgeRPEXCKF6bvP3iu4YZnAZCNWwqXhj/kmiTmfOoM0FBMqfjEbPjvQeIEzrmMKhZeEIJ7fsAb83xvuvc+xY0H6TQX4pdVpWYryM/mxEpjoNowIaC6jp7ao3JHeS0KQG3QFUuMrTyFwIQqLoCNwd/NcmT4NqSuZcWWR5xsZfuFxlXW30Ep5IFR+0mk+cnjxlwYV2/A8oOt6hfrUn9cE6oLhU7ifLoYRUuNyptmeUBbQAZsSERyr673vi0y4vaSMTC5YOaAJjSKdMepMsddv8KEbgjNv4w0Zo+sbNZnbqBZ44w5k8yq+B0jFri8+domYEirKzXO35zI6cAMitfoC4C9U9ITtDjup7Oxe5PRJ2jYUpquZsFfEx0gzqRKr9q98C6nvYXMcKTbOX58L01kyq4xY+fASv2TUvehBp3n7//bScZmr16vMc3rppV7oxSM6HgfLyYgJKiEetJ9S11dO1y3lTqRoAkwFMz/d1aUI3g9EsBJaZXA0yPwvzFf/Ydokjkfp7tIBCSxIlwJGGoNnx5d3lkUYJyMBGK39YgR2nWmevmzvUk/2m2QHdL5d15Yz1XWyY/V2uVA/GBPspdl3MX/BVSbb937gYyoJAuka0c/oYhIj3Vvl0p5cuhGEdy3mraKmVqQS7yBDcoamGewG/RgDLA4MVrcZ8kRtRb3pautK6DBs6wKWb+O5tx6ou5V/R87puevEFJnvGvzz2gQU7/GSvkLhMjUu9ffFeow3lI3Z7FThs/YGe3eXQwfSh1wEV3hIUukP8MW2t2TnO6GdLqwN4sHSKWKSkwZY38Uj20rBZiCUR8NPUyruUE+kGXS1R5nSqCKNopE5c4YbewvPLsN+TbmbfV7vzBvL8jP86lbExBMiu5MjRn1izkaECICI8kv1Y4khlyNa2onX5+BC2ankiGA6I6z1oS5c3htNZu+zyhUSZhx3Asd4a7AkZjJw/6ivN27FjRk8vzCxgPJFo36ib7USdlAVcMaCfXAVCNL+YSd8bcUhUyteO0T9XMPB1vicMsEav/JHaqwC12z4i0XtPzLYmIRvUHiVfmjt32oMbmhQLtE1jHHPGK/iywg3ryLhqof+ebSJQAsd7EyPjgaC0WukGcbYtnRCPPlVVO1zqREUE3dDVqWq51qPW7G6LRztlGSV3MYj8MIq03yLUdcJRsxfu6ERCQbMBZXCfdyJHKuvuMq9vLwYs5ZD02XQZf2AOwzu115lNuFFGGf4PNrQsCQpNXy+LUkoVVjayEXgL9aM7ZyOGmdbwLzMCITTsuH1mWieoq8YYNGB/zxzQ+VKd5Jma1v4tpCLGdA25t43kQ1/B4usNiGCInV4gUY87XRJu5/PSugDAXDNlCdz3FVivT3ixCNTL6ymdyGVG0RdPlj/Yf6apuExi8wbD3VCZRzImr4tGt+Idr43CILerhpnwvbwi08tJaygRuc3bMGBQDFgaHvu3ui+ocmohl6gZzyKc/LF8W0zWFMKGuR3JMz7sOF53LBDKSeachc9cYMdJmPP/wV1U6W6dOoPnDhE6yPgy/1FAnAypGGU6Tq9m3pmkrfA+NQeDIceya2WJ3aX9MGdj9Fzb+MZPFaFKpnKLhBz42EgqAetiiuBrxu8VOyqxKzL+SY7IufNRCAaHOuzzd1QOq/LsxQJQdVugkWOhf+JX52xdWmQorTFCBJgX75++BLZOE85zsbBR4y3g/1VriGXQExEiceF/Lx2a06JT6YndwdIO37ZfLMU68KAJl54T9KIdQfAj0KByGzX6I8qbsidvYGuqrduvfLeIrtk58F961cfKOkQwYUmSy5rExcKiNN7yEhvNkX3LHclz+VKPxym4xspCMgw4usNa+OKkElIhpvn/vp6+jveGlDFo4Fd4zqfd8Sx1qcO7macERhsaIWNj7ZhLL0R+M6WSZM580+AtPb76vkGGlDMZgzRLv2CmPqr/6PL7jJI1orvD8bgq+QQIl09sqdGqRRMQYvXXQbvtODaPf0yr2U5RTzeUPWHS+TeD8kxOernhbnhvzOE6iG/UVoHlH0Vycpkbn/f2PjJPtuuPq/8OsyuObmdyes0AEFcQ6urzbpbEsakKhsQE9Ldw7KJ8kqpyuUG8P9IXmCtEivikYDBKDoYP9h9KDGW7Krkkim9P4gFB4MEfz7y89IF3jQmGiy6YVVOTYcLy81E97CmGrjG+dujEWizN0CyuF0vluozPJgMSZzAQgFTdTkPf/8N3CmfYCCvFLJ4BXRkTFfxlSaddZNQnnIdjUbYTUnJUL9b+pnIRoGXVHGNxaE/5/O9HMzxoSuXtIyh2md9zvT3TJf8K0Cg3bVm+UjQxEHJaW8FgFA78FoxpNNmmAsdBCT1Q1TQWiAe9FlSllgg2BEEEccb6bkt93kF/txgQRxTwIU+ECnA97B5HzCiUVbk7ZHNeKzvM5nFfgu+PbhvGVXvsSuSLsf9ft1b28sUY6KL6US0TOH4tQNqaRJyaIcjPW07VYlFQiyBcyuA2Xew9RRlOTU/e2oB8VbedpdNElQcsnrWbIq6SFsrpE81j2V1L9+kQ9kuAB7ACVFOeClrSeuX3UP3Y+ROy3Ky1flOGT9+VJ56I0YTk/gtxmEjMdAmPShbZuYrDdoNEWscVjBle4hhjYjMoNF5/lAGZz+UXF8FTkIUjEjKGl47uggq4101pOykAB3BrgsAAJHWKx+7W8kes+fxkC07pNv2JzXrCuk9+h9z8hN7irl2TGj+wAOBeEn3C7/rcsQVnIAnOphoAcL4l77P0OMq2b2aMAAO65aRm7hQFBtsjojiXiQNxBkEpINFukDbd83KmxfYWKgar80IyvHIT0JiQcng2OicbjdtIXa0i5n+GNARb5OEVipt4qmGRp/iLCDmV5VLhIWgeM7FsLDqcEGvY4BM7lzglVLqwFbjoYaeNbVZoFK7X3DFkuetDq5Xqj6VjANNUgkjiebsJvWIKEHmAejc/3dIUaF97J/kg+NBnJcdWe6EtUWL5Ped1nm9ylFtcEJuteAou4m8ufjkEo06NLohIT1AdfE4aWkIJm4xDV6iumB9JKQdQFf9xgjiWdP2wPaiAz0kusH9lhsEkeywx9WPyvPzI9S19bDeUOYsbpqnY62eA+gtz9Z7uZN++U9a+LVnYAWWgo4ONKkybZACRIIwgbHPHF/okSBGE+zUK3vrij5PlF6+uS15PNGpIn+K24nN7/l0vC+RnrdAOjJZdY+gnR01E7i5AvXFSgAGloOLPx1MkMJvB3DynFymt2K7ZOkUrBwzQndeqv1pGSL7gAJxKT6Xy1Qakb6I9NplP4iATEXdQWgJevF/vOGGA8fTDmJHgLHeh2syjc0jFKhhtLO9WHJdAyed49ysuruWU7cTeanSIgSowzAKad5faTp6XNBPLfozeylEZmKicniJ86M+R9SgoWXiWIkmBjPUv+QCesuNG9LaB61lq9c0lEXWtFEypFqGsiKyOnQuyOCmTc0/q5krwgI2IY7XY5YTsACiCEL8V14v+jealEzwzPDekzzc1LtShue8rn7uuZ7v/RF9je/cgKhVqcFHljLGaYdQyKNZy2GxknY90AACyTcQJp/amWtvtsXf+9jZvAE2Ha8ezWgLZOP8tdy1ybuTxCcb/DF54bT2678Gp5lvLW7k/UgXBW89evmyEL3gIf1aCBeEfCO+CaIByqA8N7ko9Os5tPpwUZwBSl/oAByjmnHi+lF2eCX9AaVYrYKmHJ2mtu+nLsTiNX8Eafw8TMQ2cSsnyd+hHDiCYmh7IyPed2P89N7smRuNdQqwoW+7BEFwg+kPdhmd/hz7y7DQpKzVLp++3iXue1YpJn2cUkyj3zmGTN66xkFHBCrlS7Iqd6rqKc3fYbulYyOhe0KapyYqTqBt4Qie2u1BgKahqxhg7gUu1fTPH96tkTRVvt2HkpdQCnUSWZWUcSUhVZBw3SWDx7CafYIWpYjIc6E/dEPL/AkOVe2Tw8cuqqOkRx51egWb1q3AzaC89g/Hxy83Bsc1uIcIZ6atQaQQP2aUGJJY/6bQAAAPGQeWlzZy1TJXUStYLXvtrBhb6X7162iKZB3YZvoWjfNiGYDMlP/LRPwMXcEKCI0BjF77sAt3PV7fkkR0D+6vCgtNyESz2U3bg36nVsLIOdpr018c4oeg4yeXJOTFw9zYLwdr2nZp/CTnOp/EIaWwoiangJ/fwptp2qmjh6J3ZNPuo4AIGFgKoVkvBwjQc944vjiIxuKqXbuIldqB3OAlUMq4CITnFAdU5t0O7e8qzLk8XWQUSt6uBnhz+EhvQTBMQ4V5oaCLWjaMpttOD3/0+lUgpPcPR677FD/os5JjkaNjk3C5sJY8gwdrMjlwX0yoijwXGmNUjchPmV4ggZ9ZT7JTICtXLsvY8V4i823pZTmSlL5FsJaujOYcmfGmwyUMCcCQwvkXSYVXLVwg5zkIiOFdIXoVNBRlP0hmIy/ONb73YCPgOPpZx824BgAzCgcJI7VXPGWA0Yg+crYSpwcf5XEI2n0fy/nK0Lxk1Tt/04XjO7J8HK7HInyI/78kmCvgqWlj/3oWOstWhZR7mI9zoQpXiHl90gFCSD398QJJb04uDvB55s1KjlL1QaVGb+ZS3HSEYVSAZGU6WPQCTa7vz1wb9h1VTeaTksG0rU25JPz0ALVtpaGbgIGLoJuNyRCh+D4VgKf58qJf5bH4Y0ITh0ic8dDMFcWvL6Mm0ViD23xMUm0x54twX5wtUHjjWlpcd4rgGDwzGgg7CQhytw8uhcoit0rWvC1DY6mc27HNObX8CuAL+jsUDCxDTX8gwveKlD+Z4b3yrmwgqDd1w8lC5C+gKW54FPGJHRo/lbg8E6igoFhncXYhaWwMf8quNqmioa0cLYrWi1WmGOGZ2KjCZtOsOMcQEaIBJxFLXeNG7jjxnmiff62m41nU0UT1LZKHsdQsKDhX2kAY92bj0E10nr4TiOKDcFIhkpeovvZihdt9EJCFBpKzrYSdnI62WAvl7gRn/mlD4YFsoQUsWFzl8us8xvdsVTWW8+63E3733xBEtorQ0wDj1XSimKj/A7r7Ob40sIB7lot4/b6oxsC6BED6FhjW6trKbeukCbNJ1OOS3kP5YSy86Xy6bSMjfaRlUQCa4VYOl/okZm77iQTBlcQ0LzsZf4TW1HgOPVhYYsrSSGqG5EctAc4f7k3B+0+Qem7Rz+/exSPLUL2LFWsmkz0jkf843Oz4/p/y3jRBuvnlyRbytI/SK1alVx/7JsC40j4ic5Xrfe9hG53dR+unkRduvhQC6QQJCu+c7y0ZgYY0ErGTRka2DtIzfM5hHwz29k+S+m9hh7hyqVwh+gEezL+S54rs5eWTHocQjLiBcbx2Hj2e2nJ/hnlhIKXJQ6luoPTt9I53waS2dvSVWcNh/QhndrVp0gUol3IUqa+DR/VUcM0pFhB7ibA0PUxIDaBwMaoaKuGcLi4Upm2FTqLoFZTic4r+Rh4r3VYScMSp0lEPVrSeY+7VtK7BcZ7xoD8IpC3tjkSn/fO5IvkPWOEmCAZuxo8ZNjCyx2sOaghL71hY50eB/GAjdlUvLA92PZ2wcGuMbYu6+4hKMLIFrNkUO+ch21fZmnd0wfqNtDoyafjdZWfPWWp7OGixUOawWNt8O7rQsfrTCherNa4tGobXy30eI1l6v3wVzz4jN2fMtnPRAi44fbL4G6GhLIWWuqylai0J++CRsQv6joTSD3bFdoe63BodSGIkERujJOlvAq2o2w55CrXTE0JZQ0X4QOuXJjxkKdH27wBqse53noLUTlLmz07r1AMa4m55kkTe5epgg/L88BY2kkt2jkmH5pGlIJAhb9Et/1pn7xPDGxTMYQwTmZCtQcSeJHv3s7/BeRmvgNiPCVHNUembAPHY5wq+lPWZD6tTmt80U6SsTo9eCGNq0Gyj3lHpOoXumPv+6QV6N9+jDjx0UD3BRK+YO7NBx0P5R1Sk+4BpAY0ixlmyO6lIsYqO6+Bu95PQI+/gQ0AU9hzS8BQKjF6/BDgH6Mng00UZ115Pwk7B6tTfjOER4DN+93R6HDXbUOyQJyyvI3DyQ+UNkuCSOOwQjak2yDrYK4z7TFgG6l/r50eVaPNZA5paJm1EGLB/YTqckxfTXNbePnqaj+B/VPdlqz7fF6qqw3XKW+cLZyvq45icroZefiFN2r9ICrW21eer0s/BibjsR1tuFP1A7PIRTMpFIUYECgSUtTJSHZ3vyJrlJknauCuIa+IDmCg4oIczyOWsmJ5Wkm1VNd5Q/cq2nIPmndjQ+rz3SF2kByBIus3zE9m0nGsW18OKQVEHmmqlBOSdY6fYhKs3pS8Y6mWXb/4yeG+yLLIDN+BsUVw45UrT+oCTKgtMpuQHS9UukrPksEtcgPtF2wGFa8GUtw7NErVwSy+4s0WZnB19HFjvnJlq5E/aRgNYzYhZchBnmH0QoGKgae6esG10VGE9D1GJmHJcWzl/oSW7SCqbi6vHbg/NtQLcj+aTJcAzQ93oiRgkZWzdI3hqd4jDhDAYufFDp2PFdkoCTgY+mtx4OOIa/ARfvKGRLxttBTmMGNYPXlkUuYfNBVDwqvtUPzKicGWswU34YIBl4bgDlPmiwgzV5Fw3jiH8q1d2XkKM3t8L4HCtJvt4U/W7hlJYa01Spld1XSW0xiKg8cfhwOpAo2MdcPdZCpOhXqNxMUAbnNhjmPyI3ro/mE0AQGz2WM2ihjh0HEVw24cStcgQbLkb0et7T27AW2XTjQy1CeqQACJ5ZktAphuEhxLMtkG3G5jtHao/jN9hAoFe+6QTIg3gh4jpgnVuIloaTOY5sCJtXeEb7BOLB9y24BKwBpbrrF6owBX9AElSLCvcVmwzWodimSiPm4sxO8bvQCbg8v9H1ne4dvxl8vz41mwgNryr0wOzoujKBSTZmO9Taqa9CZkHosq90Cu6statAo3bQwKDMncwxmkuQasKT2sFZQ9kBod51PdnQleJcUto5uxfmsrwgb5hRbLKd20kK1ZWYcVY9r8OtTc6ScGI0Y1ChZAKm7hnm4vRfYTDcgqhJ1UMXMhM8/WVf5isqoHh2xq0dAp6HqgYTe3+aa0JI1M93OkqIQptWpX6HBt+z7xTKKXbf5eI+zgMM5c24Qbc7anfowIDT9vkhfHfhnJzqztg22/xN5iL3iykRKhHgwqDfXxuCqR4AA=";
-document.documentElement.style.setProperty("--wz-sprite",`url(${WZSPRITE})`);
-function imagenProducto(nombre,tipo){const n=nombre.toLowerCase();let i=0;if(tipo==="caja")i=4;else if(tipo==="fragmento")i=5;else if(n.includes("básica")||n.includes("semanal"))i=6;else if(n.includes("mensual"))i=7;else if(n.includes("2,000"))i=3;else if(n.includes("3,000")||n.includes("6,000"))i=2;else if(n.includes("300")||n.includes("500"))i=1;return `<div class="product-image sprite s${i}"></div>`}
-function crearTarjetas(id,lista,pasarela,tipo){const box=$(id);if(!box)return;box.innerHTML="";lista.forEach(p=>{const d=document.createElement("div");d.className="card";let icono=tipo==="caja"?"📦":tipo==="fragmento"?"🧩":"💎";d.innerHTML=`${imagenProducto(p.nombre,tipo)}<h2>${p.nombre}</h2><div class="price">S/ ${p.precio.toFixed(2)}</div><div class="stock">♾️ Disponible · Cualquier ID</div><button type="button">Comprar ahora</button>`;d.querySelector("button").onclick=()=>abrirPedido(p.nombre,p.precio,pasarela);box.appendChild(d)})}
-function abrirPedido(producto,precio,pasarela){pedidoActual={producto,precio:Number(precio),pasarela:Number(pasarela)};$('resumenPedido').innerHTML=`<div class="status">💎 <b>Producto:</b> ${producto}<br><br>💰 <b>Precio:</b> S/ ${Number(precio).toFixed(2)}<br><br>⚡ <b>Pasarela:</b> ${pasarela}<br><br>📲 <b>Yape:</b> ${YAPE}<br><br>👤 <b>Titular:</b> ${YAPE_TITULAR}</div>`;$('ffid').value="";$('modal').style.display="block"}
-function generarCodigo(){return "WZ-"+crypto.randomUUID().replace(/-/g,"").substring(0,12).toUpperCase()}
-async function crearPedido(){if(!pedidoActual){alert("⚠️ Selecciona un producto.");return}const ffid=$('ffid').value.trim();if(!ffid){alert("⚠️ Ingresa tu ID de Free Fire.");$('ffid').focus();return}const boton=$('btnCrearPedido');boton.disabled=true;boton.textContent="⏳ Creando pedido...";const codigo=generarCodigo();const clienteToken=crypto.randomUUID();const pedido={cliente_token:clienteToken,codigo_pedido:codigo,ffid:ffid,producto:pedidoActual.producto,precio:Number(pedidoActual.precio),pasarela:Number(pedidoActual.pasarela),estado:"Pendiente"};try{const r=await fetch(SUPABASE_URL+"/rest/v1/pedidos",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify(pedido)});const texto=await r.text();let datos;try{datos=JSON.parse(texto)}catch{datos=texto}if(!r.ok)throw new Error(typeof datos==="string"?datos:JSON.stringify(datos));codigoCliente=codigo;localStorage.setItem("weyzon_codigo_cliente",codigo);localStorage.setItem("weyzon_cliente_token",clienteToken);$('modal').style.display="none";$('datosPago').innerHTML=`<div class="status">📦 <b>Código:</b> ${codigo}<br><br>💎 <b>Producto:</b> ${pedido.producto}<br><br>💰 <b>Total:</b> S/ ${pedido.precio.toFixed(2)}<br><br>🎮 <b>ID Free Fire:</b> ${ffid}</div><div class="qr-yape"><img src="qr-yape.jpg" alt="QR de Yape"></div><div class="notice"><b>📲 Yape:</b> ${YAPE}<br><br><b>👤 Titular:</b> ${YAPE_TITULAR}</div><div class="notice">🔑 Guarda el código <b>${codigo}</b> para consultar tu pedido.</div>`;$('modalPago').style.display="block";mostrarAviso("✅ Pedido creado correctamente.")}catch(e){console.error(e);alert("❌ No se pudo crear el pedido.\n\n"+e.message)}finally{boton.disabled=false;boton.textContent="✅ Confirmar pedido"}}
-function enviarComprobante(){if(!codigoCliente){alert("⚠️ No se encontró el código.");return}const ffid=$('ffid').value.trim();const msg="Hola WEYZON -STORE 👋\n\nQuiero enviar el comprobante de mi pedido.\n\n📦 Código: "+codigoCliente+"\n💎 Producto: "+(pedidoActual?.producto||"")+"\n💰 Monto: S/ "+(pedidoActual?.precio||"")+"\n🎮 ID Free Fire: "+ffid;window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank")}
-async function consultarPedido(){const codigo=$('codigoSeguimiento').value.trim().toUpperCase();if(!codigo){alert("⚠️ Ingresa el código.");return}$('resultadoPedido').innerHTML="⏳ Consultando...";try{const r=await fetch(SUPABASE_URL+"/rest/v1/rpc/consultar_pedido",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({codigo})});const datos=await r.json();if(!r.ok)throw new Error(JSON.stringify(datos));if(!datos.length){$('resultadoPedido').innerHTML='<div class="order pending">❌ No encontramos ese pedido.</div>';return}mostrarResultadoPedido(datos[0])}catch(e){console.error(e);$('resultadoPedido').innerHTML='<div class="order pending">❌ Error al consultar el pedido.</div>'}}
-function mostrarResultadoPedido(p){const hecho=p.estado==="Completado";$('resultadoPedido').innerHTML=`<div class="order ${hecho?"done":"pending"}"><h3>${hecho?"✅ Pedido completado":"🟡 Pedido pendiente"}</h3>📦 <b>Código:</b> ${p.codigo_pedido}<br><br>🎮 <b>ID:</b> ${p.ffid}<br><br>💎 <b>Producto:</b> ${p.producto}<br><br>💰 <b>Precio:</b> S/ ${p.precio}<br><br>📅 <b>Creado:</b> ${fecha(p.creado_en)}${p.entregado_en?"<br><br>💎 <b>Entregado:</b> "+fecha(p.entregado_en):""}</div>`}
-async function cargarMiPedido(){const codigo=localStorage.getItem("weyzon_codigo_cliente");if(!codigo){$('listaMisPedidos').innerHTML='<p>📭 No hay un pedido guardado en este dispositivo.</p>';return}try{const r=await fetch(SUPABASE_URL+"/rest/v1/rpc/consultar_pedido",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({codigo})});const d=await r.json();if(!r.ok)throw new Error(JSON.stringify(d));$('listaMisPedidos').innerHTML=d.length?renderPedido(d[0]):"<p>❌ Pedido no encontrado.</p>"}catch(e){$('listaMisPedidos').innerHTML="<p>❌ No se pudo consultar el pedido.</p>"}}
-function renderPedido(p){return `<div class="order ${p.estado==="Completado"?"done":"pending"}"><h3>${p.estado==="Completado"?"✅ Completado":"🟡 Pendiente"}</h3>📦 Código: <b>${p.codigo_pedido}</b><br><br>💎 ${p.producto}<br><br>💰 S/ ${p.precio}<br><br>🎮 ID: ${p.ffid}</div>`}
-async function iniciarAdmin(){const email=$('adminEmail').value.trim();const password=$('adminPassword').value;if(!email||!password){alert("⚠️ Ingresa correo y contraseña.");return}try{const r=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=password",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({email,password})});const d=await r.json();if(!r.ok)throw new Error(d.error_description||"Credenciales incorrectas.");adminToken=d.access_token;localStorage.setItem("weyzon_admin_token",adminToken);mostrarAdmin()}catch(e){alert("❌ No se pudo iniciar sesión.\n\n"+e.message)}}
-function mostrarAdmin(){if(adminToken){$('adminLogin').style.display="none";$('adminPanel').style.display="block";cargarPedidosAdmin()}else{$('adminLogin').style.display="block";$('adminPanel').style.display="none"}}
-async function cargarPedidosAdmin(){if(!adminToken)return;try{const r=await fetch(SUPABASE_URL+"/rest/v1/pedidos?select=*&order=creado_en.desc",{headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+adminToken}});const d=await r.json();if(!r.ok)throw new Error(JSON.stringify(d));const pendientes=d.filter(x=>x.estado!=="Completado").length;const completos=d.length-pendientes;$('adminStats').innerHTML=`<div class="stat">📦 Total: <b>${d.length}</b></div><div class="stat">🟡 Pendientes: <b>${pendientes}</b></div><div class="stat">✅ Completados: <b>${completos}</b></div>`;$('pedidosAdmin').innerHTML=d.length?d.map(p=>`<div class="order ${p.estado==="Completado"?"done":"pending"}"><h3>${p.estado==="Completado"?"✅ Completado":"🟡 Pendiente"}</h3>📦 <b>Código:</b> ${p.codigo_pedido}<br><br>🎮 <b>ID:</b> ${p.ffid}<br><br>💎 <b>Producto:</b> ${p.producto}<br><br>💰 <b>Precio:</b> S/ ${p.precio}<br><br>📅 <b>Creado:</b> ${fecha(p.creado_en)}<br><br>${p.estado!=="Completado"?`<button onclick="marcarEntregado(${p.id})">💎 Diamantes enviados</button>`:"<b class='green'>✅ Entrega registrada</b>"}</div>`).join(""):"<p>📭 No hay pedidos.</p>"}catch(e){console.error(e);$('pedidosAdmin').innerHTML="<p>❌ No se pudieron cargar los pedidos. Comprueba que tu usuario sea administrador en Supabase.</p>"}}
-async function marcarEntregado(id){if(!adminToken)return;if(!confirm("¿Confirmas que los diamantes ya fueron enviados?"))return;try{const r=await fetch(SUPABASE_URL+"/rest/v1/pedidos?id=eq."+id,{method:"PATCH",headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+adminToken,"Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({estado:"Completado",entregado_en:new Date().toISOString()})});if(!r.ok)throw new Error(await r.text());mostrarAviso("💎 Pedido marcado como completado.");cargarPedidosAdmin()}catch(e){alert("❌ No se pudo actualizar.\n\n"+e.message)}}
-function cerrarAdmin(){adminToken="";localStorage.removeItem("weyzon_admin_token");mostrarAdmin()}
-function cerrar(id){if($(id))$(id).style.display="none"}function mostrarAviso(t){const n=$('notify');n.textContent=t;n.style.display="block";clearTimeout(window.wz);window.wz=setTimeout(()=>n.style.display="none",4500)}function fecha(x){return x?new Date(x).toLocaleString("es-PE"):"-"}
-crearTarjetas("productos2",productos2,2);crearTarjetas("productosCajas",cajas,2,"caja");crearTarjetas("productosFragmentos",fragmentos,2,"fragmento");
-setInterval(()=>{if(adminToken)cargarPedidosAdmin()},8000);setInterval(()=>{if($('seguimiento').style.display!=="none"&&$('codigoSeguimiento').value.trim())consultarPedido()},10000);
+
+const YAPE="964225888";
+const WHATSAPP="51964225888";
+const SOPORTE_24_7="51920757455";
+const TIKTOK="https://www.tiktok.com/@blezitocuentaoficial?_r=1&_t=ZS-99tiWtvfO9V";
+const YAPE_TITULAR="Ruth Nery Cabana M.";
+const ADMIN_EMAIL="brayanantoni2288@gmail.com";
+
+const productos2=[
+{nombre:"100 💎",precio:3.30},
+{nombre:"300 💎",precio:9.40},
+{nombre:"500 💎",precio:14.30},
+{nombre:"1,000 💎",precio:25.34},
+{nombre:"2,000 💎",precio:53},
+{nombre:"3,000 💎",precio:75},
+{nombre:"6,000 💎",precio:128},
+{nombre:"Membresía básica",precio:2},
+{nombre:"Membresía semanal",precio:6.20},
+{nombre:"Membresía mensual",precio:31}
+];
+
+const cajas=[
+{nombre:"30 Cajas",precio:19.90,tipo:"caja"},
+{nombre:"60 Cajas",precio:36.50,tipo:"caja"},
+{nombre:"120 Cajas",precio:73.50,tipo:"caja"}
+];
+
+const fragmentos=[
+{nombre:"90 Fragmentos",precio:15.99,tipo:"fragmento"},
+{nombre:"150 Fragmentos",precio:21.30,tipo:"fragmento"},
+{nombre:"300 Fragmentos",precio:36.90,tipo:"fragmento"},
+{nombre:"600 Fragmentos",precio:73.50,tipo:"fragmento"},
+{nombre:"1200 Fragmentos",precio:135.90,tipo:"fragmento"}
+];
+
+let pedidoActual=null;
+let codigoCliente=localStorage.getItem("weyzon_codigo_cliente")||"";
+let adminToken=localStorage.getItem("weyzon_admin_token")||"";
+
+function $(id){
+return document.getElementById(id);
+}
+
+function mostrar(id){
+["pasarela2","cajasFragmentos","misPedidos","seguimiento","admin"].forEach(x=>{
+const e=$(x);
+if(e)e.style.display=x===id?"block":"none";
+});
+
+if(id==="misPedidos")cargarMiPedido();
+if(id==="admin")mostrarAdmin();
+}
+const WZIMG={
+diamond1:"diamond1.jpg",
+diamond2:"diamond2.jpg",
+diamond3:"diamond3.jpg",
+diamond4:"diamond4.jpg",
+cajas:"cajas.jpg",
+semanal:"semanal.jpg",
+mensual:"mensual.jpg"
+};
+
+function imagenProducto(nombre,tipo){
+const n=nombre.toLowerCase();
+let src=WZIMG.diamond1;
+
+if(tipo==="caja"){
+src=WZIMG.cajas;
+}else if(tipo==="fragmento"){
+src=WZIMG.diamond2;
+}else if(n.includes("básica")){
+src=WZIMG.semanal;
+}else if(n.includes("semanal")){
+src=WZIMG.semanal;
+}else if(n.includes("mensual")){
+src=WZIMG.mensual;
+}else if(n.includes("2,000")){
+src=WZIMG.diamond4;
+}else if(n.includes("3,000")||n.includes("6,000")){
+src=WZIMG.diamond3;
+}else if(n.includes("300")||n.includes("500")){
+src=WZIMG.diamond2;
+}
+
+return `<img src="${src}" alt="${nombre}" loading="lazy">`;
+}
+
+function crearTarjetas(id,lista,pasarela,tipo){
+const box=$(id);
+if(!box)return;
+
+box.innerHTML="";
+
+lista.forEach(p=>{
+const d=document.createElement("div");
+d.className="card";
+
+let icono=
+tipo==="caja"?"📦":
+tipo==="fragmento"?"🧩":"💎";
+
+let etiqueta=
+tipo==="caja"?"Caja especial":
+tipo==="fragmento"?"Fragmentos":
+p.nombre.toLowerCase().includes("membresía")?"Membresía":"Diamantes";
+
+d.innerHTML=`
+<div class="product-image">
+${imagenProducto(p.nombre,tipo)}
+</div>
+
+<span class="icon">${icono}</span>
+
+<h2>${p.nombre}</h2>
+
+<span class="tag">${etiqueta}</span>
+
+<div class="price">
+S/ ${p.precio.toFixed(2)}
+</div>
+
+<div class="stock">
+♾️ Disponible · Cualquier ID
+</div>
+
+<button type="button">
+Comprar ahora
+</button>
+`;
+
+d.querySelector("button").onclick=()=>{
+abrirPedido(p.nombre,p.precio,pasarela);
+};
+
+box.appendChild(d);
+});
+}
+
+function abrirPedido(producto,precio,pasarela){
+pedidoActual={
+producto,
+precio:Number(precio),
+pasarela:Number(pasarela)
+};
+
+$("resumenPedido").innerHTML=`
+<div class="status">
+💎 <b>Producto:</b> ${producto}
+<br><br>
+💰 <b>Precio:</b> S/ ${Number(precio).toFixed(2)}
+<br><br>
+⚡ <b>Pasarela:</b> ${pasarela}
+<br><br>
+📲 <b>Yape:</b> ${YAPE}
+<br><br>
+👤 <b>Titular:</b> ${YAPE_TITULAR}
+</div>
+`;
+
+$("ffid").value="";
+$("modal").style.display="block";
+}
+
+function generarCodigo(){
+return "WZ-"+
+crypto.randomUUID()
+.replace(/-/g,"")
+.substring(0,12)
+.toUpperCase();
+}
+
+async function crearPedido(){
+if(!pedidoActual){
+alert("⚠️ Selecciona un producto.");
+return;
+}
+
+const ffid=$("ffid").value.trim();
+
+if(!ffid){
+alert("⚠️ Ingresa tu ID de Free Fire.");
+$("ffid").focus();
+return;
+}
+
+const boton=$("btnCrearPedido");
+
+boton.disabled=true;
+boton.textContent="⏳ Creando pedido...";
+
+const codigo=generarCodigo();
+const clienteToken=crypto.randomUUID();
+
+const pedido={
+cliente_token:clienteToken,
+codigo_pedido:codigo,
+ffid:ffid,
+producto:pedidoActual.producto,
+precio:Number(pedidoActual.precio),
+pasarela:Number(pedidoActual.pasarela),
+estado:"Pendiente"
+};
+
+try{
+
+const r=await fetch(
+SUPABASE_URL+"/rest/v1/pedidos",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+SUPABASE_KEY,
+"Content-Type":"application/json",
+"Prefer":"return=minimal"
+},
+body:JSON.stringify(pedido)
+}
+);
+
+const texto=await r.text();
+
+let datos;
+
+try{
+datos=JSON.parse(texto);
+}catch{
+datos=texto;
+}
+
+if(!r.ok){
+throw new Error(
+typeof datos==="string"
+?datos
+:JSON.stringify(datos)
+);
+}
+
+codigoCliente=codigo;
+
+localStorage.setItem(
+"weyzon_codigo_cliente",
+codigo
+);
+
+localStorage.setItem(
+"weyzon_cliente_token",
+clienteToken
+);
+
+$("modal").style.display="none";
+
+$("datosPago").innerHTML=`
+<div class="status">
+
+📦 <b>Código:</b> ${codigo}
+<br><br>
+
+💎 <b>Producto:</b> ${pedido.producto}
+<br><br>
+
+💰 <b>Total:</b> S/ ${pedido.precio.toFixed(2)}
+<br><br>
+
+🎮 <b>ID Free Fire:</b> ${ffid}
+<br><br>
+
+⚡ <b>Pasarela:</b> ${pedido.pasarela}
+
+</div>
+
+<div class="qr-yape">
+<img src="qr-yape.jpg" alt="QR de Yape">
+</div>
+
+<div class="notice">
+<b>📲 Yape:</b> ${YAPE}
+<br><br>
+<b>👤 Titular:</b> ${YAPE_TITULAR}
+</div>
+
+<div class="notice">
+🔑 Guarda el código
+<b>${codigo}</b>
+para consultar tu pedido.
+</div>
+`;
+
+$("modalPago").style.display="block";
+
+mostrarAviso("✅ Pedido creado correctamente.");
+
+}catch(e){
+
+console.error(e);
+
+alert(
+"❌ No se pudo crear el pedido.\n\n"+
+e.message
+);
+
+}finally{
+
+boton.disabled=false;
+boton.textContent="✅ Confirmar pedido";
+
+}
+}
+
+function enviarComprobante(){
+
+if(!codigoCliente){
+alert("⚠️ No se encontró el código.");
+return;
+}
+
+const ffid=$("ffid").value.trim();
+
+const msg=
+"Hola WEYZON -STORE 👋\n\n"+
+"Quiero enviar el comprobante de mi pedido.\n\n"+
+"📦 Código: "+codigoCliente+"\n"+
+"💎 Producto: "+(pedidoActual?.producto||"")+"\n"+
+"💰 Monto: S/ "+(pedidoActual?.precio||"")+"\n"+
+"🎮 ID Free Fire: "+ffid;
+
+window.open(
+"https://wa.me/"+WHATSAPP+
+"?text="+encodeURIComponent(msg),
+"_blank"
+);
+}
+
+async function consultarPedido(){
+
+const codigo=$("codigoSeguimiento")
+.value.trim()
+.toUpperCase();
+
+if(!codigo){
+alert("⚠️ Ingresa el código.");
+return;
+}
+
+$("resultadoPedido").innerHTML="⏳ Consultando...";
+
+try{
+
+const r=await fetch(
+SUPABASE_URL+
+"/rest/v1/rpc/consultar_pedido",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+SUPABASE_KEY,
+"Content-Type":"application/json"
+},
+body:JSON.stringify({codigo})
+}
+);
+
+const datos=await r.json();
+
+if(!r.ok){
+throw new Error(JSON.stringify(datos));
+}
+
+if(!datos.length){
+
+$("resultadoPedido").innerHTML=
+'<div class="order pending">❌ No encontramos ese pedido.</div>';
+
+return;
+}
+
+mostrarResultadoPedido(datos[0]);
+
+}catch(e){
+
+console.error(e);
+
+$("resultadoPedido").innerHTML=
+'<div class="order pending">❌ Error al consultar el pedido.</div>';
+
+}
+}
+async function cargarMiPedido(){
+
+const codigo=localStorage.getItem("weyzon_codigo_cliente");
+
+if(!codigo){
+$("listaMisPedidos").innerHTML=
+'<p>📭 No hay un pedido guardado en este dispositivo.</p>';
+return;
+}
+
+try{
+
+const r=await fetch(
+SUPABASE_URL+"/rest/v1/rpc/consultar_pedido",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+SUPABASE_KEY,
+"Content-Type":"application/json"
+},
+body:JSON.stringify({codigo})
+}
+);
+
+const d=await r.json();
+
+if(!r.ok){
+throw new Error(JSON.stringify(d));
+}
+
+$("listaMisPedidos").innerHTML=
+d.length
+?renderPedido(d[0])
+:"<p>❌ Pedido no encontrado.</p>";
+
+}catch(e){
+
+console.error(e);
+
+$("listaMisPedidos").innerHTML=
+"<p>❌ No se pudo consultar el pedido.</p>";
+
+}
+}
+
+function renderPedido(p){
+
+return `
+<div class="order ${
+p.estado==="Completado"?"done":"pending"
+}">
+
+<h3>
+${
+p.estado==="Completado"
+?"✅ Completado"
+:"🟡 Pendiente"
+}
+</h3>
+
+📦 Código:
+<b>${p.codigo_pedido}</b>
+
+<br><br>
+
+💎 ${p.producto}
+
+<br><br>
+
+💰 S/ ${p.precio}
+
+<br><br>
+
+🎮 ID: ${p.ffid}
+
+</div>
+`;
+
+}
+
+async function iniciarAdmin(){
+
+const email=$("adminEmail").value.trim();
+const password=$("adminPassword").value;
+
+if(!email||!password){
+alert("⚠️ Ingresa correo y contraseña.");
+return;
+}
+
+try{
+
+const r=await fetch(
+SUPABASE_URL+
+"/auth/v1/token?grant_type=password",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+email,
+password
+})
+}
+);
+
+const d=await r.json();
+
+if(!r.ok){
+throw new Error(
+d.error_description||
+"Credenciales incorrectas."
+);
+}
+
+adminToken=d.access_token;
+
+localStorage.setItem(
+"weyzon_admin_token",
+adminToken
+);
+
+mostrarAdmin();
+cargarPedidosAdmin();
+
+}catch(e){
+
+alert(
+"❌ No se pudo iniciar sesión.\n\n"+
+e.message
+);
+
+}
+}
+
+function mostrarAdmin(){
+
+if(adminToken){
+
+$("adminLogin").style.display="none";
+$("adminPanel").style.display="block";
+
+cargarPedidosAdmin();
+
+}else{
+
+$("adminLogin").style.display="block";
+$("adminPanel").style.display="none";
+
+}
+}
+
+async function cargarPedidosAdmin(){
+
+if(!adminToken)return;
+
+try{
+
+const r=await fetch(
+SUPABASE_URL+
+"/rest/v1/pedidos?select=*&order=creado_en.desc",
+{
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+adminToken
+}
+}
+);
+
+const d=await r.json();
+
+if(!r.ok){
+throw new Error(JSON.stringify(d));
+}
+
+const pendientes=
+d.filter(x=>x.estado!=="Completado").length;
+
+const completos=d.length-pendientes;
+
+$("adminStats").innerHTML=`
+
+<div class="stat">
+📦 Total: <b>${d.length}</b>
+</div>
+
+<div class="stat">
+🟡 Pendientes: <b>${pendientes}</b>
+</div>
+
+<div class="stat">
+✅ Completados: <b>${completos}</b>
+</div>
+
+`;
+
+$("pedidosAdmin").innerHTML=
+
+d.length
+
+?d.map(p=>`
+
+<div class="order ${
+p.estado==="Completado"
+?"done"
+:"pending"
+}">
+
+<h3>
+${
+p.estado==="Completado"
+?"✅ Completado"
+:"🟡 Pendiente"
+}
+</h3>
+
+📦 <b>Código:</b> ${p.codigo_pedido}
+
+<br><br>
+
+🎮 <b>ID:</b> ${p.ffid}
+
+<br><br>
+
+💎 <b>Producto:</b> ${p.producto}
+
+<br><br>
+
+💰 <b>Precio:</b> S/ ${p.precio}
+
+<br><br>
+
+⚡ <b>Pasarela:</b> ${p.pasarela}
+
+<br><br>
+
+📅 <b>Creado:</b> ${fecha(p.creado_en)}
+
+<br><br>
+
+${
+p.estado!=="Completado"
+
+?`<button onclick="marcarEntregado(${p.id})">
+💎 Diamantes enviados
+</button>`
+
+:"<b class='green'>✅ Entrega registrada</b>"
+}
+
+</div>
+
+`).join("")
+
+:"<p>📭 No hay pedidos.</p>";
+
+}catch(e){
+
+console.error(e);
+
+$("pedidosAdmin").innerHTML=
+"<p>❌ No se pudieron cargar los pedidos. Comprueba que tu usuario sea administrador en Supabase.</p>";
+
+}
+}
+
+async function marcarEntregado(id){
+
+if(!adminToken)return;
+
+if(!confirm(
+"¿Confirmas que los diamantes ya fueron enviados?"
+))return;
+
+try{
+
+const r=await fetch(
+SUPABASE_URL+
+"/rest/v1/pedidos?id=eq."+id,
+{
+method:"PATCH",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+adminToken,
+"Content-Type":"application/json",
+"Prefer":"return=minimal"
+},
+body:JSON.stringify({
+estado:"Completado",
+entregado_en:new Date().toISOString()
+})
+}
+);
+
+if(!r.ok){
+throw new Error(await r.text());
+}
+
+mostrarAviso(
+"💎 Pedido marcado como completado."
+);
+
+cargarPedidosAdmin();
+
+}catch(e){
+
+alert(
+"❌ No se pudo actualizar.\n\n"+
+e.message
+);
+
+}
+}
+
+function cerrarAdmin(){
+
+adminToken="";
+
+localStorage.removeItem(
+"weyzon_admin_token"
+);
+
+$("adminLogin").style.display="block";
+$("adminPanel").style.display="none";
+
+}
+
+function cerrar(id){
+
+if($(id)){
+$(id).style.display="none";
+}
+
+}
+
+function mostrarAviso(t){
+
+const n=$("notify");
+
+n.textContent=t;
+n.style.display="block";
+
+clearTimeout(window.wz);
+
+window.wz=setTimeout(
+()=>n.style.display="none",
+4500
+);
+
+}
+
+function fecha(x){
+
+return x
+?new Date(x).toLocaleString("es-PE")
+:"-";
+
+}
+
+crearTarjetas(
+"productos2",
+productos2,
+2
+);
+
+crearTarjetas(
+"productosCajas",
+cajas,
+2,
+"caja"
+);
+
+crearTarjetas(
+"productosFragmentos",
+fragmentos,
+2,
+"fragmento"
+);
+
+setInterval(()=>{
+
+if(adminToken){
+cargarPedidosAdmin();
+}
+
+},8000);
+
+setInterval(()=>{
+
+if(
+$("seguimiento").style.display!=="none"&&
+$("codigoSeguimiento").value.trim()
+){
+
+consultarPedido();
+
+}
+
+},10000);
+
 </script>
+
 </body>
 </html>
