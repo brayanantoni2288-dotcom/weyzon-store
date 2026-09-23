@@ -10,71 +10,97 @@
 <meta property="og:site_name" content="WEYZON -STORE">
 <meta property="og:type" content="website">
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;color:#fff;background:#02040b;min-height:100vh;overflow-x:hidden}body:before,body:after{content:"";position:fixed;inset:auto;width:280px;height:280px;border-radius:50%;filter:blur(70px);opacity:.28;z-index:-3;pointer-events:none}body:before{background:#087cff;top:8%;left:-90px;animation:orb 9s ease-in-out infinite alternate}body:after{background:#e9003c;right:-100px;bottom:5%;animation:orb 11s ease-in-out infinite alternate-reverse}@keyframes orb{to{transform:translate(80px,-50px) scale(1.25)}}
-.bg{position:fixed;inset:0;overflow:hidden;z-index:-2;pointer-events:none;background:radial-gradient(circle at 50% 10%,#09234a 0,#030711 42%,#010207 100%)}.particle{position:absolute;opacity:.55;animation:float 9s linear infinite;color:#28a9ff;text-shadow:0 0 18px #168cff;font-size:22px}.p1{left:7%;top:28%;animation-delay:0s}.p2{left:18%;top:72%;animation-delay:2s;color:#f21d55}.p3{left:75%;top:22%;animation-delay:4s}.p4{left:88%;top:66%;animation-delay:1s;color:#ff315f}.p5{left:48%;top:14%;animation-delay:5s}.p6{left:58%;top:82%;animation-delay:3s}@keyframes float{0%,100%{transform:translateY(0) rotate(0);opacity:.25}50%{transform:translateY(-45px) rotate(25deg);opacity:.8}}
-header{position:relative;padding:28px 15px;text-align:center;background:linear-gradient(135deg,#01040a,#061b3c 55%,#19020a);border-bottom:2px solid #168cff;box-shadow:0 0 30px #087cff55;overflow:hidden}header:after{content:"";position:absolute;left:-20%;right:-20%;bottom:0;height:2px;background:linear-gradient(90deg,transparent,#168cff,#ff174f,#168cff,transparent);animation:scan 4s linear infinite}@keyframes scan{from{transform:translateX(-30%)}to{transform:translateX(30%)}}.logo{font-size:34px;font-weight:900;text-shadow:0 0 12px #168cff,0 0 28px #168cff,0 0 35px #f03;animation:glow 2.5s ease-in-out infinite alternate}@keyframes glow{to{text-shadow:0 0 20px #168cff,0 0 38px #168cff,0 0 45px #f03}}header p{margin:8px 0 0;color:#ddd}.socials{display:flex;justify-content:center;gap:12px;margin:18px 0 10px}.social-btn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;text-decoration:none;font-size:24px;border:2px solid #25f4ee;background:#000;color:#fff;box-shadow:0 0 15px #25f4ee55;transition:.25s}.social-btn:hover{transform:scale(1.12) rotate(5deg)}.support{text-align:center;margin:10px 0 5px;color:#ddd}.support a{color:#42aaff;font-weight:bold;text-decoration:none}
-nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#030712ee;position:sticky;top:0;z-index:10;border-bottom:1px solid #0d4d86;backdrop-filter:blur(10px)}nav button{white-space:nowrap;border:1px solid #168cff;background:linear-gradient(135deg,#061b38,#090b19);color:#fff;padding:12px 16px;border-radius:12px;font-weight:bold;transition:.25s;box-shadow:0 0 10px #168cff22}nav button:hover{transform:translateY(-2px);box-shadow:0 0 18px #168cff66;border-color:#ff174f}
-main{max-width:1050px;margin:auto;padding:18px}h1{text-align:center;font-size:30px;text-shadow:0 0 18px #168cff}.hero{text-align:center;padding:20px 12px;margin-bottom:18px;border:1px solid #0b69bb;border-radius:22px;background:linear-gradient(135deg,#03102aee,#070912dd);box-shadow:0 0 30px #0077ff22;position:relative;overflow:hidden}.hero .hero-icon{font-size:65px;animation:diamondFloat 3s ease-in-out infinite}@keyframes diamondFloat{50%{transform:translateY(-12px) rotate(5deg);filter:drop-shadow(0 0 20px #168cff)}}.section-title{font-size:23px;font-weight:bold;text-align:center;margin:24px 0 14px}.section{padding:18px;background:#030916dd;border:1px solid #174d88;border-radius:18px;box-shadow:0 0 28px #006cff18}.section-head{text-align:center;padding:14px;border-radius:18px;margin-bottom:16px;background:linear-gradient(135deg,#041a38,#13050d);border:1px solid #168cff}.section-head .big{font-size:52px;display:block;animation:floatIcon 3s ease-in-out infinite}@keyframes floatIcon{50%{transform:translateY(-8px) rotate(-4deg)}}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.card,.order,.panel{background:linear-gradient(145deg,rgba(5,15,34,.97),rgba(9,4,18,.97));border:1px solid #168cff;border-radius:18px;padding:18px;box-shadow:0 0 16px #0077ff22;margin-bottom:12px;position:relative;overflow:hidden;transition:.28s}.card:before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg,transparent 25%,#168cff44 50%,transparent 75%);transform:translateX(-100%);transition:.6s}.card:hover:before{transform:translateX(100%)}.card:hover{transform:translateY(-6px);border-color:#ff174f;box-shadow:0 12px 30px #006cff44,0 0 18px #ff174f22}.card{text-align:center}.card h2{margin:5px 0 10px}.card .icon{font-size:48px;display:block;animation:floatIcon 3.2s ease-in-out infinite}.price{font-size:23px;font-weight:bold;color:#42aaff;margin:10px;text-shadow:0 0 10px #168cff66}.stock{font-size:13px;color:#91d5ff;margin:9px}.tag{display:inline-block;padding:6px 10px;border-radius:20px;background:#071f3d;border:1px solid #168cff;color:#7dccff;font-size:12px}.card button,.primary,.order button{width:100%;padding:13px;border:0;border-radius:12px;background:linear-gradient(135deg,#006cff,#1555ff 55%,#e5003f);color:#fff;font-weight:bold;font-size:15px;transition:.25s;box-shadow:0 0 14px #006cff33}.card button:hover,.primary:hover,.order button:hover{filter:brightness(1.15);transform:scale(1.02);box-shadow:0 0 22px #168cff66}.notice{background:#081a31;border:1px solid #168cff;padding:11px;border-radius:11px;font-size:13px;margin:10px 0}.rednotice{background:#2a0712;border-color:#ff174f}.green{color:#36e98b}button{cursor:pointer}.input,input{width:100%;padding:14px;margin:7px 0;border-radius:12px;border:1px solid #287ec8;background:#070d1c;color:#fff;font-size:16px}.modal{display:none;position:fixed;inset:0;background:#000d;z-index:50;padding:18px;overflow:auto;backdrop-filter:blur(7px)}.box{max-width:600px;margin:5% auto;background:linear-gradient(145deg,#07152d,#10091c);border:2px solid #168cff;border-radius:22px;padding:24px;position:relative;box-shadow:0 0 40px #006cff44}.close{position:absolute;right:12px;top:12px;background:#172b4d;color:#fff;border:1px solid #287ec8;border-radius:10px;padding:9px 13px;font-size:19px}.status{padding:14px;margin:12px 0;border-radius:12px;background:#081e35;border:1px solid #168cff}.pending{border-color:#d79500}.done{border-color:#18c86b}#notify{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#071b32;border:1px solid #168cff;padding:14px 20px;border-radius:13px;z-index:100;max-width:90%;text-align:center}.small{font-size:13px;opacity:.8}.stats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.stat{padding:11px;border:1px solid #286a9c;border-radius:10px;background:#07152b}.qr-yape{text-align:center;margin:18px 0}.qr-yape img{width:280px;max-width:90%;height:auto;display:block;margin:auto;padding:10px;background:#fff;border-radius:16px;box-shadow:0 0 25px #168cff66}.hidden{display:none!important}@media(max-width:600px){.logo{font-size:28px}h1{font-size:25px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:13px}.card h2{font-size:17px}.price{font-size:20px}.card .icon{font-size:40px}}
-</style>
-</head>
-<body><div class="bg"><span class="particle p1">💎</span><span class="particle p2">✦</span><span class="particle p3">💎</span><span class="particle p4">◆</span><span class="particle p5">✦</span><span class="particle p6">💎</span></div>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;color:#fff;background:#0d0d0d;min-height:100vh;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;inset:auto;width:280px;height:280px;border-radius:50%;filter:blur(70px);opacity:.10;z-index:-3;pointer-events:none}
+body:before{background:#087cff;top:8%;left:-90px;animation:orb 9s ease-in-out infinite alternate}
+body:after{background:#e9003c;right:-100px;bottom:5%;animation:orb 11s ease-in-out infinite alternate-reverse}
+@keyframes orb{to{transform:translate(80px,-50px) scale(1.25)}}
 
-<header>
-<div class="logo">💎 WEYZON -STORE</div>
-<p>Recargas Free Fire rápidas y seguras</p>
-<div class="socials"><a class="social-btn" href="https://www.tiktok.com/@blezitocuentaoficial?_r=1&_t=ZS-99tiWtvfO9V" target="_blank" rel="noopener noreferrer" aria-label="TikTok de WEYZON -STORE">🎵</a></div>
-<div class="support">🛟 Soporte 24/7: <a href="https://wa.me/51920757455" target="_blank" rel="noopener noreferrer">+51 920 757 455</a></div>
-</header>
+.bg{position:fixed;inset:0;overflow:hidden;z-index:-2;pointer-events:none;background:linear-gradient(180deg,#0d0d0d 0%,#151515 48%,#101010 100%)}
+.particle{position:absolute;opacity:.35;animation:float 9s linear infinite;color:#aaa;text-shadow:0 0 12px #777;font-size:22px}
+.p1{left:7%;top:28%;animation-delay:0s}.p2{left:18%;top:72%;animation-delay:2s;color:#888}
+.p3{left:75%;top:22%;animation-delay:4s}.p4{left:88%;top:66%;animation-delay:1s;color:#777}
+.p5{left:48%;top:14%;animation-delay:5s}.p6{left:58%;top:82%;animation-delay:3s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0);opacity:.15}50%{transform:translateY(-45px) rotate(25deg);opacity:.5}}
 
-<nav>
-<button onclick="mostrar('pasarela2')">💎 Diamantes</button>
-<button onclick="mostrar('cajasFragmentos')">📦 Cajas y fragmentos</button>
-<button onclick="mostrar('misPedidos')">📋 Mis pedidos</button>
-<button onclick="mostrar('seguimiento')">🔎 Seguimiento</button>
-<button onclick="mostrar('admin')">🔐 Admin</button>
-</nav>
+header{position:relative;padding:28px 15px;text-align:center;background:#101010;border-bottom:1px solid #3b2c1d;box-shadow:0 8px 30px #0008;overflow:hidden}
+header:after{content:"";position:absolute;left:-20%;right:-20%;bottom:0;height:2px;background:linear-gradient(90deg,transparent,#168cff,#777,#168cff,transparent);animation:scan 4s linear infinite}
+@keyframes scan{from{transform:translateX(-30%)}to{transform:translateX(30%)}}
+.logo{font-size:34px;font-weight:900;text-shadow:0 0 12px #168cff,0 0 28px #168cff;animation:glow 2.5s ease-in-out infinite alternate}
+@keyframes glow{to{text-shadow:0 0 20px #168cff,0 0 38px #168cff}}
+header p{margin:8px 0 0;color:#ddd}
+.socials{display:flex;justify-content:center;gap:12px;margin:18px 0 10px}
+.social-btn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;text-decoration:none;font-size:24px;border:2px solid #555;background:#000;color:#fff}
+.support{text-align:center;margin:10px 0 5px;color:#ddd}
+.support a{color:#42aaff;font-weight:bold;text-decoration:none}
 
-<main>
-<section id="pasarela2">
-<div class="hero"><span class="hero-icon">💎</span><h1>RECARGA TUS DIAMANTES</h1><p>⚡ Entrega rápida · 🔒 Compra segura · ♾️ Stock disponible</p></div>
-<div class="section-head"><span class="big">💎</span><h2>⚡ Pasarela 2</h2><p>Diamantes y membresías</p></div>
-<div id="productos2" class="grid"></div>
-</section>
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#101010;position:sticky;top:0;z-index:10;border-bottom:1px solid #30271f;backdrop-filter:blur(10px)}
+nav button{white-space:nowrap;border:1px solid #444;background:#191919;color:#fff;padding:12px 16px;border-radius:12px;font-weight:bold;transition:.25s}
+nav button:hover{transform:translateY(-2px);border-color:#777}
 
-<section id="cajasFragmentos" style="display:none">
-<div class="section-head"><span class="big">📦 🧩</span><h2>📦 Cajas y fragmentos</h2><p>Productos especiales de Free Fire</p></div>
-<h3 class="section-title">📦 Cajas</h3><div id="productosCajas" class="grid"></div>
-<h3 class="section-title">🧩 Fragmentos</h3><div id="productosFragmentos" class="grid"></div>
-</section>
+main{max-width:980px;margin:auto;padding:20px 16px}
+h1{text-align:center;font-size:30px}
 
-<section id="misPedidos" style="display:none" class="section">
-<h2>📋 Mis pedidos</h2>
-<div id="listaMisPedidos">Cargando...</div>
-</section>
+.hero{display:none}
 
-<section id="seguimiento" style="display:none" class="section">
-<h2>🔎 Seguimiento</h2>
-<input id="codigoSeguimiento" placeholder="Ejemplo: WZ-AB12CD34">
-<button class="primary" onclick="consultarPedido()">🔎 Consultar pedido</button>
-<div id="resultadoPedido"></div>
-</section>
+.section{padding:0;background:transparent;border:0}
+.section-title{font-size:23px;font-weight:bold;text-align:center;margin:24px 0 14px}
 
-<section id="admin" style="display:none" class="section">
-<div id="adminLogin">
-<h2>🔐 Panel administrador</h2>
-<p class="small">Usa el correo y contraseña de tu cuenta de Supabase.</p>
-<input id="adminEmail" value="brayanantoni2288@gmail.com" placeholder="Correo">
-<input id="adminPassword" type="password" placeholder="Contraseña">
-<button class="primary" onclick="iniciarAdmin()">🔐 Iniciar sesión</button>
-</div>
-<div id="adminPanel" style="display:none">
-<h2>📊 Pedidos</h2>
-<div id="adminStats" class="stats"></div>
-<button class="primary" onclick="cargarPedidosAdmin()">🔄 Actualizar</button>
-<div id="pedidosAdmin" style="margin-top:14px"></div>
-<button class="primary" onclick="cerrarAdmin()">🚪 Cerrar sesión</button>
-</div>
+.section-head{display:flex;align-items:center;gap:14px;text-align:left;padding:16px 8px;margin-bottom:18px;background:#111;border:0;border-bottom:1px solid #33281d;border-radius:0}
+.section-head .big{display:none}
+.section-head h2{font-size:26px;margin:0;letter-spacing:.2px}
+.section-head h2:before{content:"";display:inline-block;width:7px;height:38px;border-radius:5px;background:#f49a16;margin-right:15px;vertical-align:middle}
+.section-head p{margin-left:auto;color:#aaa;font-weight:700}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+
+.card{background:#181818;border:1px solid #332c26;border-radius:22px;padding:16px 14px 18px;box-shadow:0 8px 24px #0008;color:#fff;position:relative;overflow:hidden;transition:.28s;text-align:center}
+.card:hover{transform:translateY(-3px);border-color:#624820;box-shadow:0 12px 28px #000b}
+
+.product-image{height:290px;border:0;border-radius:18px;background:#0b0b0b;box-shadow:none;margin-bottom:14px;overflow:hidden;position:relative}
+.product-image img{width:100%;height:100%;object-fit:cover;display:block;border-radius:18px}
+.product-image:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 35%,#fff1 50%,transparent 65%);transform:translateX(-120%);animation:imageSweep 5s linear infinite;pointer-events:none}
+@keyframes imageSweep{to{transform:translateX(120%)}}
+
+.card h2{font-size:20px;line-height:1.25;min-height:50px;margin:12px 0 8px;text-transform:uppercase}
+.price{font-size:23px;font-weight:900;color:#f4f4f4;margin:10px;text-shadow:none}
+.stock{font-size:13px;color:#8f8f8f;margin:9px}
+.tag{display:none}
+
+.card button,.primary,.order button{width:100%;padding:13px;border:0;border-radius:12px;background:#f49a16;color:#111;font-weight:900;font-size:15px;transition:.25s;box-shadow:none}
+.card button:hover,.primary:hover,.order button:hover{filter:brightness(1.08);transform:scale(1.02)}
+
+.notice{background:#181818;border:1px solid #3a3a3a;padding:11px;border-radius:11px;font-size:13px;margin:10px 0}
+.rednotice{background:#2a1710;border-color:#68401e}
+.green{color:#36e98b}
+
+button{cursor:pointer}
+.input,input{width:100%;padding:14px;margin:7px 0;border-radius:12px;border:1px solid #444;background:#111;color:#fff;font-size:16px}
+
+.modal{display:none;position:fixed;inset:0;background:#000d;z-index:50;padding:18px;overflow:auto;backdrop-filter:blur(7px)}
+.box{max-width:600px;margin:5% auto;background:#181818;border:1px solid #555;border-radius:22px;padding:24px;position:relative;box-shadow:0 0 40px #000}
+.close{position:absolute;right:12px;top:12px;background:#292929;color:#fff;border:1px solid #555;border-radius:10px;padding:9px 13px;font-size:19px}
+.status{padding:14px;margin:12px 0;border-radius:12px;background:#181818;border:1px solid #444}
+.pending{border-color:#8b6200}.done{border-color:#18c86b}
+
+#notify{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#181818;border:1px solid #555;padding:14px 20px;border-radius:13px;z-index:100;max-width:90%;text-align:center}
+.small{font-size:13px;opacity:.8}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.stat{padding:11px;border:1px solid #444;border-radius:10px;background:#181818}
+
+.qr-yape{text-align:center;margin:18px 0}
+.qr-yape img{width:280px;max-width:90%;height:auto;display:block;margin:auto;padding:10px;background:#fff;border-radius:16px}
+.hidden{display:none!important}
+
+@media(max-width:600px){
+.logo{font-size:28px}
+h1{font-size:25px}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{padding:13px}
+.card h2{font-size:17px}
+.price{font-size:20px}
+.product-image{height:220px}
+}
 </section>
 </main>
 
@@ -99,10 +125,10 @@ main{max-width:1050px;margin:auto;padding:18px}h1{text-align:center;font-size:30
 <button class="primary" onclick="enviarComprobante()">📲 Enviar comprobante</button>
 </div>
 </div>
+
 <script>
 const SUPABASE_URL="https://dwvlhdatthuedsjtrtna.supabase.co";
 const SUPABASE_KEY="sb_publishable_K2lzpQJ9oj-fF-_VGtNdQw_4OSJ-nxX";
-
 const YAPE="964225888";
 const WHATSAPP="51964225888";
 const SOPORTE_24_7="51920757455";
@@ -123,127 +149,68 @@ const productos2=[
 {nombre:"Membresía mensual",precio:31}
 ];
 
-const cajas=[
-{nombre:"30 Cajas",precio:19.90,tipo:"caja"},
-{nombre:"60 Cajas",precio:36.50,tipo:"caja"},
-{nombre:"120 Cajas",precio:73.50,tipo:"caja"}
-];
-
-const fragmentos=[
-{nombre:"90 Fragmentos",precio:15.99,tipo:"fragmento"},
-{nombre:"150 Fragmentos",precio:21.30,tipo:"fragmento"},
-{nombre:"300 Fragmentos",precio:36.90,tipo:"fragmento"},
-{nombre:"600 Fragmentos",precio:73.50,tipo:"fragmento"},
-{nombre:"1200 Fragmentos",precio:135.90,tipo:"fragmento"}
-];
+const cajas=[{nombre:"30 Cajas",precio:19.90,tipo:"caja"},{nombre:"60 Cajas",precio:36.50,tipo:"caja"},{nombre:"120 Cajas",precio:73.50,tipo:"caja"}];
+const fragmentos=[{nombre:"90 Fragmentos",precio:15.99,tipo:"fragmento"},{nombre:"150 Fragmentos",precio:21.30,tipo:"fragmento"},{nombre:"300 Fragmentos",precio:36.90,tipo:"fragmento"},{nombre:"600 Fragmentos",precio:73.50,tipo:"fragmento"},{nombre:"1200 Fragmentos",precio:135.90,tipo:"fragmento"}];
 
 let pedidoActual=null;
 let codigoCliente=localStorage.getItem("weyzon_codigo_cliente")||"";
 let adminToken=localStorage.getItem("weyzon_admin_token")||"";
 
-function $(id){
-return document.getElementById(id)
-}
+function $(id){return document.getElementById(id)}
 
 function mostrar(id){
 ["pasarela2","cajasFragmentos","misPedidos","seguimiento","admin"].forEach(x=>{
-const e=$(x);
-if(e)e.style.display=x===id?"block":"none";
+const e=$(x);if(e)e.style.display=x===id?"block":"none";
 });
-
 if(id==="misPedidos")cargarMiPedido();
 if(id==="admin")mostrarAdmin();
 }
 
+const WZIMG={"diamond1.jpg":"diamond1.jpg","diamond2.jpg":"diamond2.jpg","diamond3.jpg":"diamond3.jpg","diamond4.jpg":"diamond4.jpg","cajas.jpg":"cajas.jpg","semanal.jpg":"semanal.jpg","mensual.jpg":"mensual.jpg"};
+
+function imagenProducto(nombre,tipo){
+const n=nombre.toLowerCase();
+let src=WZIMG.diamond1;
+if(tipo==="caja") src=WZIMG.cajas;
+else if(tipo==="fragmento") src=WZIMG.diamond2;
+else if(n.includes("semanal")) src=WZIMG.semanal;
+else if(n.includes("mensual")) src=WZIMG.mensual;
+else if(n.includes("2,000")) src=WZIMG.diamond4;
+else if(n.includes("3,000")||n.includes("6,000")) src=WZIMG.diamond3;
+else if(n.includes("300")||n.includes("500")) src=WZIMG.diamond2;
+return `<img src="${src}" alt="${nombre}" loading="lazy">`;
+}
+
 function crearTarjetas(id,lista,pasarela,tipo){
-const box=$(id);
-if(!box)return;
-
-box.innerHTML="";
-
+const box=$(id);if(!box)return;box.innerHTML="";
 lista.forEach(p=>{
-const d=document.createElement("div");
-d.className="card";
-
+const d=document.createElement("div");d.className="card";
 let icono=tipo==="caja"?"📦":tipo==="fragmento"?"🧩":"💎";
-
-let etiqueta=
-tipo==="caja"
-?"Caja especial"
-:tipo==="fragmento"
-?"Fragmentos"
-:"Diamantes / membresía";
-
-d.innerHTML=`
-<span class="icon">${icono}</span>
-<h2>${p.nombre}</h2>
-<span class="tag">${etiqueta}</span>
-<div class="price">S/ ${p.precio.toFixed(2)}</div>
-<div class="stock">♾️ Disponible · Cualquier ID</div>
-<button type="button">Comprar ahora</button>
-`;
-
-d.querySelector("button").onclick=()=>{
-abrirPedido(p.nombre,p.precio,pasarela)
-};
-
+let etiqueta=tipo==="caja"?"Caja especial":tipo==="fragmento"?"Fragmentos":p.nombre.toLowerCase().includes("membresía")?"Membresía":"Diamantes";
+d.innerHTML=`<div class="product-image">${imagenProducto(p.nombre,tipo)}</div><span class="icon">${icono}</span><h2>${p.nombre}</h2><span class="tag">${etiqueta}</span><div class="price">S/ ${p.precio.toFixed(2)}</div><div class="stock">♾️ Disponible · Cualquier ID</div><button type="button">Comprar ahora</button>`;
+d.querySelector("button").onclick=()=>abrirPedido(p.nombre,p.precio,pasarela);
 box.appendChild(d);
 });
 }
 
 function abrirPedido(producto,precio,pasarela){
-
-pedidoActual={
-producto,
-precio:Number(precio),
-pasarela:Number(pasarela)
-};
-
-$("resumenPedido").innerHTML=`
-<div class="status">
-💎 <b>Producto:</b> ${producto}
-<br><br>
-💰 <b>Precio:</b> S/ ${Number(precio).toFixed(2)}
-<br><br>
-⚡ <b>Pasarela:</b> ${pasarela}
-<br><br>
-📲 <b>Yape:</b> ${YAPE}
-<br><br>
-👤 <b>Titular:</b> ${YAPE_TITULAR}
-</div>
-`;
-
+pedidoActual={producto,precio:Number(precio),pasarela:Number(pasarela)};
+$("resumenPedido").innerHTML=`<div class="status">💎 <b>Producto:</b> ${producto}<br><br>💰 <b>Precio:</b> S/ ${Number(precio).toFixed(2)}<br><br>⚡ <b>Pasarela:</b> ${pasarela}<br><br>📲 <b>Yape:</b> ${YAPE}<br><br>👤 <b>Titular:</b> ${YAPE_TITULAR}</div>`;
 $("ffid").value="";
 $("modal").style.display="block";
 }
 
 function generarCodigo(){
-return "WZ-"+
-crypto.randomUUID()
-.replace(/-/g,"")
-.substring(0,12)
-.toUpperCase();
+return "WZ-"+crypto.randomUUID().replace(/-/g,"").substring(0,12).toUpperCase();
 }
 
 async function crearPedido(){
-
-if(!pedidoActual){
-alert("⚠️ Selecciona un producto.");
-return
-}
-
+if(!pedidoActual){alert("⚠️ Selecciona un producto.");return}
 const ffid=$("ffid").value.trim();
-
-if(!ffid){
-alert("⚠️ Ingresa tu ID de Free Fire.");
-$("ffid").focus();
-return
-}
+if(!ffid){alert("⚠️ Ingresa tu ID de Free Fire.");$("ffid").focus();return}
 
 const boton=$("btnCrearPedido");
-
-boton.disabled=true;
-boton.textContent="⏳ Creando pedido...";
+boton.disabled=true;boton.textContent="⏳ Creando pedido...";
 
 const codigo=generarCodigo();
 const clienteToken=crypto.randomUUID();
@@ -259,10 +226,7 @@ estado:"Pendiente"
 };
 
 try{
-
-const r=await fetch(
-SUPABASE_URL+"/rest/v1/pedidos",
-{
+const r=await fetch(SUPABASE_URL+"/rest/v1/pedidos",{
 method:"POST",
 headers:{
 "apikey":SUPABASE_KEY,
@@ -271,624 +235,185 @@ headers:{
 "Prefer":"return=minimal"
 },
 body:JSON.stringify(pedido)
-}
-);
+});
 
 const texto=await r.text();
+let datos;try{datos=JSON.parse(texto)}catch{datos=texto}
 
-let datos;
-
-try{
-datos=JSON.parse(texto)
-}catch{
-datos=texto
-}
-
-if(!r.ok){
-throw new Error(
-typeof datos==="string"
-?datos
-:JSON.stringify(datos)
-);
-}
+if(!r.ok)throw new Error(typeof datos==="string"?datos:JSON.stringify(datos));
 
 codigoCliente=codigo;
-
-localStorage.setItem(
-"weyzon_codigo_cliente",
-codigo
-);
-
-localStorage.setItem(
-"weyzon_cliente_token",
-clienteToken
-);
+localStorage.setItem("weyzon_codigo_cliente",codigo);
+localStorage.setItem("weyzon_cliente_token",clienteToken);
 
 $("modal").style.display="none";
 
 $("datosPago").innerHTML=`
 <div class="status">
-📦 <b>Código:</b> ${codigo}
-<br><br>
-💎 <b>Producto:</b> ${pedido.producto}
-<br><br>
-💰 <b>Total:</b> S/ ${pedido.precio.toFixed(2)}
-<br><br>
-🎮 <b>ID Free Fire:</b> ${ffid}
-<br><br>
+📦 <b>Código:</b> ${codigo}<br><br>
+💎 <b>Producto:</b> ${pedido.producto}<br><br>
+💰 <b>Total:</b> S/ ${pedido.precio.toFixed(2)}<br><br>
+🎮 <b>ID Free Fire:</b> ${ffid}<br><br>
 ⚡ <b>Pasarela:</b> ${pedido.pasarela}
 </div>
-
 <div class="qr-yape">
 <img src="qr-yape.jpg" alt="QR de Yape">
 </div>
-
-<div class="notice">
-<b>📲 Yape:</b> ${YAPE}
-<br><br>
-<b>👤 Titular:</b> ${YAPE_TITULAR}
-</div>
-
-<div class="notice">
-🔑 Guarda el código <b>${codigo}</b>
-para consultar tu pedido.
-</div>
-`;
+<div class="notice"><b>📲 Yape:</b> ${YAPE}<br><br><b>👤 Titular:</b> ${YAPE_TITULAR}</div>
+<div class="notice">🔑 Guarda el código <b>${codigo}</b> para consultar tu pedido.</div>`;
 
 $("modalPago").style.display="block";
-
 mostrarAviso("✅ Pedido creado correctamente.");
-
 }catch(e){
-
 console.error(e);
-
-alert(
-"❌ No se pudo crear el pedido.\n\n"+
-e.message
-);
-
+alert("❌ No se pudo crear el pedido.\n\n"+e.message);
 }finally{
-
-boton.disabled=false;
-boton.textContent="✅ Confirmar pedido";
-
+boton.disabled=false;boton.textContent="✅ Confirmar pedido";
 }
-
 }
 
 function enviarComprobante(){
-
-if(!codigoCliente){
-alert("⚠️ No se encontró el código.");
-return
-}
-
+if(!codigoCliente){alert("⚠️ No se encontró el código.");return}
 const ffid=$("ffid").value.trim();
-
-const msg=
-"Hola WEYZON -STORE 👋\n\n"+
-"Quiero enviar el comprobante de mi pedido.\n\n"+
-"📦 Código: "+codigoCliente+"\n"+
-"💎 Producto: "+(pedidoActual?.producto||"")+"\n"+
-"💰 Monto: S/ "+(pedidoActual?.precio||"")+"\n"+
-"🎮 ID Free Fire: "+ffid;
-
-window.open(
-"https://wa.me/"+WHATSAPP+
-"?text="+encodeURIComponent(msg),
-"_blank"
-);
+const msg="Hola WEYZON -STORE 👋\n\nQuiero enviar el comprobante de mi pedido.\n\n📦 Código: "+codigoCliente+"\n💎 Producto: "+(pedidoActual?.producto||"")+"\n💰 Monto: S/ "+(pedidoActual?.precio||"")+"\n🎮 ID Free Fire: "+ffid;
+window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank");
 }
 
 async function consultarPedido(){
-
-const codigo=
-$("codigoSeguimiento")
-.value
-.trim()
-.toUpperCase();
-
-if(!codigo){
-alert("⚠️ Ingresa el código.");
-return
-}
-
+const codigo=$("codigoSeguimiento").value.trim().toUpperCase();
+if(!codigo){alert("⚠️ Ingresa el código.");return}
 $("resultadoPedido").innerHTML="⏳ Consultando...";
-
 try{
-
-const r=await fetch(
-SUPABASE_URL+"/rest/v1/rpc/consultar_pedido",
-{
+const r=await fetch(SUPABASE_URL+"/rest/v1/rpc/consultar_pedido",{
 method:"POST",
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":"Bearer "+SUPABASE_KEY,
-"Content-Type":"application/json"
-},
+headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json"},
 body:JSON.stringify({codigo})
-}
-);
-
+});
 const datos=await r.json();
-
-if(!r.ok){
-throw new Error(JSON.stringify(datos));
-}
-
-if(!datos.length){
-
-$("resultadoPedido").innerHTML=
-'<div class="order pending">'+
-'❌ No encontramos ese pedido.'+
-'</div>';
-
-return
-}
-
+if(!r.ok)throw new Error(JSON.stringify(datos));
+if(!datos.length){$("resultadoPedido").innerHTML='<div class="order pending">❌ No encontramos ese pedido.</div>';return}
 mostrarResultadoPedido(datos[0]);
-
 }catch(e){
-
 console.error(e);
-
-$("resultadoPedido").innerHTML=
-'<div class="order pending">'+
-'❌ Error al consultar el pedido.'+
-'</div>';
-
+$("resultadoPedido").innerHTML='<div class="order pending">❌ Error al consultar el pedido.</div>';
 }
-
 }
 
 function mostrarResultadoPedido(p){
-
 const hecho=p.estado==="Completado";
-
-$("resultadoPedido").innerHTML=`
-<div class="order ${hecho?"done":"pending"}">
-
-<h3>
-${hecho?"✅ Pedido completado":"🟡 Pedido pendiente"}
-</h3>
-
-📦 <b>Código:</b> ${p.codigo_pedido}
-<br><br>
-
-🎮 <b>ID:</b> ${p.ffid}
-<br><br>
-
-💎 <b>Producto:</b> ${p.producto}
-<br><br>
-
-💰 <b>Precio:</b> S/ ${p.precio}
-<br><br>
-
-⚡ <b>Pasarela:</b> ${p.pasarela}
-<br><br>
-
-📅 <b>Creado:</b> ${fecha(p.creado_en)}
-
-${p.entregado_en?
-"<br><br>💎 <b>Entregado:</b> "+
-fecha(p.entregado_en)
-:""}
-
-</div>
-`;
-
+$("resultadoPedido").innerHTML=`<div class="order ${hecho?"done":"pending"}"><h3>${hecho?"✅ Pedido completado":"🟡 Pedido pendiente"}</h3>📦 <b>Código:</b> ${p.codigo_pedido}<br><br>🎮 <b>ID:</b> ${p.ffid}<br><br>💎 <b>Producto:</b> ${p.producto}<br><br>💰 <b>Precio:</b> S/ ${p.precio}<br><br>⚡ <b>Pasarela:</b> ${p.pasarela}<br><br>📅 <b>Creado:</b> ${fecha(p.creado_en)}${p.entregado_en?"<br><br>💎 <b>Entregado:</b> "+fecha(p.entregado_en):""}</div>`;
 }
 
 async function cargarMiPedido(){
-
-const codigo=
-localStorage.getItem("weyzon_codigo_cliente");
-
-if(!codigo){
-
-$("listaMisPedidos").innerHTML=
-'<p>📭 No hay un pedido guardado en este dispositivo.</p>';
-
-return
-}
-
+const codigo=localStorage.getItem("weyzon_codigo_cliente");
+if(!codigo){$("listaMisPedidos").innerHTML='<p>📭 No hay un pedido guardado en este dispositivo.</p>';return}
 try{
-
-const r=await fetch(
-SUPABASE_URL+"/rest/v1/rpc/consultar_pedido",
-{
+const r=await fetch(SUPABASE_URL+"/rest/v1/rpc/consultar_pedido",{
 method:"POST",
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":"Bearer "+SUPABASE_KEY,
-"Content-Type":"application/json"
-},
+headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json"},
 body:JSON.stringify({codigo})
-}
-);
-
+});
 const d=await r.json();
-
-if(!r.ok){
-throw new Error(JSON.stringify(d));
-}
-
-$("listaMisPedidos").innerHTML=
-d.length
-?renderPedido(d[0])
-:"<p>❌ Pedido no encontrado.</p>";
-
-}catch(e){
-
-$("listaMisPedidos").innerHTML=
-"<p>❌ No se pudo consultar el pedido.</p>";
-
-}
-
+if(!r.ok)throw new Error(JSON.stringify(d));
+$("listaMisPedidos").innerHTML=d.length?renderPedido(d[0]):"<p>❌ Pedido no encontrado.</p>";
+}catch(e){$("listaMisPedidos").innerHTML="<p>❌ No se pudo consultar el pedido.</p>"}
 }
 
 function renderPedido(p){
-
-return `
-<div class="order ${p.estado==="Completado"?"done":"pending"}">
-
-<h3>
-${p.estado==="Completado"
-?"✅ Completado"
-:"🟡 Pendiente"}
-</h3>
-
-📦 Código:
-<b>${p.codigo_pedido}</b>
-
-<br><br>
-
-💎 ${p.producto}
-
-<br><br>
-
-💰 S/ ${p.precio}
-
-<br><br>
-
-🎮 ID: ${p.ffid}
-
-</div>
-`;
-
+return `<div class="order ${p.estado==="Completado"?"done":"pending"}"><h3>${p.estado==="Completado"?"✅ Completado":"🟡 Pendiente"}</h3>📦 Código: <b>${p.codigo_pedido}</b><br><br>💎 ${p.producto}<br><br>💰 S/ ${p.precio}<br><br>🎮 ID: ${p.ffid}</div>`;
 }
-async function iniciarAdmin(){
 
+async function iniciarAdmin(){
 const email=$("adminEmail").value.trim();
 const password=$("adminPassword").value;
-
-if(!email||!password){
-alert("⚠️ Ingresa correo y contraseña.");
-return
-}
-
+if(!email||!password){alert("⚠️ Ingresa correo y contraseña.");return}
 try{
-
-const r=await fetch(
-SUPABASE_URL+"/auth/v1/token?grant_type=password",
-{
+const r=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=password",{
 method:"POST",
-headers:{
-"apikey":SUPABASE_KEY,
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-email,
-password
-})
-}
-);
-
+headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},
+body:JSON.stringify({email,password})
+});
 const d=await r.json();
-
-if(!r.ok){
-throw new Error(
-d.error_description||
-"Credenciales incorrectas."
-);
-}
-
+if(!r.ok)throw new Error(d.error_description||"Credenciales incorrectas.");
 adminToken=d.access_token;
-
-localStorage.setItem(
-"weyzon_admin_token",
-adminToken
-);
-
+localStorage.setItem("weyzon_admin_token",adminToken);
 mostrarAdmin();
 cargarPedidosAdmin();
-
-}catch(e){
-
-alert(
-"❌ No se pudo iniciar sesión.\n\n"+
-e.message
-);
-
-}
-
+}catch(e){alert("❌ No se pudo iniciar sesión.\n\n"+e.message)}
 }
 
 function mostrarAdmin(){
-
 if(adminToken){
-
 $("adminLogin").style.display="none";
 $("adminPanel").style.display="block";
-
 cargarPedidosAdmin();
-
 }else{
-
 $("adminLogin").style.display="block";
 $("adminPanel").style.display="none";
-
 }
-
 }
 
 async function cargarPedidosAdmin(){
-
 if(!adminToken)return;
-
 try{
-
-const r=await fetch(
-SUPABASE_URL+
-"/rest/v1/pedidos?select=*&order=creado_en.desc",
-{
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":"Bearer "+adminToken
-}
-}
-);
-
+const r=await fetch(SUPABASE_URL+"/rest/v1/pedidos?select=*&order=creado_en.desc",{
+headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+adminToken}
+});
 const d=await r.json();
-
-if(!r.ok){
-throw new Error(JSON.stringify(d));
-}
-
-const pendientes=
-d.filter(
-x=>x.estado!=="Completado"
-).length;
-
-const completos=
-d.length-pendientes;
-
-$("adminStats").innerHTML=`
-
-<div class="stat">
-📦 Total: <b>${d.length}</b>
-</div>
-
-<div class="stat">
-🟡 Pendientes: <b>${pendientes}</b>
-</div>
-
-<div class="stat">
-✅ Completados: <b>${completos}</b>
-</div>
-
-`;
-
-$("pedidosAdmin").innerHTML=
-d.length
-?
-d.map(p=>`
-
-<div class="order ${p.estado==="Completado"?"done":"pending"}">
-
-<h3>
-${p.estado==="Completado"
-?"✅ Completado"
-:"🟡 Pendiente"}
-</h3>
-
-📦 <b>Código:</b>
-${p.codigo_pedido}
-
-<br><br>
-
-🎮 <b>ID:</b>
-${p.ffid}
-
-<br><br>
-
-💎 <b>Producto:</b>
-${p.producto}
-
-<br><br>
-
-💰 <b>Precio:</b>
-S/ ${p.precio}
-
-<br><br>
-
-⚡ <b>Pasarela:</b>
-${p.pasarela}
-
-<br><br>
-
-📅 <b>Creado:</b>
-${fecha(p.creado_en)}
-
-<br><br>
-
-${
-p.estado!=="Completado"
-
-?
-`<button onclick="marcarEntregado(${p.id})">
-💎 Diamantes enviados
-</button>`
-
-:
-
-"<b class='green'>✅ Entrega registrada</b>"
-}
-
-</div>
-
-`).join("")
-
-:
-
-"<p>📭 No hay pedidos.</p>";
-
+if(!r.ok)throw new Error(JSON.stringify(d));
+const pendientes=d.filter(x=>x.estado!=="Completado").length;
+const completos=d.length-pendientes;
+$("adminStats").innerHTML=`<div class="stat">📦 Total: <b>${d.length}</b></div><div class="stat">🟡 Pendientes: <b>${pendientes}</b></div><div class="stat">✅ Completados: <b>${completos}</b></div>`;
+$("pedidosAdmin").innerHTML=d.length?d.map(p=>`<div class="order ${p.estado==="Completado"?"done":"pending"}"><h3>${p.estado==="Completado"?"✅ Completado":"🟡 Pendiente"}</h3>📦 <b>Código:</b> ${p.codigo_pedido}<br><br>🎮 <b>ID:</b> ${p.ffid}<br><br>💎 <b>Producto:</b> ${p.producto}<br><br>💰 <b>Precio:</b> S/ ${p.precio}<br><br>⚡ <b>Pasarela:</b> ${p.pasarela}<br><br>📅 <b>Creado:</b> ${fecha(p.creado_en)}<br><br>${p.estado!=="Completado"?`<button onclick="marcarEntregado(${p.id})">💎 Diamantes enviados</button>`:"<b class='green'>✅ Entrega registrada</b>"}</div>`).join(""):"<p>📭 No hay pedidos.</p>";
 }catch(e){
-
 console.error(e);
-
-$("pedidosAdmin").innerHTML=
-"<p>❌ No se pudieron cargar los pedidos. Comprueba que tu usuario sea administrador en Supabase.</p>";
-
+$("pedidosAdmin").innerHTML="<p>❌ No se pudieron cargar los pedidos. Comprueba que tu usuario sea administrador en Supabase.</p>";
 }
-
 }
 
 async function marcarEntregado(id){
-
 if(!adminToken)return;
-
-if(
-!confirm(
-"¿Confirmas que los diamantes ya fueron enviados?"
-)
-)return;
-
+if(!confirm("¿Confirmas que los diamantes ya fueron enviados?"))return;
 try{
-
-const r=await fetch(
-SUPABASE_URL+
-"/rest/v1/pedidos?id=eq."+id,
-{
+const r=await fetch(SUPABASE_URL+"/rest/v1/pedidos?id=eq."+id,{
 method:"PATCH",
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":"Bearer "+adminToken,
-"Content-Type":"application/json",
-"Prefer":"return=minimal"
-},
-body:JSON.stringify({
-estado:"Completado",
-entregado_en:new Date().toISOString()
-})
-}
-);
-
-if(!r.ok){
-throw new Error(await r.text());
-}
-
-mostrarAviso(
-"💎 Pedido marcado como completado."
-);
-
+headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+adminToken,"Content-Type":"application/json","Prefer":"return=minimal"},
+body:JSON.stringify({estado:"Completado",entregado_en:new Date().toISOString()})
+});
+if(!r.ok)throw new Error(await r.text());
+mostrarAviso("💎 Pedido marcado como completado.");
 cargarPedidosAdmin();
-
-}catch(e){
-
-alert(
-"❌ No se pudo actualizar.\n\n"+
-e.message
-);
-
-}
-
+}catch(e){alert("❌ No se pudo actualizar.\n\n"+e.message)}
 }
 
 function cerrarAdmin(){
-
 adminToken="";
-
-localStorage.removeItem(
-"weyzon_admin_token"
-);
-
+localStorage.removeItem("weyzon_admin_token");
 $("adminLogin").style.display="block";
 $("adminPanel").style.display="none";
-
 }
 
-function cerrar(id){
-
-if($(id))
-$(id).style.display="none";
-
-}
+function cerrar(id){if($(id))$(id).style.display="none"}
 
 function mostrarAviso(t){
-
-const n=$("notify");
-
-n.textContent=t;
-n.style.display="block";
-
+const n=$("notify");n.textContent=t;n.style.display="block";
 clearTimeout(window.wz);
-
-window.wz=setTimeout(
-()=>{
-n.style.display="none"
-},
-4500
-);
-
+window.wz=setTimeout(()=>n.style.display="none",4500);
 }
 
-function fecha(x){
+function fecha(x){return x?new Date(x).toLocaleString("es-PE"):"-"}
 
-return x
-?new Date(x).toLocaleString("es-PE")
-:"-";
-
-}
-
-crearTarjetas(
-"productos2",
-productos2,
-2
-);
-
-crearTarjetas(
-"productosCajas",
-cajas,
-2,
-"caja"
-);
-
-crearTarjetas(
-"productosFragmentos",
-fragmentos,
-2,
-"fragmento"
-);
+crearTarjetas("productos2",productos2,2);
+crearTarjetas("productosCajas",cajas,2,"caja");
+crearTarjetas("productosFragmentos",fragmentos,2,"fragmento");
 
 setInterval(()=>{
-
-if(adminToken)
-cargarPedidosAdmin();
-
+if(adminToken)cargarPedidosAdmin();
 },8000);
 
 setInterval(()=>{
-
-if(
-$("seguimiento").style.display!=="none" &&
-$("codigoSeguimiento").value.trim()
-)
-consultarPedido();
-
+if($("seguimiento").style.display!=="none"&&$("codigoSeguimiento").value.trim())consultarPedido();
 },10000);
-
 </script>
 </body>
 </html>
