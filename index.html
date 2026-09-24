@@ -1,422 +1,93 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WEYZON -STORE | Diamantes Free Fire</title>
-<style>
-:root{
-  --bg:#07090f;--panel:#101522;--panel2:#151c2b;--line:#283248;
-  --text:#f7f9ff;--muted:#9ca8bd;--blue:#2e9cff;--blue2:#66c4ff;
-  --orange:#ff8a00;--red:#ff3d55;--green:#28d17c;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:
- radial-gradient(circle at 15% 0%,rgba(30,126,255,.20),transparent 28%),
- radial-gradient(circle at 90% 15%,rgba(255,91,0,.12),transparent 25%),
- var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-a{color:inherit;text-decoration:none}
-button,input{font:inherit}
-button{cursor:pointer}
-.nav{position:sticky;top:0;z-index:20;background:rgba(7,9,15,.90);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.navin{max-width:1180px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-weight:1000;font-size:22px;letter-spacing:.5px}
-.logo span{color:var(--blue2)}
-.navlinks{display:flex;gap:18px;font-size:14px;color:#dbe4f5}
-.navlinks a:hover{color:var(--blue2)}
-.hero{max-width:1180px;margin:auto;padding:70px 18px 45px;text-align:center}
-.badge{display:inline-block;border:1px solid #315071;background:#0e1828;color:#82caff;padding:7px 13px;border-radius:999px;font-size:12px;font-weight:800}
-.hero h1{font-size:clamp(38px,7vw,76px);margin:18px 0 10px;line-height:.98}
-.grad{background:linear-gradient(90deg,#fff,#65c7ff,#ff9b33);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{max-width:720px;margin:0 auto;color:var(--muted);line-height:1.6}
-.heroBtns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px}
-.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:900}
-.btnBlue{background:linear-gradient(135deg,#168cff,#55c1ff);color:#04101c}
-.btnOrange{background:linear-gradient(135deg,#ff6d00,#ffad28);color:#170900}
-.btnGhost{background:#121a29;color:#fff;border:1px solid var(--line)}
-.container{max-width:1180px;margin:auto;padding:20px 18px 70px}
-.section{margin-top:28px}
-.sectionTitle{font-size:28px;margin:0 0 7px}
-.sub{color:var(--muted);margin:0 0 18px}
-.card{background:linear-gradient(180deg,rgba(20,28,43,.94),rgba(12,17,27,.96));border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 50px rgba(0,0,0,.25)}
-.idbox{padding:20px;display:grid;grid-template-columns:1fr auto;gap:12px}
-.input{width:100%;background:#080d16;color:#fff;border:1px solid #34415a;border-radius:13px;padding:15px;outline:none}
-.input:focus{border-color:#4db6ff;box-shadow:0 0 0 3px rgba(46,156,255,.12)}
-.verifyResult{grid-column:1/-1;padding:12px;border-radius:12px;background:#0c1522;color:#a9b7cc;display:none}
-.verifyResult.ok{display:block;border:1px solid rgba(40,209,124,.35);color:#7af0ae}
-.verifyResult.err{display:block;border:1px solid rgba(255,61,85,.35);color:#ff9aaa}
-.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
-.tab{border:1px solid #3a465c;background:#111927;color:#dce7f8;border-radius:999px;padding:11px 16px;font-weight:900}
-.tab.active{background:linear-gradient(135deg,#229dff,#72d2ff);color:#04101c;border-color:transparent}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.product{position:relative;overflow:hidden;padding:10px;transition:.2s transform,.2s border-color}
-.product:hover{transform:translateY(-4px);border-color:#486382}
-.prodImg{height:205px;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#0b67b5,#07182d);position:relative;display:flex;align-items:center;justify-content:center}
-.prodImg img{width:100%;height:100%;object-fit:cover;display:block}
-.prodImgFallback{font-size:68px}
-.discount{position:absolute;top:12px;right:12px;background:#ff4054;color:white;padding:7px 9px;border-radius:9px;font-weight:1000;font-size:12px}
-.productBody{padding:12px 7px 5px}
-.productType{font-size:12px;color:#a9b7cc}
-.productName{font-size:21px;font-weight:1000;margin:5px 0}
-.old{text-decoration:line-through;color:#77839a;font-size:13px}
-.price{font-size:23px;color:#ff8a5c;font-weight:1000;margin:3px 0 12px}
-.detail{width:100%;border:0;border-radius:12px;background:linear-gradient(135deg,#ff7800,#ffb329);padding:12px;color:#1c0b00;font-weight:1000}
-.empty{padding:30px;text-align:center;color:var(--muted)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.step{padding:20px}.num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#123c61;color:#70c9ff;font-weight:1000}.step h3{margin:12px 0 6px}.step p{color:var(--muted);line-height:1.5;margin:0}
-.payment{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:22px}
-.qr{width:min(310px,100%);display:block;margin:0 auto;border-radius:18px;border:1px solid var(--line)}
-.payNum{font-size:25px;font-weight:1000;letter-spacing:1px;margin:8px 0}
-.row{display:flex;gap:10px;flex-wrap:wrap}
-.notice{padding:13px 15px;border-radius:12px;background:#101a29;border:1px solid #293950;color:#b8c6da;line-height:1.5}
-.track{padding:20px}
-.trackResult{margin-top:15px;display:none}.trackResult.show{display:block}
-.status{display:inline-block;padding:7px 10px;border-radius:999px;background:#18253a;font-weight:900}
-.status.ok{background:rgba(40,209,124,.13);color:#72f0ad}
-.status.wait{color:#ffd28b;background:rgba(255,138,0,.12)}
-.status.cancel{color:#ff9aaa;background:rgba(255,61,85,.12)}
-footer{border-top:1px solid var(--line);padding:30px 18px;color:#7f8ca1;text-align:center}
-.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:18px}
-.modal.show{display:flex}
-.modalBox{max-width:600px;width:100%;max-height:90vh;overflow:auto;padding:22px;background:#0c121e;border:1px solid #34415a;border-radius:22px}
-.close{float:right;border:0;background:#1a2333;color:#fff;border-radius:9px;padding:7px 10px}
-.adminTable{width:100%;border-collapse:collapse;font-size:13px}.adminTable th,.adminTable td{padding:10px;border-bottom:1px solid #283248;text-align:left;vertical-align:top}
-.adminArea{display:none}.adminArea.show{display:block}
-.adminLogin{padding:20px}
-.small{font-size:12px;color:var(--muted)}
-@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}.payment{grid-template-columns:1fr}.navlinks{display:none}}
-@media(max-width:520px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.prodImg{height:150px}.product{padding:7px;border-radius:16px}.productName{font-size:17px}.price{font-size:19px}.detail{padding:10px 5px;font-size:12px}.idbox{grid-template-columns:1fr}.hero{padding-top:48px}}
-</style>
-</head>
-<body>
-
-<nav class="nav">
-  <div class="navin">
-    <a class="logo" href="#inicio">WEYZON <span>-STORE-</span></a>
-    <div class="navlinks">
-      <a href="#productos">Productos</a><a href="#como">Cómo comprar</a><a href="#seguimiento">Seguimiento</a><a href="#soporte">Soporte</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero" id="inicio">
-  <span class="badge">⚡ RECARGAS FREE FIRE • YAPE</span>
-  <h1><span class="grad">WEYZON -STORE</span></h1>
-  <p>Compra tus diamantes y productos de Free Fire de forma rápida. Selecciona tu producto, paga por Yape y guarda tu código de pedido.</p>
-  <div class="heroBtns">
-    <a class="btn btnBlue" href="#productos">💎 Comprar ahora</a>
-    <a class="btn btnGhost" href="#seguimiento">🔎 Ver mi pedido</a>
-  </div>
-</header>
-
-<main class="container">
-<section class="section" id="compra">
-  <h2 class="sectionTitle">1. Verifica tu ID</h2>
-  <p class="sub">Ingresa tu ID de Free Fire antes de comprar.</p>
-  <div class="card idbox">
-    <input id="ffid" class="input" inputmode="numeric" maxlength="20" placeholder="Ejemplo: 123456789">
-    <button class="btn btnBlue" onclick="verifyId()">✓ Verificar ID</button>
-    <div id="verifyResult" class="verifyResult"></div>
-  </div>
-</section>
-
-<section class="section" id="productos">
-  <h2 class="sectionTitle">2. Selecciona tu producto</h2>
-  <p class="sub">Precios en soles.</p>
-  <div class="tabs">
-    <button class="tab active" data-cat="diamantes">💎 Diamantes</button>
-    <button class="tab" data-cat="membresias">▰ Membresías</button>
-    <button class="tab" data-cat="cajas">⬡ Cajas</button>
-    <button class="tab" data-cat="fragmentos">✦ Fragmentos</button>
-  </div>
-  <div id="productGrid" class="grid"></div>
-</section>
-
-<section class="section" id="pago">
-  <h2 class="sectionTitle">3. Paga por Yape</h2>
-  <p class="sub">Después de elegir un producto aparecerán aquí los datos de pago.</p>
-  <div class="card payment">
-    <div>
-      <img id="qrYape" class="qr" src="qr-yape.jpg" alt="QR de Yape" onerror="this.style.display='none'">
-      <div class="notice" style="margin-top:12px">Si el QR no carga, usa el número de Yape de la derecha.</div>
-    </div>
-    <div>
-      <div class="small">Número de Yape</div>
-      <div class="payNum" id="yapeNumber">964225888</div>
-      <div class="small">Titular</div>
-      <div style="font-weight:900;margin:4px 0 18px">Ruth Nery Cabana M.</div>
-      <div class="row">
-        <button class="btn btnBlue" onclick="copyYape()">📋 Copiar número</button>
-        <a class="btn btnGhost" href="https://wa.me/51920757455" target="_blank">💬 WhatsApp</a>
-      </div>
-      <div class="notice" style="margin-top:15px">
-        Luego de pagar, confirma tu pedido. Tu pedido recibirá un código <b>WZ-XXXXXXXX</b>.
-      </div>
-      <button class="btn btnOrange" style="width:100%;margin-top:14px" onclick="openOrder()">🛒 Confirmar pedido</button>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="como">
-  <h2 class="sectionTitle">Cómo comprar</h2>
-  <div class="steps">
-    <div class="card step"><div class="num">1</div><h3>Verifica tu ID</h3><p>Escribe tu ID de Free Fire. La página comprueba que tenga un formato válido.</p></div>
-    <div class="card step"><div class="num">2</div><h3>Elige tu producto</h3><p>Selecciona diamantes, membresías, cajas o fragmentos.</p></div>
-    <div class="card step"><div class="num">3</div><h3>Paga y guarda tu código</h3><p>Realiza el Yape y crea el pedido. Guarda tu código para consultar el estado.</p></div>
-  </div>
-</section>
-
-<section class="section" id="seguimiento">
-  <h2 class="sectionTitle">Seguimiento de pedido</h2>
-  <p class="sub">Consulta tu pedido con tu código WZ.</p>
-  <div class="card track">
-    <div class="row">
-      <input id="trackCode" class="input" placeholder="Ejemplo: WZ-A1B2C3D4" style="flex:1;min-width:220px">
-      <button class="btn btnBlue" onclick="trackOrder()">🔎 Consultar</button>
-    </div>
-    <div id="trackResult" class="trackResult"></div>
-  </div>
-</section>
-
-<section class="section" id="soporte">
-  <h2 class="sectionTitle">Soporte</h2>
-  <div class="card" style="padding:22px">
-    <p style="margin-top:0">¿Necesitas ayuda con tu pedido?</p>
-    <a class="btn btnBlue" href="https://wa.me/51920757455" target="_blank">💬 Hablar por WhatsApp</a>
-    <a class="btn btnGhost" href="https://www.tiktok.com/@blezitocuentaoficial?_r=1&_t=ZS-99tiWtvfO9V" target="_blank">🎵 TikTok</a>
-  </div>
-</section>
-
-<section class="section" id="admin">
-  <h2 class="sectionTitle">Panel administrativo</h2>
-  <div class="card adminLogin">
-    <p class="small">Acceso privado para administrar pedidos.</p>
-    <div class="row">
-      <input id="adminEmail" class="input" placeholder="Correo">
-      <input id="adminPassword" class="input" type="password" placeholder="Contraseña">
-      <button class="btn btnBlue" onclick="adminLogin()">Entrar</button>
-    </div>
-    <div id="adminMsg" class="small" style="margin-top:10px"></div>
-  </div>
-  <div id="adminArea" class="card adminArea" style="margin-top:15px;padding:18px">
-    <div class="row" style="justify-content:space-between;align-items:center">
-      <h3>Pedidos</h3><button class="btn btnGhost" onclick="adminLogout()">Cerrar sesión</button>
-    </div>
-    <div style="overflow:auto"><table class="adminTable"><thead><tr><th>Código</th><th>ID</th><th>Producto</th><th>Precio</th><th>Estado</th><th>Acción</th></tr></thead><tbody id="ordersBody"></tbody></table></div>
-  </div>
-</section>
-</main>
-
-<footer>© 2026 WEYZON -STORE • Recargas y productos Free Fire</footer>
-<div id="orderModal" class="modal">
-  <div class="modalBox">
-    <button class="close" onclick="closeOrder()">✕</button>
-    <h2>Confirmar pedido</h2>
-    <div id="selectedInfo" class="notice" style="margin-bottom:15px">Selecciona un producto primero.</div>
-    <label class="small">ID de Free Fire</label>
-    <input id="orderFfid" class="input" style="margin:6px 0 14px" placeholder="Tu ID">
-    <div class="notice">Antes de crear el pedido, asegúrate de haber realizado el pago por Yape.</div>
-    <button class="btn btnOrange" style="width:100%;margin-top:15px" onclick="createOrder()">✅ Crear pedido</button>
-    <div id="orderMsg" class="small" style="margin-top:12px"></div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WEYZON -STORE</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
+:root{--bg:#07090d;--p:#0f141c;--p2:#131b26;--line:#253041;--txt:#f6f8fb;--muted:#94a0b2;--blue:#2787ff;--orange:#ff7a18;--green:#25d366}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0,#12345b55,transparent 30%),radial-gradient(circle at 90% 10%,#6b2e0e30,transparent 25%),#07090d;color:var(--txt);font-family:Inter,system-ui,Arial}a{text-decoration:none;color:inherit}.wrap{width:min(1160px,92%);margin:auto}.top{font-size:12px;color:var(--muted);border-bottom:1px solid var(--line);padding:8px 0}.top .wrap{display:flex;justify-content:space-between}header{position:sticky;top:0;z-index:10;background:#07090de8;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}nav{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:24px;font-weight:900}.brand span{color:var(--blue)}.navlinks{display:flex;gap:18px;font-size:14px}.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}.blue{background:var(--blue);color:#fff}.primary{background:linear-gradient(135deg,#2787ff,#1462c5);color:#fff}.dark{background:#1b2430;color:#fff}.hero{padding:70px 0 35px}.hero h1{font-size:clamp(35px,6vw,68px);line-height:.98;margin:0 0 18px}.hero h1 span{color:var(--blue)}.hero p{color:var(--muted);max-width:650px;font-size:17px}.heroActions{display:flex;gap:12px;margin-top:25px;flex-wrap:wrap}.section{padding:45px 0}.title{margin-bottom:22px}.title h2{margin:0;font-size:30px}.title p{color:var(--muted)}.cats{display:flex;gap:10px;overflow:auto;padding-bottom:12px}.cat{white-space:nowrap;border:1px solid var(--line);background:#0d131c;color:#dce4ef;padding:11px 15px;border-radius:999px;cursor:pointer}.cat.active{background:var(--blue);border-color:var(--blue);color:#fff}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:linear-gradient(180deg,#111923,#0c1118);border:1px solid var(--line);border-radius:18px;padding:12px;overflow:hidden;box-shadow:0 15px 35px #0004}.productImage{height:220px;border-radius:13px;overflow:hidden;position:relative;display:grid;place-items:center}.productImage img{width:100%;height:100%;object-fit:cover;display:block}.imageFallback{width:100%;height:100%}.discount{position:absolute;top:9px;right:9px;background:#f04444;color:#fff;padding:6px 8px;border-radius:8px;font-size:12px;font-weight:900}.card small{display:block;color:#7f8da0;margin-top:12px}.card h3{margin:7px 0;font-size:18px}.old{text-decoration:line-through;color:#697586;font-size:13px}.price{font-size:22px;font-weight:900;margin-top:2px}.card .btn{margin-top:13px;width:100%}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{background:#101720;border:1px solid var(--line);padding:20px;border-radius:16px}.step b{font-size:18px}.muted{color:var(--muted)}.verify{background:#0e151e;border:1px solid var(--line);border-radius:18px;padding:20px}.input{width:100%;background:#0a0f15;border:1px solid var(--line);border-radius:11px;padding:13px;color:#fff;outline:none}.status{display:none;margin-top:12px;padding:12px;border-radius:10px;background:#101b28}.status.show{display:block}.modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.modal.show{display:flex}.modalBox{background:#101720;border:1px solid var(--line);border-radius:18px;width:min(600px,100%);padding:20px}.head{display:flex;justify-content:space-between;align-items:center}.close{background:none;border:0;color:#fff;font-size:25px;cursor:pointer}.orders{max-height:55vh;overflow:auto;margin-top:15px}.order{border:1px solid var(--line);padding:12px;border-radius:12px;margin-bottom:10px}footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.navlinks{display:none}}@media(max-width:520px){.grid{grid-template-columns:1fr}.productImage{height:260px}}
+</style></head><body>
+<div class="top"><div class="wrap"><span>WEYZON -STORE</span><span>Recargas Free Fire</span></div></div>
+<header><div class="wrap"><nav><div class="brand">WEYZON <span>-STORE</span></div><div class="navlinks"><a href="#productos">Productos</a><a href="#como">¿Cómo comprar?</a><a href="#verificar">Verificar ID</a></div><button class="btn blue" onclick="openAdmin()">Admin</button></nav></div></header>
+<section class="hero"><div class="wrap"><h1>Recarga tus <span>diamantes</span><br>rápido y seguro.</h1><p>Compra tus productos de Free Fire en WEYZON -STORE de manera sencilla.</p><div class="heroActions"><a class="btn primary" href="#productos">Ver productos</a><a class="btn dark" href="#verificar">Verificar ID</a></div></div></section>
+<section id="productos" class="section"><div class="wrap"><div class="title"><h2>Productos</h2><p>Elige lo que necesitas.</p></div><div class="cats"><button class="cat active" onclick="showCat('diamantes',this)">💎 Diamantes</button><button class="cat" onclick="showCat('membresias',this)">🎫 Membresías</button><button class="cat" onclick="showCat('cajas',this)">📦 Cajas</button><button class="cat" onclick="showCat('pases',this)">🎫 Pase Booyah</button><button class="cat" onclick="showCat('fragmentos',this)">🧩 Fragmentos</button></div><div id="grid" class="grid"></div></div></section>
+<section id="como" class="section"><div class="wrap"><div class="title"><h2>¿Cómo comprar?</h2><p>Proceso rápido y sencillo.</p></div><div class="steps"><div class="step"><b>1. Elige tu producto</b><p class="muted">Selecciona la recarga que quieres.</p></div><div class="step"><b>2. Ingresa tu ID</b><p class="muted">Coloca correctamente tu ID de jugador.</p></div><div class="step"><b>3. Realiza tu pedido</b><p class="muted">Completa los datos y confirma.</p></div></div></div></section>
+<section id="verificar" class="section"><div class="wrap"><div class="title"><h2>Verificar ID</h2><p>Comprueba que tu ID tenga un formato válido.</p></div><div class="verify"><input id="ffid" class="input" placeholder="Ingresa tu ID de Free Fire"><button class="btn primary" style="margin-top:10px" onclick="verify()">Verificar ID</button><div id="verifyStatus" class="status"></div></div></div></section>
+<div id="orderModal" class="modal"><div class="modalBox"><div class="head"><h2 id="modalTitle">Producto</h2><button class="close" onclick="closeOrder()">✕</button></div><div id="modalBody"></div><div style="margin-top:15px"><input id="orderName" class="input" placeholder="Nombre"><input id="orderId" class="input" placeholder="ID de Free Fire" style="margin-top:9px"><input id="orderPhone" class="input" placeholder="WhatsApp" style="margin-top:9px"><button class="btn primary" style="width:100%;margin-top:12px" onclick="createOrder()">Crear pedido</button></div></div></div>
+<div id="adminModal" class="modal"><div class="modalBox"><div class="head"><h2>🔐 Admin</h2><button class="close" onclick="adminClose()">✕</button></div><div id="login"><input id="email" class="input" type="email" placeholder="Correo"><input id="pass" class="input" type="password" placeholder="Contraseña" style="margin-top:9px"><button class="btn blue" style="width:100%;margin-top:10px" onclick="adminLogin()">Iniciar sesión</button></div><div id="panel" style="display:none"><div style="display:flex;justify-content:space-between"><b>Pedidos</b><button class="btn dark" onclick="adminLogout()">Salir</button></div><div id="orders" class="orders"></div></div></div></div>
 <script>
-const SUPABASE_URL = "https://dwvlhdatthuedsjtrtna.supabase.co";
-const SUPABASE_KEY = "sb_publishable_K2lzpQJ9oj-fF-_VGtNdQw_4OSJ-nxX";
-const supabaseClient = window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-
-const products = {
-  diamantes:[
-    {name:"100 💎",price:3.30,old:3.50,img:"diamantes-100-10.png",discount:"6% OFF"},
-    {name:"300 💎",price:9.40,old:9.99,img:"diamantes-310-31.png",discount:"6% OFF"},
-    {name:"500 💎",price:14.30,old:15.50,img:"diamantes-520-52.png",discount:"8% OFF"},
-    {name:"1,000 💎",price:25.34,old:29.90,img:"diamantes-1060-106.png",discount:"15% OFF"},
-    {name:"2,000 💎",price:53.00,old:59.90,img:"diamantes-2180-218.png",discount:"12% OFF"},
-    {name:"3,000 💎",price:75.00,old:84.90,img:"diamantes-3240-324.png",discount:"12% OFF"},
-    {name:"6,000 💎",price:128.00,old:149.90,img:"diamantes-5600-560.png",discount:"15% OFF"}
-  ],
-  membresias:[
-    {name:"Membresía básica",price:2.00,old:3.00,emoji:"🎟️",discount:"33% OFF"},
-    {name:"Membresía semanal",price:6.20,old:7.50,emoji:"📅",discount:"17% OFF"},
-    {name:"Membresía mensual",price:31.00,old:35.00,emoji:"👑",discount:"11% OFF"}
-  ],
-  cajas:[
-    {name:"30 Cajas",price:19.90,old:22.90,emoji:"📦",discount:"13% OFF"},
-    {name:"60 Cajas",price:36.50,old:42.00,emoji:"📦",discount:"13% OFF"},
-    {name:"120 Cajas",price:73.50,old:85.00,emoji:"📦",discount:"14% OFF"}
-  ],
-  fragmentos:[
-    {name:"90 Fragmentos",price:15.99,old:18.00,emoji:"✦",discount:"11% OFF"},
-    {name:"150 Fragmentos",price:21.30,old:25.00,emoji:"✦",discount:"15% OFF"},
-    {name:"300 Fragmentos",price:36.90,old:43.00,emoji:"✦",discount:"14% OFF"},
-    {name:"600 Fragmentos",price:73.50,old:85.00,emoji:"✦",discount:"14% OFF"},
-    {name:"1200 Fragmentos",price:135.90,old:155.00,emoji:"✦",discount:"12% OFF"}
-  ]
-};
-
-let currentCategory="diamantes";
-let selectedProduct=null;
-let clientToken=localStorage.getItem("weyzon_cliente_token");
-if(!clientToken){
-  clientToken=crypto.randomUUID ? crypto.randomUUID() : ("xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,c=>{
-    const r=Math.random()*16|0,v=c==="x"?r:(r&3|8);return v.toString(16)
-  }));
-  localStorage.setItem("weyzon_cliente_token",clientToken);
+const SUPABASE_URL='https://dwvlhdatthuedsjtrtna.supabase.co';
+const SUPABASE_KEY='sb_publishable_K2lzpQJ9oj-fF-_VGtNdQw_4OSJ-nxX';
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=id=>document.getElementById(id);
+let verified='',selected=null,playerName='';
+const products=[
+ {cat:'diamantes',name:'100 💎',price:3.30,old:3.50,discount:'-6%',icon:'💎',image:'diamantes-100-10.png'},
+ {cat:'diamantes',name:'300 💎',price:9.40,old:9.90,discount:'-5%',icon:'💎',image:'diamantes-310-31.png'},
+ {cat:'diamantes',name:'500 💎',price:14.30,old:15.50,discount:'-8%',icon:'💎',image:'diamantes-520-52.png'},
+ {cat:'diamantes',name:'1,000 💎',price:25.34,old:28.50,discount:'-11%',icon:'💎',image:'diamantes-1060-106.png'},
+ {cat:'diamantes',name:'2,000 💎',price:53,old:58,discount:'-9%',icon:'💎',image:'diamantes-2180-218.png'},
+ {cat:'diamantes',name:'3,000 💎',price:75,old:82,discount:'-9%',icon:'💎',image:'diamantes-3240-324.png'},
+ {cat:'diamantes',name:'6,000 💎',price:128,old:140,discount:'-9%',icon:'💎',image:'diamantes-5600-560.png'},
+ {cat:'membresias',name:'Membresía básica',price:2,old:2.50,discount:'-20%',icon:'🎫'},
+ {cat:'membresias',name:'Membresía semanal',price:6.20,old:7,discount:'-11%',icon:'🎫',image:'tarjeta_semanal.jpg'},
+ {cat:'membresias',name:'Membresía mensual',price:31,old:35,discount:'-11%',icon:'🎫',image:'tarjeta_mensual.jpg'},
+ {cat:'cajas',name:'30 Cajas',price:19.90,old:22,discount:'-10%',icon:'📦',image:'cajitas.jpg'},
+ {cat:'cajas',name:'60 Cajas',price:36.50,old:40,discount:'-9%',icon:'📦',image:'cajitas.jpg'},
+ {cat:'cajas',name:'120 Cajas',price:73.50,old:80,discount:'-8%',icon:'📦',image:'cajitas.jpg'},
+ {cat:'pases',name:'Pase Booyah',price:5,old:5,discount:'',icon:'🎫',image:'pase_booyah.jpg'},
+ {cat:'fragmentos',name:'90 Fragmentos',price:15.99,old:18,discount:'-11%',icon:'🧩'},
+ {cat:'fragmentos',name:'150 Fragmentos',price:21.30,old:24,discount:'-11%',icon:'🧩'},
+ {cat:'fragmentos',name:'300 Fragmentos',price:36.90,old:41,discount:'-10%',icon:'🧩'},
+ {cat:'fragmentos',name:'600 Fragmentos',price:73.50,old:80,discount:'-8%',icon:'🧩'},
+ {cat:'fragmentos',name:'1200 Fragmentos',price:135.90,old:145,discount:'-6%',icon:'🧩'}
+];
+function money(n){return 'S/ '+Number(n).toFixed(2)}
+function esc(x){return String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function productImage(p){
+ const bg=p.cat==='diamantes'?'linear-gradient(145deg,#07111d,#16283a)':p.cat==='cajas'?'linear-gradient(145deg,#151313,#2b2118)':p.cat==='fragmentos'?'linear-gradient(145deg,#10151e,#20142d)':'linear-gradient(145deg,#101925,#17243a)';
+ return `<div class="productImage" style="background:${bg}">${p.image?`<img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:''}<div class="imageFallback" style="display:${p.image?'none':'grid'};height:100%;place-items:center;font-size:58px">${p.icon}</div>${p.discount?`<span class="discount">${p.discount}</span>`:''}</div>`
 }
-
-function money(n){return "S/ "+Number(n).toFixed(2)}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-
-function renderProducts(){
-  const grid=document.getElementById("productGrid");
-  const list=products[currentCategory]||[];
-  grid.innerHTML="";
-  list.forEach((p,i)=>{
-    const image=p.img
-      ? `<img src="${p.img}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="prodImgFallback" style="display:none">💎</div>`
-      : `<div class="prodImgFallback">${p.emoji||"💎"}</div>`;
-    const el=document.createElement("article");
-    el.className="card product";
-    el.innerHTML=`
-      <div class="prodImg">${image}<span class="discount">${p.discount}</span></div>
-      <div class="productBody">
-        <div class="productType">${currentCategory==="diamantes"?"Diamantes":currentCategory==="membresias"?"Membresías":currentCategory==="cajas"?"Cajas":"Fragmentos"}</div>
-        <div class="productName">${esc(p.name)}</div>
-        <div class="old">${money(p.old)}</div>
-        <div class="price">${money(p.price)}</div>
-        <button class="detail" onclick="selectProduct(${i})">Ver detalles</button>
-      </div>`;
-    grid.appendChild(el);
-  });
+function render(cat='diamantes'){
+ const grid=$('grid');if(!grid)return;
+ grid.innerHTML=products.filter(p=>p.cat===cat).map(p=>{
+  const i=products.indexOf(p);
+  return `<article class="card">${productImage(p)}<small>${cat==='diamantes'?'Diamantes':cat==='membresias'?'Membresía':cat==='cajas'?'Cajas':cat==='pases'?'Pase Booyah':'Fragmentos'}</small><h3>${esc(p.name)}</h3><div class="old">${money(p.old)}</div><div class="price">${money(p.price)}</div><button class="btn primary" onclick="buy(${i})">Ver detalles</button></article>`
+ }).join('')
 }
-function selectProduct(i){
-  selectedProduct=products[currentCategory][i];
-  selectedProduct.category=currentCategory;
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-  const tab=[...document.querySelectorAll(".tab")].find(x=>x.dataset.cat===currentCategory);
-  if(tab)tab.classList.add("active");
-  document.getElementById("selectedInfo").innerHTML=`<b>${esc(selectedProduct.name)}</b><br>Precio: <b>${money(selectedProduct.price)}</b>`;
-  document.getElementById("orderFfid").value=document.getElementById("ffid").value.trim();
-  document.getElementById("pago").scrollIntoView({behavior:"smooth"});
+function showCat(cat,b){document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));if(b)b.classList.add('active');render(cat)}
+async function verify(){
+ const id=$('ffid').value.trim(),status=$('verifyStatus');
+ if(!/^\d{5,20}$/.test(id)){status.className='status show';status.innerHTML='⚠️ Ingresa un ID numérico válido.';return}
+ verified=id;playerName='';status.className='status show';status.innerHTML='🔄 ID recibido. La verificación avanzada por API se puede conectar después.';
 }
-document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
-  currentCategory=t.dataset.cat;selectedProduct=null;
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");
-  renderProducts();
-}));
-
-function verifyId(){
-  const id=document.getElementById("ffid").value.trim();
-  const box=document.getElementById("verifyResult");
-  if(!/^[0-9]{5,20}$/.test(id)){
-    box.className="verifyResult err";box.textContent="❌ Ingresa un ID numérico válido.";return;
-  }
-  box.className="verifyResult ok";
-  box.textContent="✅ ID con formato válido. La consulta automática del nickname requiere conectar una API de Free Fire.";
+function buy(i){
+ selected=products[i];
+ $('modalTitle').textContent=selected.name;
+ $('modalBody').innerHTML=`<div style="text-align:center"><div style="font-size:18px;font-weight:800">${esc(selected.name)}</div><div class="price">${money(selected.price)}</div></div>`;
+ $('orderId').value=verified;
+ $('orderModal').classList.add('show');
 }
-
-function copyYape(){
-  const text="964225888";
-  if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(text).then(()=>alert("✅ Número de Yape copiado: "+text)).catch(()=>fallbackCopy(text));
-  }else fallbackCopy(text);
-}
-function fallbackCopy(text){
-  const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.left="-9999px";
-  document.body.appendChild(ta);ta.focus();ta.select();
-  try{document.execCommand("copy");alert("✅ Número de Yape copiado: "+text)}catch(e){alert("Número de Yape: "+text)}
-  ta.remove();
-}
-
-function openOrder(){
-  if(!selectedProduct){alert("Primero selecciona un producto.");document.getElementById("productos").scrollIntoView({behavior:"smooth"});return}
-  document.getElementById("selectedInfo").innerHTML=`<b>${esc(selectedProduct.name)}</b><br>Precio: <b>${money(selectedProduct.price)}</b>`;
-  document.getElementById("orderFfid").value=document.getElementById("ffid").value.trim();
-  document.getElementById("orderMsg").textContent="";
-  document.getElementById("orderModal").classList.add("show");
-}
-function closeOrder(){document.getElementById("orderModal").classList.remove("show")}
-
+function closeOrder(){$('orderModal').classList.remove('show')}
 async function createOrder(){
-  if(!selectedProduct){return}
-  const ffid=document.getElementById("orderFfid").value.trim();
-  const msg=document.getElementById("orderMsg");
-  if(!/^[0-9]{5,20}$/.test(ffid)){msg.textContent="❌ Ingresa un ID numérico válido.";return}
-  msg.textContent="Creando pedido...";
-  const code="WZ-"+crypto.randomUUID().replaceAll("-","").slice(0,8).toUpperCase();
-  const {data,error}=await supabaseClient.from("pedidos").insert({
-    cliente_token:clientToken,ffid:ffid,producto:selectedProduct.name,
-    precio:selectedProduct.price,pasarela:1,estado:"Pendiente",codigo_pedido:code
-  }).select("codigo_pedido").maybeSingle();
-  if(error){
-    msg.textContent="❌ No se pudo crear el pedido: "+error.message;
-    return;
-  }
-  msg.innerHTML=`✅ Pedido creado.<br><br><b style="font-size:24px">${esc(code)}</b><br><span class="small">Guarda este código para consultar tu pedido.</span>`;
-  document.getElementById("trackCode").value=code;
-  setTimeout(()=>{closeOrder();document.getElementById("seguimiento").scrollIntoView({behavior:"smooth"});trackOrder()},1300);
+ if(!selected)return;
+ const name=$('orderName').value.trim(),id=$('orderId').value.trim(),phone=$('orderPhone').value.trim();
+ if(!name||!id||!phone){alert('Completa todos los datos.');return}
+ const {error}=await db.from('orders').insert([{product:selected.name,price:selected.price,name:name,player_id:id,phone:phone,status:'pendiente'}]);
+ if(error){alert('No se pudo crear el pedido: '+error.message);return}
+ alert('✅ Pedido creado correctamente.');
+ closeOrder();
+ $('orderName').value='';$('orderPhone').value='';
 }
-
-async function trackOrder(){
-  const code=document.getElementById("trackCode").value.trim().toUpperCase();
-  const box=document.getElementById("trackResult");
-  if(!/^WZ-[A-Z0-9]{8}$/.test(code)){box.className="trackResult show";box.innerHTML='<div class="notice">❌ Código inválido. Usa un código como WZ-A1B2C3D4.</div>';return}
-  box.className="trackResult show";box.innerHTML='<div class="notice">Consultando...</div>';
-  const {data,error}=await supabaseClient.rpc("consultar_pedido",{codigo:code});
-  if(error || !data || !data.length){box.innerHTML='<div class="notice">❌ No encontramos ese pedido.</div>';return}
-  const p=data[0];
-  let cls="status wait"; if(p.estado==="Entregado")cls="status ok"; if(p.estado==="Cancelado")cls="status cancel";
-  box.innerHTML=`<div class="notice">
-    <div><b>Código:</b> ${esc(p.codigo_pedido)}</div>
-    <div><b>ID:</b> ${esc(p.ffid)}</div>
-    <div><b>Producto:</b> ${esc(p.producto)}</div>
-    <div><b>Precio:</b> ${money(p.precio)}</div>
-    <div style="margin-top:10px"><span class="${cls}">${esc(p.estado)}</span></div>
-  </div>`;
-}
-
+function openAdmin(){$('adminModal').classList.add('show')}
+function adminClose(){$('adminModal').classList.remove('show')}
 async function adminLogin(){
-  const email=document.getElementById("adminEmail").value.trim();
-  const password=document.getElementById("adminPassword").value;
-  const msg=document.getElementById("adminMsg");
-  msg.textContent="Iniciando sesión...";
-  const {error}=await supabaseClient.auth.signInWithPassword({email,password});
-  if(error){msg.textContent="❌ "+error.message;return}
-  msg.textContent="✅ Sesión iniciada.";
-  await loadAdmin();
+ const email=$('email').value.trim(),pass=$('pass').value;
+ const {error}=await db.auth.signInWithPassword({email,password:pass});
+ if(error){alert('Error: '+error.message);return}
+ $('login').style.display='none';$('panel').style.display='block';loadOrders();
 }
-async function adminLogout(){await supabaseClient.auth.signOut();document.getElementById("adminArea").classList.remove("show")}
-async function loadAdmin(){
-  const {data:{user}}=await supabaseClient.auth.getUser();
-  if(!user){return}
-  const {data,error}=await supabaseClient.from("pedidos").select("*").order("creado_en",{ascending:false});
-  if(error){document.getElementById("adminMsg").textContent="❌ "+error.message;return}
-  document.getElementById("adminArea").classList.add("show");
-  const body=document.getElementById("ordersBody");body.innerHTML="";
-  (data||[]).forEach(p=>{
-    const tr=document.createElement("tr");
-    tr.innerHTML=`<td><b>${esc(p.codigo_pedido||"")}</b></td><td>${esc(p.ffid)}</td><td>${esc(p.producto)}</td><td>${money(p.precio)}</td><td>${esc(p.estado)}</td>
-    <td><select class="input" style="padding:7px;min-width:130px" onchange="updateOrder(${p.id},this.value)">
-      ${["Pendiente","Procesando","Entregado","Cancelado"].map(s=>`<option ${p.estado===s?"selected":""}>${s}</option>`).join("")}
-    </select></td>`;
-    body.appendChild(tr);
-  });
+async function adminLogout(){await db.auth.signOut();$('login').style.display='block';$('panel').style.display='none'}
+async function loadOrders(){
+ const {data,error}=await db.from('orders').select('*').order('created_at',{ascending:false});
+ if(error){$('orders').innerHTML='Error cargando pedidos.';return}
+ $('orders').innerHTML=(data||[]).map(o=>`<div class="order"><b>${esc(o.product||'')}</b><br>Cliente: ${esc(o.name||'')}<br>ID: ${esc(o.player_id||'')}<br>WhatsApp: ${esc(o.phone||'')}<br>Precio: ${money(o.price||0)}<br>Estado: ${esc(o.status||'')}</div>`).join('')||'<p class="muted">No hay pedidos.</p>';
 }
-async function updateOrder(id,estado){
-  const payload={estado};
-  if(estado==="Entregado")payload.entregado_en=new Date().toISOString();else payload.entregado_en=null;
-  const {error}=await supabaseClient.from("pedidos").update(payload).eq("id",id);
-  if(error)alert("❌ "+error.message);else loadAdmin();
-}
-
-supabaseClient.auth.onAuthStateChange((event,session)=>{if(session)loadAdmin()});
-document.addEventListener("DOMContentLoaded",()=>{
-  renderProducts();
-  document.getElementById("qrYape").src="qr-yape.jpg";
-});
+render('diamantes');
 </script>
-</body>
-</html>
+<footer><div class="wrap"><b>WEYZON -STORE</b><p>Recargas y productos para Free Fire.</p></div></footer>
+</body></html>
