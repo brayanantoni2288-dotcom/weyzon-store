@@ -1,80 +1,162 @@
 <div class="cats">
-  <button class="cat active" onclick="showCat('diamantes',this)">💎 Diamantes</button>
-  <button class="cat" onclick="showCat('membresias',this)">🎫 Membresías</button>
-  <button class="cat" onclick="showCat('cajas',this)">📦 Cajas</button>
-  <button class="cat" onclick="showCat('pase',this)">🎟️ Pase Booyah</button>
-  <button class="cat" onclick="showCat('tarjetas',this)">💳 Tarjetas</button>
+  <button class="cat active" onclick="showCat('diamantes', this)">💎 Diamantes</button>
+  <button class="cat" onclick="showCat('membresias', this)">🎫 Membresías</button>
+  <button class="cat" onclick="showCat('cajas', this)">📦 Cajas</button>
+  <button class="cat" onclick="showCat('pase', this)">🎟️ Pase Booyah</button>
+  <button class="cat" onclick="showCat('tarjetas', this)">💳 Tarjetas</button>
 </div>
 
 <div id="productos2" class="grid"></div>
-const productos2 = [
+<style>
+.cats {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px 0 18px;
+}
 
-  // DIAMANTES
-  {cat:"diamantes",nombre:"100 💎",precio:3.30,image:"diamantes-100-10.png"},
-  {cat:"diamantes",nombre:"300 💎",precio:9.40,image:"diamantes-310-31.png"},
-  {cat:"diamantes",nombre:"500 💎",precio:14.30,image:"diamantes-520-52.png"},
-  {cat:"diamantes",nombre:"1,000 💎",precio:25.34,image:"diamantes-1060-106.png"},
-  {cat:"diamantes",nombre:"2,000 💎",precio:53,image:"diamantes-2180-218.png"},
-  {cat:"diamantes",nombre:"3,000 💎",precio:75,image:"diamantes-3240-324.png"},
-  {cat:"diamantes",nombre:"6,000 💎",precio:128,image:"diamantes-5600-560.png"},
+.cat {
+  white-space: nowrap;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 1px solid #168cff;
+  background: #081a36;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-  // MEMBRESÍAS
-  {cat:"membresias",nombre:"Membresía semanal",precio:6.20,image:"membresia-semanal.jpg"},
-  {cat:"membresias",nombre:"Membresía mensual",precio:31,image:"membresia-mensual.jpg"},
+.cat.active {
+  background: linear-gradient(135deg, #168cff, #1555ff);
+  box-shadow: 0 0 18px #168cff66;
+}
 
-  // CAJAS
-  {cat:"cajas",nombre:"30 Cajas",precio:19.90,image:"cajas-evo.jpg"},
-  {cat:"cajas",nombre:"60 Cajas",precio:36.50,image:"cajas-evo.jpg"},
-  {cat:"cajas",nombre:"120 Cajas",precio:73.50,image:"cajas-evo.jpg"},
+.grid {
+  display: grid;
+  gap: 18px;
+}
 
-  // PASE BOOYAH
-  {cat:"pase",nombre:"Pase Booyah",precio:5,image:"pase-booyah.jpg"},
+.product-image {
+  width: 100%;
+  height: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #080d18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
 
-  // TARJETAS
-  {cat:"tarjetas",nombre:"Tarjeta semanal",precio:6.50,image:"tarjeta-semanal.jpg"},
-  {cat:"tarjetas",nombre:"Tarjeta mensual",precio:31,image:"tarjeta-mensual.jpg"}
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-card {
+  background: #0a111d;
+  border: 1px solid #1d3557;
+  border-radius: 20px;
+  padding: 14px;
+}
+
+.product-card h2 {
+  color: white;
+}
+
+.product-price {
+  color: white;
+  font-size: 22px;
+  margin: 8px 0;
+}
+</style>
+
+<script>
+const imagenesWeyzon = {
+  "Membresía semanal": "membresia-semanal.jpg",
+  "Membresía mensual": "membresia-mensual.jpg",
+  "30 Cajas": "cajas-evo.jpg",
+  "60 Cajas": "cajas-evo.jpg",
+  "120 Cajas": "cajas-evo.jpg",
+  "Pase Booyah": "pase-booyah.jpg",
+  "Tarjeta semanal": "tarjeta-semanal.jpg",
+  "Tarjeta mensual": "tarjeta-mensual.jpg"
+};
+
+const productosNuevos = [
+  {
+    cat: "membresias",
+    nombre: "Membresía semanal",
+    precio: 6.20
+  },
+  {
+    cat: "membresias",
+    nombre: "Membresía mensual",
+    precio: 31
+  },
+  {
+    cat: "cajas",
+    nombre: "30 Cajas",
+    precio: 19.90
+  },
+  {
+    cat: "cajas",
+    nombre: "60 Cajas",
+    precio: 36.50
+  },
+  {
+    cat: "cajas",
+    nombre: "120 Cajas",
+    precio: 73.50
+  },
+  {
+    cat: "pase",
+    nombre: "Pase Booyah",
+    precio: 5
+  },
+  {
+    cat: "tarjetas",
+    nombre: "Tarjeta semanal",
+    precio: 6.50
+  },
+  {
+    cat: "tarjetas",
+    nombre: "Tarjeta mensual",
+    precio: 31
+  }
 ];
-function crearTarjetas(id,lista,pasarela){
 
-  const box=$(id);
+function mostrarProductos(cat) {
 
-  if(!box)return;
+  const contenedor = document.getElementById("productos2");
 
-  box.innerHTML="";
+  if (!contenedor) return;
 
-  lista.forEach(p=>{
+  const productos = productosNuevos.filter(
+    producto => producto.cat === cat
+  );
 
-    const d=document.createElement("div");
+  contenedor.innerHTML = "";
 
-    d.className="card";
+  productos.forEach(producto => {
 
-    d.innerHTML=`
+    const tarjeta = document.createElement("div");
 
+    tarjeta.className = "product-card";
+
+    tarjeta.innerHTML = `
       <div class="product-image">
-
         <img
-          src="${p.image}"
-          alt="${p.nombre}"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+          src="${imagenesWeyzon[producto.nombre]}"
+          alt="${producto.nombre}"
         >
-
-        <div class="image-error">
-          ${p.cat==="diamantes"?"💎":
-            p.cat==="membresias"?"🎫":
-            p.cat==="cajas"?"📦":
-            p.cat==="pase"?"🎟️":"💳"}
-        </div>
-
       </div>
 
-      <h2>${p.nombre}</h2>
+      <h2>${producto.nombre}</h2>
 
-      <div class="price">
-        S/ ${p.precio.toFixed(2)}
-      </div>
-
-      <div class="stock">
-        ♾️ Stock disponible
+      <div class="product-price">
+        S/ ${producto.precio.toFixed(2)}
       </div>
 
       <button type="button">
@@ -82,96 +164,43 @@ function crearTarjetas(id,lista,pasarela){
       </button>
     `;
 
-    d.querySelector("button").onclick=()=>{
-      abrirPedido(p.nombre,p.precio,pasarela);
+    const boton = tarjeta.querySelector("button");
+
+    boton.onclick = function() {
+
+      if (typeof abrirPedido === "function") {
+        abrirPedido(
+          producto.nombre,
+          producto.precio,
+          2
+        );
+      }
+
     };
 
-    box.appendChild(d);
-
+    contenedor.appendChild(tarjeta);
   });
 }
-function showCat(cat,boton){
 
-  document.querySelectorAll(".cat").forEach(b=>{
-    b.classList.remove("active");
-  });
+function showCat(cat, boton) {
+
+  document.querySelectorAll(".cat").forEach(
+    b => b.classList.remove("active")
+  );
 
   boton.classList.add("active");
 
-  const lista=productos2.filter(p=>p.cat===cat);
+  if (cat === "diamantes") {
 
-  crearTarjetas("productos2",lista,2);
+    const contenedor = document.getElementById("productos2");
+
+    if (contenedor) {
+      contenedor.innerHTML = "";
+    }
+
+    return;
+  }
+
+  mostrarProductos(cat);
 }
-
-crearTarjetas(
-  "productos2",
-  productos2.filter(p=>p.cat==="diamantes"),
-  2
-);
-<style>
-
-.cats{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-  padding:12px 0 18px;
-}
-
-.cat{
-  white-space:nowrap;
-  padding:12px 18px;
-  border-radius:14px;
-  border:1px solid #168cff;
-  background:#081a36;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.cat.active{
-  background:linear-gradient(135deg,#168cff,#1555ff);
-  box-shadow:0 0 18px #168cff66;
-}
-
-.product-image{
-  width:100%;
-  height:250px;
-  border-radius:15px;
-  overflow:hidden;
-  background:#080d18;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:14px;
-}
-
-.product-image img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
-
-.image-error{
-  display:none;
-  font-size:65px;
-}
-
-</style>
-diamantes-100-10.png
-diamantes-310-31.png
-diamantes-520-52.png
-diamantes-1060-106.png
-diamantes-2180-218.png
-diamantes-3240-324.png
-diamantes-5600-560.png
-
-membresia-semanal.jpg
-membresia-mensual.jpg
-
-cajas-evo.jpg
-
-pase-booyah.jpg
-
-tarjeta-semanal.jpg
-tarjeta-mensual.jpg
+</script>
