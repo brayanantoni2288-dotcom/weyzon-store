@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WEYZON STORE | Recargas Free Fire</title>
-
-  <style>
+  <title>WEYZON STORE | Recargas Free Fire</title>  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -210,45 +207,24 @@
 
     .payment-method {
       text-align: center;
-      padding: 18px;
+      padding: 22px;
       border-radius: 15px;
       background: linear-gradient(145deg, #0c1020, #070a12);
       border: 1px solid #30256b;
       margin-top: 18px;
     }
 
-    .prexpe-title {
+    .mercado-title {
       font-size: 25px;
       font-weight: 900;
-      color: #b58cff;
-      margin-bottom: 8px;
+      color: #4da3ff;
+      margin-bottom: 10px;
     }
 
-    .number {
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      margin: 10px 0;
-    }
-
-    .holder {
-      color: #aeb9cb;
+    .mercado-text {
+      color: #b9c7dc;
+      line-height: 1.6;
       font-size: 14px;
-    }
-
-    .qr-container {
-      margin: 20px auto 10px;
-      padding: 12px;
-      background: #fff;
-      border-radius: 15px;
-      width: min(100%, 330px);
-    }
-
-    .qr-container img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
     }
 
     .instructions {
@@ -304,174 +280,135 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
-</head>
-
-<body>
-
-<header>
+  </style></head><body><header>
   <div class="logo">💎 WEYZON <span>STORE</span></div>
   <div class="subtitle">Recargas Free Fire rápidas y seguras</div>
-</header>
+</header><main>  <section id="inicio"><section class="hero">
+  <h1>💎 Recarga tus diamantes</h1>
+  <p>Selecciona tu recarga e ingresa los datos de tu cuenta.</p>
+</section>
 
-<main>
+<h2 class="section-title">🔥 Elige tu recarga</h2>
 
-  <!-- SECCIÓN PRINCIPAL -->
-  <section id="inicio">
+<section class="packages">
 
-    <section class="hero">
-      <h1>💎 Recarga tus diamantes</h1>
-      <p>Selecciona tu recarga e ingresa los datos de tu cuenta.</p>
-    </section>
+  <div class="package" onclick="seleccionar(this, '100', '2.70')">
+    <div class="diamond">💎</div>
+    <div class="amount">100 diamantes</div>
+    <div class="price">S/ 2.70</div>
+  </div>
 
-    <h2 class="section-title">🔥 Elige tu recarga</h2>
+  <div class="package" onclick="seleccionar(this, '300', '8.00')">
+    <div class="diamond">💎</div>
+    <div class="amount">300 diamantes</div>
+    <div class="price">S/ 8.00</div>
+  </div>
 
-    <section class="packages">
+  <div class="package" onclick="seleccionar(this, '500', '13.20')">
+    <div class="diamond">💎</div>
+    <div class="amount">500 diamantes</div>
+    <div class="price">S/ 13.20</div>
+  </div>
 
-      <div class="package" onclick="seleccionar(this, '100', '2.70')">
-        <div class="diamond">💎</div>
-        <div class="amount">100 diamantes</div>
-        <div class="price">S/ 2.70</div>
-      </div>
+  <div class="package" onclick="seleccionar(this, '1000', '24.20')">
+    <div class="diamond">💎</div>
+    <div class="amount">1,000 diamantes</div>
+    <div class="price">S/ 24.20</div>
+  </div>
 
-      <div class="package" onclick="seleccionar(this, '300', '8.00')">
-        <div class="diamond">💎</div>
-        <div class="amount">300 diamantes</div>
-        <div class="price">S/ 8.00</div>
-      </div>
+  <div class="package" onclick="seleccionar(this, '2000', '48.60')">
+    <div class="diamond">💎</div>
+    <div class="amount">2,000 diamantes</div>
+    <div class="price">S/ 48.60</div>
+  </div>
 
-      <div class="package" onclick="seleccionar(this, '500', '13.20')">
-        <div class="diamond">💎</div>
-        <div class="amount">500 diamantes</div>
-        <div class="price">S/ 13.20</div>
-      </div>
+  <div class="package" onclick="seleccionar(this, '6000', '121.00')">
+    <div class="diamond">💎</div>
+    <div class="amount">6,000 diamantes</div>
+    <div class="price">S/ 121.00</div>
+  </div>
 
-      <div class="package" onclick="seleccionar(this, '1000', '24.20')">
-        <div class="diamond">💎</div>
-        <div class="amount">1,000 diamantes</div>
-        <div class="price">S/ 24.20</div>
-      </div>
+</section>
 
-      <div class="package" onclick="seleccionar(this, '2000', '48.60')">
-        <div class="diamond">💎</div>
-        <div class="amount">2,000 diamantes</div>
-        <div class="price">S/ 48.60</div>
-      </div>
+<section class="form-box">
 
-      <div class="package" onclick="seleccionar(this, '6000', '121.00')">
-        <div class="diamond">💎</div>
-        <div class="amount">6,000 diamantes</div>
-        <div class="price">S/ 121.00</div>
-      </div>
+  <h2>🎮 Datos de tu cuenta</h2>
+  <p>Ingresa correctamente los datos donde recibirás la recarga.</p>
 
-    </section>
+  <label for="playerId">ID de Free Fire</label>
+  <input
+    type="text"
+    id="playerId"
+    placeholder="Ejemplo: 123456789"
+    inputmode="numeric"
+  >
 
-    <section class="form-box">
+  <label for="playerName">Nombre del jugador</label>
+  <input
+    type="text"
+    id="playerName"
+    placeholder="Ingresa tu nombre"
+  >
 
-      <h2>🎮 Datos de tu cuenta</h2>
-      <p>Ingresa correctamente los datos donde recibirás la recarga.</p>
+  <button class="continue-btn" onclick="continuarPedido()">
+    CONTINUAR →
+  </button>
 
-      <label for="playerId">ID de Free Fire</label>
-      <input
-        type="text"
-        id="playerId"
-        placeholder="Ejemplo: 123456789"
-        inputmode="numeric"
-      >
+</section>
 
-      <label for="playerName">Nombre del jugador</label>
-      <input
-        type="text"
-        id="playerName"
-        placeholder="Ingresa tu nombre"
-      >
+  </section>  <section id="pago" class="hidden"><section class="payment-box">
 
-      <button class="continue-btn" onclick="continuarPedido()">
-        CONTINUAR →
-      </button>
+  <h2>💳 Realiza tu pago</h2>
+  <p>Revisa los datos de tu pedido antes de pagar.</p>
 
-    </section>
+  <div class="summary">
+    💎 Recarga: <strong id="resumenDiamantes"></strong><br>
+    💰 Total: <strong>S/ <span id="resumenPrecio"></span></strong><br>
+    🎮 ID: <strong id="resumenId"></strong><br>
+    👤 Jugador: <strong id="resumenNombre"></strong>
+  </div>
 
-  </section>
+  <div class="payment-method">
 
+    <div class="mercado-title">💳 MERCADO PAGO</div>
 
-  <!-- PANTALLA DE PAGO -->
-  <section id="pago" class="hidden">
+    <div class="mercado-text">
+      Paga de forma rápida y segura con Mercado Pago.<br><br>
+      Al tocar el botón podrás continuar con el pago.
+    </div>
 
-    <section class="payment-box">
+  </div>
 
-      <h2>💳 Realiza tu pago</h2>
-      <p>Revisa los datos de tu pedido antes de pagar.</p>
+  <div class="instructions">
+    <strong>📋 Pasos:</strong><br><br>
 
-      <div class="summary">
-        💎 Recarga: <strong id="resumenDiamantes"></strong><br>
-        💰 Total: <strong>S/ <span id="resumenPrecio"></span></strong><br>
-        🎮 ID: <strong id="resumenId"></strong><br>
-        👤 Jugador: <strong id="resumenNombre"></strong>
-      </div>
+    1️⃣ Revisa que tu ID y nombre sean correctos.<br>
+    2️⃣ Pulsa <strong>PAGAR CON MERCADO PAGO</strong>.<br>
+    3️⃣ Completa el pago en Mercado Pago.<br>
+    4️⃣ Conserva tu comprobante de pago.
+  </div>
 
-      <div class="payment-method">
+  <div class="warning">
+    ⚠️ Verifica cuidadosamente el ID de Free Fire antes de pagar.
+    Un ID incorrecto puede impedir que la recarga llegue correctamente.
+  </div>
 
-        <div class="prexpe-title">💜 PREXPE</div>
+  <button class="pay-btn" onclick="pagarMercadoPago()">
+    💳 PAGAR CON MERCADO PAGO
+  </button>
 
-        <div>Envía exactamente:</div>
+  <button class="back-btn" onclick="volverInicio()">
+    ← VOLVER
+  </button>
 
-        <div class="number">
-          S/ <span id="montoPago"></span>
-        </div>
+</section>
 
-        <div class="holder">
-          📱 Número: <strong>963348614</strong><br>
-          👤 Titular: <strong>Rosmeri M.</strong>
-        </div>
-
-        <div class="qr-container">
-          <img
-            src="qr-prexpe.jpg"
-            alt="QR de pago Prexpe"
-          >
-        </div>
-
-        <div class="holder">
-          📷 Escanea el QR para realizar el pago.
-        </div>
-
-      </div>
-
-      <div class="instructions">
-        <strong>📋 Pasos:</strong><br><br>
-
-        1️⃣ Escanea el QR o usa el número de Prexpe.<br>
-        2️⃣ Envía exactamente el monto mostrado.<br>
-        3️⃣ Conserva tu comprobante de pago.<br>
-        4️⃣ Después continuaremos con la confirmación del pedido.
-      </div>
-
-      <div class="warning">
-        ⚠️ Verifica cuidadosamente el ID de Free Fire antes de realizar el pago.
-        Un ID incorrecto puede impedir que la recarga llegue correctamente.
-      </div>
-
-      <button class="pay-btn" onclick="pagoRealizado()">
-        ✅ YA REALICÉ EL PAGO
-      </button>
-
-      <button class="back-btn" onclick="volverInicio()">
-        ← VOLVER
-      </button>
-
-    </section>
-
-  </section>
-
-</main>
-
-<footer>
+  </section></main><footer>
   © 2026 WEYZON STORE · Recargas Free Fire
-</footer>
+</footer><script>
 
-
-<script>
+  const API_URL =
+    "https://weyzon-api.brayanantoni2288.workers.dev";
 
   let paqueteSeleccionado = null;
   let precioSeleccionado = null;
@@ -487,7 +424,6 @@
     paqueteSeleccionado = paquete;
     precioSeleccionado = precio;
   }
-
 
   function continuarPedido() {
 
@@ -518,9 +454,6 @@
     document.getElementById('resumenPrecio').textContent =
       precioSeleccionado;
 
-    document.getElementById('montoPago').textContent =
-      precioSeleccionado;
-
     document.getElementById('resumenId').textContent =
       playerId;
 
@@ -536,6 +469,74 @@
     });
   }
 
+  async function pagarMercadoPago() {
+
+    if (!paqueteSeleccionado || !precioSeleccionado) {
+      alert('Selecciona una recarga primero.');
+      return;
+    }
+
+    const playerId =
+      document.getElementById('playerId').value.trim();
+
+    const playerName =
+      document.getElementById('playerName').value.trim();
+
+    try {
+
+      const boton = document.querySelector('.pay-btn');
+
+      boton.disabled = true;
+      boton.textContent = '⏳ CREANDO PAGO...';
+
+      const respuesta = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title: 'Recarga Free Fire - ' + paqueteSeleccionado + ' diamantes',
+          price: Number(precioSeleccionado),
+          playerId: playerId,
+          playerName: playerName
+        })
+      });
+
+      const resultado = await respuesta.json();
+
+      if (!respuesta.ok) {
+        throw new Error(
+          resultado.message ||
+          resultado.error ||
+          'No se pudo crear el pago.'
+        );
+      }
+
+      const linkPago =
+        resultado.init_point ||
+        resultado.sandbox_init_point;
+
+      if (!linkPago) {
+        throw new Error('Mercado Pago no devolvió el enlace de pago.');
+      }
+
+      window.location.href = linkPago;
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert(
+        '❌ No se pudo crear el pago.\n\n' +
+        error.message
+      );
+
+      const boton = document.querySelector('.pay-btn');
+
+      boton.disabled = false;
+      boton.textContent = '💳 PAGAR CON MERCADO PAGO';
+    }
+  }
 
   function volverInicio() {
 
@@ -548,18 +549,5 @@
     });
   }
 
-
-  function pagoRealizado() {
-
-    alert(
-      'Tu comprobante deberá ser verificado antes de procesar la recarga.\\n\\n' +
-      '💎 Recarga: ' + paqueteSeleccionado + ' diamantes\\n' +
-      '💰 Total: S/ ' + precioSeleccionado
-    );
-
-  }
-
-</script>
-
-</body>
+</script></body>
 </html>
