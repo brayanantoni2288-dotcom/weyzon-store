@@ -17,23 +17,22 @@
       min-height: 100vh;
       color: #fff;
       background:
-        radial-gradient(circle at top right, rgba(0, 90, 255, 0.22), transparent 35%),
-        radial-gradient(circle at bottom left, rgba(255, 0, 55, 0.14), transparent 35%),
+        radial-gradient(circle at top right, rgba(0, 90, 255, .22), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(255, 0, 55, .16), transparent 35%),
         #03050a;
     }
 
     header {
       text-align: center;
-      padding: 30px 15px 20px;
-      border-bottom: 1px solid rgba(0, 119, 255, 0.25);
+      padding: 30px 15px 22px;
+      border-bottom: 1px solid rgba(0, 119, 255, .25);
     }
 
     .logo {
       font-size: 32px;
       font-weight: 900;
       letter-spacing: 2px;
-      color: #fff;
-      text-shadow: 0 0 15px rgba(0, 119, 255, 0.8);
+      text-shadow: 0 0 15px rgba(0, 119, 255, .8);
     }
 
     .logo span {
@@ -50,16 +49,16 @@
       width: 100%;
       max-width: 900px;
       margin: auto;
-      padding: 25px 15px 50px;
+      padding: 28px 15px 50px;
     }
 
     .hero {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 28px;
     }
 
     .hero h1 {
-      font-size: 27px;
+      font-size: 28px;
       margin-bottom: 8px;
     }
 
@@ -86,18 +85,18 @@
       padding: 20px 12px;
       text-align: center;
       cursor: pointer;
-      transition: 0.2s;
+      transition: .2s;
     }
 
     .package:hover {
       transform: translateY(-3px);
       border-color: #168cff;
-      box-shadow: 0 0 18px rgba(0, 119, 255, 0.25);
+      box-shadow: 0 0 18px rgba(0, 119, 255, .25);
     }
 
     .package.selected {
       border-color: #168cff;
-      box-shadow: 0 0 20px rgba(0, 119, 255, 0.35);
+      box-shadow: 0 0 20px rgba(0, 119, 255, .35);
       background: linear-gradient(145deg, #0b1b32, #060b13);
     }
 
@@ -118,20 +117,23 @@
       color: #2d9cff;
     }
 
-    .form-box {
+    .form-box,
+    .payment-box {
       margin-top: 28px;
-      background: rgba(7, 13, 24, 0.95);
+      background: rgba(7, 13, 24, .97);
       border: 1px solid #182b46;
       border-radius: 18px;
       padding: 22px;
     }
 
-    .form-box h2 {
-      font-size: 20px;
-      margin-bottom: 6px;
+    .form-box h2,
+    .payment-box h2 {
+      font-size: 21px;
+      margin-bottom: 7px;
     }
 
-    .form-box p {
+    .form-box p,
+    .payment-box > p {
       color: #8f9db2;
       font-size: 13px;
       margin-bottom: 18px;
@@ -157,35 +159,122 @@
 
     input:focus {
       border-color: #168cff;
-      box-shadow: 0 0 10px rgba(22, 140, 255, 0.15);
+      box-shadow: 0 0 10px rgba(22, 140, 255, .15);
     }
 
-    .continue-btn {
+    button {
+      cursor: pointer;
+    }
+
+    .continue-btn,
+    .pay-btn,
+    .back-btn {
       width: 100%;
       margin-top: 20px;
       padding: 15px;
       border: none;
       border-radius: 11px;
-      background: linear-gradient(90deg, #0878ff, #168cff);
       color: #fff;
       font-size: 16px;
       font-weight: bold;
-      cursor: pointer;
     }
 
-    .continue-btn:hover {
+    .continue-btn,
+    .pay-btn {
+      background: linear-gradient(90deg, #0878ff, #168cff);
+    }
+
+    .continue-btn:hover,
+    .pay-btn:hover {
       filter: brightness(1.1);
     }
 
-    .info {
-      margin-top: 20px;
+    .back-btn {
+      background: #101925;
+      border: 1px solid #263c58;
+      color: #b9c7dc;
+    }
+
+    .summary {
+      margin-top: 15px;
+      padding: 16px;
+      border-radius: 13px;
+      background: #080d16;
+      border: 1px solid #17283e;
+      line-height: 1.8;
+    }
+
+    .summary strong {
+      color: #2d9cff;
+    }
+
+    .payment-method {
+      text-align: center;
+      padding: 18px;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #0c1020, #070a12);
+      border: 1px solid #30256b;
+      margin-top: 18px;
+    }
+
+    .prexpe-title {
+      font-size: 25px;
+      font-weight: 900;
+      color: #b58cff;
+      margin-bottom: 8px;
+    }
+
+    .number {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 10px 0;
+    }
+
+    .holder {
+      color: #aeb9cb;
+      font-size: 14px;
+    }
+
+    .qr-container {
+      margin: 20px auto 10px;
+      padding: 12px;
+      background: #fff;
+      border-radius: 15px;
+      width: min(100%, 330px);
+    }
+
+    .qr-container img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .instructions {
+      margin-top: 18px;
       padding: 15px;
       border-radius: 12px;
       background: #080d16;
       border: 1px solid #17283e;
-      color: #9eabc0;
+      color: #b9c7dc;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .warning {
+      margin-top: 15px;
+      padding: 13px;
+      border-radius: 10px;
+      background: rgba(255, 0, 55, .08);
+      border: 1px solid rgba(255, 0, 55, .28);
+      color: #ffb7c3;
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.5;
+    }
+
+    .hidden {
+      display: none;
     }
 
     footer {
@@ -193,7 +282,7 @@
       padding: 25px 15px;
       color: #66758a;
       font-size: 12px;
-      border-top: 1px solid rgba(0, 119, 255, 0.15);
+      border-top: 1px solid rgba(0, 119, 255, .15);
     }
 
     @media (max-width: 650px) {
@@ -220,16 +309,19 @@
 
 <body>
 
-  <header>
-    <div class="logo">💎 WEYZON <span>STORE</span></div>
-    <div class="subtitle">Recargas Free Fire rápidas y seguras</div>
-  </header>
+<header>
+  <div class="logo">💎 WEYZON <span>STORE</span></div>
+  <div class="subtitle">Recargas Free Fire rápidas y seguras</div>
+</header>
 
-  <main>
+<main>
+
+  <!-- SECCIÓN PRINCIPAL -->
+  <section id="inicio">
 
     <section class="hero">
       <h1>💎 Recarga tus diamantes</h1>
-      <p>Selecciona tu recarga y continúa con tu pedido.</p>
+      <p>Selecciona tu recarga e ingresa los datos de tu cuenta.</p>
     </section>
 
     <h2 class="section-title">🔥 Elige tu recarga</h2>
@@ -298,65 +390,176 @@
         CONTINUAR →
       </button>
 
-      <div class="info">
-        ⚡ La recarga será procesada después de confirmar el pago.<br>
-        🔒 Verifica tu ID antes de realizar el pago.<br>
-        💎 Los datos ingresados serán utilizados para realizar la recarga.
+    </section>
+
+  </section>
+
+
+  <!-- PANTALLA DE PAGO -->
+  <section id="pago" class="hidden">
+
+    <section class="payment-box">
+
+      <h2>💳 Realiza tu pago</h2>
+      <p>Revisa los datos de tu pedido antes de pagar.</p>
+
+      <div class="summary">
+        💎 Recarga: <strong id="resumenDiamantes"></strong><br>
+        💰 Total: <strong>S/ <span id="resumenPrecio"></span></strong><br>
+        🎮 ID: <strong id="resumenId"></strong><br>
+        👤 Jugador: <strong id="resumenNombre"></strong>
       </div>
+
+      <div class="payment-method">
+
+        <div class="prexpe-title">💜 PREXPE</div>
+
+        <div>Envía exactamente:</div>
+
+        <div class="number">
+          S/ <span id="montoPago"></span>
+        </div>
+
+        <div class="holder">
+          📱 Número: <strong>963348614</strong><br>
+          👤 Titular: <strong>Rosmeri M.</strong>
+        </div>
+
+        <div class="qr-container">
+          <img
+            src="qr-prexpe.jpg"
+            alt="QR de pago Prexpe"
+          >
+        </div>
+
+        <div class="holder">
+          📷 Escanea el QR para realizar el pago.
+        </div>
+
+      </div>
+
+      <div class="instructions">
+        <strong>📋 Pasos:</strong><br><br>
+
+        1️⃣ Escanea el QR o usa el número de Prexpe.<br>
+        2️⃣ Envía exactamente el monto mostrado.<br>
+        3️⃣ Conserva tu comprobante de pago.<br>
+        4️⃣ Después continuaremos con la confirmación del pedido.
+      </div>
+
+      <div class="warning">
+        ⚠️ Verifica cuidadosamente el ID de Free Fire antes de realizar el pago.
+        Un ID incorrecto puede impedir que la recarga llegue correctamente.
+      </div>
+
+      <button class="pay-btn" onclick="pagoRealizado()">
+        ✅ YA REALICÉ EL PAGO
+      </button>
+
+      <button class="back-btn" onclick="volverInicio()">
+        ← VOLVER
+      </button>
 
     </section>
 
-  </main>
+  </section>
 
-  <footer>
-    © 2026 WEYZON STORE · Recargas Free Fire
-  </footer>
+</main>
 
-  <script>
-    let paqueteSeleccionado = null;
-    let precioSeleccionado = null;
+<footer>
+  © 2026 WEYZON STORE · Recargas Free Fire
+</footer>
 
-    function seleccionar(elemento, paquete, precio) {
 
-      document.querySelectorAll('.package').forEach(card => {
-        card.classList.remove('selected');
-      });
+<script>
 
-      elemento.classList.add('selected');
+  let paqueteSeleccionado = null;
+  let precioSeleccionado = null;
 
-      paqueteSeleccionado = paquete;
-      precioSeleccionado = precio;
+  function seleccionar(elemento, paquete, precio) {
+
+    document.querySelectorAll('.package').forEach(card => {
+      card.classList.remove('selected');
+    });
+
+    elemento.classList.add('selected');
+
+    paqueteSeleccionado = paquete;
+    precioSeleccionado = precio;
+  }
+
+
+  function continuarPedido() {
+
+    if (!paqueteSeleccionado) {
+      alert('Selecciona una recarga primero.');
+      return;
     }
 
-    function continuarPedido() {
+    const playerId =
+      document.getElementById('playerId').value.trim();
 
-      if (!paqueteSeleccionado) {
-        alert('Selecciona una recarga primero.');
-        return;
-      }
+    const playerName =
+      document.getElementById('playerName').value.trim();
 
-      const playerId = document.getElementById('playerId').value.trim();
-      const playerName = document.getElementById('playerName').value.trim();
-
-      if (!playerId) {
-        alert('Ingresa tu ID de Free Fire.');
-        return;
-      }
-
-      if (!playerName) {
-        alert('Ingresa el nombre del jugador.');
-        return;
-      }
-
-      alert(
-        'Pedido preparado\\n\\n' +
-        '💎 Recarga: ' + paqueteSeleccionado + ' diamantes\\n' +
-        '💰 Precio: S/ ' + precioSeleccionado + '\\n' +
-        '🎮 ID: ' + playerId + '\\n' +
-        '👤 Jugador: ' + playerName
-      );
+    if (!playerId) {
+      alert('Ingresa tu ID de Free Fire.');
+      return;
     }
-  </script>
+
+    if (!playerName) {
+      alert('Ingresa el nombre del jugador.');
+      return;
+    }
+
+    document.getElementById('resumenDiamantes').textContent =
+      paqueteSeleccionado + ' diamantes';
+
+    document.getElementById('resumenPrecio').textContent =
+      precioSeleccionado;
+
+    document.getElementById('montoPago').textContent =
+      precioSeleccionado;
+
+    document.getElementById('resumenId').textContent =
+      playerId;
+
+    document.getElementById('resumenNombre').textContent =
+      playerName;
+
+    document.getElementById('inicio').classList.add('hidden');
+    document.getElementById('pago').classList.remove('hidden');
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+
+  function volverInicio() {
+
+    document.getElementById('pago').classList.add('hidden');
+    document.getElementById('inicio').classList.remove('hidden');
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+
+  function pagoRealizado() {
+
+    alert(
+      'Tu comprobante deberá ser verificado antes de procesar la recarga.\\n\\n' +
+      '💎 Recarga: ' + paqueteSeleccionado + ' diamantes\\n' +
+      '💰 Total: S/ ' + precioSeleccionado
+    );
+
+  }
+
+</script>
 
 </body>
 </html>
