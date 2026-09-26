@@ -1,206 +1,362 @@
-<div class="cats">
-  <button class="cat active" onclick="showCat('diamantes', this)">💎 Diamantes</button>
-  <button class="cat" onclick="showCat('membresias', this)">🎫 Membresías</button>
-  <button class="cat" onclick="showCat('cajas', this)">📦 Cajas</button>
-  <button class="cat" onclick="showCat('pase', this)">🎟️ Pase Booyah</button>
-  <button class="cat" onclick="showCat('tarjetas', this)">💳 Tarjetas</button>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEYZON STORE | Recargas Free Fire</title>
 
-<div id="productos2" class="grid"></div>
-<style>
-.cats {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 12px 0 18px;
-}
-
-.cat {
-  white-space: nowrap;
-  padding: 12px 18px;
-  border-radius: 14px;
-  border: 1px solid #168cff;
-  background: #081a36;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.cat.active {
-  background: linear-gradient(135deg, #168cff, #1555ff);
-  box-shadow: 0 0 18px #168cff66;
-}
-
-.grid {
-  display: grid;
-  gap: 18px;
-}
-
-.product-image {
-  width: 100%;
-  height: 250px;
-  border-radius: 15px;
-  overflow: hidden;
-  background: #080d18;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
-}
-
-.product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.product-card {
-  background: #0a111d;
-  border: 1px solid #1d3557;
-  border-radius: 20px;
-  padding: 14px;
-}
-
-.product-card h2 {
-  color: white;
-}
-
-.product-price {
-  color: white;
-  font-size: 22px;
-  margin: 8px 0;
-}
-</style>
-
-<script>
-const imagenesWeyzon = {
-  "Membresía semanal": "membresia-semanal.jpg",
-  "Membresía mensual": "membresia-mensual.jpg",
-  "30 Cajas": "cajas-evo.jpg",
-  "60 Cajas": "cajas-evo.jpg",
-  "120 Cajas": "cajas-evo.jpg",
-  "Pase Booyah": "pase-booyah.jpg",
-  "Tarjeta semanal": "tarjeta-semanal.jpg",
-  "Tarjeta mensual": "tarjeta-mensual.jpg"
-};
-
-const productosNuevos = [
-  {
-    cat: "membresias",
-    nombre: "Membresía semanal",
-    precio: 6.20
-  },
-  {
-    cat: "membresias",
-    nombre: "Membresía mensual",
-    precio: 31
-  },
-  {
-    cat: "cajas",
-    nombre: "30 Cajas",
-    precio: 19.90
-  },
-  {
-    cat: "cajas",
-    nombre: "60 Cajas",
-    precio: 36.50
-  },
-  {
-    cat: "cajas",
-    nombre: "120 Cajas",
-    precio: 73.50
-  },
-  {
-    cat: "pase",
-    nombre: "Pase Booyah",
-    precio: 5
-  },
-  {
-    cat: "tarjetas",
-    nombre: "Tarjeta semanal",
-    precio: 6.50
-  },
-  {
-    cat: "tarjetas",
-    nombre: "Tarjeta mensual",
-    precio: 31
-  }
-];
-
-function mostrarProductos(cat) {
-
-  const contenedor = document.getElementById("productos2");
-
-  if (!contenedor) return;
-
-  const productos = productosNuevos.filter(
-    producto => producto.cat === cat
-  );
-
-  contenedor.innerHTML = "";
-
-  productos.forEach(producto => {
-
-    const tarjeta = document.createElement("div");
-
-    tarjeta.className = "product-card";
-
-    tarjeta.innerHTML = `
-      <div class="product-image">
-        <img
-          src="${imagenesWeyzon[producto.nombre]}"
-          alt="${producto.nombre}"
-        >
-      </div>
-
-      <h2>${producto.nombre}</h2>
-
-      <div class="product-price">
-        S/ ${producto.precio.toFixed(2)}
-      </div>
-
-      <button type="button">
-        Comprar
-      </button>
-    `;
-
-    const boton = tarjeta.querySelector("button");
-
-    boton.onclick = function() {
-
-      if (typeof abrirPedido === "function") {
-        abrirPedido(
-          producto.nombre,
-          producto.precio,
-          2
-        );
-      }
-
-    };
-
-    contenedor.appendChild(tarjeta);
-  });
-}
-
-function showCat(cat, boton) {
-
-  document.querySelectorAll(".cat").forEach(
-    b => b.classList.remove("active")
-  );
-
-  boton.classList.add("active");
-
-  if (cat === "diamantes") {
-
-    const contenedor = document.getElementById("productos2");
-
-    if (contenedor) {
-      contenedor.innerHTML = "";
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
-    return;
-  }
+    body {
+      min-height: 100vh;
+      color: #fff;
+      background:
+        radial-gradient(circle at top right, rgba(0, 90, 255, 0.22), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(255, 0, 55, 0.14), transparent 35%),
+        #03050a;
+    }
 
-  mostrarProductos(cat);
-}
-</script>
+    header {
+      text-align: center;
+      padding: 30px 15px 20px;
+      border-bottom: 1px solid rgba(0, 119, 255, 0.25);
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(0, 119, 255, 0.8);
+    }
+
+    .logo span {
+      color: #168cff;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: #b9c7dc;
+      font-size: 15px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      padding: 25px 15px 50px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #9eabc0;
+      font-size: 14px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .package {
+      background: linear-gradient(145deg, #08101d, #050810);
+      border: 1px solid #16385f;
+      border-radius: 15px;
+      padding: 20px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .package:hover {
+      transform: translateY(-3px);
+      border-color: #168cff;
+      box-shadow: 0 0 18px rgba(0, 119, 255, 0.25);
+    }
+
+    .package.selected {
+      border-color: #168cff;
+      box-shadow: 0 0 20px rgba(0, 119, 255, 0.35);
+      background: linear-gradient(145deg, #0b1b32, #060b13);
+    }
+
+    .diamond {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .amount {
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .price {
+      margin-top: 8px;
+      font-size: 20px;
+      font-weight: 900;
+      color: #2d9cff;
+    }
+
+    .form-box {
+      margin-top: 28px;
+      background: rgba(7, 13, 24, 0.95);
+      border: 1px solid #182b46;
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .form-box h2 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .form-box p {
+      color: #8f9db2;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 7px;
+      font-size: 14px;
+      color: #d9e3f1;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #203958;
+      outline: none;
+      background: #050a12;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input:focus {
+      border-color: #168cff;
+      box-shadow: 0 0 10px rgba(22, 140, 255, 0.15);
+    }
+
+    .continue-btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      border: none;
+      border-radius: 11px;
+      background: linear-gradient(90deg, #0878ff, #168cff);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .continue-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .info {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #080d16;
+      border: 1px solid #17283e;
+      color: #9eabc0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #66758a;
+      font-size: 12px;
+      border-top: 1px solid rgba(0, 119, 255, 0.15);
+    }
+
+    @media (max-width: 650px) {
+      .packages {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .logo {
+        font-size: 27px;
+      }
+
+      .hero h1 {
+        font-size: 23px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .packages {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">💎 WEYZON <span>STORE</span></div>
+    <div class="subtitle">Recargas Free Fire rápidas y seguras</div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>💎 Recarga tus diamantes</h1>
+      <p>Selecciona tu recarga y continúa con tu pedido.</p>
+    </section>
+
+    <h2 class="section-title">🔥 Elige tu recarga</h2>
+
+    <section class="packages">
+
+      <div class="package" onclick="seleccionar(this, '100', '2.70')">
+        <div class="diamond">💎</div>
+        <div class="amount">100 diamantes</div>
+        <div class="price">S/ 2.70</div>
+      </div>
+
+      <div class="package" onclick="seleccionar(this, '300', '8.00')">
+        <div class="diamond">💎</div>
+        <div class="amount">300 diamantes</div>
+        <div class="price">S/ 8.00</div>
+      </div>
+
+      <div class="package" onclick="seleccionar(this, '500', '13.20')">
+        <div class="diamond">💎</div>
+        <div class="amount">500 diamantes</div>
+        <div class="price">S/ 13.20</div>
+      </div>
+
+      <div class="package" onclick="seleccionar(this, '1000', '24.20')">
+        <div class="diamond">💎</div>
+        <div class="amount">1,000 diamantes</div>
+        <div class="price">S/ 24.20</div>
+      </div>
+
+      <div class="package" onclick="seleccionar(this, '2000', '48.60')">
+        <div class="diamond">💎</div>
+        <div class="amount">2,000 diamantes</div>
+        <div class="price">S/ 48.60</div>
+      </div>
+
+      <div class="package" onclick="seleccionar(this, '6000', '121.00')">
+        <div class="diamond">💎</div>
+        <div class="amount">6,000 diamantes</div>
+        <div class="price">S/ 121.00</div>
+      </div>
+
+    </section>
+
+    <section class="form-box">
+
+      <h2>🎮 Datos de tu cuenta</h2>
+      <p>Ingresa correctamente los datos donde recibirás la recarga.</p>
+
+      <label for="playerId">ID de Free Fire</label>
+      <input
+        type="text"
+        id="playerId"
+        placeholder="Ejemplo: 123456789"
+        inputmode="numeric"
+      >
+
+      <label for="playerName">Nombre del jugador</label>
+      <input
+        type="text"
+        id="playerName"
+        placeholder="Ingresa tu nombre"
+      >
+
+      <button class="continue-btn" onclick="continuarPedido()">
+        CONTINUAR →
+      </button>
+
+      <div class="info">
+        ⚡ La recarga será procesada después de confirmar el pago.<br>
+        🔒 Verifica tu ID antes de realizar el pago.<br>
+        💎 Los datos ingresados serán utilizados para realizar la recarga.
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 WEYZON STORE · Recargas Free Fire
+  </footer>
+
+  <script>
+    let paqueteSeleccionado = null;
+    let precioSeleccionado = null;
+
+    function seleccionar(elemento, paquete, precio) {
+
+      document.querySelectorAll('.package').forEach(card => {
+        card.classList.remove('selected');
+      });
+
+      elemento.classList.add('selected');
+
+      paqueteSeleccionado = paquete;
+      precioSeleccionado = precio;
+    }
+
+    function continuarPedido() {
+
+      if (!paqueteSeleccionado) {
+        alert('Selecciona una recarga primero.');
+        return;
+      }
+
+      const playerId = document.getElementById('playerId').value.trim();
+      const playerName = document.getElementById('playerName').value.trim();
+
+      if (!playerId) {
+        alert('Ingresa tu ID de Free Fire.');
+        return;
+      }
+
+      if (!playerName) {
+        alert('Ingresa el nombre del jugador.');
+        return;
+      }
+
+      alert(
+        'Pedido preparado\\n\\n' +
+        '💎 Recarga: ' + paqueteSeleccionado + ' diamantes\\n' +
+        '💰 Precio: S/ ' + precioSeleccionado + '\\n' +
+        '🎮 ID: ' + playerId + '\\n' +
+        '👤 Jugador: ' + playerName
+      );
+    }
+  </script>
+
+</body>
+</html>
