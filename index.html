@@ -6,466 +6,273 @@
 
 <title>WEYZON STORE | Recargas Free Fire</title>
 
-<style>
+<script src="https://sdk.mercadopago.com/js/v2"></script>
 
+<style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif
 }
 
 body{
-  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#080b14;
   color:#fff;
-  background:
-  radial-gradient(circle at top right,rgba(0,90,255,.22),transparent 35%),
-  radial-gradient(circle at bottom left,rgba(255,0,55,.16),transparent 35%),
-  #03050a
+  min-height:100vh;
+}
+
+.container{
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  padding:20px;
 }
 
 header{
   text-align:center;
-  padding:30px 15px 22px;
-  border-bottom:1px solid rgba(0,119,255,.25)
+  padding:30px 10px;
 }
 
 .logo{
-  font-size:32px;
+  font-size:38px;
   font-weight:900;
   letter-spacing:2px;
-  text-shadow:0 0 15px rgba(0,119,255,.8)
 }
 
 .logo span{
-  color:#168cff
+  color:#00e5ff;
 }
 
 .subtitle{
   margin-top:8px;
-  color:#b9c7dc;
-  font-size:15px
+  color:#aaa;
+  font-size:15px;
 }
 
-main{
-  width:100%;
-  max-width:900px;
-  margin:auto;
-  padding:28px 15px 50px
-}
-
-.hero{
-  text-align:center;
-  margin-bottom:28px
-}
-
-.hero h1{
-  font-size:28px;
-  margin-bottom:8px
-}
-
-.hero p{
-  color:#9eabc0;
-  font-size:14px
+.section{
+  margin-top:25px;
 }
 
 .section-title{
-  font-size:20px;
-  margin-bottom:15px
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:15px;
 }
 
 .packages{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px
+  gap:14px;
 }
 
 .package{
-  background:linear-gradient(145deg,#08101d,#050810);
-  border:1px solid #16385f;
-  border-radius:15px;
+  background:#111625;
+  border:1px solid #20283d;
+  border-radius:16px;
   padding:20px 12px;
   text-align:center;
   cursor:pointer;
-  transition:.2s
+  transition:.2s;
 }
 
 .package:hover{
   transform:translateY(-3px);
-  border-color:#168cff;
-  box-shadow:0 0 18px rgba(0,119,255,.25)
+  border-color:#00e5ff;
 }
 
 .package.selected{
-  border-color:#168cff;
-  box-shadow:0 0 20px rgba(0,119,255,.35);
-  background:linear-gradient(145deg,#0b1b32,#060b13)
+  border:2px solid #00e5ff;
+  background:#101d2c;
 }
 
-.diamond{
-  font-size:32px;
-  margin-bottom:8px
-}
-
-.amount{
-  font-size:19px;
-  font-weight:bold
+.diamonds{
+  font-size:23px;
+  font-weight:bold;
 }
 
 .price{
   margin-top:8px;
   font-size:20px;
-  font-weight:900;
-  color:#2d9cff
+  font-weight:bold;
+  color:#00e5ff;
 }
 
-.form-box,
-.payment-box{
-  margin-top:28px;
-  background:rgba(7,13,24,.97);
-  border:1px solid #182b46;
+.form-box{
+  background:#111625;
+  border:1px solid #20283d;
   border-radius:18px;
-  padding:22px
-}
-
-.form-box h2,
-.payment-box h2{
-  font-size:21px;
-  margin-bottom:7px
-}
-
-.form-box p,
-.payment-box>p{
-  color:#8f9db2;
-  font-size:13px;
-  margin-bottom:18px
+  padding:22px;
 }
 
 label{
   display:block;
-  margin:14px 0 7px;
+  margin-top:15px;
+  margin-bottom:7px;
+  color:#ddd;
   font-size:14px;
-  color:#d9e3f1
 }
 
 input{
   width:100%;
-  padding:14px;
-  border-radius:10px;
-  border:1px solid #203958;
+  padding:15px;
+  border-radius:11px;
+  border:1px solid #30394f;
+  background:#080b14;
+  color:white;
+  font-size:16px;
   outline:none;
-  background:#050a12;
-  color:#fff;
-  font-size:15px
 }
 
 input:focus{
-  border-color:#168cff;
-  box-shadow:0 0 10px rgba(22,140,255,.15)
+  border-color:#00e5ff;
 }
 
-button{
-  cursor:pointer
-}
-
-.continue-btn,
-.pay-btn,
-.back-btn{
+.pay-button{
   width:100%;
-  margin-top:20px;
+  margin-top:22px;
+  padding:17px;
+  border:0;
+  border-radius:13px;
+  background:#00bfff;
+  color:#001018;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.pay-button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.back-button{
+  width:100%;
+  margin-top:12px;
   padding:15px;
-  border:none;
-  border-radius:11px;
+  border-radius:13px;
+  border:1px solid #30394f;
+  background:transparent;
   color:#fff;
   font-size:16px;
-  font-weight:bold
+  cursor:pointer;
 }
 
-.continue-btn,
-.pay-btn{
-  background:linear-gradient(90deg,#0878ff,#168cff)
-}
-
-.continue-btn:hover,
-.pay-btn:hover{
-  filter:brightness(1.1)
-}
-
-.pay-btn:disabled{
-  opacity:.6;
-  cursor:not-allowed
-}
-
-.back-btn{
-  background:#101925;
-  border:1px solid #263c58;
-  color:#b9c7dc
-}
-
-.summary{
-  margin-top:15px;
-  padding:16px;
-  border-radius:13px;
-  background:#080d16;
-  border:1px solid #17283e;
-  line-height:1.8
-}
-
-.summary strong{
-  color:#2d9cff
-}
-
-.payment-method{
-  text-align:center;
-  padding:22px;
-  border-radius:15px;
-  background:linear-gradient(145deg,#0c1020,#070a12);
-  border:1px solid #30256b;
-  margin-top:18px
-}
-
-.mercado-title{
-  font-size:25px;
-  font-weight:900;
-  color:#4da3ff;
-  margin-bottom:10px
-}
-
-.mercado-text{
-  color:#b9c7dc;
-  line-height:1.6;
-  font-size:14px
-}
-
-.yape-box{
-  margin-top:18px;
-  padding:18px;
-  border-radius:15px;
-  background:#080d16;
-  border:1px solid #263c58
-}
-
-.yape-title{
-  font-size:22px;
-  font-weight:900;
-  margin-bottom:8px
-}
-
-.yape-info{
-  color:#9eabc0;
-  font-size:13px;
-  line-height:1.6;
-  margin-bottom:15px
-}
-
-.instructions{
+.message{
   margin-top:18px;
   padding:15px;
   border-radius:12px;
-  background:#080d16;
-  border:1px solid #17283e;
-  color:#b9c7dc;
-  font-size:14px;
-  line-height:1.7
+  display:none;
+  text-align:center;
 }
 
-.warning{
-  margin-top:15px;
-  padding:13px;
-  border-radius:10px;
-  background:rgba(255,0,55,.08);
-  border:1px solid rgba(255,0,55,.28);
-  color:#ffb7c3;
-  font-size:13px;
-  line-height:1.5
+.message.success{
+  display:block;
+  background:#0b3b28;
+  color:#7dffbf;
 }
 
-.hidden{
-  display:none
+.message.error{
+  display:block;
+  background:#3b1015;
+  color:#ff9aa5;
+}
+
+.summary{
+  margin-top:18px;
+  padding:15px;
+  border-radius:12px;
+  background:#080b14;
+  border:1px solid #20283d;
+  display:none;
+}
+
+.summary div{
+  margin:5px 0;
 }
 
 footer{
   text-align:center;
-  padding:25px 15px;
-  color:#66758a;
-  font-size:12px;
-  border-top:1px solid rgba(0,119,255,.15)
+  color:#666;
+  padding:35px 10px;
+  font-size:13px;
 }
 
-@media(max-width:650px){
-
+@media(max-width:700px){
   .packages{
-    grid-template-columns:repeat(2,1fr)
+    grid-template-columns:repeat(2,1fr);
   }
 
   .logo{
-    font-size:27px
-  }
-
-  .hero h1{
-    font-size:23px
+    font-size:31px;
   }
 }
 
-@media(max-width:380px){
-
+@media(max-width:400px){
   .packages{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 }
-
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <header>
-
-  <div class="logo">
-    💎 WEYZON <span>STORE</span>
-  </div>
-
-  <div class="subtitle">
-    Recargas Free Fire rápidas y seguras
-  </div>
-
+  <div class="logo">WEYZON <span>STORE</span></div>
+  <div class="subtitle">Recargas Free Fire rápidas y seguras</div>
 </header>
 
-<main>
+<div class="section">
 
-<section id="inicio">
+  <div class="section-title">
+    💎 Elige tu paquete
+  </div>
 
-  <section class="hero">
+  <div class="packages">
 
-    <h1>
-      💎 Recarga tus diamantes
-    </h1>
-
-    <p>
-      Selecciona tu recarga e ingresa los datos de tu cuenta.
-    </p>
-
-  </section>
-
-  <h2 class="section-title">
-    🔥 Elige tu recarga
-  </h2>
-
-  <section class="packages">
-
-    <div
-      class="package"
-      onclick="seleccionar(this,'100','2.70')"
-    >
-
-      <div class="diamond">💎</div>
-
-      <div class="amount">
-        100 diamantes
-      </div>
-
-      <div class="price">
-        S/ 2.70
-      </div>
-
+    <div class="package" data-diamonds="100" data-price="2.70">
+      <div class="diamonds">💎 100</div>
+      <div class="price">S/ 2.70</div>
     </div>
 
-    <div
-      class="package"
-      onclick="seleccionar(this,'300','8.00')"
-    >
-
-      <div class="diamond">💎</div>
-
-      <div class="amount">
-        300 diamantes
-      </div>
-
-      <div class="price">
-        S/ 8.00
-      </div>
-
+    <div class="package" data-diamonds="300" data-price="8.00">
+      <div class="diamonds">💎 300</div>
+      <div class="price">S/ 8.00</div>
     </div>
 
-    <div
-      class="package"
-      onclick="seleccionar(this,'500','13.20')"
-    >
-
-      <div class="diamond">💎</div>
-
-      <div class="amount">
-        500 diamantes
-      </div>
-
-      <div class="price">
-        S/ 13.20
-      </div>
-
+    <div class="package" data-diamonds="500" data-price="13.20">
+      <div class="diamonds">💎 500</div>
+      <div class="price">S/ 13.20</div>
     </div>
 
-    <div
-      class="package"
-      onclick="seleccionar(this,'1000','24.20')"
-    >
-
-      <div class="diamond">💎</div>
-
-      <div class="amount">
-        1,000 diamantes
-      </div>
-
-      <div class="price">
-        S/ 24.20
-      </div>
-
+    <div class="package" data-diamonds="1000" data-price="24.20">
+      <div class="diamonds">💎 1000</div>
+      <div class="price">S/ 24.20</div>
     </div>
 
-    <div
-      class="package"
-      onclick="seleccionar(this,'2000','48.60')"
-    >
-
-      <div class="diamond">💎</div>
-
-      <div class="amount">
-        2,000 diamantes
-      </div>
-
-      <div class="price">
-        S/ 48.60
-      </div>
-
+    <div class="package" data-diamonds="2000" data-price="48.60">
+      <div class="diamonds">💎 2000</div>
+      <div class="price">S/ 48.60</div>
     </div>
 
-    <div
-      class="package"
-      onclick="seleccionar(this,'6000','121.00')"
-    >
-
-      <div class="diamond">💎</div>
-
-      <div class="amount">
-        6,000 diamantes
-      </div>
-
-      <div class="price">
-        S/ 121.00
-      </div>
-
+    <div class="package" data-diamonds="6000" data-price="121.00">
+      <div class="diamonds">💎 6000</div>
+      <div class="price">S/ 121.00</div>
     </div>
 
-  </section>
+  </div>
+</div>
 
-  <section class="form-box">
+<div class="section">
 
-    <h2>
-      🎮 Datos de tu cuenta
-    </h2>
+  <div class="section-title">
+    🎮 Datos de tu cuenta
+  </div>
 
-    <p>
-      Ingresa correctamente los datos donde recibirás la recarga.
-    </p>
+  <div class="form-box">
 
     <label for="playerId">
       ID de Free Fire
@@ -475,7 +282,7 @@ footer{
       id="playerId"
       type="text"
       placeholder="Ejemplo: 123456789"
-      inputmode="numeric"
+      autocomplete="off"
     >
 
     <label for="playerName">
@@ -485,7 +292,8 @@ footer{
     <input
       id="playerName"
       type="text"
-      placeholder="Ingresa tu nombre"
+      placeholder="Tu nombre en Free Fire"
+      autocomplete="off"
     >
 
     <label for="email">
@@ -495,426 +303,349 @@ footer{
     <input
       id="email"
       type="email"
-      placeholder="cliente@gmail.com"
+      placeholder="correo@ejemplo.com"
+      autocomplete="email"
     >
 
-    <button
-      class="continue-btn"
-      onclick="continuarPedido()"
+    <label for="phone">
+      Número de celular Yape
+    </label>
+
+    <input
+      id="phone"
+      type="tel"
+      placeholder="111111111"
+      maxlength="9"
+      autocomplete="off"
     >
-      CONTINUAR →
-    </button>
 
-  </section>
+    <label for="otp">
+      OTP de Yape
+    </label>
 
-</section>
+    <input
+      id="otp"
+      type="text"
+      placeholder="123456"
+      maxlength="6"
+      inputmode="numeric"
+      autocomplete="off"
+    >
 
-<section id="pago" class="hidden">
-
-  <section class="payment-box">
-
-    <h2>
-      💳 Realiza tu pago
-    </h2>
-
-    <p>
-      Revisa los datos de tu pedido antes de pagar.
-    </p>
-
-    <div class="summary">
-
-      💎 Recarga:
-      <strong id="resumenDiamantes"></strong>
-
-      <br>
-
-      💰 Total:
-      <strong>
-        S/ <span id="resumenPrecio"></span>
-      </strong>
-
-      <br>
-
-      🎮 ID:
-      <strong id="resumenId"></strong>
-
-      <br>
-
-      👤 Jugador:
-      <strong id="resumenNombre"></strong>
-
-    </div>
-
-    <div class="payment-method">
-
-      <div class="mercado-title">
-        💳 MERCADO PAGO
-      </div>
-
-      <div class="mercado-text">
-        Paga de forma segura mediante Mercado Pago.
-      </div>
-
-    </div>
-
-    <div class="yape-box">
-
-      <div class="yape-title">
-        📱 Pago con Yape
-      </div>
-
-      <div class="yape-info">
-
-        Ingresa tu número de celular Yape y el
-        código OTP para generar el token de pago.
-
-      </div>
-
-      <label for="yapePhone">
-        Número de celular Yape
-      </label>
-
-      <input
-        id="yapePhone"
-        type="tel"
-        placeholder="111111111"
-        inputmode="numeric"
-        maxlength="9"
-      >
-
-      <label for="yapeOtp">
-        OTP de Yape
-      </label>
-
-      <input
-        id="yapeOtp"
-        type="text"
-        placeholder="123456"
-        inputmode="numeric"
-        maxlength="6"
-      >
-
-    </div>
-
-    <div class="instructions">
-
-      <strong>
-        📋 Pasos:
-      </strong>
-
-      <br><br>
-
-      1️⃣ Revisa tu ID y nombre.
-
-      <br>
-
-      2️⃣ Ingresa tu número Yape.
-
-      <br>
-
-      3️⃣ Ingresa el OTP.
-
-      <br>
-
-      4️⃣ Pulsa PAGAR CON YAPE.
-
-      <br>
-
-      5️⃣ Espera la respuesta de Mercado Pago.
-
-    </div>
-
-    <div class="warning">
-
-      ⚠️ Verifica cuidadosamente tu ID de Free Fire
-      antes de pagar.
-
+    <div class="summary" id="summary">
+      <div>💎 Paquete: <strong id="summaryDiamonds"></strong></div>
+      <div>💰 Precio: <strong id="summaryPrice"></strong></div>
     </div>
 
     <button
       id="payButton"
-      class="pay-btn"
-      onclick="pagarConYape()"
+      class="pay-button"
+      disabled
     >
-
-      📱 PAGAR CON YAPE
-
+      💳 PAGAR CON YAPE
     </button>
 
     <button
-      class="back-btn"
-      onclick="volverInicio()"
+      id="backButton"
+      class="back-button"
+      type="button"
+      onclick="window.scrollTo({top:0,behavior:'smooth'})"
     >
-
       ← VOLVER
-
     </button>
 
-  </section>
+    <div id="message" class="message"></div>
 
-</section>
-
-</main>
+  </div>
+</div>
 
 <footer>
-
-© 2026 WEYZON STORE · Recargas Free Fire
-
+  © 2026 WEYZON STORE
 </footer>
 
-<script src="https://sdk.mercadopago.com/js/v2"></script>
+</div>
 
 <script>
 
+/* ==============================
+   CONFIGURACIÓN
+============================== */
+
 const API_URL =
-"https://weyzon-api.brayanantoni2288.workers.dev";
+  "https://weyzon-api.brayanantoni2288.workers.dev";
 
 const MP_PUBLIC_KEY =
-"APP_USR-67c84156-de0a-4b6a-abac-a43109017c6b";
+  "APP_USR-67c84156-de0a-4b6a-abac-a43109017c6b";
 
-const mp =
-new MercadoPago(
+
+/* ==============================
+   MERCADO PAGO
+============================== */
+
+const mp = new MercadoPago(
   MP_PUBLIC_KEY,
   {
     locale:"es-PE"
   }
 );
 
-let paqueteSeleccionado = null;
 
+/* ==============================
+   VARIABLES
+============================== */
+
+let paqueteSeleccionado = null;
 let precioSeleccionado = null;
 
 
-function seleccionar(
-  elemento,
-  paquete,
-  precio
-){
+/* ==============================
+   ELEMENTOS
+============================== */
 
-  document
-    .querySelectorAll(".package")
-    .forEach(card => {
+const packages =
+  document.querySelectorAll(".package");
 
-      card.classList.remove(
-        "selected"
-      );
+const payButton =
+  document.getElementById("payButton");
 
+const message =
+  document.getElementById("message");
+
+const summary =
+  document.getElementById("summary");
+
+const summaryDiamonds =
+  document.getElementById("summaryDiamonds");
+
+const summaryPrice =
+  document.getElementById("summaryPrice");
+
+
+/* ==============================
+   SELECCIONAR PAQUETE
+============================== */
+
+packages.forEach((pack)=>{
+
+  pack.addEventListener("click",()=>{
+
+    packages.forEach((p)=>{
+      p.classList.remove("selected");
     });
 
-  elemento.classList.add(
-    "selected"
-  );
+    pack.classList.add("selected");
 
-  paqueteSeleccionado =
-    paquete;
+    paqueteSeleccionado =
+      pack.dataset.diamonds;
 
-  precioSeleccionado =
-    precio;
+    precioSeleccionado =
+      pack.dataset.price;
 
-}
+    summaryDiamonds.textContent =
+      paqueteSeleccionado + " diamantes";
 
+    summaryPrice.textContent =
+      "S/ " + precioSeleccionado;
 
-function continuarPedido(){
+    summary.style.display =
+      "block";
 
-  if(!paqueteSeleccionado){
+    actualizarBoton();
 
-    alert(
-      "Selecciona una recarga primero."
-    );
-
-    return;
-  }
-
-  const playerId =
-    document
-      .getElementById("playerId")
-      .value
-      .trim();
-
-  const playerName =
-    document
-      .getElementById("playerName")
-      .value
-      .trim();
-
-  const email =
-    document
-      .getElementById("email")
-      .value
-      .trim();
-
-  if(!playerId){
-
-    alert(
-      "Ingresa tu ID de Free Fire."
-    );
-
-    return;
-  }
-
-  if(!playerName){
-
-    alert(
-      "Ingresa el nombre del jugador."
-    );
-
-    return;
-  }
-
-  if(!email){
-
-    alert(
-      "Ingresa tu correo electrónico."
-    );
-
-    return;
-  }
-
-  document
-    .getElementById("resumenDiamantes")
-    .textContent =
-      paqueteSeleccionado +
-      " diamantes";
-
-  document
-    .getElementById("resumenPrecio")
-    .textContent =
-      precioSeleccionado;
-
-  document
-    .getElementById("resumenId")
-    .textContent =
-      playerId;
-
-  document
-    .getElementById("resumenNombre")
-    .textContent =
-      playerName;
-
-  document
-    .getElementById("inicio")
-    .classList
-    .add("hidden");
-
-  document
-    .getElementById("pago")
-    .classList
-    .remove("hidden");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
   });
 
+});
+
+
+/* ==============================
+   ACTUALIZAR BOTÓN
+============================== */
+
+function actualizarBoton(){
+
+  const playerId =
+    document.getElementById("playerId").value.trim();
+
+  const playerName =
+    document.getElementById("playerName").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const otp =
+    document.getElementById("otp").value.trim();
+
+  payButton.disabled =
+    !paqueteSeleccionado ||
+    !precioSeleccionado ||
+    !playerId ||
+    !playerName ||
+    !email ||
+    !phone ||
+    !otp;
+
 }
 
 
-async function pagarConYape(){
+/* ==============================
+   ESCUCHAR CAMPOS
+============================== */
 
-  if(
-    !paqueteSeleccionado ||
-    !precioSeleccionado
-  ){
+[
+  "playerId",
+  "playerName",
+  "email",
+  "phone",
+  "otp"
+].forEach((id)=>{
 
-    alert(
-      "Selecciona una recarga primero."
-    );
+  document
+    .getElementById(id)
+    .addEventListener("input",()=>{
+      actualizarBoton();
+    });
 
-    return;
-  }
+});
 
-  const playerId =
-    document
-      .getElementById("playerId")
-      .value
-      .trim();
 
-  const playerName =
-    document
-      .getElementById("playerName")
-      .value
-      .trim();
+/* ==============================
+   MENSAJE
+============================== */
 
-  const email =
-    document
-      .getElementById("email")
-      .value
-      .trim();
+function mostrarMensaje(texto,tipo){
 
-  const phone =
-    document
-      .getElementById("yapePhone")
-      .value
-      .trim();
+  message.textContent =
+    texto;
 
-  const otp =
-    document
-      .getElementById("yapeOtp")
-      .value
-      .trim();
+  message.className =
+    "message " + tipo;
 
-  if(
-    !phone ||
-    !/^\d{9}$/.test(phone)
-  ){
+}
 
-    alert(
-      "Ingresa un número Yape válido de 9 dígitos."
-    );
 
-    return;
-  }
+/* ==============================
+   PROCESAR PAGO
+============================== */
 
-  if(
-    !otp ||
-    !/^\d{6}$/.test(otp)
-  ){
-
-    alert(
-      "Ingresa un OTP válido de 6 dígitos."
-    );
-
-    return;
-  }
-
-  const boton =
-    document
-      .getElementById("payButton");
+payButton.addEventListener("click",async()=>{
 
   try{
 
-    boton.disabled = true;
+    payButton.disabled = true;
 
-    boton.textContent =
-      "⏳ GENERANDO TOKEN...";
+    payButton.textContent =
+      "⏳ PROCESANDO PAGO...";
 
-    const yape =
-      mp.yape({
+    message.className =
+      "message";
 
-        otp:
-          otp,
+    const playerId =
+      document
+        .getElementById("playerId")
+        .value
+        .trim();
 
-        phoneNumber:
-          phone
+    const playerName =
+      document
+        .getElementById("playerName")
+        .value
+        .trim();
 
-      });
+    const email =
+      document
+        .getElementById("email")
+        .value
+        .trim();
 
-    const yapeToken =
-      await yape.create();
+    const phone =
+      document
+        .getElementById("phone")
+        .value
+        .trim();
 
-    if(!yapeToken){
+    const otp =
+      document
+        .getElementById("otp")
+        .value
+        .trim();
+
+
+    /* ==========================
+       VALIDACIONES
+    ========================== */
+
+    if(!paqueteSeleccionado){
 
       throw new Error(
-        "Mercado Pago no devolvió el token de Yape."
+        "Selecciona un paquete de diamantes."
       );
 
     }
 
+    if(!playerId){
+
+      throw new Error(
+        "Ingresa tu ID de Free Fire."
+      );
+
+    }
+
+    if(!playerName){
+
+      throw new Error(
+        "Ingresa el nombre del jugador."
+      );
+
+    }
+
+    if(!email){
+
+      throw new Error(
+        "Ingresa tu correo electrónico."
+      );
+
+    }
+
+    if(!phone){
+
+      throw new Error(
+        "Ingresa tu número de Yape."
+      );
+
+    }
+
+    if(!otp){
+
+      throw new Error(
+        "Ingresa el OTP de Yape."
+      );
+
+    }
+
+
+    /* ==========================
+       CREAR TOKEN YAPE
+    ========================== */
+
+    const yape =
+      mp.yape({
+        otp:otp,
+        phoneNumber:phone
+      });
+
+
+    const yapeToken =
+      await yape.create();
+
+
     /*
-      CORRECCIÓN:
-      El SDK devuelve un objeto token.
-      Mercado Pago necesita solamente
-      el ID del token para crear el pago.
+      Mercado Pago puede devolver
+      directamente un string o un objeto.
+
+      En caso de objeto usamos .id
     */
 
     const tokenParaPago =
@@ -922,26 +653,24 @@ async function pagarConYape(){
         ? yapeToken
         : yapeToken.id;
 
+
     if(!tokenParaPago){
 
       throw new Error(
-        "No se encontró el ID del token de Yape."
+        "No se pudo obtener el token de Yape."
       );
 
     }
 
-    console.log(
-      "Token Yape generado correctamente."
-    );
 
-    boton.textContent =
-      "⏳ PROCESANDO PAGO...";
+    /* ==========================
+       ENVIAR AL WORKER
+    ========================== */
 
-    const respuesta =
+    const response =
       await fetch(
         API_URL,
         {
-
           method:"POST",
 
           headers:{
@@ -949,159 +678,107 @@ async function pagarConYape(){
               "application/json"
           },
 
-          body:
-            JSON.stringify({
+          body:JSON.stringify({
 
-              title:
-                "Recarga Free Fire - " +
-                paqueteSeleccionado +
-                " diamantes",
+            title:
+              "Recarga Free Fire - " +
+              paqueteSeleccionado +
+              " diamantes",
 
-              price:
-                Number(
-                  precioSeleccionado
-                ),
+            price:
+              Number(precioSeleccionado),
 
-              playerId:
-                playerId,
+            playerId:
+              playerId,
 
-              playerName:
-                playerName,
+            playerName:
+              playerName,
 
-              email:
-                email,
+            email:
+              email,
 
-              yapeToken:
-                tokenParaPago
+            yapeToken:
+              tokenParaPago
 
-            })
+          })
 
         }
       );
 
-    let resultado;
 
-    try{
+    const result =
+      await response.json();
 
-      resultado =
-        await respuesta.json();
 
-    }catch(e){
+    /* ==========================
+       ERROR DEL WORKER
+    ========================== */
+
+    if(!response.ok){
 
       throw new Error(
-        "El Worker devolvió una respuesta inválida."
+        result.error ||
+        "Mercado Pago rechazó el pago."
       );
 
     }
 
-    console.log(
-      "Respuesta del Worker:",
-      resultado
+
+    /* ==========================
+       PAGO EXITOSO
+    ========================== */
+
+    if(result.ok){
+
+      mostrarMensaje(
+        "✅ Pago procesado correctamente. ID: " +
+        result.id,
+        "success"
+      );
+
+      payButton.textContent =
+        "✅ PAGO PROCESADO";
+
+      return;
+
+    }
+
+
+    throw new Error(
+      "No se pudo confirmar el pago."
     );
 
-    if(!respuesta.ok){
-
-      throw new Error(
-
-        resultado.error ||
-
-        resultado.message ||
-
-        "Mercado Pago rechazó el pago."
-
-      );
-
-    }
-
-    if(
-      resultado.status ===
-      "approved"
-    ){
-
-      alert(
-
-        "✅ PAGO APROBADO\n\n" +
-
-        "Tu pago fue confirmado correctamente.\n\n" +
-
-        "ID de pago: " +
-
-        resultado.id
-
-      );
-
-    }else{
-
-      alert(
-
-        "⚠️ ESTADO DEL PAGO\n\n" +
-
-        "Estado: " +
-
-        (
-          resultado.status ||
-          "desconocido"
-        ) +
-
-        "\n\nDetalle: " +
-
-        (
-          resultado.status_detail ||
-          "Sin detalle"
-        )
-
-      );
-
-    }
 
   }catch(error){
 
     console.error(
-      "Error de pago:",
+      "ERROR PAGO:",
       error
     );
 
-    alert(
-
-      "❌ NO SE PUDO PROCESAR EL PAGO\n\n" +
-
-      error.message
-
+    mostrarMensaje(
+      "❌ NO SE PUDO PROCESAR EL PAGO: " +
+      (error.message ||
+      "Error desconocido."),
+      "error"
     );
 
-  }finally{
+    payButton.disabled =
+      false;
 
-    boton.disabled = false;
-
-    boton.textContent =
-      "📱 PAGAR CON YAPE";
+    payButton.textContent =
+      "💳 PAGAR CON YAPE";
 
   }
 
-}
+});
 
 
-function volverInicio(){
+/* ==============================
+   INICIO
+============================== */
 
-  document
-    .getElementById("pago")
-    .classList
-    .add("hidden");
-
-  document
-    .getElementById("inicio")
-    .classList
-    .remove("hidden");
-
-  window.scrollTo({
-
-    top:0,
-
-    behavior:"smooth"
-
-  });
-
-}
+actualizarBoton();
 
 </script>
 
