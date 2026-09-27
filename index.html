@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>WEYZON STORE | Recargas Free Fire</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -17,8 +19,16 @@ body{
   min-height:100vh;
   color:#fff;
   background:
-  radial-gradient(circle at top right,rgba(0,90,255,.22),transparent 35%),
-  radial-gradient(circle at bottom left,rgba(255,0,55,.16),transparent 35%),
+  radial-gradient(
+    circle at top right,
+    rgba(0,90,255,.22),
+    transparent 35%
+  ),
+  radial-gradient(
+    circle at bottom left,
+    rgba(255,0,55,.16),
+    transparent 35%
+  ),
   #03050a
 }
 
@@ -35,7 +45,9 @@ header{
   text-shadow:0 0 15px rgba(0,119,255,.8)
 }
 
-.logo span{color:#168cff}
+.logo span{
+  color:#168cff
+}
 
 .subtitle{
   margin-top:8px;
@@ -77,7 +89,12 @@ main{
 }
 
 .package{
-  background:linear-gradient(145deg,#08101d,#050810);
+  background:
+    linear-gradient(
+      145deg,
+      #08101d,
+      #050810
+    );
   border:1px solid #16385f;
   border-radius:15px;
   padding:20px 12px;
@@ -95,7 +112,12 @@ main{
 .package.selected{
   border-color:#168cff;
   box-shadow:0 0 20px rgba(0,119,255,.35);
-  background:linear-gradient(145deg,#0b1b32,#060b13)
+  background:
+    linear-gradient(
+      145deg,
+      #0b1b32,
+      #060b13
+    )
 }
 
 .diamond{
@@ -179,7 +201,12 @@ button{
 
 .continue-btn,
 .pay-btn{
-  background:linear-gradient(90deg,#0878ff,#168cff)
+  background:
+    linear-gradient(
+      90deg,
+      #0878ff,
+      #168cff
+    )
 }
 
 .continue-btn:hover,
@@ -215,7 +242,12 @@ button{
   text-align:center;
   padding:22px;
   border-radius:15px;
-  background:linear-gradient(145deg,#0c1020,#070a12);
+  background:
+    linear-gradient(
+      145deg,
+      #0c1020,
+      #070a12
+    );
   border:1px solid #30256b;
   margin-top:18px
 }
@@ -235,568 +267,4 @@ button{
 
 .yape-box{
   margin-top:18px;
-  padding:18px;
-  border-radius:15px;
-  background:#080d16;
-  border:1px solid #263c58
-}
-
-.yape-title{
-  font-size:22px;
-  font-weight:900;
-  margin-bottom:8px
-}
-
-.yape-info{
-  color:#9eabc0;
-  font-size:13px;
-  line-height:1.6;
-  margin-bottom:15px
-}
-
-.instructions{
-  margin-top:18px;
-  padding:15px;
-  border-radius:12px;
-  background:#080d16;
-  border:1px solid #17283e;
-  color:#b9c7dc;
-  font-size:14px;
-  line-height:1.7
-}
-
-.warning{
-  margin-top:15px;
-  padding:13px;
-  border-radius:10px;
-  background:rgba(255,0,55,.08);
-  border:1px solid rgba(255,0,55,.28);
-  color:#ffb7c3;
-  font-size:13px;
-  line-height:1.5
-}
-
-.hidden{
-  display:none
-}
-
-footer{
-  text-align:center;
-  padding:25px 15px;
-  color:#66758a;
-  font-size:12px;
-  border-top:1px solid rgba(0,119,255,.15)
-}
-
-@media(max-width:650px){
-  .packages{
-    grid-template-columns:repeat(2,1fr)
-  }
-
-  .logo{
-    font-size:27px
-  }
-
-  .hero h1{
-    font-size:23px
-  }
-}
-
-@media(max-width:380px){
-  .packages{
-    grid-template-columns:1fr
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">💎 WEYZON <span>STORE</span></div>
-  <div class="subtitle">Recargas Free Fire rápidas y seguras</div>
-</header>
-
-<main>
-
-<section id="inicio">
-
-  <section class="hero">
-    <h1>💎 Recarga tus diamantes</h1>
-    <p>Selecciona tu recarga e ingresa los datos de tu cuenta.</p>
-  </section>
-
-  <h2 class="section-title">🔥 Elige tu recarga</h2>
-
-  <section class="packages">
-
-    <div class="package" onclick="seleccionar(this,'100','2.70')">
-      <div class="diamond">💎</div>
-      <div class="amount">100 diamantes</div>
-      <div class="price">S/ 2.70</div>
-    </div>
-
-    <div class="package" onclick="seleccionar(this,'300','8.00')">
-      <div class="diamond">💎</div>
-      <div class="amount">300 diamantes</div>
-      <div class="price">S/ 8.00</div>
-    </div>
-
-    <div class="package" onclick="seleccionar(this,'500','13.20')">
-      <div class="diamond">💎</div>
-      <div class="amount">500 diamantes</div>
-      <div class="price">S/ 13.20</div>
-    </div>
-
-    <div class="package" onclick="seleccionar(this,'1000','24.20')">
-      <div class="diamond">💎</div>
-      <div class="amount">1,000 diamantes</div>
-      <div class="price">S/ 24.20</div>
-    </div>
-
-    <div class="package" onclick="seleccionar(this,'2000','48.60')">
-      <div class="diamond">💎</div>
-      <div class="amount">2,000 diamantes</div>
-      <div class="price">S/ 48.60</div>
-    </div>
-
-    <div class="package" onclick="seleccionar(this,'6000','121.00')">
-      <div class="diamond">💎</div>
-      <div class="amount">6,000 diamantes</div>
-      <div class="price">S/ 121.00</div>
-    </div>
-
-  </section>
-
-  <section class="form-box">
-
-    <h2>🎮 Datos de tu cuenta</h2>
-    <p>Ingresa correctamente los datos donde recibirás la recarga.</p>
-
-    <label for="playerId">ID de Free Fire</label>
-    <input
-      id="playerId"
-      type="text"
-      placeholder="Ejemplo: 123456789"
-      inputmode="numeric"
-    >
-
-    <label for="playerName">Nombre del jugador</label>
-    <input
-      id="playerName"
-      type="text"
-      placeholder="Ingresa tu nombre"
-    >
-
-    <label for="email">Correo electrónico</label>
-    <input
-      id="email"
-      type="email"
-      placeholder="cliente@gmail.com"
-    >
-
-    <button class="continue-btn" onclick="continuarPedido()">
-      CONTINUAR →
-    </button>
-
-  </section>
-
-</section>
-
-
-<section id="pago" class="hidden">
-
-  <section class="payment-box">
-
-    <h2>💳 Realiza tu pago</h2>
-    <p>Revisa los datos de tu pedido antes de pagar.</p>
-
-    <div class="summary">
-      💎 Recarga:
-      <strong id="resumenDiamantes"></strong><br>
-
-      💰 Total:
-      <strong>S/ <span id="resumenPrecio"></span></strong><br>
-
-      🎮 ID:
-      <strong id="resumenId"></strong><br>
-
-      👤 Jugador:
-      <strong id="resumenNombre"></strong>
-    </div>
-
-    <div class="payment-method">
-
-      <div class="mercado-title">
-        💳 MERCADO PAGO
-      </div>
-
-      <div class="mercado-text">
-        Paga de forma segura mediante Mercado Pago.
-      </div>
-
-    </div>
-
-    <div class="yape-box">
-
-      <div class="yape-title">
-        📱 Pago con Yape
-      </div>
-
-      <div class="yape-info">
-        Ingresa tu número de celular Yape y el OTP
-        solicitado por Mercado Pago para generar el
-        token de pago.
-      </div>
-
-      <label for="yapePhone">
-        Número de celular Yape
-      </label>
-
-      <input
-        id="yapePhone"
-        type="tel"
-        placeholder="111111111"
-        inputmode="numeric"
-        maxlength="9"
-      >
-
-      <label for="yapeOtp">
-        OTP de Yape
-      </label>
-
-      <input
-        id="yapeOtp"
-        type="text"
-        placeholder="123456"
-        inputmode="numeric"
-        maxlength="6"
-      >
-
-    </div>
-
-    <div class="instructions">
-
-      <strong>📋 Pasos:</strong><br><br>
-
-      1️⃣ Revisa tu ID y nombre.<br>
-      2️⃣ Ingresa tu número Yape.<br>
-      3️⃣ Ingresa el OTP.<br>
-      4️⃣ Pulsa PAGAR CON YAPE.<br>
-      5️⃣ Espera la respuesta de Mercado Pago.
-
-    </div>
-
-    <div class="warning">
-      ⚠️ Verifica cuidadosamente tu ID de Free Fire
-      antes de pagar.
-    </div>
-
-    <button
-      id="payButton"
-      class="pay-btn"
-      onclick="pagarConYape()"
-    >
-      📱 PAGAR CON YAPE
-    </button>
-
-    <button
-      class="back-btn"
-      onclick="volverInicio()"
-    >
-      ← VOLVER
-    </button>
-
-  </section>
-
-</section>
-
-</main>
-
-<footer>
-© 2026 WEYZON STORE · Recargas Free Fire
-</footer>
-
-
-<script src="https://sdk.mercadopago.com/js/v2"></script>
-
-<script>
-
-const API_URL =
-"https://weyzon-api.brayanantoni2288.workers.dev";
-
-/*
-  PUBLIC KEY DE PRUEBA
-*/
-const MP_PUBLIC_KEY =
-"APP_USR-67c84156-de0a-4b6a-abac-a43109017c6b";
-
-const mp =
-new MercadoPago(MP_PUBLIC_KEY,{
-  locale:"es-PE"
-});
-
-let paqueteSeleccionado=null;
-let precioSeleccionado=null;
-
-
-function seleccionar(elemento,paquete,precio){
-
-  document.querySelectorAll(".package")
-  .forEach(card=>{
-    card.classList.remove("selected");
-  });
-
-  elemento.classList.add("selected");
-
-  paqueteSeleccionado=paquete;
-  precioSeleccionado=precio;
-}
-
-
-function continuarPedido(){
-
-  if(!paqueteSeleccionado){
-    alert("Selecciona una recarga primero.");
-    return;
-  }
-
-  const playerId =
-    document.getElementById("playerId")
-    .value.trim();
-
-  const playerName =
-    document.getElementById("playerName")
-    .value.trim();
-
-  const email =
-    document.getElementById("email")
-    .value.trim();
-
-  if(!playerId){
-    alert("Ingresa tu ID de Free Fire.");
-    return;
-  }
-
-  if(!playerName){
-    alert("Ingresa el nombre del jugador.");
-    return;
-  }
-
-  if(!email){
-    alert("Ingresa tu correo electrónico.");
-    return;
-  }
-
-  document.getElementById(
-    "resumenDiamantes"
-  ).textContent=
-    paqueteSeleccionado+" diamantes";
-
-  document.getElementById(
-    "resumenPrecio"
-  ).textContent=
-    precioSeleccionado;
-
-  document.getElementById(
-    "resumenId"
-  ).textContent=
-    playerId;
-
-  document.getElementById(
-    "resumenNombre"
-  ).textContent=
-    playerName;
-
-  document.getElementById("inicio")
-    .classList.add("hidden");
-
-  document.getElementById("pago")
-    .classList.remove("hidden");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-
-async function pagarConYape(){
-
-  if(!paqueteSeleccionado ||
-     !precioSeleccionado){
-
-    alert("Selecciona una recarga primero.");
-    return;
-  }
-
-  const playerId =
-    document.getElementById("playerId")
-    .value.trim();
-
-  const playerName =
-    document.getElementById("playerName")
-    .value.trim();
-
-  const email =
-    document.getElementById("email")
-    .value.trim();
-
-  const phone =
-    document.getElementById("yapePhone")
-    .value.trim();
-
-  const otp =
-    document.getElementById("yapeOtp")
-    .value.trim();
-
-  if(!phone || phone.length!==9){
-    alert("Ingresa correctamente el número de Yape.");
-    return;
-  }
-
-  if(!otp || otp.length!==6){
-    alert("Ingresa correctamente el OTP.");
-    return;
-  }
-
-  const boton =
-    document.getElementById("payButton");
-
-  try{
-
-    boton.disabled=true;
-    boton.textContent="⏳ GENERANDO PAGO...";
-
-    /*
-      FLUJO OFICIAL:
-      celular + OTP → token Yape
-    */
-
-    const yape =
-      mp.yape({
-        otp:otp,
-        phoneNumber:phone
-      });
-
-    const yapeToken =
-      await yape.create();
-
-    /*
-      Dependiendo de la versión del SDK,
-      el token puede venir como string u objeto.
-    */
-
-    const token =
-      typeof yapeToken==="string"
-      ? yapeToken
-      : (
-          yapeToken?.id ||
-          yapeToken?.token ||
-          yapeToken
-        );
-
-    if(!token){
-      throw new Error(
-        "Mercado Pago no devolvió el token de Yape."
-      );
-    }
-
-    const respuesta =
-      await fetch(API_URL,{
-        method:"POST",
-
-        headers:{
-          "Content-Type":"application/json"
-        },
-
-        body:JSON.stringify({
-
-          title:
-            "Recarga Free Fire - "+
-            paqueteSeleccionado+
-            " diamantes",
-
-          price:
-            Number(precioSeleccionado),
-
-          playerId:
-            playerId,
-
-          playerName:
-            playerName,
-
-          email:
-            email,
-
-          yapeToken:
-            token
-        })
-      });
-
-    const resultado =
-      await respuesta.json();
-
-    if(!respuesta.ok){
-
-      throw new Error(
-        resultado.error ||
-        resultado.message ||
-        "Mercado Pago rechazó la solicitud."
-      );
-    }
-
-    if(resultado.status==="approved"){
-
-      alert(
-        "✅ PAGO APROBADO\n\n"+
-        "Tu pago fue confirmado correctamente."
-      );
-
-    }else{
-
-      alert(
-        "⚠️ Estado del pago:\n\n"+
-        (resultado.status || "desconocido")+
-        "\n\n"+
-        (resultado.status_detail || "")
-      );
-    }
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "❌ No se pudo procesar el pago.\n\n"+
-      error.message
-    );
-
-  }finally{
-
-    boton.disabled=false;
-
-    boton.textContent=
-      "📱 PAGAR CON YAPE";
-  }
-}
-
-
-function volverInicio(){
-
-  document.getElementById("pago")
-    .classList.add("hidden");
-
-  document.getElementById("inicio")
-    .classList.remove("hidden");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-}
-
-</script>
-
-</body>
-</html>
+  padding:18
