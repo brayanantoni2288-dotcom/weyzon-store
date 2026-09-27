@@ -19,16 +19,8 @@ body{
   min-height:100vh;
   color:#fff;
   background:
-  radial-gradient(
-    circle at top right,
-    rgba(0,90,255,.22),
-    transparent 35%
-  ),
-  radial-gradient(
-    circle at bottom left,
-    rgba(255,0,55,.16),
-    transparent 35%
-  ),
+  radial-gradient(circle at top right,rgba(0,90,255,.22),transparent 35%),
+  radial-gradient(circle at bottom left,rgba(255,0,55,.16),transparent 35%),
   #03050a
 }
 
@@ -89,12 +81,7 @@ main{
 }
 
 .package{
-  background:
-    linear-gradient(
-      145deg,
-      #08101d,
-      #050810
-    );
+  background:linear-gradient(145deg,#08101d,#050810);
   border:1px solid #16385f;
   border-radius:15px;
   padding:20px 12px;
@@ -112,12 +99,7 @@ main{
 .package.selected{
   border-color:#168cff;
   box-shadow:0 0 20px rgba(0,119,255,.35);
-  background:
-    linear-gradient(
-      145deg,
-      #0b1b32,
-      #060b13
-    )
+  background:linear-gradient(145deg,#0b1b32,#060b13)
 }
 
 .diamond{
@@ -201,12 +183,7 @@ button{
 
 .continue-btn,
 .pay-btn{
-  background:
-    linear-gradient(
-      90deg,
-      #0878ff,
-      #168cff
-    )
+  background:linear-gradient(90deg,#0878ff,#168cff)
 }
 
 .continue-btn:hover,
@@ -242,12 +219,7 @@ button{
   text-align:center;
   padding:22px;
   border-radius:15px;
-  background:
-    linear-gradient(
-      145deg,
-      #0c1020,
-      #070a12
-    );
+  background:linear-gradient(145deg,#0c1020,#070a12);
   border:1px solid #30256b;
   margin-top:18px
 }
@@ -308,17 +280,6 @@ button{
   line-height:1.5
 }
 
-.success-box{
-  margin-top:18px;
-  padding:18px;
-  border-radius:14px;
-  background:rgba(0,180,100,.08);
-  border:1px solid rgba(0,220,130,.25);
-  color:#baffdc;
-  text-align:center;
-  line-height:1.7
-}
-
 .hidden{
   display:none
 }
@@ -356,7 +317,6 @@ footer{
 </style>
 </head>
 
-
 <body>
 
 <header>
@@ -371,9 +331,7 @@ footer{
 
 </header>
 
-
 <main>
-
 
 <section id="inicio">
 
@@ -389,23 +347,18 @@ footer{
 
   </section>
 
-
   <h2 class="section-title">
     🔥 Elige tu recarga
   </h2>
 
-
   <section class="packages">
-
 
     <div
       class="package"
       onclick="seleccionar(this,'100','2.70')"
     >
 
-      <div class="diamond">
-        💎
-      </div>
+      <div class="diamond">💎</div>
 
       <div class="amount">
         100 diamantes
@@ -417,15 +370,12 @@ footer{
 
     </div>
 
-
     <div
       class="package"
       onclick="seleccionar(this,'300','8.00')"
     >
 
-      <div class="diamond">
-        💎
-      </div>
+      <div class="diamond">💎</div>
 
       <div class="amount">
         300 diamantes
@@ -437,15 +387,12 @@ footer{
 
     </div>
 
-
     <div
       class="package"
       onclick="seleccionar(this,'500','13.20')"
     >
 
-      <div class="diamond">
-        💎
-      </div>
+      <div class="diamond">💎</div>
 
       <div class="amount">
         500 diamantes
@@ -457,15 +404,12 @@ footer{
 
     </div>
 
-
     <div
       class="package"
       onclick="seleccionar(this,'1000','24.20')"
     >
 
-      <div class="diamond">
-        💎
-      </div>
+      <div class="diamond">💎</div>
 
       <div class="amount">
         1,000 diamantes
@@ -477,15 +421,12 @@ footer{
 
     </div>
 
-
     <div
       class="package"
       onclick="seleccionar(this,'2000','48.60')"
     >
 
-      <div class="diamond">
-        💎
-      </div>
+      <div class="diamond">💎</div>
 
       <div class="amount">
         2,000 diamantes
@@ -497,15 +438,12 @@ footer{
 
     </div>
 
-
     <div
       class="package"
       onclick="seleccionar(this,'6000','121.00')"
     >
 
-      <div class="diamond">
-        💎
-      </div>
+      <div class="diamond">💎</div>
 
       <div class="amount">
         6,000 diamantes
@@ -517,9 +455,7 @@ footer{
 
     </div>
 
-
   </section>
-
 
   <section class="form-box">
 
@@ -530,7 +466,6 @@ footer{
     <p>
       Ingresa correctamente los datos donde recibirás la recarga.
     </p>
-
 
     <label for="playerId">
       ID de Free Fire
@@ -543,7 +478,6 @@ footer{
       inputmode="numeric"
     >
 
-
     <label for="playerName">
       Nombre del jugador
     </label>
@@ -553,7 +487,6 @@ footer{
       type="text"
       placeholder="Ingresa tu nombre"
     >
-
 
     <label for="email">
       Correo electrónico
@@ -565,7 +498,6 @@ footer{
       placeholder="cliente@gmail.com"
     >
 
-
     <button
       class="continue-btn"
       onclick="continuarPedido()"
@@ -575,10 +507,7 @@ footer{
 
   </section>
 
-
 </section>
-
-
 
 <section id="pago" class="hidden">
 
@@ -591,7 +520,6 @@ footer{
     <p>
       Revisa los datos de tu pedido antes de pagar.
     </p>
-
 
     <div class="summary">
 
@@ -617,7 +545,6 @@ footer{
 
     </div>
 
-
     <div class="payment-method">
 
       <div class="mercado-title">
@@ -629,7 +556,6 @@ footer{
       </div>
 
     </div>
-
 
     <div class="yape-box">
 
@@ -644,7 +570,6 @@ footer{
 
       </div>
 
-
       <label for="yapePhone">
         Número de celular Yape
       </label>
@@ -656,7 +581,6 @@ footer{
         inputmode="numeric"
         maxlength="9"
       >
-
 
       <label for="yapeOtp">
         OTP de Yape
@@ -671,7 +595,6 @@ footer{
       >
 
     </div>
-
 
     <div class="instructions">
 
@@ -701,14 +624,12 @@ footer{
 
     </div>
 
-
     <div class="warning">
 
       ⚠️ Verifica cuidadosamente tu ID de Free Fire
       antes de pagar.
 
     </div>
-
 
     <button
       id="payButton"
@@ -720,7 +641,6 @@ footer{
 
     </button>
 
-
     <button
       class="back-btn"
       onclick="volverInicio()"
@@ -730,14 +650,11 @@ footer{
 
     </button>
 
-
   </section>
 
 </section>
 
-
 </main>
-
 
 <footer>
 
@@ -745,25 +662,15 @@ footer{
 
 </footer>
 
-
-
 <script src="https://sdk.mercadopago.com/js/v2"></script>
 
-
 <script>
-
-/* =========================================
-   CONFIGURACIÓN
-========================================= */
-
 
 const API_URL =
 "https://weyzon-api.brayanantoni2288.workers.dev";
 
-
 const MP_PUBLIC_KEY =
 "APP_USR-67c84156-de0a-4b6a-abac-a43109017c6b";
-
 
 const mp =
 new MercadoPago(
@@ -773,20 +680,9 @@ new MercadoPago(
   }
 );
 
-
-/* =========================================
-   VARIABLES
-========================================= */
-
-
 let paqueteSeleccionado = null;
 
 let precioSeleccionado = null;
-
-
-/* =========================================
-   SELECCIONAR PAQUETE
-========================================= */
 
 
 function seleccionar(
@@ -805,25 +701,17 @@ function seleccionar(
 
     });
 
-
   elemento.classList.add(
     "selected"
   );
 
-
   paqueteSeleccionado =
     paquete;
-
 
   precioSeleccionado =
     precio;
 
 }
-
-
-/* =========================================
-   CONTINUAR PEDIDO
-========================================= */
 
 
 function continuarPedido(){
@@ -837,13 +725,11 @@ function continuarPedido(){
     return;
   }
 
-
   const playerId =
     document
       .getElementById("playerId")
       .value
       .trim();
-
 
   const playerName =
     document
@@ -851,13 +737,11 @@ function continuarPedido(){
       .value
       .trim();
 
-
   const email =
     document
       .getElementById("email")
       .value
       .trim();
-
 
   if(!playerId){
 
@@ -868,7 +752,6 @@ function continuarPedido(){
     return;
   }
 
-
   if(!playerName){
 
     alert(
@@ -877,7 +760,6 @@ function continuarPedido(){
 
     return;
   }
-
 
   if(!email){
 
@@ -888,51 +770,36 @@ function continuarPedido(){
     return;
   }
 
-
   document
-    .getElementById(
-      "resumenDiamantes"
-    )
+    .getElementById("resumenDiamantes")
     .textContent =
       paqueteSeleccionado +
       " diamantes";
 
-
   document
-    .getElementById(
-      "resumenPrecio"
-    )
+    .getElementById("resumenPrecio")
     .textContent =
       precioSeleccionado;
 
-
   document
-    .getElementById(
-      "resumenId"
-    )
+    .getElementById("resumenId")
     .textContent =
       playerId;
 
-
   document
-    .getElementById(
-      "resumenNombre"
-    )
+    .getElementById("resumenNombre")
     .textContent =
       playerName;
-
 
   document
     .getElementById("inicio")
     .classList
     .add("hidden");
 
-
   document
     .getElementById("pago")
     .classList
     .remove("hidden");
-
 
   window.scrollTo({
     top:0,
@@ -940,11 +807,6 @@ function continuarPedido(){
   });
 
 }
-
-
-/* =========================================
-   PAGAR CON YAPE
-========================================= */
 
 
 async function pagarConYape(){
@@ -961,13 +823,11 @@ async function pagarConYape(){
     return;
   }
 
-
   const playerId =
     document
       .getElementById("playerId")
       .value
       .trim();
-
 
   const playerName =
     document
@@ -975,13 +835,11 @@ async function pagarConYape(){
       .value
       .trim();
 
-
   const email =
     document
       .getElementById("email")
       .value
       .trim();
-
 
   const phone =
     document
@@ -989,15 +847,11 @@ async function pagarConYape(){
       .value
       .trim();
 
-
   const otp =
     document
       .getElementById("yapeOtp")
       .value
       .trim();
-
-
-  /* VALIDAR CELULAR */
 
   if(
     !phone ||
@@ -1011,9 +865,6 @@ async function pagarConYape(){
     return;
   }
 
-
-  /* VALIDAR OTP */
-
   if(
     !otp ||
     !/^\d{6}$/.test(otp)
@@ -1026,11 +877,9 @@ async function pagarConYape(){
     return;
   }
 
-
   const boton =
     document
       .getElementById("payButton");
-
 
   try{
 
@@ -1038,12 +887,6 @@ async function pagarConYape(){
 
     boton.textContent =
       "⏳ GENERANDO TOKEN...";
-
-
-    /* =====================================
-       1. GENERAR TOKEN YAPE
-    ===================================== */
-
 
     const yape =
       mp.yape({
@@ -1056,10 +899,8 @@ async function pagarConYape(){
 
       });
 
-
     const yapeToken =
       await yape.create();
-
 
     if(!yapeToken){
 
@@ -1069,20 +910,32 @@ async function pagarConYape(){
 
     }
 
+    /*
+      CORRECCIÓN:
+      El SDK devuelve un objeto token.
+      Mercado Pago necesita solamente
+      el ID del token para crear el pago.
+    */
+
+    const tokenParaPago =
+      typeof yapeToken === "string"
+        ? yapeToken
+        : yapeToken.id;
+
+    if(!tokenParaPago){
+
+      throw new Error(
+        "No se encontró el ID del token de Yape."
+      );
+
+    }
 
     console.log(
       "Token Yape generado correctamente."
     );
 
-
-    /* =====================================
-       2. ENVIAR TOKEN AL WORKER
-    ===================================== */
-
-
     boton.textContent =
       "⏳ PROCESANDO PAGO...";
-
 
     const respuesta =
       await fetch(
@@ -1119,21 +972,14 @@ async function pagarConYape(){
                 email,
 
               yapeToken:
-                yapeToken
+                tokenParaPago
 
             })
 
         }
       );
 
-
-    /* =====================================
-       3. LEER RESPUESTA
-    ===================================== */
-
-
     let resultado;
-
 
     try{
 
@@ -1148,17 +994,10 @@ async function pagarConYape(){
 
     }
 
-
     console.log(
       "Respuesta del Worker:",
       resultado
     );
-
-
-    /* =====================================
-       4. ERROR
-    ===================================== */
-
 
     if(!respuesta.ok){
 
@@ -1173,12 +1012,6 @@ async function pagarConYape(){
       );
 
     }
-
-
-    /* =====================================
-       5. PAGO APROBADO
-    ===================================== */
-
 
     if(
       resultado.status ===
@@ -1197,21 +1030,7 @@ async function pagarConYape(){
 
       );
 
-
-      /*
-        Aquí después podemos agregar
-        automáticamente la entrega
-        de los diamantes.
-      */
-
-
     }else{
-
-
-      /* =================================
-         PAGO PENDIENTE / RECHAZADO
-      ================================= */
-
 
       alert(
 
@@ -1235,15 +1054,12 @@ async function pagarConYape(){
 
     }
 
-
   }catch(error){
-
 
     console.error(
       "Error de pago:",
       error
     );
-
 
     alert(
 
@@ -1253,12 +1069,9 @@ async function pagarConYape(){
 
     );
 
-
   }finally{
 
-
     boton.disabled = false;
-
 
     boton.textContent =
       "📱 PAGAR CON YAPE";
@@ -1268,11 +1081,6 @@ async function pagarConYape(){
 }
 
 
-/* =========================================
-   VOLVER
-========================================= */
-
-
 function volverInicio(){
 
   document
@@ -1280,12 +1088,10 @@ function volverInicio(){
     .classList
     .add("hidden");
 
-
   document
     .getElementById("inicio")
     .classList
     .remove("hidden");
-
 
   window.scrollTo({
 
@@ -1298,7 +1104,6 @@ function volverInicio(){
 }
 
 </script>
-
 
 </body>
 </html>
