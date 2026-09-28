@@ -374,8 +374,14 @@ footer{
 const API_URL =
   "https://weyzon-api.brayanantoni2288.workers.dev";
 
+/*
+  PUBLIC KEY DE PRUEBA
+  Coincide con las credenciales
+  de prueba de Mercado Pago.
+*/
+
 const MP_PUBLIC_KEY =
-  "APP_USR-67c84156-de0a-4b6a-abac-a43109017c6b";
+  "TEST-ded7f9e5-e5a9-4ed3-97a6-73584ba87df1";
 
 
 /* ==============================
@@ -644,8 +650,6 @@ payButton.addEventListener("click",async()=>{
     /*
       Mercado Pago puede devolver
       directamente un string o un objeto.
-
-      En caso de objeto usamos .id
     */
 
     const tokenParaPago =
