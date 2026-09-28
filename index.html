@@ -136,10 +136,6 @@
       cursor: pointer;
     }
 
-    .boton:active {
-      transform: scale(.99);
-    }
-
     .boton:disabled {
       background: #555;
       color: #bbb;
@@ -216,7 +212,7 @@
     <input
       id="email"
       type="email"
-      value="test_user_12345@testuser.com"
+      value="testuser123456789@testuser.com"
     >
 
     <label>Número de celular Yape</label>
@@ -226,7 +222,6 @@
       inputmode="numeric"
       maxlength="9"
       value="111111111"
-      placeholder="111111111"
     >
 
     <label>OTP de Yape</label>
@@ -236,63 +231,50 @@
       inputmode="numeric"
       maxlength="6"
       value="123456"
-      placeholder="123456"
     >
 
     <label>💎 Selecciona tu paquete</label>
 
     <div class="paquetes">
 
-      <div
-        class="paquete activo"
-        data-diamantes="100"
-        data-precio="2.70"
-      >
+      <div class="paquete activo"
+           data-diamantes="100"
+           data-precio="2.70">
         <div class="diamantes">💎 100</div>
         <div class="precio">S/ 2.70</div>
       </div>
 
-      <div
-        class="paquete"
-        data-diamantes="300"
-        data-precio="8.00"
-      >
+      <div class="paquete"
+           data-diamantes="300"
+           data-precio="8.00">
         <div class="diamantes">💎 300</div>
         <div class="precio">S/ 8.00</div>
       </div>
 
-      <div
-        class="paquete"
-        data-diamantes="500"
-        data-precio="13.20"
-      >
+      <div class="paquete"
+           data-diamantes="500"
+           data-precio="13.20">
         <div class="diamantes">💎 500</div>
         <div class="precio">S/ 13.20</div>
       </div>
 
-      <div
-        class="paquete"
-        data-diamantes="1000"
-        data-precio="24.20"
-      >
+      <div class="paquete"
+           data-diamantes="1000"
+           data-precio="24.20">
         <div class="diamantes">💎 1000</div>
         <div class="precio">S/ 24.20</div>
       </div>
 
-      <div
-        class="paquete"
-        data-diamantes="2000"
-        data-precio="48.60"
-      >
+      <div class="paquete"
+           data-diamantes="2000"
+           data-precio="48.60">
         <div class="diamantes">💎 2000</div>
         <div class="precio">S/ 48.60</div>
       </div>
 
-      <div
-        class="paquete"
-        data-diamantes="6000"
-        data-precio="121.00"
-      >
+      <div class="paquete"
+           data-diamantes="6000"
+           data-precio="121.00">
         <div class="diamantes">💎 6000</div>
         <div class="precio">S/ 121.00</div>
       </div>
@@ -300,7 +282,6 @@
     </div>
 
     <div class="resumen">
-
       <div>
         💎 Paquete:
         <strong id="resumenDiamantes">100 diamantes</strong>
@@ -310,29 +291,20 @@
         💰 Precio:
         <strong id="resumenPrecio">S/ 2.70</strong>
       </div>
-
     </div>
 
-    <button
-      class="boton"
-      id="btnPagar"
-    >
+    <button class="boton" id="btnPagar">
       💳 PAGAR CON YAPE
     </button>
 
-    <button
-      class="volver"
-      onclick="history.back()"
-    >
+    <button class="volver" onclick="history.back()">
       ← VOLVER
     </button>
 
-    <div
-      id="resultado"
-    ></div>
+    <div id="resultado"></div>
 
     <div class="nota">
-      🧪 Prueba de integración Mercado Pago
+      🧪 Modo de prueba de Mercado Pago
     </div>
 
   </div>
@@ -343,21 +315,22 @@
 
 </div>
 
-
 <script>
 
   /* =====================================
-     CONFIGURACIÓN
+     API
   ===================================== */
 
   const API_URL =
     "https://weyzon-api.brayanantoni2288.workers.dev";
 
-  /*
-    PUBLIC KEY ORIGINAL
-  */
+
+  /* =====================================
+     CREDENCIAL DE PRUEBA
+  ===================================== */
+
   const MP_PUBLIC_KEY =
-    "APP_USR-67c84156-de0a-4b6a-abac-a43109017c6b";
+    "TEST-ded7f9e5-e5a9-4ed3-97a6-73584ba87df1";
 
 
   const mp =
@@ -378,51 +351,48 @@
 
 
   /* =====================================
-     PAQUETES
+     SELECCIÓN DE PAQUETE
   ===================================== */
 
   document
     .querySelectorAll(".paquete")
     .forEach(paquete => {
 
-      paquete.addEventListener(
-        "click",
-        function() {
+      paquete.addEventListener("click", function() {
 
-          document
-            .querySelectorAll(".paquete")
-            .forEach(p =>
-              p.classList.remove("activo")
-            );
+        document
+          .querySelectorAll(".paquete")
+          .forEach(p => {
+            p.classList.remove("activo");
+          });
 
-          this.classList.add("activo");
+        this.classList.add("activo");
 
-          paqueteSeleccionado =
-            this.dataset.diamantes;
+        paqueteSeleccionado =
+          this.dataset.diamantes;
 
-          precioSeleccionado =
-            this.dataset.precio;
+        precioSeleccionado =
+          this.dataset.precio;
 
-          document
-            .getElementById("resumenDiamantes")
-            .textContent =
-            paqueteSeleccionado +
-            " diamantes";
+        document
+          .getElementById("resumenDiamantes")
+          .textContent =
+          paqueteSeleccionado +
+          " diamantes";
 
-          document
-            .getElementById("resumenPrecio")
-            .textContent =
-            "S/ " +
-            precioSeleccionado;
+        document
+          .getElementById("resumenPrecio")
+          .textContent =
+          "S/ " +
+          precioSeleccionado;
 
-        }
-      );
+      });
 
     });
 
 
   /* =====================================
-     RESULTADO
+     MOSTRAR RESULTADO
   ===================================== */
 
   function mostrarResultado(
@@ -435,23 +405,15 @@
 
     caja.style.display = "block";
 
-    if (correcto) {
+    caja.style.background =
+      correcto
+        ? "#0c3920"
+        : "#451018";
 
-      caja.style.background =
-        "#0c3920";
-
-      caja.style.color =
-        "#8cffad";
-
-    } else {
-
-      caja.style.background =
-        "#451018";
-
-      caja.style.color =
-        "#ff9aa8";
-
-    }
+    caja.style.color =
+      correcto
+        ? "#8cffad"
+        : "#ff9aa8";
 
     caja.textContent =
       mensaje;
@@ -460,7 +422,7 @@
 
 
   /* =====================================
-     PROCESAR PAGO
+     PAGAR
   ===================================== */
 
   document
@@ -517,51 +479,41 @@
     ===================================== */
 
     if (!playerId) {
-
       mostrarResultado(
         "❌ Ingresa tu ID de Free Fire."
       );
-
       return;
     }
 
 
     if (!playerName) {
-
       mostrarResultado(
         "❌ Ingresa el nombre del jugador."
       );
-
       return;
     }
 
 
     if (!email) {
-
       mostrarResultado(
-        "❌ Ingresa un correo electrónico."
+        "❌ Ingresa un correo."
       );
-
       return;
     }
 
 
     if (!/^[0-9]{9}$/.test(phone)) {
-
       mostrarResultado(
         "❌ El número de Yape debe tener 9 dígitos."
       );
-
       return;
     }
 
 
     if (!/^[0-9]{6}$/.test(otp)) {
-
       mostrarResultado(
         "❌ El OTP debe tener 6 dígitos."
       );
-
       return;
     }
 
@@ -569,13 +521,13 @@
     boton.disabled = true;
 
     boton.textContent =
-      "⏳ PROCESANDO PAGO...";
+      "⏳ PROCESANDO...";
 
 
     try {
 
       /* =====================================
-         CREAR TOKEN YAPE
+         TOKEN YAPE
       ===================================== */
 
       const yape =
@@ -590,12 +542,12 @@
 
 
       console.log(
-        "Respuesta Yape:",
+        "TOKEN YAPE:",
         respuestaYape
       );
 
 
-      let yapeToken = null;
+      let yapeToken;
 
 
       if (
@@ -619,14 +571,14 @@
       if (!yapeToken) {
 
         throw new Error(
-          "Mercado Pago no devolvió el token de Yape."
+          "No se pudo obtener el token de Yape."
         );
 
       }
 
 
       /* =====================================
-         ENVIAR PAGO AL WORKER
+         ENVIAR AL WORKER
       ===================================== */
 
       const respuesta =
@@ -665,7 +617,6 @@
                 yapeToken
 
             })
-
           }
         );
 
@@ -674,7 +625,7 @@
         await respuesta.text();
 
 
-      let datos = {};
+      let datos;
 
 
       try {
@@ -692,13 +643,13 @@
 
 
       console.log(
-        "Respuesta del Worker:",
+        "RESPUESTA WORKER:",
         datos
       );
 
 
       /* =====================================
-         ERROR DEL WORKER
+         ERROR
       ===================================== */
 
       if (!respuesta.ok) {
@@ -709,10 +660,19 @@
           "No se pudo procesar el pago.";
 
 
+        if (datos.status) {
+
+          mensaje +=
+            "\n\nStatus: " +
+            datos.status;
+
+        }
+
+
         if (datos.status_detail) {
 
           mensaje +=
-            "\n\nEstado: " +
+            "\nDetalle: " +
             datos.status_detail;
 
         }
@@ -721,7 +681,7 @@
         if (datos.cause) {
 
           mensaje +=
-            "\n\nDetalle:\n" +
+            "\n\nCausa:\n" +
             JSON.stringify(
               datos.cause,
               null,
@@ -739,12 +699,12 @@
 
 
       /* =====================================
-         ÉXITO
+         APROBADO
       ===================================== */
 
       mostrarResultado(
 
-        "✅ PAGO PROCESADO\n\n" +
+        "✅ PAGO APROBADO\n\n" +
 
         "💎 Diamantes: " +
         paqueteSeleccionado +
@@ -766,7 +726,7 @@
     } catch (error) {
 
       console.error(
-        "Error:",
+        "ERROR:",
         error
       );
 
