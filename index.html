@@ -6,8 +6,6 @@
 
   <title>WEYZON STORE</title>
 
-  <script src="https://sdk.mercadopago.com/js/v2"></script>
-
   <style>
     * {
       box-sizing: border-box;
@@ -151,6 +149,7 @@
       background: transparent;
       color: white;
       font-size: 18px;
+      cursor: pointer;
     }
 
     #resultado {
@@ -282,22 +281,30 @@
     </div>
 
     <div class="resumen">
+
       <div>
         💎 Paquete:
-        <strong id="resumenDiamantes">100 diamantes</strong>
+        <strong id="resumenDiamantes">
+          100 diamantes
+        </strong>
       </div>
 
       <div>
         💰 Precio:
-        <strong id="resumenPrecio">S/ 2.70</strong>
+        <strong id="resumenPrecio">
+          S/ 2.70
+        </strong>
       </div>
+
     </div>
 
     <button class="boton" id="btnPagar">
       💳 PAGAR CON YAPE
     </button>
 
-    <button class="volver" onclick="history.back()">
+    <button
+      class="volver"
+      onclick="history.back()">
       ← VOLVER
     </button>
 
@@ -318,28 +325,11 @@
 <script>
 
   /* =====================================
-     API
+     API CLOUDFLARE WORKER
   ===================================== */
 
   const API_URL =
     "https://weyzon-api.brayanantoni2288.workers.dev";
-
-
-  /* =====================================
-     CREDENCIAL DE PRUEBA
-  ===================================== */
-
-  const MP_PUBLIC_KEY =
-    "TEST-ded7f9e5-e5a9-4ed3-97a6-73584ba87df1";
-
-
-  const mp =
-    new MercadoPago(
-      MP_PUBLIC_KEY,
-      {
-        locale: "es-PE"
-      }
-    );
 
 
   /* =====================================
@@ -422,7 +412,7 @@
 
 
   /* =====================================
-     PAGAR
+     BOTÓN PAGAR
   ===================================== */
 
   document
@@ -432,6 +422,10 @@
       procesarPago
     );
 
+
+  /* =====================================
+     PROCESAR PAGO
+  ===================================== */
 
   async function procesarPago() {
 
@@ -479,41 +473,51 @@
     ===================================== */
 
     if (!playerId) {
+
       mostrarResultado(
         "❌ Ingresa tu ID de Free Fire."
       );
+
       return;
     }
 
 
     if (!playerName) {
+
       mostrarResultado(
         "❌ Ingresa el nombre del jugador."
       );
+
       return;
     }
 
 
     if (!email) {
+
       mostrarResultado(
         "❌ Ingresa un correo."
       );
+
       return;
     }
 
 
     if (!/^[0-9]{9}$/.test(phone)) {
+
       mostrarResultado(
         "❌ El número de Yape debe tener 9 dígitos."
       );
+
       return;
     }
 
 
     if (!/^[0-9]{6}$/.test(otp)) {
+
       mostrarResultado(
         "❌ El OTP debe tener 6 dígitos."
       );
+
       return;
     }
 
@@ -524,62 +528,14 @@
       "⏳ PROCESANDO...";
 
 
+    /* =====================================
+       ENVIAR DIRECTAMENTE AL WORKER
+       
+       YA NO GENERAMOS yapeToken AQUÍ.
+       EL WORKER LO GENERA.
+    ===================================== */
+
     try {
-
-      /* =====================================
-         TOKEN YAPE
-      ===================================== */
-
-      const yape =
-        mp.yape({
-          otp: otp,
-          phoneNumber: phone
-        });
-
-
-      const respuestaYape =
-        await yape.create();
-
-
-      console.log(
-        "TOKEN YAPE:",
-        respuestaYape
-      );
-
-
-      let yapeToken;
-
-
-      if (
-        typeof respuestaYape === "string"
-      ) {
-
-        yapeToken =
-          respuestaYape;
-
-      } else if (
-        respuestaYape &&
-        respuestaYape.id
-      ) {
-
-        yapeToken =
-          respuestaYape.id;
-
-      }
-
-
-      if (!yapeToken) {
-
-        throw new Error(
-          "No se pudo obtener el token de Yape."
-        );
-
-      }
-
-
-      /* =====================================
-         ENVIAR AL WORKER
-      ===================================== */
 
       const respuesta =
         await fetch(
@@ -613,8 +569,11 @@
               email:
                 email,
 
-              yapeToken:
-                yapeToken
+              phone:
+                phone,
+
+              otp:
+                otp
 
             })
           }
@@ -649,7 +608,7 @@
 
 
       /* =====================================
-         ERROR
+         ERROR DEL WORKER
       ===================================== */
 
       if (!respuesta.ok) {
@@ -699,28 +658,55 @@
 
 
       /* =====================================
-         APROBADO
+         RESPUESTA DEL PAGO
       ===================================== */
 
-      mostrarResultado(
+      if (datos.status === "approved") {
 
-        "✅ PAGO APROBADO\n\n" +
+        mostrarResultado(
 
-        "💎 Diamantes: " +
-        paqueteSeleccionado +
+          "✅ PAGO APROBADO\n\n" +
 
-        "\n💰 Precio: S/ " +
-        precioSeleccionado +
+          "💎 Diamantes: " +
+          paqueteSeleccionado +
 
-        "\n🆔 ID Free Fire: " +
-        playerId +
+          "\n💰 Precio: S/ " +
+          precioSeleccionado +
 
-        "\n👤 Jugador: " +
-        playerName,
+          "\n🆔 ID Free Fire: " +
+          playerId +
 
-        true
+          "\n👤 Jugador: " +
+          playerName +
 
-      );
+          "\n\n🧾 ID de pago: " +
+          datos.payment_id,
+
+          true
+
+        );
+
+      } else {
+
+        mostrarResultado(
+
+          "⚠️ PAGO PROCESADO\n\n" +
+
+          "Estado: " +
+          (datos.status || "desconocido") +
+
+          "\nDetalle: " +
+          (datos.status_detail || "sin detalle") +
+
+          "\n\n💎 Diamantes: " +
+          paqueteSeleccionado +
+
+          "\n💰 Precio: S/ " +
+          precioSeleccionado
+
+        );
+
+      }
 
 
     } catch (error) {
