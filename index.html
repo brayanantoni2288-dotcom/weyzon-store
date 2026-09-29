@@ -329,7 +329,7 @@
   ===================================== */
 
   const API_URL =
-    "https://weyzon-api.brayanantoni2288.workers.dev";
+    "https://weyzon-api.brayanantoni2288.workers.dev/pago";
 
 
   /* =====================================
@@ -529,10 +529,7 @@
 
 
     /* =====================================
-       ENVIAR DIRECTAMENTE AL WORKER
-       
-       YA NO GENERAMOS yapeToken AQUÍ.
-       EL WORKER LO GENERA.
+       ENVIAR AL WORKER
     ===================================== */
 
     try {
@@ -661,7 +658,10 @@
          RESPUESTA DEL PAGO
       ===================================== */
 
-      if (datos.status === "approved") {
+      if (
+        datos.payment &&
+        datos.payment.status === "approved"
+      ) {
 
         mostrarResultado(
 
@@ -680,7 +680,7 @@
           playerName +
 
           "\n\n🧾 ID de pago: " +
-          datos.payment_id,
+          datos.payment.id,
 
           true
 
@@ -693,10 +693,18 @@
           "⚠️ PAGO PROCESADO\n\n" +
 
           "Estado: " +
-          (datos.status || "desconocido") +
+          (
+            datos.payment?.status ||
+            datos.status ||
+            "desconocido"
+          ) +
 
           "\nDetalle: " +
-          (datos.status_detail || "sin detalle") +
+          (
+            datos.payment?.status_detail ||
+            datos.status_detail ||
+            "sin detalle"
+          ) +
 
           "\n\n💎 Diamantes: " +
           paqueteSeleccionado +
