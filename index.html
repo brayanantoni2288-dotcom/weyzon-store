@@ -211,7 +211,7 @@
     <input
       id="email"
       type="email"
-      value="testuser123456789@testuser.com"
+      value="test_user_pe@testuser.com"
     >
 
     <label>Número de celular Yape</label>
@@ -324,25 +324,13 @@
 
 <script>
 
-  /* =====================================
-     API CLOUDFLARE WORKER
-  ===================================== */
-
   const API_URL =
     "https://weyzon-api.brayanantoni2288.workers.dev/pago";
 
 
-  /* =====================================
-     VARIABLES
-  ===================================== */
-
   let paqueteSeleccionado = "100";
   let precioSeleccionado = "2.70";
 
-
-  /* =====================================
-     SELECCIÓN DE PAQUETE
-  ===================================== */
 
   document
     .querySelectorAll(".paquete")
@@ -381,10 +369,6 @@
     });
 
 
-  /* =====================================
-     MOSTRAR RESULTADO
-  ===================================== */
-
   function mostrarResultado(
     mensaje,
     correcto = false
@@ -411,10 +395,6 @@
   }
 
 
-  /* =====================================
-     BOTÓN PAGAR
-  ===================================== */
-
   document
     .getElementById("btnPagar")
     .addEventListener(
@@ -422,10 +402,6 @@
       procesarPago
     );
 
-
-  /* =====================================
-     PROCESAR PAGO
-  ===================================== */
 
   async function procesarPago() {
 
@@ -467,10 +443,6 @@
         .value
         .trim();
 
-
-    /* =====================================
-       VALIDACIONES
-    ===================================== */
 
     if (!playerId) {
 
@@ -527,10 +499,6 @@
     boton.textContent =
       "⏳ PROCESANDO...";
 
-
-    /* =====================================
-       ENVIAR AL WORKER
-    ===================================== */
 
     try {
 
@@ -604,10 +572,6 @@
       );
 
 
-      /* =====================================
-         ERROR DEL WORKER
-      ===================================== */
-
       if (!respuesta.ok) {
 
         let mensaje =
@@ -653,10 +617,6 @@
 
       }
 
-
-      /* =====================================
-         RESPUESTA DEL PAGO
-      ===================================== */
 
       if (
         datos.payment &&
